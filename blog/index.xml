@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Nick Tehrany</title>
-    <link>https://github.com/nicktehrany/nicktehrany.github.io/blog/</link>
+    <link>https://nicktehrany.github.io/blog/</link>
     <description>Recent content in Blog on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://github.com/nicktehrany/nicktehrany.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://nicktehrany.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

@@ -3,22 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://github.com/nicktehrany/nicktehrany.github.io/blog/</loc>
+    <loc>https://nicktehrany.github.io/blog/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nicktehrany/nicktehrany.github.io/</loc>
+    <loc>https://nicktehrany.github.io/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nicktehrany/nicktehrany.github.io/series/</loc>
+    <loc>https://nicktehrany.github.io/series/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nicktehrany/nicktehrany.github.io/tags/</loc>
+    <loc>https://nicktehrany.github.io/tags/</loc>
     <priority>0</priority>
   </url>
   
