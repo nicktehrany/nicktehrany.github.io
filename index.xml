@@ -6,9 +6,65 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 03 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Chapter 2</title>
+      <link>https://nicktehrany.github.io/in4191-notes/chapter-2/</link>
+      <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4191-notes/chapter-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chapter 1</title>
+      <link>https://nicktehrany.github.io/in4191-notes/chapter-1/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4191-notes/chapter-1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Amsterdam Data Science Thesis Award</title>
+      <link>https://nicktehrany.github.io/publications/amsterdam-data-science-thesis-award/</link>
+      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/publications/amsterdam-data-science-thesis-award/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IN4191 Security and Cryptography Notes</title>
+      <link>https://nicktehrany.github.io/in4191-notes/</link>
+      <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4191-notes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BSc Computer Science Thesis</title>
+      <link>https://nicktehrany.github.io/thesis/bsc-computer-science-thesis/</link>
+      <pubDate>Tue, 25 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/thesis/bsc-computer-science-thesis/</guid>
+      <description>&amp;ldquo;Evaluating Performance Characteristics of the PMDK Persistent Memory Software Stack&amp;rdquo; Abstract: Society nowadays revolves more and more around data. Data Science, Machine Learning, and Artificial Intelligence depend on large amounts of data to conduct research, and train machine learning models and agents. With the ever increasing amount of data, comes the need for faster storage. The quest for new storage devices has resulted in the development of non-volatile memories, that run alongside conventional memory and are directly accessible by the CPU, with large capacity of persistent storage.</description>
+    </item>
+    
+    <item>
+      <title>Dotfiles</title>
+      <link>https://nicktehrany.github.io/projects/dotfiles/</link>
+      <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/projects/dotfiles/</guid>
+      <description>My dotfiles repository, which is more of a continuous project likely to never be done, for managing all my config files for vim, zsh, tmux, git, other dotfiles and utilities I use.
+Installation git clone https://github.com/nicktehrany/dotfiles cd dotfiles sudo ./install  Check the .travis.yml for packages that will be installed, if not already installed. All existing links or config files will be overwritten! (Check .install.conf.yaml for all links)</description>
+    </item>
     
   </channel>
 </rss>
