@@ -60,6 +60,17 @@ All notes are based on content from the book and the lectures.</description>
     </item>
     
     <item>
+      <title>textemp</title>
+      <link>https://nicktehrany.github.io/completed-projects/textemp/</link>
+      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/completed-projects/textemp/</guid>
+      <description>I was tired of having to create new folder structure and latex files every time I had to create a new latex project (which was quite often). Therefore I made a quick and simple command to set up the basic directory structure and initialize the .tex files with the most basic necessities.
+Setup Clone the repo anywhere you like,
+git clone https://github.com/nicktehrany/textemp  Source the textemp script in your .</description>
+    </item>
+    
+    <item>
       <title>IN4191 Security and Cryptography Notes</title>
       <link>https://nicktehrany.github.io/in4191-notes/</link>
       <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
