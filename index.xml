@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Completed Projects</title>
+      <link>https://nicktehrany.github.io/completed-projects/</link>
+      <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/completed-projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Chapter 1</title>
       <link>https://nicktehrany.github.io/in4191-notes/chapter-1/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
@@ -69,11 +78,20 @@ All notes are based on content from the book and the lectures.</description>
     </item>
     
     <item>
-      <title>Dotfiles</title>
-      <link>https://nicktehrany.github.io/projects/dotfiles/</link>
+      <title>Active Projects</title>
+      <link>https://nicktehrany.github.io/active-projects/</link>
       <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://nicktehrany.github.io/projects/dotfiles/</guid>
+      <guid>https://nicktehrany.github.io/active-projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dotfiles</title>
+      <link>https://nicktehrany.github.io/active-projects/dotfiles/</link>
+      <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/active-projects/dotfiles/</guid>
       <description>My dotfiles repository, which is more of a continuous project likely to never be done, for managing all my config files for vim, zsh, tmux, git, other dotfiles and utilities I use.
 Installation git clone https://github.com/nicktehrany/dotfiles cd dotfiles sudo ./install  Check the .travis.yml for packages that will be installed, if not already installed. All existing links or config files will be overwritten! (Check .install.conf.yaml for all links)</description>
     </item>

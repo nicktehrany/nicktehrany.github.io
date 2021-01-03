@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Active Projects on Nick Tehrany</title>
+    <link>https://nicktehrany.github.io/active-projects/</link>
+    <description>Recent content in Active Projects on Nick Tehrany</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://nicktehrany.github.io/active-projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dotfiles</title>
+      <link>https://nicktehrany.github.io/active-projects/dotfiles/</link>
+      <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/active-projects/dotfiles/</guid>
+      <description>My dotfiles repository, which is more of a continuous project likely to never be done, for managing all my config files for vim, zsh, tmux, git, other dotfiles and utilities I use.
+Installation git clone https://github.com/nicktehrany/dotfiles cd dotfiles sudo ./install  Check the .travis.yml for packages that will be installed, if not already installed. All existing links or config files will be overwritten! (Check .install.conf.yaml for all links)</description>
+    </item>
+    
+  </channel>
+</rss>

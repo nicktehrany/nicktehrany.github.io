@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://nicktehrany.github.io/completed-projects/</loc>
+    <lastmod>2021-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nicktehrany.github.io/in4191-notes/chapter-1/</loc>
     <lastmod>2021-01-02T00:00:00+00:00</lastmod>
   </url>
@@ -33,8 +38,19 @@
   </url>
   
   <url>
-    <loc>https://nicktehrany.github.io/projects/dotfiles/</loc>
+    <loc>https://nicktehrany.github.io/active-projects/</loc>
     <lastmod>2020-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nicktehrany.github.io/active-projects/dotfiles/</loc>
+    <lastmod>2020-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nicktehrany.github.io/active-projects/</loc>
+    <lastmod>2020-01-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -62,7 +78,7 @@
   
   <url>
     <loc>https://nicktehrany.github.io/projects/</loc>
-    <lastmod>2020-01-11T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
