@@ -21,15 +21,6 @@
     </item>
     
     <item>
-      <title>Completed Projects</title>
-      <link>https://nicktehrany.github.io/completed-projects/</link>
-      <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://nicktehrany.github.io/completed-projects/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Chapter 1</title>
       <link>https://nicktehrany.github.io/in4191-notes/chapter-1/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
@@ -48,6 +39,15 @@
 Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55221
 Book: Nigel P. Smart. 2015. Cryptography Made Simple (1st. ed.). Springer Publishing Company, Incorporated.
 All notes are based on content from the book and the lectures.</description>
+    </item>
+    
+    <item>
+      <title>Active Projects</title>
+      <link>https://nicktehrany.github.io/active-projects/</link>
+      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/active-projects/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -78,11 +78,11 @@ All notes are based on content from the book and the lectures.</description>
     </item>
     
     <item>
-      <title>Active Projects</title>
-      <link>https://nicktehrany.github.io/active-projects/</link>
+      <title>Completed Projects</title>
+      <link>https://nicktehrany.github.io/completed-projects/</link>
       <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://nicktehrany.github.io/active-projects/</guid>
+      <guid>https://nicktehrany.github.io/completed-projects/</guid>
       <description></description>
     </item>
     
