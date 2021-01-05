@@ -6,27 +6,38 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 05 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Chapter 2</title>
-      <link>https://nicktehrany.github.io/in4191-notes/chapter-2/</link>
-      <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
+      <title>Lecture 2: Classical Systems</title>
+      <link>https://nicktehrany.github.io/in4191-notes/lecture-2/</link>
+      <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://nicktehrany.github.io/in4191-notes/chapter-2/</guid>
-      <description></description>
+      <guid>https://nicktehrany.github.io/in4191-notes/lecture-2/</guid>
+      <description>Classical Systems (Chapter 7) An encryption algoithm or ciper is the transformation of plaintext to ciphertext with a secret key, depicted as
+\[c=e_k(m)\]
+with \(m\) being the plaintext,
+\(e\) being the cipher function,
+\(k\) being the secret key,
+\(c\) being the ciphertext
+The reverse process is called decryption or decipherment, depicted as
+\[m=d_k(c)\]
+The key above needs to be known to both parties, but must be kept secret from all others.</description>
     </item>
     
     <item>
-      <title>Chapter 1</title>
-      <link>https://nicktehrany.github.io/in4191-notes/chapter-1/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      <title>Lecture 1: Introduction</title>
+      <link>https://nicktehrany.github.io/in4191-notes/lecture-1/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://nicktehrany.github.io/in4191-notes/chapter-1/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere, diam vitae mattis finibus, nisi nulla sodales turpis, quis condimentum leo turpis non lectus. Aenean ex risus, vehicula at fringilla et, dictum a enim. Quisque erat turpis, condimentum non efficitur sed, pulvinar a lacus. Maecenas vehicula condimentum est, ut lacinia neque elementum molestie. Nulla at dui sit amet eros consequat rhoncus. Sed sit amet dolor risus. Sed tempor scelerisque metus, ut pretium purus aliquet at.</description>
+      <guid>https://nicktehrany.github.io/in4191-notes/lecture-1/</guid>
+      <description>What is Security? Security means: Confidentiality: Access to systems or dataa is limited to authorised parties.
+Integrity: WHen you receive data, you get the &amp;quot;right&amp;quot; data.
+Availability: The system or data is there when you want it.
+Objectives of Cryptography - Message authentication: valid message? - Data origin authentication: valid sender? - Enitity authentication: authenticate each other for communication  Kerkhoff&#39;s principle: The adversary knows all details about the crypto system except the private key.</description>
     </item>
     
     <item>

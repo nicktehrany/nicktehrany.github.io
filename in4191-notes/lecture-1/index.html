@@ -5,19 +5,19 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="IN4191 Security and Cryptography notes at TUDelft (Q1).
-Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55221
-Book: Nigel P. Smart. 2015. Cryptography Made Simple (1st. ed.). Springer Publishing Company, Incorporated.
-All notes are based on content from the book and the lectures." />
+<meta name="description" content="What is Security? Security means: Confidentiality: Access to systems or dataa is limited to authorised parties.
+Integrity: WHen you receive data, you get the &amp;quot;right&amp;quot; data.
+Availability: The system or data is there when you want it.
+Objectives of Cryptography - Message authentication: valid message? - Data origin authentication: valid sender? - Enitity authentication: authenticate each other for communication  Kerkhoff&#39;s principle: The adversary knows all details about the crypto system except the private key." />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nicktehrany.github.io/in4191-notes/info/" />
+<link rel="canonical" href="https://nicktehrany.github.io/in4191-notes/lecture-1/" />
 
 
     <title>
         
-            Info :: Nick Tehrany 
+            Lecture 1: Introduction :: Nick Tehrany 
         
     </title>
 
@@ -36,13 +36,13 @@ All notes are based on content from the book and the lectures." />
 
 
 
-<meta itemprop="name" content="Info">
+<meta itemprop="name" content="Lecture 1: Introduction">
 <meta itemprop="description" content="IN4191 Security and Cryptography Notes">
 
 
-<meta itemprop="datePublished" content="2021-01-01T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-01-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="36">
+<meta itemprop="datePublished" content="2021-01-04T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-01-04T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="111">
 
 
 
@@ -51,26 +51,26 @@ All notes are based on content from the book and the lectures." />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nicktehrany.github.io"/>
 
-<meta name="twitter:title" content="Info"/>
+<meta name="twitter:title" content="Lecture 1: Introduction"/>
 <meta name="twitter:description" content="IN4191 Security and Cryptography Notes"/>
 
 
 
-    <meta property="og:title" content="Info" />
+    <meta property="og:title" content="Lecture 1: Introduction" />
 <meta property="og:description" content="IN4191 Security and Cryptography Notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nicktehrany.github.io/in4191-notes/info/" />
+<meta property="og:url" content="https://nicktehrany.github.io/in4191-notes/lecture-1/" />
 
 <meta property="og:image" content="https://nicktehrany.github.io" />
-<meta property="article:published_time" content="2021-01-01T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2021-01-01T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
+<meta property="article:published_time" content="2021-01-04T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2021-01-04T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2021-01-01 00:00:00 &#43;0000 UTC" />
+    <meta property="article:published_time" content="2021-01-04 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -138,20 +138,62 @@ All notes are based on content from the book and the lectures." />
   
   <article>
     <h1 class="post-title">
-      <a href="https://nicktehrany.github.io/in4191-notes/info/">Info</a>
+      <a href="https://nicktehrany.github.io/in4191-notes/lecture-1/">Lecture 1: Introduction</a>
     </h1>
     
       
       
       <div class="post-content">
-        <p>IN4191 Security and Cryptography notes at TUDelft (Q1).</p>
+        <h4 id="what-is-security">What is Security?</h4>
 
-<p>Studyguide: <a href="https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55221">https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55221</a><br />
-Book: Nigel P. Smart. 2015. Cryptography Made Simple (1st. ed.). Springer Publishing Company, Incorporated.</p>
+<p>Security means:
+<strong>C</strong>onfidentiality: Access to  systems or dataa is limited to authorised parties.<br>
+<strong>I</strong>ntegrity: WHen you receive data, you get the &quot;right&quot; data.<br>
+<strong>A</strong>vailability: The system or data is there when you want it.</p>
 
-<p>All notes are based on content from the book and the lectures.</p>
+<h4 id="objectives-of-cryptography">Objectives of Cryptography</h4>
 
-        
+<pre><code>- Message authentication: valid message?
+- Data origin authentication: valid sender?
+- Enitity authentication: authenticate each other for communication
+</code></pre>
+
+<p>Kerkhoff's principle: The adversary knows all details about the crypto system except the private key.</p>
+
+<p><span  class="math">\(Enc_k\)</span>: plaintext to ciphertext<br>
+<span  class="math">\(Dec_k\)</span>: ciphertext to plaitnext<br>
+Encryption key: <span  class="math">\(k\)</span><br>
+Decryption key: <span  class="math">\(k'\)</span></p>
+
+<p>if <span  class="math">\(k=k'\)</span>, symmetric key or private key encryption<br>
+if <span  class="math">\(k \neq k'\)</span>, asymmetric key or public key encryption</p>
+
+<h4 id="information-theoretic-security">Information Theoretic Security</h4>
+
+<p>Entropy:</p>
+
+<p><span  class="math">\[-\sum_{i=1}^np_i*log_2p_i\]</span></p>
+
+        <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
+  integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv"
+  crossorigin="anonymous"
+>
+
+<script defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"
+  integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
+  crossorigin="anonymous"
+></script>
+
+<script defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
       </div>
     </article>
     
@@ -169,7 +211,7 @@ Book: Nigel P. Smart. 2015. Cryptography Made Simple (1st. ed.). Springer Publis
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        36 Words
+        111 Words
       </p>
 
       <p>
@@ -180,7 +222,7 @@ Book: Nigel P. Smart. 2015. Cryptography Made Simple (1st. ed.). Springer Publis
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-01-01 00:00
+          2021-01-04 00:00
         
 
          
@@ -199,13 +241,20 @@ Book: Nigel P. Smart. 2015. Cryptography Made Simple (1st. ed.). Springer Publis
         <div class="pagination__buttons">
           
             <span class="button previous">
-              <a href="https://nicktehrany.github.io/in4191-notes/lecture-1/">
+              <a href="https://nicktehrany.github.io/in4191-notes/lecture-2/">
                 <span class="button__icon">←</span>
-                <span class="button__text">Lecture 1: Introduction</span>
+                <span class="button__text">Lecture 2: Classical Systems</span>
               </a>
             </span>
           
 
+          
+            <span class="button next">
+              <a href="https://nicktehrany.github.io/in4191-notes/info/">
+                <span class="button__text">Info</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
           
         </div>
       </div>
