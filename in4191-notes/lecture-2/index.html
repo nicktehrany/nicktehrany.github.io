@@ -47,7 +47,7 @@ The key above needs to be known to both parties, but must be kept secret from al
 
 <meta itemprop="datePublished" content="2021-01-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="781">
+<meta itemprop="wordCount" content="780">
 
 
 
@@ -223,16 +223,12 @@ and use statistics to find the plaintext letter.</p>
 
 <p>Permuatation ciphers work by having a permuatation <span  class="math">\(\sigma \in S_n\)</span>, for example</p>
 
-<p>$$ \sigma =</p>
-
-<pre><code>\begin{pmatrix}
-    1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
-    2 &amp; 4 &amp; 1 &amp; 3 &amp; 5
+<p><span  class="math">\[ \sigma =
+\begin{pmatrix}
+   1 & 2 & 3 & 4 & 5 \\
+   2 & 4 & 1 & 3 & 5
 \end{pmatrix}
-=(1243)\in S_5)
-</code></pre>
-
-<p>$$</p>
+=(1243) \in S_5\]</span></p>
 
 <p>Taking the plaintext and splitting it into all lowercase 5 letter chunks, one can use the defined permutation to encrypt
 the plaintext one chunk at a time. Then spaces can be removed to hide underlying structure of the language.
@@ -243,14 +239,10 @@ given ciphertext and the chosen plaintext. Sequences will repeat key at modulo <
 
 <p><strong>cadbehfigjmknlorpsqtwuxvyz</strong> gives the resulting permutation of</p>
 
-<p>$$\begin{pmatrix}</p>
-
-<pre><code>1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8 &amp; 9 &amp; 10 &amp; ... \\
-2 &amp; 4 &amp; 1 &amp; 3 &amp; 5 &amp; 7 &amp; 9 &amp; 6 &amp; 8 &amp; 10 &amp; ...
-</code></pre>
-
-<p>\end{pmatrix}
-$$</p>
+<p><span  class="math">\[\begin{pmatrix}
+   1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & ... \\
+   2 & 4 & 1 & 3 & 5 & 7 & 9 & 6 & 8 & 10 & ...
+\end{pmatrix}\]</span></p>
 
 <p>where modulo 5 the permutation starts repeating.</p>
 
@@ -291,7 +283,7 @@ $$</p>
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        781 Words
+        780 Words
       </p>
 
       <p>
