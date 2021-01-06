@@ -47,7 +47,7 @@ The key above needs to be known to both parties, but must be kept secret from al
 
 <meta itemprop="datePublished" content="2021-01-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="780">
+<meta itemprop="wordCount" content="812">
 
 
 
@@ -169,15 +169,19 @@ called <em>symmetric cryptosystems</em>.<br>
 Another form of system that uses different types of keys; public key for encryption and private key for decryption, is
 known as an <em>asymmetric cryptosystem</em> or <em>public key cryptosystem</em></p>
 
-<p>Historical ciphers can easily be broken based on the properties of the underlying language (english). The frequencies of
+<p>Historical ciphers can easily be broken with <em>Cryptanalysis</em> based on the properties of the underlying language (english). The frequencies of
 most commonly appearing letters (E and T) will be visible in certain ciphers, or the most common bigrams (TH and HE), or
 or trigrams (THE and ING).</p>
+
+<h4 id="kerckhoffs-principle">Kerckhoff's Principle</h4>
+
+<p>&quot;The method must not be required to be secret, and it must be able to fall into the hands of the enemy without inconvenience.&quot;</p>
 
 <h5 id="shift-cipher">Shift Cipher</h5>
 
 <p>One of the simplest ciphers is the shift cipher, which shifts the letters in the alphabet based on some key.
 Commonly called the Ceasar cipher, as he used this algorithm with a key of three. For example with 3 as a key, the
-letter A would become the letter D.</p>
+letter A would become the letter D. (<span  class="math">\(c=m+k\)</span> mod 26)</p>
 
 <p>Each letter in the alphabet is associated with a number (0-25), which is used to convert plaintext into a sequence of
 numbers and then shifted by adding the key to each value modulo 26. Hence, this cipher is a <em>stream cipher</em> calculating
@@ -189,7 +193,7 @@ on an incoming stream of values from the converted plaintext.</p>
 \underset{Y \leftarrow D_2}{Pr} [Y=u] \right\rvert\]</span></p>
 
 <p>with random variables <span  class="math">\(X\)</span> and <span  class="math">\(Y\)</span>, <span  class="math">\(V\)</span> the support of <span  class="math">\(X\)</span> and <span  class="math">\(Y\)</span> (all values which can occur for <span  class="math">\(X\)</span> and
-<span  class="math">\(Y\)</span> with non-zero probability). After doing this calculation with all possible values for key <span  class="math">\(k\)</span> will result in
+<span  class="math">\(Y\)</span> with non-zero probability). After doing this calculation with all possible values for key <span  class="math">\(k\)</span> the result will be
 26 different distributions. The one with the lowest is the one most likely to be the key.</p>
 
 <h5 id="substitution-cipher">Substitution Cipher</h5>
@@ -283,7 +287,7 @@ given ciphertext and the chosen plaintext. Sequences will repeat key at modulo <
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        780 Words
+        812 Words
       </p>
 
       <p>
@@ -311,6 +315,13 @@ given ciphertext and the chosen plaintext. Sequences will repeat key at modulo <
         </div>
 
         <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://nicktehrany.github.io/in4191-notes/lecture-3/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Lecture 3: Information Theoretic Security</span>
+              </a>
+            </span>
           
 
           

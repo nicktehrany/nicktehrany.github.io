@@ -6,10 +6,19 @@
     <description>Recent content in IN4191 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 05 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4191-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lecture 3: Information Theoretic Security</title>
+      <link>https://nicktehrany.github.io/in4191-notes/lecture-3/</link>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4191-notes/lecture-3/</guid>
+      <description>Information Theoretic Security (Chapter 9) A crypto system is said to be computationally secure if the beset possible algorithm for breaking it requires \(N\) operations, where \(N\) is some large number above \(2^{128}\). It is impossible to prove that a system is computationally secure, as we do not know if there is a better algorithm for breaking it, hence a system is called secure if the best known algorithm requires a large number of computations.</description>
+    </item>
     
     <item>
       <title>Lecture 2: Classical Systems</title>
@@ -34,7 +43,8 @@ The key above needs to be known to both parties, but must be kept secret from al
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://nicktehrany.github.io/in4191-notes/lecture-1/</guid>
-      <description>What is Security? Security means: Confidentiality: Access to systems or dataa is limited to authorised parties.
+      <description>What is Security? Security means:
+Confidentiality: Access to systems or dataa is limited to authorised parties.
 Integrity: WHen you receive data, you get the &amp;quot;right&amp;quot; data.
 Availability: The system or data is there when you want it.
 Objectives of Cryptography - Message authentication: valid message? - Data origin authentication: valid sender? - Enitity authentication: authenticate each other for communication  Kerkhoff&#39;s principle: The adversary knows all details about the crypto system except the private key.</description>
