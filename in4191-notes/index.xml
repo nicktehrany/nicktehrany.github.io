@@ -6,10 +6,19 @@
     <description>Recent content in IN4191 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4191-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lecture 4: Defining Security</title>
+      <link>https://nicktehrany.github.io/in4191-notes/lecture-4/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4191-notes/lecture-4/</guid>
+      <description>Security Games (Chapter 2.2) Security games are used to define security for cryptographic components, which contain an adversary and a challenger, and the idea is that the adversary needs to reach a certain objective given data provided by the challenger. These are typically represented visually with the adversary in a box and the challenger outside with the date it provides. The advantage of an adversary \(A\) is defined as a function bounded by time \(t\) that the adversary spends to try to solve the problem.</description>
+    </item>
     
     <item>
       <title>Lecture 3: Information Theoretic Security</title>
