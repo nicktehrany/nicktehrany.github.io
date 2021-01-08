@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="Information Theoretic Security (Chapter 9) A crypto system is said to be computationally secure if the beset possible algorithm for breaking it requires \(N\) operations, where \(N\) is some large number above \(2^{128}\). It is impossible to prove that a system is computationally secure, as we do not know if there is a better algorithm for breaking it, hence a system is called secure if the best known algorithm requires a large number of computations." />
+<meta name="description" content="Information Theoretic Security (Chapter 9) A crypto system is said to be computationally secure if the beset possible algorithm for breaking it requires \(N\) operations, where \(N\) is some large number above $2^{128}$. It is impossible to prove that a system is computationally secure, as we do not know if there is a better algorithm for breaking it, hence a system is called secure if the best known algorithm requires a large number of computations." />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-06T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-06T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="657">
+<meta itemprop="wordCount" content="658">
 
 
 
@@ -144,7 +144,7 @@
         <h4 id="information-theoretic-security-chapter-9">Information Theoretic Security (Chapter 9)</h4>
 
 <p>A crypto system is said to be <em>computationally secure</em> if the beset possible algorithm for breaking it requires <span  class="math">\(N\)</span> operations,
-where <span  class="math">\(N\)</span> is some large number above <span  class="math">\(2^{128}\)</span>. It is impossible to prove that a system is computationally secure, as
+where <span  class="math">\(N\)</span> is some large number above $2^{128}$. It is impossible to prove that a system is computationally secure, as
 we do not know if there is a better algorithm for breaking it, hence a system is called secure if the best <em>known</em> algorithm
 requires a large number of computations.</p>
 
@@ -156,12 +156,12 @@ numbers).</p>
 
 <h4 id="probability-and-ciphers">Probability and Ciphers</h4>
 
-<p>Given ℙ the space of possible plaintexts, 𝕂 the space of possible keys, and ℂ the space of possible ciphertexts,
-the probability that <span  class="math">\(p(C=c)\)</span> is given as,</p>
+<p>Given $\mathbb{P}$ the space of possible plaintexts, $\mathbb{K}$ the space of possible keys, and $\mathbb{C}$ the space of possible ciphertexts,
+the probability that $p(C=c)$ is given as,</p>
 
-<p><span  class="math">\[p(C=c) = \sum_{k:c\in ℂ(k)}p(K=k)*p((P=d_k(c)))\]</span></p>
+<p><span  class="math">\[p(C=c) = \sum_{k:c\in \mathbb{C}(k)}p(K=k)*p((P=d_k(c)))\]</span></p>
 
-<p>For example, given four messages ℙ={a,b,c,d} with probability of occurring</p>
+<p>For example, given four messages $\mathbb{P}$={a,b,c,d} with probability of occurring</p>
 
 <ul>
 <li>p(P=a) = 1/4</li>
@@ -170,15 +170,15 @@ the probability that <span  class="math">\(p(C=c)\)</span> is given as,</p>
 <li>p(P=d) = 3/10</li>
 </ul>
 
-<p>and keys 𝕂={<span  class="math">\(k_1,k_2,k_3\)</span>} with probabilities</p>
+<p>and keys $\mathbb{K}$={$k_1,k_2,k_3$} with probabilities</p>
 
 <ul>
-<li>p(K=k1) = 1/4</li>
-<li>p(K=k2) = 1/2</li>
-<li>p(K=k3) = 1/4</li>
+<li>p($K=k_1$) = 1/4</li>
+<li>p($K=k_2$) = 1/2</li>
+<li>p($K=k_3$) = 1/4</li>
 </ul>
 
-<p>and resulting ℂ={1,2,3,4} with</p>
+<p>and resulting $\mathbb{C}$={1,2,3,4} with</p>
 
 <table>
 <thead>
@@ -193,7 +193,7 @@ the probability that <span  class="math">\(p(C=c)\)</span> is given as,</p>
 
 <tbody>
 <tr>
-<td>k1</td>
+<td>$k_1$</td>
 <td>3</td>
 <td>4</td>
 <td>2</td>
@@ -201,7 +201,7 @@ the probability that <span  class="math">\(p(C=c)\)</span> is given as,</p>
 </tr>
 
 <tr>
-<td>k2</td>
+<td>$k_2$</td>
 <td>3</td>
 <td>1</td>
 <td>4</td>
@@ -209,7 +209,7 @@ the probability that <span  class="math">\(p(C=c)\)</span> is given as,</p>
 </tr>
 
 <tr>
-<td>k3</td>
+<td>$k_3$</td>
 <td>4</td>
 <td>3</td>
 <td>1</td>
@@ -220,10 +220,11 @@ the probability that <span  class="math">\(p(C=c)\)</span> is given as,</p>
 
 <p>then different probabilities can be computed</p>
 
-<p><span  class="math">\[p(C=1)=p(K=k_1)*p(P=d)+p(K=k_2)*(P=b)+p(K=k_3)*p(P=c)=0.2625\\
+<p><span  class="math">\[\displaylines{
+p(C=1)=p(K=k_1)*p(P=d)+p(K=k_2)*(P=b)+p(K=k_3)*p(P=c)=0.2625\\
 p(C=2)=p(K=k_1)*p(P=c)+p(K=k_2)*(P=d)+p(K=k_3)*p(P=d)=0.2625\\
 p(C=3)=p(K=k_1)*p(P=a)+p(K=k_2)*(P=a)+p(K=k_3)*p(P=b)=0.2625\\
-p(C=4)=p(K=k_1)*p(P=b)+p(K=k_2)*(P=c)+p(K=k_3)*p(P=a)=0.2125\]</span></p>
+p(C=4)=p(K=k_1)*p(P=b)+p(K=k_2)*(P=c)+p(K=k_3)*p(P=a)=0.2125}\]</span></p>
 
 <p>As can be seen all ciphertext are almost uniformly distributed. Based of this we can compute the conditional probability that c is the ciphertext given plaintext m with</p>
 
@@ -231,12 +232,12 @@ p(C=4)=p(K=k_1)*p(P=b)+p(K=k_2)*(P=c)+p(K=k_3)*p(P=a)=0.2125\]</span></p>
 
 <p>Which is the sum of probabilities over all of the keys where the input plaintext m gives the resulting ciphertext x. For the example this will be as follows,</p>
 
-<p><span  class="math">\[
+<p><span  class="math">\[\displaylines{
 \begin{aligned}p(C=1|P=a)= 0, \quad &p(C=2|p=a)=0, \\ p(C=3|P=a)=0.75, \quad &p(C=4|P=a)=0.25\\
 p(C=1|P=b)= 0.5, \quad &p(C=2|p=b)=0, \\ p(C=3|P=b)=0.25, \quad &p(C=4|P=b)=0.25\\
 p(C=1|P=c)= 0.25, \quad &p(C=2|p=c)=0.25, \\ p(C=3|P=c)=0, \quad &p(C=4|P=c)=0.5\\
 p(C=1|P=d)= 0.25, \quad &p(C=2|p=d)=0.75, \\ p(C=3|P=d)=0, \quad &p(C=4|P=d)=0
-\end{aligned}\]</span></p>
+\end{aligned}}\]</span></p>
 
 <p>With said probability we can calculate the probability of a plaintext m given ciphertext c,</p>
 
@@ -251,8 +252,8 @@ p(C=1|P=d)= 0.25, \quad &p(C=2|p=d)=0.75, \\ p(C=3|P=d)=0, \quad &p(C=4|P=d)=0
 <p>Shannon's theorem on perfect secrecy says a crypto system is perfectly secure <em>iff</em></p>
 
 <ul>
-<li>every key is used with equal probability 1/#𝕂</li>
-<li>for each m <span  class="math">\(\in\)</span> ℙ and c <span  class="math">\(\in\)</span> ℂ there is a unique key k such that <span  class="math">\(e_k(m)=c\)</span></li>
+<li>every key is used with equal probability 1/#$\mathbb{K}$</li>
+<li>for each m $\in\mathbb{P}$ and c $\in \mathbb{C}$ there is a unique key k such that $e_k(m)=c$</li>
 </ul>
 
 <h4 id="vernam-cipher-onetime-pad">Vernam Cipher (one-time pad)</h4>
@@ -263,7 +264,7 @@ p(C=1|P=d)= 0.25, \quad &p(C=2|p=d)=0.75, \\ p(C=3|P=d)=0, \quad &p(C=4|P=d)=0
 
 <p>Keys as long as messages are impractical in modern crypto systems, therefore systems will not be unconditionally secure but are hoped to be computationally secure.</p>
 
-<p>Given a random variable <span  class="math">\(X\)</span> which takes on a finite set of values <span  class="math">\(x_i\)</span> and has probability distribution <span  class="math">\(p_i=p(X=x_i)\)</span> entropy is given as</p>
+<p>Given a random variable $X$ which takes on a finite set of values $x_i$ and has probability distribution $p_i=p(X=x_i)$ entropy is given as</p>
 
 <p><span  class="math">\[H(X)=-\sum_{i=1}^np_i*log_2p_i\]</span></p>
 
@@ -277,8 +278,8 @@ p(C=1|P=d)= 0.25, \quad &p(C=2|p=d)=0.75, \\ p(C=3|P=d)=0, \quad &p(C=4|P=d)=0
 
 <p>the conditional probability can then be simplified as follows</p>
 
-<p><span  class="math">\[H(X|Y)=\sum_yp(Y=y)*H(X|Y=y)\\
-=-\sum_x\sum_yp(Y=y)*p(X=x|Y=y)*log_2p(X=x|Y=y)\]</span></p>
+<p><span  class="math">\[\displaylines{H(X|Y)=\sum_yp(Y=y)*H(X|Y=y) \\
+=-\sum_x\sum_yp(Y=y)*p(X=x|Y=y)*log_2p(X=x|Y=y)}\]</span></p>
 
 <p>which presents the amount of uncertainty that is left about <span  class="math">\(X\)</span> if <span  class="math">\(Y\)</span> is revealed.</p>
 
@@ -304,8 +305,8 @@ p(C=1|P=d)= 0.25, \quad &p(C=2|p=d)=0.75, \\ p(C=3|P=d)=0, \quad &p(C=4|P=d)=0
 
 <p>The <em>unicity distance</em> of a cipher is the average number of ciphertexts for which the expected number of spurious keys becomes zero. It presents the average amount needed of a ciphertext before an attacker can determine the key (assume infinite compute power). It is calculated as</p>
 
-<p><span  class="math">\[\overline{s}_n\ge\frac{\#𝕂}{\#ℙ^{n*R_L}}-1\\
-n_0\approx\frac{log_2\#𝕂}{R_L*log_2\#ℙ}\]</span></p>
+<p><span  class="math">\[\displaylines{\overline{s}_n\ge\frac{\#\mathbb{K}}{\#\mathbb{P}^{n*R_L}}-1\\
+n_0\approx\frac{log_2\#\mathbb{K}}{R_L*log_2\#\mathbb{P}}}\]</span></p>
 
         <script>
   MathJax = {
@@ -346,7 +347,7 @@ n_0\approx\frac{log_2\#𝕂}{R_L*log_2\#ℙ}\]</span></p>
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        657 Words
+        658 Words
       </p>
 
       <p>

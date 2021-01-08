@@ -38,7 +38,7 @@ Feedback shift registers are a standard way of producing a binary stream of data
       <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://nicktehrany.github.io/in4191-notes/lecture-3/</guid>
-      <description>Information Theoretic Security (Chapter 9) A crypto system is said to be computationally secure if the beset possible algorithm for breaking it requires \(N\) operations, where \(N\) is some large number above \(2^{128}\). It is impossible to prove that a system is computationally secure, as we do not know if there is a better algorithm for breaking it, hence a system is called secure if the best known algorithm requires a large number of computations.</description>
+      <description>Information Theoretic Security (Chapter 9) A crypto system is said to be computationally secure if the beset possible algorithm for breaking it requires \(N\) operations, where \(N\) is some large number above $2^{128}$. It is impossible to prove that a system is computationally secure, as we do not know if there is a better algorithm for breaking it, hence a system is called secure if the best known algorithm requires a large number of computations.</description>
     </item>
     
     <item>
@@ -49,10 +49,10 @@ Feedback shift registers are a standard way of producing a binary stream of data
       <guid>https://nicktehrany.github.io/in4191-notes/lecture-2/</guid>
       <description>Classical Systems (Chapter 7) An encryption algoithm or ciper is the transformation of plaintext to ciphertext with a secret key, depicted as
 \[c=e_k(m)\]
-with \(m\) being the plaintext,
-\(e\) being the cipher function,
-\(k\) being the secret key,
-\(c\) being the ciphertext
+with $m$ being the plaintext,
+$e$ being the cipher function,
+$k$ being the secret key,
+$c$ being the ciphertext
 The reverse process is called decryption or decipherment, depicted as
 \[m=d_k(c)\]
 The key above needs to be known to both parties, but must be kept secret from all others.</description>

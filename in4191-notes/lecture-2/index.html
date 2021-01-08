@@ -7,10 +7,10 @@
 <meta name="author" content="">
 <meta name="description" content="Classical Systems (Chapter 7) An encryption algoithm or ciper is the transformation of plaintext to ciphertext with a secret key, depicted as
 \[c=e_k(m)\]
-with \(m\) being the plaintext,
-\(e\) being the cipher function,
-\(k\) being the secret key,
-\(c\) being the ciphertext
+with $m$ being the plaintext,
+$e$ being the cipher function,
+$k$ being the secret key,
+$c$ being the ciphertext
 The reverse process is called decryption or decipherment, depicted as
 \[m=d_k(c)\]
 The key above needs to be known to both parties, but must be kept secret from all others." />
@@ -155,10 +155,10 @@ The key above needs to be known to both parties, but must be kept secret from al
 
 <p><span  class="math">\[c=e_k(m)\]</span></p>
 
-<p>with <span  class="math">\(m\)</span> being the plaintext,<br>
-<span  class="math">\(e\)</span> being the cipher function,<br>
-<span  class="math">\(k\)</span> being the secret key,<br>
-<span  class="math">\(c\)</span> being the ciphertext</p>
+<p>with $m$ being the plaintext,<br>
+$e$ being the cipher function,<br>
+$k$ being the secret key,<br>
+$c$ being the ciphertext</p>
 
 <p>The reverse process is called decryption or decipherment, depicted as</p>
 
@@ -181,7 +181,7 @@ or trigrams (THE and ING).</p>
 
 <p>One of the simplest ciphers is the shift cipher, which shifts the letters in the alphabet based on some key.
 Commonly called the Ceasar cipher, as he used this algorithm with a key of three. For example with 3 as a key, the
-letter A would become the letter D. (<span  class="math">\(c=m+k\)</span> mod 26)</p>
+letter A would become the letter D. ($c=m+k$ mod 26)</p>
 
 <p>Each letter in the alphabet is associated with a number (0-25), which is used to convert plaintext into a sequence of
 numbers and then shifted by adding the key to each value modulo 26. Hence, this cipher is a <em>stream cipher</em> calculating
@@ -192,17 +192,17 @@ on an incoming stream of values from the converted plaintext.</p>
 <p><span  class="math">\[\Delta[X,Y]=\frac{1}{2}\sum_{u\in V} \displaystyle\left\lvert \underset{X \leftarrow D_1}{Pr} [X=u]-
 \underset{Y \leftarrow D_2}{Pr} [Y=u] \right\rvert\]</span></p>
 
-<p>with random variables <span  class="math">\(X\)</span> and <span  class="math">\(Y\)</span>, <span  class="math">\(V\)</span> the support of <span  class="math">\(X\)</span> and <span  class="math">\(Y\)</span> (all values which can occur for <span  class="math">\(X\)</span> and
-<span  class="math">\(Y\)</span> with non-zero probability). After doing this calculation with all possible values for key <span  class="math">\(k\)</span> the result will be
+<p>with random variables $X$ and $Y$, $V$ the support of $X$ and $Y$ (all values which can occur for $X$ and
+$Y$ with non-zero probability). After doing this calculation with all possible values for key $k$ the result will be
 26 different distributions. The one with the lowest is the one most likely to be the key.</p>
 
 <h5 id="substitution-cipher">Substitution Cipher</h5>
 
 <p>Problem with shift cipher is too small key space, substitution uses a permutation of the alphabet to substitute each letter
 with a letter from the permutation using a chosen permutation. Here the key space is equal to the number of possible
-permutations <span  class="math">\(26!\approx 4.03*10^{26}\approx 2^{88}\)</span>.</p>
+permutations $26!\approx 4.03*10^{26}\approx 2^{88}$.</p>
 
-<p>Feasibility of brute forcing is given as under <span  class="math">\(2^{80}\)</span> steps.</p>
+<p>Feasibility of brute forcing is given as under $2^{80}$ steps.</p>
 
 <p>Substitution cipher can still be broken using statistical distance as with the shift cipher, and the details of the
 underlying language.</p>
@@ -225,7 +225,7 @@ and use statistics to find the plaintext letter.</p>
 
 <h5 id="permutation-cipher">Permutation Cipher</h5>
 
-<p>Permuatation ciphers work by having a permuatation <span  class="math">\(\sigma \in S_n\)</span>, for example</p>
+<p>Permuatation ciphers work by having a permuatation $\sigma \in S_n$, for example</p>
 
 <p><span  class="math">\[ \sigma =
 \begin{pmatrix}
