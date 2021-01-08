@@ -6,10 +6,22 @@
     <description>Recent content in IN4191 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4191-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lecture 5: Modern Stream Ciphers</title>
+      <link>https://nicktehrany.github.io/in4191-notes/lecture-5/</link>
+      <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4191-notes/lecture-5/</guid>
+      <description>Modern Stream Ciphers (Chapter 12) Encrypt bits rather than blocks as this is faster and easier to implement in hardware and software. Stream ciphers work by
+\[c=m\oplus F_k(0)\]
+and are IND-PASS secure if the PRF is secure.
+Feedback shift registers are a standard way of producing a binary stream of data. These consist of a number of memory cells, where some of them are tapped that feed a feedback function. Registers are shifted down and the result from the feedback is shifted to the empty cell.</description>
+    </item>
     
     <item>
       <title>Lecture 4: Defining Security</title>

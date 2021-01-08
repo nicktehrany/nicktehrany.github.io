@@ -262,26 +262,28 @@ Theorem: A system that is IND-PASS secure must be semantically secure against pa
 
 <p>Random Oracle Model (ROM): All parties have a random function with domain {0,1}* and a finite codomain C, the challenger has the control of the oracle, and the adversary can call her. This kind of function cannot exist in the real world, but hash functions act as such an oracle.</p>
 
-        <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
-  integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv"
-  crossorigin="anonymous"
->
+        <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
 
-<script defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"
-  integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
-  crossorigin="anonymous"
-></script>
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
 
-<script defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
-  integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
-  crossorigin="anonymous"
-  onload="renderMathInElement(document.body);"
-></script>
-
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       </div>
     </article>
     
@@ -327,6 +329,13 @@ Theorem: A system that is IND-PASS secure must be semantically secure against pa
         </div>
 
         <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://nicktehrany.github.io/in4191-notes/lecture-5/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Lecture 5: Modern Stream Ciphers</span>
+              </a>
+            </span>
           
 
           

@@ -307,26 +307,28 @@ p(C=1|P=d)= 0.25, \quad &p(C=2|p=d)=0.75, \\ p(C=3|P=d)=0, \quad &p(C=4|P=d)=0
 <p><span  class="math">\[\overline{s}_n\ge\frac{\#𝕂}{\#ℙ^{n*R_L}}-1\\
 n_0\approx\frac{log_2\#𝕂}{R_L*log_2\#ℙ}\]</span></p>
 
-        <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
-  integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv"
-  crossorigin="anonymous"
->
+        <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
 
-<script defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"
-  integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
-  crossorigin="anonymous"
-></script>
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
 
-<script defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
-  integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
-  crossorigin="anonymous"
-  onload="renderMathInElement(document.body);"
-></script>
-
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       </div>
     </article>
     

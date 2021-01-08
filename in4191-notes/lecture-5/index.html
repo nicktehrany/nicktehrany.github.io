@@ -5,20 +5,19 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="What is Security? Security means:
-Confidentiality: Access to systems or dataa is limited to authorised parties.
-Integrity: WHen you receive data, you get the &amp;quot;right&amp;quot; data.
-Availability: The system or data is there when you want it.
-Objectives of Cryptography - Message authentication: valid message? - Data origin authentication: valid sender? - Enitity authentication: authenticate each other for communication  Kerkhoff&#39;s principle: The adversary knows all details about the crypto system except the private key." />
+<meta name="description" content="Modern Stream Ciphers (Chapter 12) Encrypt bits rather than blocks as this is faster and easier to implement in hardware and software. Stream ciphers work by
+\[c=m\oplus F_k(0)\]
+and are IND-PASS secure if the PRF is secure.
+Feedback shift registers are a standard way of producing a binary stream of data. These consist of a number of memory cells, where some of them are tapped that feed a feedback function. Registers are shifted down and the result from the feedback is shifted to the empty cell." />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nicktehrany.github.io/in4191-notes/lecture-1/" />
+<link rel="canonical" href="https://nicktehrany.github.io/in4191-notes/lecture-5/" />
 
 
     <title>
         
-            Lecture 1: Introduction :: Nick Tehrany 
+            Lecture 5: Modern Stream Ciphers :: Nick Tehrany 
         
     </title>
 
@@ -37,13 +36,13 @@ Objectives of Cryptography - Message authentication: valid message? - Data origi
 
 
 
-<meta itemprop="name" content="Lecture 1: Introduction">
+<meta itemprop="name" content="Lecture 5: Modern Stream Ciphers">
 <meta itemprop="description" content="IN4191 Security and Cryptography Notes">
 
 
-<meta itemprop="datePublished" content="2021-01-04T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-01-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="111">
+<meta itemprop="datePublished" content="2021-01-08T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-01-08T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="557">
 
 
 
@@ -52,26 +51,26 @@ Objectives of Cryptography - Message authentication: valid message? - Data origi
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nicktehrany.github.io"/>
 
-<meta name="twitter:title" content="Lecture 1: Introduction"/>
+<meta name="twitter:title" content="Lecture 5: Modern Stream Ciphers"/>
 <meta name="twitter:description" content="IN4191 Security and Cryptography Notes"/>
 
 
 
-    <meta property="og:title" content="Lecture 1: Introduction" />
+    <meta property="og:title" content="Lecture 5: Modern Stream Ciphers" />
 <meta property="og:description" content="IN4191 Security and Cryptography Notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nicktehrany.github.io/in4191-notes/lecture-1/" />
+<meta property="og:url" content="https://nicktehrany.github.io/in4191-notes/lecture-5/" />
 
 <meta property="og:image" content="https://nicktehrany.github.io" />
-<meta property="article:published_time" content="2021-01-04T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2021-01-04T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
+<meta property="article:published_time" content="2021-01-08T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2021-01-08T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2021-01-04 00:00:00 &#43;0000 UTC" />
+    <meta property="article:published_time" content="2021-01-08 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -139,42 +138,71 @@ Objectives of Cryptography - Message authentication: valid message? - Data origi
   
   <article>
     <h1 class="post-title">
-      <a href="https://nicktehrany.github.io/in4191-notes/lecture-1/">Lecture 1: Introduction</a>
+      <a href="https://nicktehrany.github.io/in4191-notes/lecture-5/">Lecture 5: Modern Stream Ciphers</a>
     </h1>
     
       
       
       <div class="post-content">
-        <h4 id="what-is-security">What is Security?</h4>
+        <h4 id="modern-stream-ciphers-chapter-12">Modern Stream Ciphers (Chapter 12)</h4>
 
-<p>Security means:</p>
+<p>Encrypt bits rather than blocks as this is faster and easier to implement in hardware and software. Stream ciphers work by</p>
 
-<p><strong>C</strong>onfidentiality: Access to  systems or dataa is limited to authorised parties.<br>
-<strong>I</strong>ntegrity: WHen you receive data, you get the &quot;right&quot; data.<br>
-<strong>A</strong>vailability: The system or data is there when you want it.</p>
+<p><span  class="math">\[c=m\oplus F_k(0)\]</span></p>
 
-<h4 id="objectives-of-cryptography">Objectives of Cryptography</h4>
+<p>and are IND-PASS secure if the PRF is secure.</p>
 
-<pre><code>- Message authentication: valid message?
-- Data origin authentication: valid sender?
-- Enitity authentication: authenticate each other for communication
-</code></pre>
+<p>Feedback shift registers are a standard way of producing a binary stream of data. These consist of a number of memory cells, where some of them are tapped that feed a feedback function. Registers are shifted down and the result from the feedback is shifted to the empty cell. Typically linear feedback shift registers (LFSRs) are used as these are easier to implement in hardware, and have a linear feedback function that is an xor of all the bits. Sequences will repeat after a a period <span  class="math">\(N\)</span> such that</p>
 
-<p>Kerkhoff's principle: The adversary knows all details about the crypto system except the private key.</p>
+<p><span  class="math">\[s_{N+i}=s_i\]</span></p>
 
-<p>$Enc_k$: plaintext to ciphertext<br>
-$Dec_k$: ciphertext to plaitnext<br>
-Encryption key: $k$<br>
-Decryption key: $k'$</p>
+<p>and <span  class="math">\(N\)</span> can be a maximum of <span  class="math">\(2^L-1\)</span> (-1 as we do not include all 0 bits)</p>
 
-<p>if $k=k'$, symmetric key or private key encryption<br>
-if $k \neq k'$, asymmetric key or public key encryption</p>
+<p>The <em>connection polynomial</em> specifies the properties of the LFSR and is given in the form of</p>
 
-<h4 id="information-theoretic-security">Information Theoretic Security</h4>
+<p><span  class="math">\[C(X)=1+c_1*X+c_2*X^2+...+c_L*X^L\in\mathbb{F}_2[X]\]</span></p>
 
-<p>Entropy:</p>
+<p><figure><img src="/images/IN4191/LFSR.png" alt="LFSR"></figure></p>
 
-<p><span  class="math">\[-\sum_{i=1}^np_i*log_2p_i\]</span></p>
+<p>and the characteristic polynomial is given as</p>
+
+<p><span  class="math">\[G(X)=X^L*C(1/X)\]</span></p>
+
+<h4 id="primitive-polynomial">Primitive Polynomial</h4>
+
+<ul>
+<li>If $C_L=0$ the polynomial is singular (not choosing the last register for connection polynomial).</li>
+<li>If <span  class="math">\[C_L=1\]</span> the polynomial is non-singular and there is a period (including the last register in the connection polynomial).
+
+<ul>
+<li>C(X) is irreducible: and the period is the smallest <span  class="math">\[N\]</span> such that C(X) divides <span  class="math">\[1+X^N\]</span></li>
+<li>C(X) is primitive Every initial state produces an output sequence that is periodic and of exact period <span  class="math">\[2^L-1\]</span></li>
+</ul></li>
+</ul>
+
+<p>If <span  class="math">\(N\)</span> is the period, then the characteristic f(x) is a factor of <span  class="math">\(1-X^N\)</span>. For example a shift register with 3 registers has a maximum sequence of <span  class="math">\(2^N-1=2^3-1=7\)</span>, then the connection polynomial with maximum sequence is a factor of <span  class="math">\(1+X^7\)</span> (i.e. <span  class="math">\(C(X)=X^3+X+1\)</span>).</p>
+
+<p>Linear feedback registers are not secure since they are linear, observing the 2L outputs with L registers will reveal the connection polynomial since the first L bits reveal the s values (initial values) and the remaining unknowns can be found with</p>
+
+<p><span  class="math">\[s_j=\sum_{i=1}^Lc_i*s_{j-i}(\text{ mod 2})\]</span></p>
+
+<h4 id="combining-lfsrs">Combining LFSRs</h4>
+
+<p>Change the use of LFSRs in a non-linear way, that hides the linearity of them, by combining them.</p>
+
+<p>The maximum length of combining registers will be given as 2 to the sum of all the lengths of the different registers used minus 1,</p>
+
+<p><span  class="math">\[2^{\sum_{i=1}^L L_i}-1\]</span></p>
+
+<p>Some of the most influential LFSR combination implementations are:</p>
+
+<ul>
+<li>Filter generator: Turns the output stream into a non linear function by applying function f to it.</li>
+<li>Alternating-step generator: Takes three different shift registers of the roughly same length and the first LFSR is the clock for the others, if it is output is on the second LFSR is clocked and the output of the third is repeated. If the value is zero, the third LFSR is clocked and the output of the second is reused. The final output is the xor of the second and third.</li>
+<li>Shrinking generator: with two LFSRs, the output of the first decides the output of the second (if value is one the output is that of second LFSR, if zero it is nothing)</li>
+<li>A5/1 generator: uses three LFSRs and based on the majority bit decides which LFSR to clock.</li>
+<li>Trivium: uses three shift registers with a total 288 bits (<span  class="math">\(93+84+111\)</span>), which are fed into each other with a number of formulas. It is used in practice and has not been broken. The system is clocked 1152 times before the output is used.</li>
+</ul>
 
         <script>
   MathJax = {
@@ -215,7 +243,7 @@ if $k \neq k'$, asymmetric key or public key encryption</p>
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        111 Words
+        557 Words
       </p>
 
       <p>
@@ -226,7 +254,7 @@ if $k \neq k'$, asymmetric key or public key encryption</p>
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-01-04 00:00
+          2021-01-08 00:00
         
 
          
@@ -244,18 +272,11 @@ if $k \neq k'$, asymmetric key or public key encryption</p>
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
-              <a href="https://nicktehrany.github.io/in4191-notes/lecture-2/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Lecture 2: Classical Systems</span>
-              </a>
-            </span>
-          
 
           
             <span class="button next">
-              <a href="https://nicktehrany.github.io/in4191-notes/info/">
-                <span class="button__text">Info</span>
+              <a href="https://nicktehrany.github.io/in4191-notes/lecture-4/">
+                <span class="button__text">Lecture 4: Defining Security</span>
                 <span class="button__icon">→</span>
               </a>
             </span>
