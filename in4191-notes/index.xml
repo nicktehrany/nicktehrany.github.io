@@ -6,10 +6,19 @@
     <description>Recent content in IN4191 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4191-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lecture 6: Block Ciphers and Modes of Operation</title>
+      <link>https://nicktehrany.github.io/in4191-notes/lecture-6/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4191-notes/lecture-6/</guid>
+      <description>Block Ciphers and Modes of Operation (Chapter 13) Block ciphers operate on blocks of plaintext at a time to produce blocks of plaintext. Block sizes tend to be large, 64 bits in DES and 128 bits in other modern block ciphers. In order to limit the advantage of the adversary, the key space is kept very large such that $Adv_{{F_k}K}^{PRP}(A)\approx 1/|K|$. Block cipher is part of an encryption but requires a mode of operation, these are both developed independently.</description>
+    </item>
     
     <item>
       <title>Lecture 5: Modern Stream Ciphers</title>
