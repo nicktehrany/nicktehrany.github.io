@@ -6,10 +6,25 @@
     <description>Recent content in IN4191 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 12 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4191-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lecture 8: Number Theory and Elliptic Curves</title>
+      <link>https://nicktehrany.github.io/in4191-notes/lecture-8/</link>
+      <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4191-notes/lecture-8/</guid>
+      <description>Number Theory and Elliptic Curves (Chapter 1 &amp;amp; 4) Modular Arithmetic A positive integer $N$ called modulus is written as
+\[a=b\text{ mod }N\]
+if $N$ divides $b-a$, $a$ and $b$ are congruent modulo $N$.
+The set of values produced by postfix operation mod $N$ is $\mathbb{Z}_N={0,1,...,N-1}$ (can also be written as $\mathbb{Z}/N\mathbb{Z}$).
+The properties of modulo arithmetic are
+
+A group is a set which is closed, has an identity, is associative, and every element has an inverse.</description>
+    </item>
     
     <item>
       <title>Lecture 7: Hash Functions, MAC, and Key Derivation Functions</title>
