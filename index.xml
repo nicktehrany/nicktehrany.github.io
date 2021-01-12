@@ -6,10 +6,20 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lecture 7: Hash Functions, MAC, and Key Derivation Functions</title>
+      <link>https://nicktehrany.github.io/in4191-notes/lecture-7/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4191-notes/lecture-7/</guid>
+      <description>Hash Functions, MAC, and Key Derivation Functions (Chapter 14) Hash functions are used for integrity protection (checksum, file system integrity), one way encryption (password protection), asymmetric crypto schemes, MACs, key derivations, pseudo random number generators, and many more applications.
+Hash functions receive an arbitrary length bit string and output a fixed length string called the hash value, digest, fingerprint, or hashcode. Hash functions are one way: easy to compute $y$ given $x$, where $y: H: {0-1}*\rightarrow{0-1}^n$</description>
+    </item>
     
     <item>
       <title>Lecture 6: Block Ciphers and Modes of Operation</title>
