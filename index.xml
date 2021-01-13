@@ -6,10 +6,21 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lecture 9: The RSA Algorithm</title>
+      <link>https://nicktehrany.github.io/in4191-notes/lecture-9/</link>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4191-notes/lecture-9/</guid>
+      <description>The RSA Algorithm (Chapter 15) The RSA algorithm is based on the difficulty of the RSA problem that it is difficult to find the prime factors of large integers. It works by taking two large secret primer numbers $p$ and $q$ and computing $N=p*q$. Then picking an encryption exponent $e$ that satisfies
+\[\text{gcd}(e,(p-1)*(q-1))=1\]
+It is common to chose values $e=3,17,65537$. Now the public key will be shared as the pair of $\mathfrak{pC}=(N,e)$.</description>
+    </item>
     
     <item>
       <title>Lecture 8: Number Theory and Elliptic Curves</title>
