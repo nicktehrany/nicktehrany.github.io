@@ -20,7 +20,7 @@
       <description>Number Theory and Elliptic Curves (Chapter 1 &amp;amp; 4) Modular Arithmetic A positive integer $N$ called modulus is written as
 \[a=b\text{ mod }N\]
 if $N$ divides $b-a$, $a$ and $b$ are congruent modulo $N$.
-The set of values produced by postfix operation mod $N$ is $\mathbb{Z}_N={0,1,...,N-1}$ (can also be written as $\mathbb{Z}/N\mathbb{Z}$).
+The set of values produced by postfix operation mod $N$ is $\mathbb{Z}_N=\{0,1,...,N-1\}$ (can also be written as $\mathbb{Z}/N\mathbb{Z}$).
 The properties of modulo arithmetic are
 
 A group is a set which is closed, has an identity, is associative, and every element has an inverse.</description>
@@ -33,7 +33,7 @@ A group is a set which is closed, has an identity, is associative, and every ele
       
       <guid>https://nicktehrany.github.io/in4191-notes/lecture-7/</guid>
       <description>Hash Functions, MAC, and Key Derivation Functions (Chapter 14) Hash functions are used for integrity protection (checksum, file system integrity), one way encryption (password protection), asymmetric crypto schemes, MACs, key derivations, pseudo random number generators, and many more applications.
-Hash functions receive an arbitrary length bit string and output a fixed length string called the hash value, digest, fingerprint, or hashcode. Hash functions are one way: easy to compute $y$ given $x$, where $y: H: {0-1}*\rightarrow{0-1}^n$</description>
+Hash functions receive an arbitrary length bit string and output a fixed length string called the hash value, digest, fingerprint, or hashcode. Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*\rightarrow\{0-1\}^n$</description>
     </item>
     
     <item>
