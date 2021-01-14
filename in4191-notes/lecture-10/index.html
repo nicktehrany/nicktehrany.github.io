@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-14T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="726">
+<meta itemprop="wordCount" content="1103">
 
 
 
@@ -201,7 +201,11 @@
 
 <h4 id="pallier-encryption">Pallier Encryption</h4>
 
-<p>Based on the difficulty of factoring large integers. Key generation is done with $n=p<em>q$ and $g$ is a generator of the group $\mathbb{Z}_{N<sup>2}</sup></em>$ with an order of $n$ that is $g^n\equiv 1\text{ mod } n^2$ and $\lambda =lcm(p-1,q-1)$ (least common multiplier), where the secret key is $\lambda$ and the public key is $(g,n)$.</p>
+<p>Based on the difficulty of factoring large integers. Key generation is done with $n=p*q$ and $g$ is a generator of the group</p>
+
+<p><span  class="math">\[\mathbb{Z}_{N^2}^*\]</span></p>
+
+<p>with an order of $n$ that is $g^n\equiv 1\text{ mod } n^2$ and $\lambda =lcm(p-1,q-1)$ (least common multiplier), where the secret key is $\lambda$ and the public key is $(g,n)$.</p>
 
 <p>Encryption is done as</p>
 
@@ -305,6 +309,82 @@
 
 <h3 id="secure-signature-schemes">Secure Signature Schemes</h3>
 
+<h4 id="rsafdh">RSA-FDH</h4>
+
+<p>RSA-Full Domain Hash is a combination of RSA and hash functions for an efficient and secure signature scheme. It works by taking the hash of the message and signing it with the private key and upon receiving the signature is verified by using the public key and the calculated hash of the message, and comparing the two hashes. This scheme is secure but the codomain of the hash function needs to match the domain of RSA.</p>
+
+<h4 id="rsapss">RSA-PSS</h4>
+
+<p>RSA-Probabilistic Signature Scheme has $N$ as an RSA modulo of size $k$ bits with $e$ and $d$, and two parameters $k_0$ and $k_1$ such that $k_0+k_1&lt;k-1$ with the following hash functions</p>
+
+<p><span  class="math">\[G: \\\{0,1\\\}^{k_1}\rightarrow \\\{0,1\\\}^{k-k_1-1}\]</span></p>
+
+<p><span  class="math">\[H: \\\{0,1\\\}^*\rightarrow \\\{0,1\\\}^{k_1}\]</span></p>
+
+<p>and</p>
+
+<p><span  class="math">\[G_1: \\\{0,1\\\}^{k_1}\rightarrow \\\{0,1\\\}^{k_0}\]</span></p>
+
+<p><span  class="math">\[G_2: \\\{0,1\\\}^{k_1}\rightarrow \\\{0,1\\\}^{k-k_0-1}\]</span></p>
+
+<p><span  class="math">\[G(w)=g_1(w)||G_2(w)\]</span></p>
+
+<p><figure><img src="/images/IN4191/RSA-PSS.png" alt="RSA-PSS"></figure></p>
+
+<h4 id="dsa">DSA</h4>
+
+<p>Digital Signature Algorithm exists because</p>
+
+<ul>
+<li>RSA based schemes are costly in terms of signature generation</li>
+<li>RSA based signatures are large</li>
+<li>RSA might be broken soon</li>
+</ul>
+
+<p>Digital signature algorithm is based on finite fields or elliptic curves</p>
+
+<p>It uses a large prime $p$ such that $p-1$ is divisible by another prime $q$, a generator $g$ of the finite field in mod $p$ with an order $q$, and a hash functiion that maps bit string to $\mathbb{Z}_p$</p>
+
+<p>The secret key will be an integer $x$ in $[0,...,q-1]$ and the public key as $h=g^x$.</p>
+
+<p><figure><img src="/images/IN4191/DSA.png" alt="DSA"></figure></p>
+
+<h4 id="ecdsa">EC-DSA</h4>
+
+<p>Choose a random integer $a$ and a point $P$, where $a$ is the secret key, and compute the public key $Q=aP$</p>
+
+<p><figure><img src="/images/IN4191/EC-DSA.png" alt="EC-DSA"></figure></p>
+
+<p>Smaller key size due to elliptic curves and no exponentiations but point operations on the elliptic curve.</p>
+
+<h4 id="schorr-signatures">Schorr Signatures</h4>
+
+<p>$G$ is a public abelian group with generator $g$ of prime order $q$ with private key $x$ in $[0,...,q-1]$ and public key $h=g^x$.</p>
+
+<p>Signing a message is done as</p>
+
+<p><span  class="math">\[k\leftarrow \mathbb{Z}_q\]</span></p>
+
+<p><span  class="math">\[r\leftarrow g^k\]</span></p>
+
+<p><span  class="math">\[e\leftarrow H(m||r)\]</span></p>
+
+<p><span  class="math">\[s\leftarrow k+x*e\text{ mod }q\]</span></p>
+
+<p>Verification is done as</p>
+
+<p><span  class="math">\[r\leftarrow g^s*h^{-e}\]</span></p>
+
+<p>The signature is only valid if and only if $e=H(m||r)$.</p>
+
+<h4 id="nybergrueppel-signature">Nyberg-Rueppel Signature</h4>
+
+<p>If the message is small we can verify the signature and extract the message from it. This is a log based scheme with message recovery, but it requires redundancy (e.g. doubling the message by concatenating it twice $m||m$) which is easy to revert.</p>
+
+<p>$G$ is a public abelian group with generator $g$ of prime order $q$ and private key $x=[0,...,q-1]$ and public key $h=g^x$.</p>
+
+<p><figure><img src="/images/IN4191/Nyberg-Ruppel.png" alt="Nyber-Ruppel"></figure></p>
+
         <script>
   MathJax = {
     tex: {
@@ -344,7 +424,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        726 Words
+        1103 Words
       </p>
 
       <p>
