@@ -6,10 +6,22 @@
     <description>Recent content in IN4191 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4191-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lecture 12: Secret Sharing</title>
+      <link>https://nicktehrany.github.io/in4191-notes/lecture-12/</link>
+      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4191-notes/lecture-12/</guid>
+      <description>Secret Sharing (Chapter 19) Threshold Cryptography split key into shares and a certain number of then can reconstruct the secret key. Or performing operations jointly (decryption, signing, etc.) but the secret key is not known to anyone (e.g. group signatures).
+Dealer $(D)$ has the secret key $s$ and provides the shares to different parties $P_1,...,P_n$
+Distribution: Protocol in which the dealer provides each party $P_i$ a share $s_i$.
+Reconstruction: Protocol in which a qualified set of parties pool their shares to obtain secret $s$.</description>
+    </item>
     
     <item>
       <title>Lecture 10: Public Key Encryption and Signature Algorithms</title>
