@@ -21,6 +21,19 @@
     </item>
     
     <item>
+      <title>Lecture 11: Certificates, Key Transport, and Key Agreement</title>
+      <link>https://nicktehrany.github.io/in4191-notes/lecture-11/</link>
+      <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4191-notes/lecture-11/</guid>
+      <description>Certificates, Key Transport, and Key Agreement (Chapter 18) What is key management?
+ Key generation Key distribution Key storage Key change Key usage Key destruction  Requirements of key generation:
+ secret unpredictable strong key  It is often desirable to frequently change the key in a cryptographic system.
+Types of keys:
+ Static (or Long Term) Keys: few hours to a few years Ephemeral or Session (or Short Term) Keys a few seconds or a day  Certificates and Certificate Authority We need a binding, linking a public key to an entity.</description>
+    </item>
+    
+    <item>
       <title>Lecture 9: The RSA Algorithm</title>
       <link>https://nicktehrany.github.io/in4191-notes/lecture-9/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
