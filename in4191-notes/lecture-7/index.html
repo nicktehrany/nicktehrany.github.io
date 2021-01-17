@@ -160,7 +160,7 @@ Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*
 
 <ol>
 <li><strong>Preimage Resistance:</strong> given a hash value $y$, it should be infeasible to find $x$.</li>
-<li><strong>Second Preimage Resistance:</strong> given a preimage $x$, it should be hard to find an $x'$ with the same hash such that $y=y'$. This is done by making the output space large enough (i.e. $2^128$), since $2^n$ attempts are required.</li>
+<li><strong>Second Preimage Resistance:</strong> given a preimage $x$, it should be hard to find an $x'$ with the same hash such that $y=y'$. This is done by making the output space large enough (i.e. $2^{128}$), since $2^n$ attempts are required.</li>
 <li><strong>Collision Resistance:</strong> given two preimages $x$ and $x'$ it should be infeasible to compute the same hash $y$. The difference to second preimage resistance is that here we are not looking for a single pair of preimages that give the same hash, but any pair (remember all your previous hash calculations).</li>
 </ol>
 

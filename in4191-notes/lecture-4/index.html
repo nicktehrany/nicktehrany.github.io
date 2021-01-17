@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-07T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-07T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1133">
+<meta itemprop="wordCount" content="1136">
 
 
 
@@ -145,13 +145,13 @@
       
       
       <div class="post-content">
-        <h3 id="security-games-chapter-22">Security Games (Chapter 2.2)</h3>
+        <h4 id="security-games-chapter-22">Security Games (Chapter 2.2)</h4>
 
 <p>Security games are used to define security for cryptographic components, which contain an adversary and a challenger, and the idea is that the adversary needs to reach a certain objective given data provided by the challenger. These are typically represented visually with the adversary in a box and the challenger outside with the date it provides. The advantage of an adversary <span  class="math">\(A\)</span> is defined as a function bounded by time <span  class="math">\(t\)</span> that the adversary spends to try to solve the problem. For RSA and SQRROOT games this is defined as</p>
 
 <p><span  class="math">\[Adv_v^X(A,t)=Pr[A \text{ wins the game X for }v=log_2N \text{ in time less than }t]\]</span></p>
 
-<p>The quadratic residue of a value check all values that it comprises (i.e. with value 7, $\mathbb{Z}_7={0,1,2,3,4,5,6}$), and square each containing value (except 0 of course) module the value itself. For the example with $\mathbb{Z}=7$ this will be,</p>
+<p>Finding the quadratic residue of a value is done by checking all values that it comprises (i.e. with value 7, $\mathbb{Z}_7=\{0,1,2,3,4,5,6\}$), and squaring each containing value (except 0 of course) modulo the value itself. For the example with $\mathbb{Z}=7$ this will be,</p>
 
 <p><span  class="math">\[\displaylines{1^2\equiv1 \text{ mod }7\\
 2^2\equiv4 \text{ mod }7\\
@@ -160,18 +160,17 @@
 5^2\equiv4 \text{ mod }7\\
 6^2\equiv1 \text{ mod }7}\]</span></p>
 
-<p>Where the residue class is all remainders, in this case $Q_7={1,2,4}$.</p>
+<p>Where the residue class is all remainders, in this case $Q_7=\{1,2,4\}$.</p>
 
 <p>For the QUADRES game, where the challenger picks a value <span  class="math">\(a\)</span> to be a quadratic residue and the adversary guesses if it is a quadratic residue or not (50/50 chance with random guessing). Hence, the advantage is zero if the adversary just guesses, which makes the function</p>
 
 <p><span  class="math">\[Adv_v^{QUADRES}(A)=2*\lvert Pr[A \text{ wins the QUADRES game for }v=log_2N]-\frac{1}{2}\lvert\]</span></p>
 
-<h3 id="discrete-logarithms-chapter-31">Discrete Logarithms (Chapter 3.1)</h3>
+<h4 id="discrete-logarithms-chapter-31">Discrete Logarithms (Chapter 3.1)</h4>
 
 <p>The discrete log problem (DLP) states that given a finite group $G$, and $g,h \in G$</p>
 
-<p><span  class="math">\[\displaylines{g^x=h
-\text{ or }x=dlog_g(h)}\]</span></p>
+<p><span  class="math">\[g^x=h\text{ or }x=dlog_g(h)\]</span></p>
 
 <p>in other words $a^x=y\text{ mod }p$, given $a$ and $y$ it is difficult to find $x$.</p>
 
@@ -306,7 +305,7 @@ Theorem: A system that is IND-PASS secure must be semantically secure against pa
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1133 Words
+        1136 Words
       </p>
 
       <p>

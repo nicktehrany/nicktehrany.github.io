@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="812">
+<meta itemprop="wordCount" content="811">
 
 
 
@@ -145,9 +145,9 @@
       
       
       <div class="post-content">
-        <h4 id="classical-systems-chapter-7">Classical Systems (Chapter 7)</h4>
+        <h3 id="classical-systems-chapter-7">Classical Systems (Chapter 7)</h3>
 
-<p>An encryption algoithm or ciper is the transformation of plaintext to ciphertext with a secret key, depicted as</p>
+<p>An encryption algorithm or cipher is the transformation of plaintext to ciphertext with a secret key, depicted as</p>
 
 <p><span  class="math">\[c=e_k(m)\]</span></p>
 
@@ -166,14 +166,13 @@ Another form of system that uses different types of keys; public key for encrypt
 known as an <em>asymmetric cryptosystem</em> or <em>public key cryptosystem</em></p>
 
 <p>Historical ciphers can easily be broken with <em>Cryptanalysis</em> based on the properties of the underlying language (english). The frequencies of
-most commonly appearing letters (E and T) will be visible in certain ciphers, or the most common bigrams (TH and HE), or
-or trigrams (THE and ING).</p>
+most commonly appearing letters (E and T) will be visible in certain ciphers, or the most common bigrams (TH and HE), or trigrams (THE and ING).</p>
 
 <h4 id="kerckhoffs-principle">Kerckhoff's Principle</h4>
 
 <p>&quot;The method must not be required to be secret, and it must be able to fall into the hands of the enemy without inconvenience.&quot;</p>
 
-<h5 id="shift-cipher">Shift Cipher</h5>
+<h4 id="shift-cipher">Shift Cipher</h4>
 
 <p>One of the simplest ciphers is the shift cipher, which shifts the letters in the alphabet based on some key.
 Commonly called the Ceasar cipher, as he used this algorithm with a key of three. For example with 3 as a key, the
@@ -192,7 +191,7 @@ on an incoming stream of values from the converted plaintext.</p>
 $Y$ with non-zero probability). After doing this calculation with all possible values for key $k$ the result will be
 26 different distributions. The one with the lowest is the one most likely to be the key.</p>
 
-<h5 id="substitution-cipher">Substitution Cipher</h5>
+<h4 id="substitution-cipher">Substitution Cipher</h4>
 
 <p>Problem with shift cipher is too small key space, substitution uses a permutation of the alphabet to substitute each letter
 with a letter from the permutation using a chosen permutation. Here the key space is equal to the number of possible
@@ -203,7 +202,7 @@ permutations $26!\approx 4.03*10^{26}\approx 2^{88}$.</p>
 <p>Substitution cipher can still be broken using statistical distance as with the shift cipher, and the details of the
 underlying language.</p>
 
-<h5 id="vigénere-cipher">Vigénere Cipher</h5>
+<h4 id="vigénere-cipher">Vigénere Cipher</h4>
 
 <p>Problem in the substitution cipher is that each plaintext letter always corresponds to the same ciphertext letter.
 A solution is to use a polyalphabetic substitution cipher, similar to the regular substitution cipher but with 2 different
@@ -214,12 +213,12 @@ information of the language. With 5 different alphabets, the key space becomes</
 <p><span  class="math">\[(26!)^5\approx2^{441}\]</span></p>
 
 <p>But it's hard to remember the key, hence there is the vigénere cipher. Where the key is a word, which is continuously repeated.
-The same problem arises that once the length of the key is known, the cipher can be broken using the Kasiki test to fist
-finding the length of the keyword by looking at the distances of commonly appearing bigrams and trigrams and finding their
-greatest common divisor (gcd). Then with the length of the keyword look at every first letter of the key length (ie. with key 5, letters 0,5,10...)
+The same problem arises that once the length of the key is known, the cipher can be broken using the Kasiki test to first
+find the length of the keyword by looking at the distances of commonly appearing bigrams and trigrams and finding their
+greatest common divisor (gcd). Then with the length of the keyword look at every first letter of the key length (i.e. with key 5, letters 0,5,10...)
 and use statistics to find the plaintext letter.</p>
 
-<h5 id="permutation-cipher">Permutation Cipher</h5>
+<h4 id="permutation-cipher">Permutation Cipher</h4>
 
 <p>Permuatation ciphers work by having a permuatation $\sigma \in S_n$, for example</p>
 
@@ -285,7 +284,7 @@ given ciphertext and the chosen plaintext. Sequences will repeat key at modulo <
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        812 Words
+        811 Words
       </p>
 
       <p>

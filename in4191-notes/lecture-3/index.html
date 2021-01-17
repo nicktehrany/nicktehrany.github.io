@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-06T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-06T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="658">
+<meta itemprop="wordCount" content="657">
 
 
 
@@ -145,9 +145,9 @@
       
       
       <div class="post-content">
-        <h4 id="information-theoretic-security-chapter-9">Information Theoretic Security (Chapter 9)</h4>
+        <h3 id="information-theoretic-security-chapter-9">Information Theoretic Security (Chapter 9)</h3>
 
-<p>A crypto system is said to be <em>computationally secure</em> if the beset possible algorithm for breaking it requires <span  class="math">\(N\)</span> operations,
+<p>A crypto system is said to be <em>computationally secure</em> if the best possible algorithm for breaking it requires <span  class="math">\(N\)</span> operations,
 where <span  class="math">\(N\)</span> is some large number above $2^{128}$. It is impossible to prove that a system is computationally secure, as
 we do not know if there is a better algorithm for breaking it, hence a system is called secure if the best <em>known</em> algorithm
 requires a large number of computations.</p>
@@ -230,7 +230,7 @@ p(C=2)=p(K=k_1)*p(P=c)+p(K=k_2)*(P=d)+p(K=k_3)*p(P=d)=0.2625\\
 p(C=3)=p(K=k_1)*p(P=a)+p(K=k_2)*(P=a)+p(K=k_3)*p(P=b)=0.2625\\
 p(C=4)=p(K=k_1)*p(P=b)+p(K=k_2)*(P=c)+p(K=k_3)*p(P=a)=0.2125}\]</span></p>
 
-<p>As can be seen all ciphertext are almost uniformly distributed. Based of this we can compute the conditional probability that c is the ciphertext given plaintext m with</p>
+<p>As can be seen ciphertexts are almost uniformly distributed. Based of this we can compute the conditional probability that c is the ciphertext given plaintext m with</p>
 
 <p><span  class="math">\[p(C=c|P=m)=\sum_{k:m=d_k(c)}p(K=k)\]</span></p>
 
@@ -291,7 +291,7 @@ p(C=1|P=d)= 0.25, \quad &p(C=2|p=d)=0.75, \\ p(C=3|P=d)=0, \quad &p(C=4|P=d)=0
 
 <p>The <em>key equivocation</em> property is what uncertainty is left about the key after a ciphertext is revealed, and is stated as</p>
 
-<p><span  class="math">\[H(K,C)=H(K)+H(P)\]</span></p>
+<p><span  class="math">\[H(K,C)=H(K)+H(P)-H(C)\]</span></p>
 
 <h4 id="spurious-keys-and-unicity-distance">Spurious Keys and Unicity Distance</h4>
 
@@ -351,7 +351,7 @@ n_0\approx\frac{log_2\#\mathbb{K}}{R_L*log_2\#\mathbb{P}}}\]</span></p>
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        658 Words
+        657 Words
       </p>
 
       <p>
