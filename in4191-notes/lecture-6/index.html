@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-10T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1587">
+<meta itemprop="wordCount" content="1609">
 
 
 
@@ -150,9 +150,13 @@
 <p>Block ciphers operate on blocks of plaintext at a time to produce blocks of plaintext. Block sizes tend to be large, 64 bits in DES and 128 bits in other modern block ciphers. In order to limit the advantage of the adversary, the key space is kept very large such that $Adv_{{F_k}K}^{PRP}(A)\approx 1/|K|$.
 Block cipher is part of an encryption but requires a mode of operation, these are both developed independently.</p>
 
-<p>DES (Data Encryption Standard) was a <em>iterated</em> block cipher which uses a <em>round function</em> repeatedly. DES was deemed unsafe in the 90s but other variants (3DES, shown below) are still being used. Another such cipher is AES (Advanced Encryption Standard). The round function takes a block and returns a block of the same size, and the number of rounds can be fixed or varied. Each use of the round function uses a round key derived from the main secret key using an algorithm called <em>key scheduling</em>. The round function should be invertible for decryption and using round keys in reverse order.</p>
+<p>DES (Data Encryption Standard) was an <em>iterated</em> block cipher which uses a <em>round function</em> repeatedly. DES was deemed unsafe in the 90s but other variants (3DES, shown below) are still being used. Another such cipher is AES (Advanced Encryption Standard). The round function takes a block and returns a block of the same size, and the number of rounds can be fixed or varied. Each use of the round function uses a round key derived from the main secret key using an algorithm called <em>key scheduling</em>. The round function should be invertible for decryption and using round keys in reverse order.</p>
 
 <p><figure><img src="/images/IN4191/3DES.png" alt="3DES"></figure></p>
+
+<p>In DES the round is invertible but not the round function.</p>
+
+<p>In AES both the round and the round function are invertible.</p>
 
 <p>Techniques (+Luck) for breaking block ciphers:</p>
 
@@ -168,7 +172,7 @@ Block cipher is part of an encryption but requires a mode of operation, these ar
 <li><strong>Diffusion:</strong> Mix permutations so that local change can effect the whole block</li>
 </ul>
 
-<p>Substitution-permutation implements Shannon's paradigm directly by mixing keys, substituting, and permutation.</p>
+<p><strong>Substitution-permutation networks</strong> are a direct implementation of Shannon's paradigm by mixing keys, substituting, and permutation.</p>
 
 <p><em>Avalanche effect</em> states that a single change in the plaintext must affect every bit of the output, to not find correlations between input bits and output bits. In order to have avalanche effect there need to be at least 7 rounds.</p>
 
@@ -196,7 +200,7 @@ Block cipher is part of an encryption but requires a mode of operation, these ar
 
 <h4 id="des-data-encryption-standard">DES (Data Encryption Standard)</h4>
 
-<p>A Feistel cipher with <strong>16 rounds</strong>, <strong>64 bits block size</strong>, <strong>56 bit key length</strong>, and <strong>16 round keys, each 48 bits</strong>. It performs an initial permutation (IP), then run the Feistel cipher, and then perform a reverse permutation ($IP^{-1}$).</p>
+<p>A Feistel cipher with <strong>16 rounds</strong>, <strong>64 bits block size</strong>, <strong>56 bit key length</strong>, and <strong>16 round keys, each 48 bits</strong>. It performs an initial permutation (IP), then runs the Feistel cipher, and then perform a reverse permutation ($IP^{-1}$).</p>
 
 <p><figure><img src="/images/IN4191/DES.png" alt="DES"></figure></p>
 
@@ -208,25 +212,25 @@ Block cipher is part of an encryption but requires a mode of operation, these ar
 <li><strong>Expansion permutation</strong> where the right half of the 32 bits is expanded and permuted to 48 bits.</li>
 <li><strong>Round key addition</strong> where the 48 bit input is xored with the round key</li>
 <li><strong>Splitting</strong> the resulting 48 bits are split into eight lots of 6 bit values.</li>
-<li><strong>S-Boxes</strong> each 6 bit value goes into an s-box and produces a b4 bit output. S-boxes present the non-linear component, as they are lookup tables that are 4x16 in size.</li>
+<li><strong>S-Boxes</strong> each 6 bit value goes into an s-box and produces a 4 bit output. S-boxes present the non-linear component, as they are lookup tables that are 4x16 in size.</li>
 <li><strong>P-Box</strong> the eight 4 bit lots are combined into 32 bits and are permuted.</li>
 </ol>
 
-<p>DES key scheduling takes the 56 bit key (it's 64 bits but 8 bits are parity bits for error detection at every 8th bit, so 8 16 ... 64) and permute the bits with the PC-1 permutation. The output of the permutation is divided into two 28 bit halfs $C_0$ the left half and $D_0$ the right. Each round we compute</p>
+<p>DES key scheduling takes the 56 bit key (it's 64 bits but 8 bits are parity bits for error detection at every 8th bit, so 8 16 ... 64) and permutes the bits with the PC-1 permutation. The output of the permutation is divided into two 28 bit halfs $C_0$ the left half and $D_0$ the right. Each round we compute</p>
 
 <p><span  class="math">\[C_i\leftarrow C_{i-1}\lll p_i,\]</span></p>
 
 <p><span  class="math">\[D_i\leftarrow D_{i-1}\lll p_i\]</span></p>
 
-<p>where $x \lll p_i$ means performing a cyclic shift on $x$ to the left bu $p_i$ positions. If the round number is 1,2,9,16 we shift left by one position, otherwise by two. The two halfs $C_0$ and $D_0$ are joined back together and are permuted again with the PC-2 permutation. Visually depicted below</p>
+<p>where $x \lll p_i$ means performing a cyclic shift on $x$ to the left by $p_i$ positions. If the round number is 1,2,9,16 we shift left by one position, otherwise by two. The two halfs $C_0$ and $D_0$ are joined back together and are permuted again with the PC-2 permutation. Visually depicted below</p>
 
 <p><figure><img src="/images/IN4191/DES_key_sched.png" alt="DES Key Scheduling"></figure></p>
 
-<p>Decryption is identical ony keys will be used in reverse order.</p>
+<p>Decryption is identical only keys will be used in reverse order.</p>
 
 <h4 id="aes-advanced-encryption-standard">AES (Advanced Encryption Standard)</h4>
 
-<p>AES is not a Feistel cipher but still has around function. It is built on the mathematical foundation of finite fields (Galois fields). Galois field are represented as $GF(p^m)$ with $p$ a prime number and $m$ an integer. Fields with value $m=1$ are prime fields and fields with $m\ge2$ are extension fields. Extension fields work with polynomials (have operations of addition, subtraction, multiplication, and non-negative exponentiation). Operations in the fields are in mod $p$ such that</p>
+<p>AES is not a Feistel cipher but still has a round function. It is built on the mathematical foundation of finite fields (Galois fields). Galois field are represented as $GF(p^m)$ with $p$ a prime number and $m$ an integer. Fields with value $m=1$ are prime fields and fields with $m\ge2$ are extension fields. Extension fields work with polynomials (have operations of addition, subtraction, multiplication, and non-negative exponentiation). Operations in the fields are in mod $p$ such that</p>
 
 <p><span  class="math">\[a+b\equiv c \text{ mod } p\]</span></p>
 
@@ -238,7 +242,7 @@ Block cipher is part of an encryption but requires a mode of operation, these ar
 
 <p><span  class="math">\[a*a^{-1}\equiv 1 \text{ mod }p\]</span></p>
 
-<p>where for all variables come from the range of values in the set (e.g. $\mathbb{Z}_7=\{0,1,2,3,4,5,6\}$). Extension fields are for represented in $m-1$ degree, for example with $GF(2^3)=GF(8)$ and is represented as</p>
+<p>where all variables come from the range of values in the set (e.g. $\mathbb{Z}_7=\{0,1,2,3,4,5,6\}$). Extension fields are represented in $m-1$ degree, for example with $GF(2^3)=GF(8)$ and is represented as</p>
 
 <p><span  class="math">\[A(x)=a_2x^2+a_1x^1+a_0\]</span></p>
 
@@ -281,7 +285,7 @@ Block cipher is part of an encryption but requires a mode of operation, these ar
 <p><figure><img src="/images/IN4191/AES_MixColumns.png" alt="AES MixColumns"></figure></p>
 
 <ul>
-<li><strong>AddRoundKey:</strong> the state matrix is exclusive xored with ($\oplus$) with the round key.</li>
+<li><strong>AddRoundKey:</strong> the state matrix is xored with ($\oplus$) with the round key.</li>
 </ul>
 
 <p>AES can then be described with the following algorithms for encryption and decryption respectively</p>
@@ -309,20 +313,20 @@ Block cipher is part of an encryption but requires a mode of operation, these ar
 <p>The problems with this mode are that the same input block will result in the same output block (repetitions in english text), deletion is possible without detection, and replay attack is possible (insert blocks from other messages). This means it is <strong>not IND-PASS</strong> secure and <strong>not OW-CCA</strong> secure but <strong>is OW-CPA</strong> secure.</p>
 
 <ul>
-<li><strong>Cipher Block Chaining (CBC):</strong> encrypt the message with by xoring the ciphertext after encryption with the ciphertext of the previous message (IV for the first message).</li>
+<li><strong>Cipher Block Chaining (CBC):</strong> encrypt the message by xoring the ciphertext after encryption with the ciphertext of the previous message (IV for the first message).</li>
 </ul>
 
-<p><figure><img src="/images/IN4191/CBC.png" alt="CBC Operations"></figure>]</p>
+<p><figure><img src="/images/IN4191/CBC.png" alt="CBC Operations"></figure></p>
 
 <p>The problem with this mode is that it is sequential and cannot be parallelized, and single bit errors cause the whole block to be decrypted wrong and a single wrong bit in the next block. If IV is used once and never repeated it <strong>is IND-PASS</strong> secure, if IV is fixed it is deterministic and hence only <strong>IND-PASS secure</strong> and <strong>not CPA</strong> secure. A truly random IV <strong>is IND-CPA</strong> secure.</p>
 
 <ul>
-<li><strong>Output Feedback Mode (OFB):</strong> a block cipher that can baea uses as stream cipher.</li>
+<li><strong>Output Feedback Mode (OFB):</strong> a block cipher that can be used as stream cipher.</li>
 </ul>
 
 <p><figure><img src="/images/IN4191/OFB.png" alt="OFB Operations"></figure></p>
 
-<p>with a fixed IV its is <strong>not IND-CPA</strong> secure and <strong>not OW-CPA</strong> secure. With a nonce it <strong>is IND-CPA</strong> secure.</p>
+<p>with a fixed IV it is <strong>not IND-CPA</strong> secure and <strong>not OW-CPA</strong> secure. With a nonce it <strong>is IND-CPA</strong> secure.</p>
 
 <ul>
 <li><strong>Cipher Feedback Mode (CFB):</strong> also a block cipher that can be used a stream cipher, but here the keystream output is generated by encrypting the ciphertext.</li>
@@ -403,7 +407,7 @@ Block cipher is part of an encryption but requires a mode of operation, these ar
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1587 Words
+        1609 Words
       </p>
 
       <p>

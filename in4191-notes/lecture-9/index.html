@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-13T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="932">
+<meta itemprop="wordCount" content="935">
 
 
 
@@ -147,15 +147,15 @@
       <div class="post-content">
         <h2 id="the-rsa-algorithm-chapter-15">The RSA Algorithm (Chapter 15)</h2>
 
-<p>The RSA algorithm is based on the difficulty of the RSA problem that it is difficult to find the prime factors of large integers. It works by taking two large secret primer numbers $p$ and $q$ and computing $N=p*q$. Then picking an encryption exponent $e$ that satisfies</p>
+<p>The RSA algorithm is based on the difficulty of the RSA problem that it is difficult to to find $d$ given a large composite number $N$ and $e$. It works by taking two large secret prime numbers $p$ and $q$ and computing $N=p*q$. Then picking an encryption exponent $e$ that satisfies</p>
 
 <p><span  class="math">\[\text{gcd}(e,(p-1)*(q-1))=1\]</span></p>
 
-<p>It is common to chose values $e=3,17,65537$. Now the public key will be shared as the pair of $\mathfrak{pC}=(N,e)$. The private key is computed by applying the extended euclidean algorithm on $e$ and $(p-1)(q-1)$ to obtain the decryption exponent $d$ tha satisfies</p>
+<p>It is common to chose values $e=3,17,65537$. Now the public key will be shared as the pair of $\mathfrak{pC}=(N,e)$. The private key is computed by applying the extended euclidean algorithm on $e$ and $(p-1)(q-1)$ to obtain the decryption exponent $d$ that satisfies</p>
 
-<p><span  class="math">\[e*d=1(\text{ mod }(p-1)(q-1))\]</span></p>
+<p><span  class="math">\[e*d=1\text{ mod }(p-1)(q-1)\]</span></p>
 
-<p>The secret key can be kept as just $\mathfrak{sK}=(D)$ or $\mathfrak{sK}=(d,p,b)$</p>
+<p>The secret key can be kept as just $\mathfrak{sK}=(d)$ or $\mathfrak{sK}=(d,p,b)$</p>
 
 <p><strong>Encryption</strong> can then simply be done by</p>
 
@@ -199,7 +199,7 @@
 
 <h3 id="the-naive-rsa-signature">The &quot;Naive&quot; RSA Signature</h3>
 
-<p>Construct $d$ the same way as was done in RSA before, nad now senders sign a message by decrypting it and the receiver verifies the signature by encryption and obtains the message</p>
+<p>Construct $d$ the same way as was done in RSA before, now senders sign a message by decrypting it and the receiver verifies the signature by encryption and obtains the message</p>
 
 <p><span  class="math">\[\text{Signing: }s\leftarrow m^d\text{ mod }N\]</span></p>
 
@@ -259,7 +259,7 @@
 
 <p><strong>Using a shared modulus</strong> (using the same $p$ and $q$), the attacker can trivially calculate $d$. In the first case, bob and the attacker are sharing a modulus (and bob is index 2), the attacker can calculate $d$ using $e_2*d_2\equiv 1\text{ mod }\phi(N)$.</p>
 
-<p>In the second case, where the attacker knows that two parties use the same modulus, he gets two different ciphertexts from both parties for the same plaintext,</p>
+<p>In the second case, if the attacker can obtain two different ciphertexts for the same plaintext by both other parties, he can find the keys</p>
 
 <p><figure><img src="/images/IN4191/RSA-Shared-Modulus.png" alt="Shared Modulus"></figure></p>
 
@@ -267,13 +267,13 @@
 
 <p><figure><img src="/images/IN4191/RSA-Small_EXP.png" alt="Small exponent"></figure></p>
 
-<p><strong>Wiener's Attack</strong> If one wants to speedup the performance of by choosing a smaller value for the private exponent $d$, this will lead to a large value of the encryption exponent $e$ and we cannot choose too small a value for $d$, otherwise an attacker could find $d$ using exhaustive search. But it turns out that $d$ needs to be at least the size of $\frac{1}{3}*N^{1/4}$, otherwise one could attack using Wiener's attack.</p>
+<p><strong>Wiener's Attack</strong> If one wants to speedup the performance by choosing a smaller value for the private exponent $d$, this will lead to a large value of the encryption exponent $e$ and we cannot choose too small a value for $d$, otherwise an attacker could find $d$ using exhaustive search. But it turns out that $d$ needs to be at least the size of $\frac{1}{3}*N^{1/4}$, otherwise one could attack using Wiener's attack.</p>
 
 <p>The attack uses continued fractions to give a linear time algorithm to determine the private exponent when it is less than $\frac{1}{3}*N^{1/4}$.</p>
 
 <h4 id="fault-analysis">Fault Analysis</h4>
 
-<p>By introducing faults into a system by tricking it into doing some calculation incorrectly, by for example altering the environment or heating or cooling the chip or by damaging the circuit in some way.</p>
+<p>Fault analysis is the introduction of faults into a system and tricking it into doing some calculation incorrectly, by for example altering the environment, heating or cooling the chip, or by damaging the circuit in some way.</p>
 
         <script>
   MathJax = {
@@ -314,7 +314,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        932 Words
+        935 Words
       </p>
 
       <p>

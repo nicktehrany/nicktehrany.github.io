@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-11T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-11T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="993">
+<meta itemprop="wordCount" content="1016">
 
 
 
@@ -147,7 +147,7 @@
       <div class="post-content">
         <h2 id="hash-functions-mac-and-key-derivation-functions-chapter-14">Hash Functions, MAC, and Key Derivation Functions (Chapter 14)</h2>
 
-<p>Hash functions are used for integrity protection (checksum, file system integrity), one way encryption (password protection), asymmetric crypto schemes, MACs, key derivations, pseudo random number generators, and many more applications.</p>
+<p>Hash functions are used for integrity protection (checksum, file system integrity like Bit-torrent), one way encryption (password protection), asymmetric crypto schemes, MACs, key derivations, pseudo random number generators, and many more applications.</p>
 
 <p>Hash functions receive an arbitrary length bit string and output a fixed length string called the hash value, digest, fingerprint, or hashcode.
 Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*\rightarrow\{0-1\}^n$</p>
@@ -166,7 +166,7 @@ Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*
 
 <p>As there is guaranteed to exist an adversary that can break collision resistance, since we know a larger input domain will have to map multiple inputs to the same output if the output domain is fixed (pigenhole principle applies), but given human ignorance we can assume hash functions to be collision resistant. Human ignorance states that in the same domain the collision will likely be a meaningless preimage. For example trying to find the collision of a hashed contract will just be random bits.</p>
 
-<p>Definition: A functionHis said to be collision resistant (by human ignorance) or HI-CR secure if it is believed to be infeasible to write down a collision for the function, i.e. two elements in the domain mapping to the same element in the codomain.</p>
+<p>Definition: A function is said to be collision resistant (by human ignorance) or HI-CR secure if it is believed to be infeasible to write down a collision for the function, i.e. two elements in the domain mapping to the same element in the codomain.</p>
 
 <p>Terminology:</p>
 
@@ -184,11 +184,11 @@ Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*
 
 <h3 id="padding">Padding</h3>
 
-<p>The input to a compression function needs to a multiple of the block size, which requires to add padding bits such that</p>
+<p>The input to a compression function needs to be a multiple of the block size, which requires to add padding bits such that</p>
 
 <p><span  class="math">\[m||pad_i(|m|,b)\]</span></p>
 
-<p>5 main padding methods of which method 0 is not secure.</p>
+<p>There are 5 main padding methods of which method 0 is not secure.</p>
 
 <ol>
 <li><strong>Method 0:</strong> Let $v$ denote $b−|m|(\text{ mod } b)$. Add $v$ zeros to the end of the message $|m|$, i.e. $m‖pad_0(|m|,b)=m‖0∗$.</li>
@@ -218,13 +218,13 @@ Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*
 <li><strong>MD-4:</strong> The function $f$ has 3 rounds of 16 steps and an output bit length of 128 bits.</li>
 <li><strong>MD-5:</strong> The function $f$ has 4 rounds of 16 steps and an output bit length of 128 bits.</li>
 <li><strong>SHA-1:</strong> The function $f$ has 4 rounds of 20 steps and an output bit length of 160 bits.</li>
-<li><strong>RIPEMD-160:</strong> The function $f$ has 5 rounds of 16 steps and an output bit length of 160bits.</li>
+<li><strong>RIPEMD-160:</strong> The function $f$ has 5 rounds of 16 steps and an output bit length of 160 bits.</li>
 <li><strong>SHA-2:</strong>
 
 <ul>
-<li><strong>SHA-256:</strong> The function $f$ has 64 rounds of single steps and an output bit length of 256bits.</li>
-<li><strong>SHA-384:</strong> The function $f$ is identical to SHA-512 except the output is truncated to 384bits, and the initial chaining valueHis different.</li>
-<li><strong>SHA-512:</strong> The function $f$ has 80 rounds of single steps and an output bit length of 512bits.</li>
+<li><strong>SHA-256:</strong> The function $f$ has 64 rounds of single steps and an output bit length of 256 bits.</li>
+<li><strong>SHA-384:</strong> The function $f$ is identical to SHA-512 except the output is truncated to 384 bits, and the initial chaining valueHis different.</li>
+<li><strong>SHA-512:</strong> The function $f$ has 80 rounds of single steps and an output bit length of 512 bits.</li>
 </ul></li>
 </ul>
 
@@ -232,7 +232,7 @@ Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*
 
 <h4 id="birthdaying-paradox">Birthdaying Paradox</h4>
 
-<p>Given a set of $t (\ge 10)$ elements, take a sample of size $k$ (drawn with repetition) in oder to get probability $\ge 1/2$ on a collision (i.e. an element drawn at least twice). $k$ has to be $\ge 1.2 \sqrt{t}$</p>
+<p>Given a set of $t\text (\ge 10)$ elements, take a sample of size $k$ (drawn with repetition) in oder to get probability $\ge 1/2$ on a collision (i.e. an element drawn at least twice). $k$ has to be $\ge 1.2 \sqrt{t}$</p>
 
 <p>Therefore if $F:A\rightarrow B$ (function $F$ is a mapping from $A$ to $B$) is a random function and $\text{sizeof }A&gt;&gt;\text{sizeof }B$ (size of $A$ is huge compared to $B$) then one can expect a collision after about $\sqrt{(\text{sizeof }B)}$ random function calls.</p>
 
@@ -240,7 +240,7 @@ Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*
 
 <p>Have a keyed hash from an unkeyed hash function. Trivially this can be done by concatenating the message with the key and then hashing all of it</p>
 
-<p><span  class="math">\[t=H(k||m||pad_i,(|k|+|m|,n))\]</span></p>
+<p><span  class="math">\[t=H(k||m||pad_i(|k|+|m|,b))\]</span></p>
 
 <p>but this is not safe as the adversary can construct new valid hashes based on the previous hashes, without knowing the key.</p>
 
@@ -248,13 +248,13 @@ Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*
 
 <p><span  class="math">\[\text{NMAC}_{k1,k2}(m)=F_{k_1}(G_{k_2}(m))\]</span></p>
 
-<p><span  class="math">\[F_{k_1}(x)=f((x||pad_2(l+|x|,l))||k_1)=\text{MD}[f,k_1]*(x)\]</span></p>
+<p><span  class="math">\[F_{k_1}(x)=f((x||pad_2(l+|x|,l))||k_1)=\text{MD}[f,k_1]^*(x)\]</span></p>
 
-<p><span  class="math">\[G_{k_2}(m)=\text{MD}[f,k_2]*(m)\]</span></p>
+<p><span  class="math">\[G_{k_2}(m)=\text{MD}[f,k_2]^*(m)\]</span></p>
 
 <p>then we have</p>
 
-<p><span  class="math">\[\text{NMAC}_{k_1,k_2}(m)=\text{MD}[f,k_1]*(\text{MD}[f,k_2]*(m))\]</span></p>
+<p><span  class="math">\[\text{NMAC}_{k_1,k_2}(m)=\text{MD}[f,k_1]*(\text{MD}[f,k_2]^*(m))\]</span></p>
 
 <p>We can then construct the function HMAC using NMAC as follows</p>
 
@@ -268,6 +268,8 @@ Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*
 <p>We can use a cipher block chaining mode on MAC in the following way</p>
 
 <p><figure><img src="/images/IN4191/CBC-MAC.png" alt="CBC MAC"></figure></p>
+
+<p>With this we can then double encrypt with a second key as follows</p>
 
 <p><span  class="math">\[\text{EMAC}_{k_1,k_2}(m)=e_{k_2}(CBC-MAC_{k_1}(m))\]</span></p>
 
@@ -320,7 +322,7 @@ Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        993 Words
+        1016 Words
       </p>
 
       <p>

@@ -51,7 +51,7 @@ Types of keys:
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://nicktehrany.github.io/in4191-notes/lecture-9/</guid>
-      <description>The RSA Algorithm (Chapter 15) The RSA algorithm is based on the difficulty of the RSA problem that it is difficult to find the prime factors of large integers. It works by taking two large secret primer numbers $p$ and $q$ and computing $N=p*q$. Then picking an encryption exponent $e$ that satisfies
+      <description>The RSA Algorithm (Chapter 15) The RSA algorithm is based on the difficulty of the RSA problem that it is difficult to to find $d$ given a large composite number $N$ and $e$. It works by taking two large secret prime numbers $p$ and $q$ and computing $N=p*q$. Then picking an encryption exponent $e$ that satisfies
 \[\text{gcd}(e,(p-1)*(q-1))=1\]
 It is common to chose values $e=3,17,65537$. Now the public key will be shared as the pair of $\mathfrak{pC}=(N,e)$.</description>
     </item>
@@ -77,7 +77,7 @@ A group is a set which is closed, has an identity, is associative, and every ele
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://nicktehrany.github.io/in4191-notes/lecture-7/</guid>
-      <description>Hash Functions, MAC, and Key Derivation Functions (Chapter 14) Hash functions are used for integrity protection (checksum, file system integrity), one way encryption (password protection), asymmetric crypto schemes, MACs, key derivations, pseudo random number generators, and many more applications.
+      <description>Hash Functions, MAC, and Key Derivation Functions (Chapter 14) Hash functions are used for integrity protection (checksum, file system integrity like Bit-torrent), one way encryption (password protection), asymmetric crypto schemes, MACs, key derivations, pseudo random number generators, and many more applications.
 Hash functions receive an arbitrary length bit string and output a fixed length string called the hash value, digest, fingerprint, or hashcode. Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*\rightarrow\{0-1\}^n$</description>
     </item>
     
@@ -147,7 +147,7 @@ The key above needs to be known to both parties, but must be kept secret from al
 Confidentiality: Access to systems or data is limited to authorized parties.
 Integrity: When you receive data, you get the &amp;quot;right&amp;quot; data.
 Availability: The system or data is there when you want it.
-Objectives of Cryptography - Message authentication: valid message? - Data origin authentication: valid sender? - Entity authentication: authenticate each other for communication  Kerkhoff&#39;s principle: The adversary knows all details about the crypto system except the private key.</description>
+Objectives of Cryptography - Message authentication: valid message? - Data origin authentication: valid sender? - Entity authentication: authenticate each other for communication  Kerckhoff&#39;s principle: The adversary knows all details about the crypto system except the private key.</description>
     </item>
     
     <item>

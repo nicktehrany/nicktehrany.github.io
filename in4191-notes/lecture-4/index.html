@@ -227,7 +227,7 @@ E.g. in symmetric crypto this would be as follows,</li>
 
 <p><figure><img src="/images/IN4191/OW-CCA.png" alt="OW-CCA"></figure></p>
 
-<p>As this notion ony provides a sense of fully breaking the encryption but not retrieving parts of the message, there are additional security classifications about how secure a message should be, such that the adversary cannot retrieve any information about the plaintext.</p>
+<p>As this notion only provides a sense of fully breaking the encryption but not retrieving parts of the message, there are additional security classifications about how secure a message should be, such that the adversary cannot retrieve any information about the plaintext.</p>
 
 <ul>
 <li><strong>Perfect Security:</strong> As was seen in earlier chapters, perfect security is when the adversary cannot gain any information about the message, by using a key with the same length as the plaintext. This is not used in practice as it is highly unpractical.</li>
@@ -244,8 +244,8 @@ E.g. in symmetric crypto this would be as follows,</li>
 
 <p>Any encryption function that is IND-CPA secure must be probabilistic.</p>
 
-<p>Definition: A crypto algorithm is secure if it is semantically secure against a CPA attack.
-Definition: An encryption algorithm is secure if it is IND-CCA secure.
+<p>Definition: A crypto algorithm is secure if it is semantically secure against a CPA attack.<br>
+Definition: An encryption algorithm is secure if it is IND-CCA secure.<br>
 Theorem: A system that is IND-PASS secure must be semantically secure against passive adversaries.</p>
 
 <p><span  class="math">\[\displaylines{\prod \text{ is IND-CCA} \Longrightarrow\prod \text{ is IND-CPA}\Longrightarrow\prod\text{ is IND-PASS}\\ \prod \text{ is IND-XXX}\Longrightarrow\prod\text{ is OW-XXX}}\]</span></p>
