@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-14T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1103">
+<meta itemprop="wordCount" content="1137">
 
 
 
@@ -173,7 +173,7 @@
 
 <h4 id="elgamal-encryption">ElGamal Encryption</h4>
 
-<p>It uses a prime number $p$ such that $p-1$ is divisible by another prime number $q$., and element $g$ is an element in the finite field $p$ with an order $q$.</p>
+<p>It uses a prime number $p$ such that $p-1$ is divisible by another prime number $q$, and element $g$ is an element in the finite field $p$ with an order $q$.</p>
 
 <p>Key generation is done as secret key is $x\leftarrow [0,...,q-1]$ and public key is $h\leftarrow g^x\text{ mod }p$.</p>
 
@@ -185,7 +185,7 @@
 
 <p><span  class="math">\[c_1\leftarrow g^k\]</span></p>
 
-<p><span  class="math">\[c_2=m*h^k\]</span></p>
+<p><span  class="math">\[c_2\leftarrow m*h^k\]</span></p>
 
 <p>and output ciphertext</p>
 
@@ -197,7 +197,15 @@
 
 <p>It <strong>is IND-CPA</strong> secure but <strong>not IND-CCA</strong> secure due to multiplicative homomorphism.</p>
 
-<p>This scheme introduces data expansion as the message with the ciphertext will have to pieces.</p>
+<p>This scheme introduces data expansion as the message with the ciphertext will have two pieces.</p>
+
+<h4 id="carmichael-theorem">Carmichael Theorem</h4>
+
+<p>Let $n=pq$ where $p$ and $q$ are large numbers, $\phi(n)$ is Euler'a totient function and $\lambda(n)=lcm(p-1,q-1$. For any $w\in \mathbb{Z}_{n<sup>2}</sup>*$,</p>
+
+<p><span  class="math">\[w^\lambda=1\text{ mod }n\]</span></p>
+
+<p><span  class="math">\[w^{n\lambda}=1\text{ mod }n^2\]</span></p>
 
 <h4 id="pallier-encryption">Pallier Encryption</h4>
 
@@ -225,7 +233,7 @@
 
 <p><figure><img src="/images/IN4191/OAEP.png" alt="OAEP"></figure></p>
 
-<p>Function $f$ is any $k$-bit trapdoor one way permutation, $k_0$ and $k_1$ are numbers such that the effort of $2^{k_0}$ and $2^{k_1}$ is impossible ($k_0,k_1&gt;128$ bits). $n=k-K-0-k_1$ and the hash functions</p>
+<p>Function $f$ is any $k$-bit trapdoor one way permutation, $k_0$ and $k_1$ are numbers such that the effort of $2^{k_0}$ and $2^{k_1}$ is impossible ($k_0,k_1&gt;128$ bits). $n=k-k_0-k_1$ and the hash functions</p>
 
 <p><span  class="math">\[G:\\\{0,1\\\}^{k_0}\rightarrow \\\{0,1\\\}^{n+k_1}\]</span></p>
 
@@ -299,7 +307,7 @@
 
 <h4 id="dhieskem">DHIES-KEM</h4>
 
-<p>Diffie-Hellman Integrated Encryption Scheme uses a cyclic finite abelian group $G$ of prime order $p$ for key generation, as well as a key generator $g$, Key space $K$, key derivation function $H$, generate $x$ in $\mathbb{Z}_N$, and compute $h=g^x$.</p>
+<p>Diffie-Hellman Integrated Encryption Scheme uses a cyclic finite abelian group $G$ of prime order $q$ for key generation, as well as a key generator $g$, Key space $K$, key derivation function $H$, generate $x$ in $\mathbb{Z}_N$, and compute $h=g^x$.</p>
 
 <p>Encapsulation and decapsulation are then given as</p>
 
@@ -315,7 +323,7 @@
 
 <h4 id="rsapss">RSA-PSS</h4>
 
-<p>RSA-Probabilistic Signature Scheme has $N$ as an RSA modulo of size $k$ bits with $e$ and $d$, and two parameters $k_0$ and $k_1$ such that $k_0+k_1&lt;k-1$ with the following hash functions</p>
+<p>RSA-Probabilistic Signature Scheme has $N$ as a RSA modulo of size $k$ bits with $e$ and $d$, and two parameters $k_0$ and $k_1$ such that $k_0+k_1&lt;k-1$ with the following hash functions</p>
 
 <p><span  class="math">\[G: \\\{0,1\\\}^{k_1}\rightarrow \\\{0,1\\\}^{k-k_1-1}\]</span></p>
 
@@ -341,9 +349,9 @@
 <li>RSA might be broken soon</li>
 </ul>
 
-<p>Digital signature algorithm is based on finite fields or elliptic curves</p>
+<p>Digital signature algorithm is based on finite fields or elliptic curves.</p>
 
-<p>It uses a large prime $p$ such that $p-1$ is divisible by another prime $q$, a generator $g$ of the finite field in mod $p$ with an order $q$, and a hash functiion that maps bit string to $\mathbb{Z}_p$</p>
+<p>It uses a large prime $p$ such that $p-1$ is divisible by another prime $q$, a generator $g$ of the finite field in mod $p$ with an order $q$, and a hash function that maps bit strings to $\mathbb{Z}_p$.</p>
 
 <p>The secret key will be an integer $x$ in $[0,...,q-1]$ and the public key as $h=g^x$.</p>
 
@@ -351,7 +359,7 @@
 
 <h4 id="ecdsa">EC-DSA</h4>
 
-<p>Choose a random integer $a$ and a point $P$, where $a$ is the secret key, and compute the public key $Q=aP$</p>
+<p>Elliptic curve version of DSA, choose a random integer $a$ and a point $P$, where $a$ is the secret key, and compute the public key $Q=aP$</p>
 
 <p><figure><img src="/images/IN4191/EC-DSA.png" alt="EC-DSA"></figure></p>
 
@@ -424,7 +432,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1103 Words
+        1137 Words
       </p>
 
       <p>
@@ -454,17 +462,17 @@
         <div class="pagination__buttons">
           
             <span class="button previous">
-              <a href="https://nicktehrany.github.io/in4191-notes/lecture-12/">
+              <a href="https://nicktehrany.github.io/in4191-notes/lecture-11/">
                 <span class="button__icon">←</span>
-                <span class="button__text">Lecture 12: Secret Sharing</span>
+                <span class="button__text">Lecture 11: Certificates, Key Transport, and Key Agreement</span>
               </a>
             </span>
           
 
           
             <span class="button next">
-              <a href="https://nicktehrany.github.io/in4191-notes/lecture-11/">
-                <span class="button__text">Lecture 11: Certificates, Key Transport, and Key Agreement</span>
+              <a href="https://nicktehrany.github.io/in4191-notes/lecture-9/">
+                <span class="button__text">Lecture 9: The RSA Algorithm</span>
                 <span class="button__icon">→</span>
               </a>
             </span>
