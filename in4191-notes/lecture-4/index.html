@@ -147,7 +147,7 @@
       <div class="post-content">
         <h4 id="security-games-chapter-22">Security Games (Chapter 2.2)</h4>
 
-<p>Security games are used to define security for cryptographic components, which contain an adversary and a challenger, and the idea is that the adversary needs to reach a certain objective given data provided by the challenger. These are typically represented visually with the adversary in a box and the challenger outside with the date it provides. The advantage of an adversary <span  class="math">\(A\)</span> is defined as a function bounded by time <span  class="math">\(t\)</span> that the adversary spends to try to solve the problem. For RSA and SQRROOT games this is defined as</p>
+<p>Security games are used to define security for cryptographic components, which contain an adversary and a challenger, and the idea is that the adversary needs to reach a certain objective given data provided by the challenger. These are typically represented visually with the adversary in a box and the challenger outside with the data it provides. The advantage of an adversary <span  class="math">\(A\)</span> is defined as a function bounded by time <span  class="math">\(t\)</span> that the adversary spends to try to solve the problem. For RSA and SQRROOT games this is defined as</p>
 
 <p><span  class="math">\[Adv_v^X(A,t)=Pr[A \text{ wins the game X for }v=log_2N \text{ in time less than }t]\]</span></p>
 
@@ -207,12 +207,9 @@
 <p>Different types of attacks:</p>
 
 <ul>
-<li><strong>PASS:</strong> Passive attack where the adversary should not learn the message underlying a specific ciphertext. E.g. OW-PASS depicted below, the same applies to public key crypto with public and private key pairs</li>
-</ul>
+<li><p><strong>PASS:</strong> Passive attack where the adversary should not learn the message underlying a specific ciphertext. E.g. OW-PASS depicted below, the same applies to public key crypto with public and private key pairs
+<figure><img src="/images/IN4191/OW_PASS.png" alt="ow-pass"></figure></p></li>
 
-<p><figure><img src="/images/IN4191/OW_PASS.png" alt="ow-pass"></figure></p>
-
-<ul>
 <li><p><strong>CPA:</strong> Chosen plaintext attack where the adversary also has access to an oracle for encrypting a chosen plaintext. This is done as with PASS, the adversary has very limited power.
 E.g. in symmetric crypto this would be as follows,
 <figure><img src="/images/IN4191/OW_CPA.png" alt="OW-CPA"></figure>
