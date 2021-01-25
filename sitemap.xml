@@ -33,7 +33,12 @@
   </url>
   
   <url>
-    <loc>https://nicktehrany.github.io/in4150-notes/lecture-1/</loc>
+    <loc>https://nicktehrany.github.io/in4150-notes/modelingds/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nicktehrany.github.io/in4150-notes/introduction/</loc>
     <lastmod>2021-01-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -136,7 +141,7 @@
   
   <url>
     <loc>https://nicktehrany.github.io/in4150-notes/</loc>
-    <lastmod>2021-01-10T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

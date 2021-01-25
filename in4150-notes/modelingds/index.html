@@ -9,12 +9,12 @@
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nicktehrany.github.io/in4150-notes/info/" />
+<link rel="canonical" href="https://nicktehrany.github.io/in4150-notes/modelingds/" />
 
 
     <title>
         
-            Info :: Nick Tehrany 
+            Modeling Distributed Systems :: Nick Tehrany 
         
     </title>
 
@@ -33,13 +33,13 @@
 
 
 
-<meta itemprop="name" content="Info">
+<meta itemprop="name" content="Modeling Distributed Systems">
 <meta itemprop="description" content="IN4150 Distributed Algorithms Notes">
 
 
-<meta itemprop="datePublished" content="2021-01-01T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-01-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="29">
+<meta itemprop="datePublished" content="2021-01-11T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-01-11T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="438">
 
 
 
@@ -48,27 +48,27 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nicktehrany.github.io"/>
 
-<meta name="twitter:title" content="Info"/>
+<meta name="twitter:title" content="Modeling Distributed Systems"/>
 <meta name="twitter:description" content="IN4150 Distributed Algorithms Notes"/>
 
 
 
 
-    <meta property="og:title" content="Info" />
+    <meta property="og:title" content="Modeling Distributed Systems" />
 <meta property="og:description" content="IN4150 Distributed Algorithms Notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nicktehrany.github.io/in4150-notes/info/" />
+<meta property="og:url" content="https://nicktehrany.github.io/in4150-notes/modelingds/" />
 
 <meta property="og:image" content="https://nicktehrany.github.io" />
-<meta property="article:published_time" content="2021-01-01T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2021-01-01T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
+<meta property="article:published_time" content="2021-01-11T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2021-01-11T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2021-01-01 00:00:00 &#43;0000 UTC" />
+    <meta property="article:published_time" content="2021-01-11 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -139,19 +139,77 @@
   
   <article>
     <h1 class="post-title">
-      <a href="https://nicktehrany.github.io/in4150-notes/info/">Info</a>
+      <a href="https://nicktehrany.github.io/in4150-notes/modelingds/">Modeling Distributed Systems</a>
     </h1>
     
       
       
       <div class="post-content">
-        <p>IN4150 Distributed Algorithms notes at TUDelft (Q2).</p>
+        <p>DSs and DAs are modelled with a set of processors or processes, which do local computations and send and receive messages,
+and are connected by unidirectional communication channels, and networks are assumed to be connected such that there is a
+path from every process to every other process.</p>
 
-<p>Studyguide: <a href="https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55229">https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55229</a></p>
+<p>In a <em>complete network</em> there is a link from every processor to every other processor.
+In  <em>ring</em> every processor is connected to two other processors. In a <em>unidirectional ring</em> every processor can only
+send messages to one of its neighbors, called the <em>downstream neighbor</em> and receive messages from its other neighbor,
+called the <em>upstream neighbor</em>.</p>
 
-<p>All content and images are based on and retrieved from the slides and the provided lecture notes for the course.</p>
+<p>Message passing is synchronous when the message delays are bounded.</p>
 
-        
+<p>Processors are synchronous when the ratios of their speeds are bounded.</p>
+
+<p>In systems with <em>asynchronous communication</em> the events of sending a message and receiving the same message are truly
+separate events, with the latter occurring after the former (receive may be blocking).</p>
+
+<p>In systems with <em>synchronous communication</em> the two events of sending a message and receiving it occur logically simultaneously.</p>
+
+<p>A synchronous system can be simulated as an asynchronous system by requiring explicit acknowledgements to force the sender
+only to continue when the message has been received.</p>
+
+<p>An asynchronous system can be simulated as a synchronous system by introducing for every link a process with a buffer that
+may delay messages.</p>
+
+<p>At any point in time a process is in a certain <em>state</em> which is defined as the set of values of all its variables.
+The state of a channel is the set of messages sent along it but not yet received.
+A <em>global state</em> or <em>configuration state</em> is made up of the joint local states of all its processes and channels. A state
+change is then called a <em>transition</em>, which are caused by <em>events</em> in one or more processes.
+There are three types of events:</p>
+
+<ul>
+<li><em>Internal events</em> in a process only causes its local state to be modified.</li>
+<li><em>Message send events</em> that modifies the state of one of the outgoing channels by adding a message to it.</li>
+<li><em>Message receive events</em> that modify the state of one the process' incoming channels by removing a message from it.</li>
+</ul>
+
+<p>An <em>execution</em> of an asynchronous DS is a finite or infinite sequence of events that start with all processes in one
+of their initial states and all channels empty. The order in a sequence of events which constitutes an execution is a
+<em>partial order</em>.</p>
+
+<p><em>Local simulation</em> makes a process(or) in the system $(M',P)$ look like $M$, but to an outsider observer there may be a
+difference. In <em>global simulation</em> also to an outside observer there is no difference.</p>
+
+        <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       </div>
     </article>
     
@@ -169,7 +227,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        29 Words
+        438 Words
       </p>
 
       <p>
@@ -180,7 +238,7 @@
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-01-01
+          2021-01-11
         
 
          
@@ -198,14 +256,14 @@
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
+
+          
+            <span class="button next">
               <a href="https://nicktehrany.github.io/in4150-notes/introduction/">
-                <span class="button__icon">←</span>
                 <span class="button__text">Introduction</span>
+                <span class="button__icon">→</span>
               </a>
             </span>
-          
-
           
         </div>
       </div>
