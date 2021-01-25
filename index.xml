@@ -82,6 +82,16 @@ Hash functions receive an arbitrary length bit string and output a fixed length 
     </item>
     
     <item>
+      <title>Lecture 1: Introduction</title>
+      <link>https://nicktehrany.github.io/in4150-notes/lecture-1/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/lecture-1/</guid>
+      <description>What is a Distributed System? Distributed computer systems are collections of computer systems that present themselves as single entities to their users and are characterized by
+ Autonomy: The components of the DS have a certain power or authority to make their own decisions. Cooperation: The components iof a DS are working together towards common goals. Communication: The components of the DS exchange information.  Properties of Distributed Systems  There is no regular structure such that a DS may be connected by heterogenous network technologies and consist of many different processors.</description>
+    </item>
+    
+    <item>
       <title>Lecture 6: Block Ciphers and Modes of Operation</title>
       <link>https://nicktehrany.github.io/in4191-notes/lecture-6/</link>
       <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
@@ -152,6 +162,17 @@ Objectives of Cryptography - Message authentication: valid message? - Data origi
     
     <item>
       <title>Info</title>
+      <link>https://nicktehrany.github.io/in4150-notes/info/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/info/</guid>
+      <description>IN4150 Distributed Algorithms notes at TUDelft (Q2).
+Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55229
+All content and images are based on and retrieved from the slides and the provided lecture notes for the course.</description>
+    </item>
+    
+    <item>
+      <title>Info</title>
       <link>https://nicktehrany.github.io/in4191-notes/info/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -187,17 +208,6 @@ All content and images are based on and retrieved from the book and the lecture 
       
       <guid>https://nicktehrany.github.io/in4150-notes/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Info</title>
-      <link>https://nicktehrany.github.io/in4150-notes/info/</link>
-      <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://nicktehrany.github.io/in4150-notes/info/</guid>
-      <description>IN4150 Distributed Algorithms notes at TUDelft (Q2).
-Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55229
-All content and images are based on and retrieved from the slides and the provided lecture notes for the course.</description>
     </item>
     
     <item>

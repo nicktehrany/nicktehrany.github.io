@@ -6,15 +6,25 @@
     <description>Recent content in IN4150 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4150-notes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Lecture 1: Introduction</title>
+      <link>https://nicktehrany.github.io/in4150-notes/lecture-1/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/lecture-1/</guid>
+      <description>What is a Distributed System? Distributed computer systems are collections of computer systems that present themselves as single entities to their users and are characterized by
+ Autonomy: The components of the DS have a certain power or authority to make their own decisions. Cooperation: The components iof a DS are working together towards common goals. Communication: The components of the DS exchange information.  Properties of Distributed Systems  There is no regular structure such that a DS may be connected by heterogenous network technologies and consist of many different processors.</description>
+    </item>
+    
+    <item>
       <title>Info</title>
       <link>https://nicktehrany.github.io/in4150-notes/info/</link>
-      <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://nicktehrany.github.io/in4150-notes/info/</guid>
       <description>IN4150 Distributed Algorithms notes at TUDelft (Q2).
