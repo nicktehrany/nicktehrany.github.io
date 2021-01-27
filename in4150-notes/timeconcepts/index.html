@@ -9,12 +9,12 @@
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nicktehrany.github.io/in4150-notes/modelingds/" />
+<link rel="canonical" href="https://nicktehrany.github.io/in4150-notes/timeconcepts/" />
 
 
     <title>
         
-            Modeling Distributed Systems :: Nick Tehrany 
+            Time Concepts :: Nick Tehrany 
         
     </title>
 
@@ -33,13 +33,13 @@
 
 
 
-<meta itemprop="name" content="Modeling Distributed Systems">
+<meta itemprop="name" content="Time Concepts">
 <meta itemprop="description" content="IN4150 Distributed Algorithms Notes">
 
 
-<meta itemprop="datePublished" content="2021-01-11T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-01-11T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="438">
+<meta itemprop="datePublished" content="2021-01-12T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-01-12T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="386">
 
 
 
@@ -48,27 +48,27 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nicktehrany.github.io"/>
 
-<meta name="twitter:title" content="Modeling Distributed Systems"/>
+<meta name="twitter:title" content="Time Concepts"/>
 <meta name="twitter:description" content="IN4150 Distributed Algorithms Notes"/>
 
 
 
 
-    <meta property="og:title" content="Modeling Distributed Systems" />
+    <meta property="og:title" content="Time Concepts" />
 <meta property="og:description" content="IN4150 Distributed Algorithms Notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nicktehrany.github.io/in4150-notes/modelingds/" />
+<meta property="og:url" content="https://nicktehrany.github.io/in4150-notes/timeconcepts/" />
 
 <meta property="og:image" content="https://nicktehrany.github.io" />
-<meta property="article:published_time" content="2021-01-11T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2021-01-11T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
+<meta property="article:published_time" content="2021-01-12T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2021-01-12T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2021-01-11 00:00:00 &#43;0000 UTC" />
+    <meta property="article:published_time" content="2021-01-12 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -139,54 +139,50 @@
   
   <article>
     <h1 class="post-title">
-      <a href="https://nicktehrany.github.io/in4150-notes/modelingds/">Modeling Distributed Systems</a>
+      <a href="https://nicktehrany.github.io/in4150-notes/timeconcepts/">Time Concepts</a>
     </h1>
     
       
       
       <div class="post-content">
-        <p>DSs and DAs are modelled with a set of processors or processes, which do local computations and send and receive messages,
-and are connected by unidirectional communication channels, and networks are assumed to be connected such that there is a
-path from every process to every other process.</p>
+        <p>Time has an important role in computer systems, the applications that they run need to be able to keep track of time and
+events and compare timestamps. In asynchronous systems it may be necessary to reason about events based on their order of
+occurrence.</p>
 
-<p>In a <em>complete network</em> there is a link from every processor to every other processor.
-In  <em>ring</em> every processor is connected to two other processors. In a <em>unidirectional ring</em> every processor can only
-send messages to one of its neighbors, called the <em>downstream neighbor</em> and receive messages from its other neighbor,
-called the <em>upstream neighbor</em>.</p>
+<h3 id="happenedbefore-relation">Happened-Before Relation</h3>
 
-<p>Message passing is synchronous when the message delays are bounded.</p>
+<p>The basis of the theory of ordering events in distributed systems is the <em>happened-before</em> relation, and is given as $\rightarrow$ as the following</p>
 
-<p>Processors are synchronous when the ratios of their speeds are bounded.</p>
+<ol>
+<li><strong>Local Order:</strong> If $a,b\in E_i$ for $i$ and $a$ occurred in $P_i$ before $b$ then $a\rightarrow b$.</li>
+<li><strong>Message Exchange:</strong> If $a\in E_i$ is the event in $P_i$ of sending message $m$ and $b\in E_j$ is the event in $P_j$ of receiving message $m$ for some $i,j$ with $i\ne j$ then $a\rightarrow b$.</li>
+<li><strong>Transitivity:</strong> If for $a,b,c\in E$, $a\rightarrow b\text{ and }b\rightarrow c$, then $a\rightarrow c$.</li>
+</ol>
 
-<p>In systems with <em>asynchronous communication</em> the events of sending a message and receiving the same message are truly
-separate events, with the latter occurring after the former (receive may be blocking).</p>
+<p>This is often called the <em>causality relation</em>, such that if $a\rightarrow b$ it is said that $a$ causally effects $b$.</p>
 
-<p>In systems with <em>synchronous communication</em> the two events of sending a message and receiving it occur logically simultaneously.</p>
+<p>The <em>concurrency relation</em> states that two events $a,b\in E$ are concurrent (written as $a||b$) when neither $a\rightarrow b$ nor $b\rightarrow a$ holds.</p>
 
-<p>A synchronous system can be simulated as an asynchronous system by requiring explicit acknowledgements to force the sender
-only to continue when the message has been received.</p>
+<p><strong>Causal Past</strong> (history) is given as $P(a)=\{b\in E|b\rightarrow a\}$.</p>
 
-<p>An asynchronous system can be simulated as a synchronous system by introducing for every link a process with a buffer that
-may delay messages.</p>
+<p><strong>Current Events</strong> are given as $C(a)=\{b\in E|b|| a\}$.</p>
 
-<p>At any point in time a process is in a certain <em>state</em> which is defined as the set of values of all its variables.
-The state of a channel is the set of messages sent along it but not yet received.
-A <em>global state</em> or <em>configuration state</em> is made up of the joint local states of all its processes and channels. A state
-change is then called a <em>transition</em>, which are caused by <em>events</em> in one or more processes.
-There are three types of events:</p>
+<p><strong>Causal Future</strong> is given as $F(a)=\{b\in E|a\rightarrow b\}$.</p>
 
-<ul>
-<li><em>Internal events</em> in a process only causes its local state to be modified.</li>
-<li><em>Message send events</em> that modifies the state of one of the outgoing channels by adding a message to it.</li>
-<li><em>Message receive events</em> that modify the state of one the process' incoming channels by removing a message from it.</li>
-</ul>
+<h3 id="logical-clocks">Logical Clocks</h3>
 
-<p>An <em>execution</em> of an asynchronous DS is a finite or infinite sequence of events that start with all processes in one
-of their initial states and all channels empty. The order in a sequence of events which constitutes an execution is a
-<em>partial order</em>.</p>
+<p>Logical clocks are functions $C:E\rightarrow S$  that assign an element of some totally ordered set to each event with a timestamp that respects the HB relation in some way (if $a\rightarrow b$, then $C(a)&lt;C(b)$).</p>
 
-<p><em>Local simulation</em> makes a process(or) in the system $(M',P)$ look like $M$, but to an outsider observer there may be a
-difference. In <em>global simulation</em> also to an outside observer there is no difference.</p>
+<p>Scalar or Lamport clocks cannot characterize the HB relation, hence partial order can be introduced with 1-dimensional vector clocks $C$. Vector clocks are constructed by having each process $P_i$ maintain an integer counter for each other process, with initial value 0 and using it as follows</p>
+
+<ol>
+<li>If $a\in E$ and if $aa$ is not a message receive event, then $P_i$ first increments $C_i$ by $1$ and sets $C(a)$ equal to the new value of $C_I$.</li>
+<li>If $a\in E_i$ is the event of $P_i$ sending a message $m$ and $b\in E_j$ is the event in $P_j$ receiving message $m$ for some $i,j$ with $i\ne j$, then $P_i$ sends $C(a)$ along with message $m$ to $P_j$. On receipt, $P_j$ assigns $C_j$ the value $max(C_j+1,C(a)+1)$ and then sets $C(b)$ to the new value of $C_j$.</li>
+</ol>
+
+<p><figure><img src="/images/IN4150/VectorClocks.png" alt="Vector Clocks"></figure></p>
+
+<p>The size of the vector clocks needs to be at least the number of processes, $k\ge n$.</p>
 
         <script>
   MathJax = {
@@ -227,7 +223,7 @@ difference. In <em>global simulation</em> also to an outside observer there is n
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        438 Words
+        386 Words
       </p>
 
       <p>
@@ -238,7 +234,7 @@ difference. In <em>global simulation</em> also to an outside observer there is n
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-01-11
+          2021-01-12
         
 
          
@@ -257,17 +253,17 @@ difference. In <em>global simulation</em> also to an outside observer there is n
         <div class="pagination__buttons">
           
             <span class="button previous">
-              <a href="https://nicktehrany.github.io/in4150-notes/timeconcepts/">
+              <a href="https://nicktehrany.github.io/in4150-notes/synchronizers/">
                 <span class="button__icon">←</span>
-                <span class="button__text">Time Concepts</span>
+                <span class="button__text">Synchronizers</span>
               </a>
             </span>
           
 
           
             <span class="button next">
-              <a href="https://nicktehrany.github.io/in4150-notes/introduction/">
-                <span class="button__text">Introduction</span>
+              <a href="https://nicktehrany.github.io/in4150-notes/modelingds/">
+                <span class="button__text">Modeling Distributed Systems</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

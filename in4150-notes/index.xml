@@ -6,10 +6,30 @@
     <description>Recent content in IN4150 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4150-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Synchronizers</title>
+      <link>https://nicktehrany.github.io/in4150-notes/synchronizers/</link>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/synchronizers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Time Concepts</title>
+      <link>https://nicktehrany.github.io/in4150-notes/timeconcepts/</link>
+      <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/timeconcepts/</guid>
+      <description>Time has an important role in computer systems, the applications that they run need to be able to keep track of time and events and compare timestamps. In asynchronous systems it may be necessary to reason about events based on their order of occurrence.
+Happened-Before Relation The basis of the theory of ordering events in distributed systems is the happened-before relation, and is given as $\rightarrow$ as the following
+ Local Order: If $a,b\in E_i$ for $i$ and $a$ occurred in $P_i$ before $b$ then $a\rightarrow b$.</description>
+    </item>
     
     <item>
       <title>Modeling Distributed Systems</title>
