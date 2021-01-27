@@ -17,7 +17,8 @@
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://nicktehrany.github.io/in4150-notes/synchronizers/</guid>
-      <description></description>
+      <description>Synchronizers are algorithms that simulate synchronous systems on top of asynchronous systems. They proceed in rounds of sending messages, receiving messages, and performing local computations, and these algorithms work on the foundation of issuing a pulse (clock) to allow a process to move to the next round.
+Types of Synchronizers Alpha Synchronizer In $\alpha$-synchronizers, when a node receives a message, it sends an ACK message back to the sender. When a process received an ACK for every message it has sent in some round, it is called safe.</description>
     </item>
     
     <item>
