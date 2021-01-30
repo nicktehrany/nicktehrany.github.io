@@ -9,12 +9,12 @@
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nicktehrany.github.io/in4150-notes/synchronizers/" />
+<link rel="canonical" href="https://nicktehrany.github.io/in4150-notes/messageodering/" />
 
 
     <title>
         
-            Synchronizers :: Nick Tehrany 
+            Message Ordering :: Nick Tehrany 
         
     </title>
 
@@ -33,13 +33,13 @@
 
 
 
-<meta itemprop="name" content="Synchronizers">
+<meta itemprop="name" content="Message Ordering">
 <meta itemprop="description" content="IN4150 Distributed Algorithms Notes">
 
 
-<meta itemprop="datePublished" content="2021-01-13T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-01-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="424">
+<meta itemprop="datePublished" content="2021-01-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-01-14T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="524">
 
 
 
@@ -48,27 +48,27 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nicktehrany.github.io"/>
 
-<meta name="twitter:title" content="Synchronizers"/>
+<meta name="twitter:title" content="Message Ordering"/>
 <meta name="twitter:description" content="IN4150 Distributed Algorithms Notes"/>
 
 
 
 
-    <meta property="og:title" content="Synchronizers" />
+    <meta property="og:title" content="Message Ordering" />
 <meta property="og:description" content="IN4150 Distributed Algorithms Notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nicktehrany.github.io/in4150-notes/synchronizers/" />
+<meta property="og:url" content="https://nicktehrany.github.io/in4150-notes/messageodering/" />
 
 <meta property="og:image" content="https://nicktehrany.github.io" />
-<meta property="article:published_time" content="2021-01-13T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2021-01-13T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
+<meta property="article:published_time" content="2021-01-14T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2021-01-14T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2021-01-13 00:00:00 &#43;0000 UTC" />
+    <meta property="article:published_time" content="2021-01-14 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -139,35 +139,35 @@
   
   <article>
     <h1 class="post-title">
-      <a href="https://nicktehrany.github.io/in4150-notes/synchronizers/">Synchronizers</a>
+      <a href="https://nicktehrany.github.io/in4150-notes/messageodering/">Message Ordering</a>
     </h1>
     
       
       
       <div class="post-content">
-        <p>Synchronizers are algorithms that simulate synchronous systems on top of asynchronous systems. They proceed in rounds of sending messages, receiving messages, and performing local computations, and these algorithms work on the foundation of issuing a <em>pulse (clock)</em> to allow a process to move to the next round.</p>
+        <p>In asynchronous systems messages may have arbitrary but finite delays but the applications may impose some kind of ordering on the messages (<em>causal order</em>). <em>Multicasting</em> is when a message is sent to group of processes rather than just to a single process.</p>
 
-<h3 id="types-of-synchronizers">Types of Synchronizers</h3>
+<h3 id="ordering">Ordering</h3>
 
-<h4 id="alpha-synchronizer">Alpha Synchronizer</h4>
+<p>A message order is <strong>causal</strong> when for every two messages $m_1$ and $m_2$, if $m(m_1)\rightarrow m(m_2)$ then $d_i(d_1)\rightarrow d_i(d_2)$ for all $i\in Dest(m_1)\cap Dest(m_2)$.</p>
 
-<p>In $\alpha$-synchronizers, when a node receives a message, it sends an ACK message back to the sender. When a process received an ACK for every message it has sent in some round, it is called <em>safe</em>. It then sends a SAFE message to its neighbors, and when a node is safe and has received a SAFE message from all its neighbors it can proceed to the next round.</p>
+<p>A message order is <strong>total</strong> when for every two messages $m_1$ and $m_2$, $d_i(m_1)\rightarrow d_i(m_2)$ iff $d_j(m_1)\rightarrow d_j(m_2)$ for all $i,j \in Dest(m_1) \cap Dest(m_1)$.</p>
 
-<p><strong>Communication complexity</strong> is twice the number of edges (1 for the ACK, 1 for the SAFE). With $N$ number of nodes, the worst case communication complexity is $O(N^2)$.</p>
+<p>Therefore causal message ordering implies FIFO message ordering among separate channels, but total ordering does not imply causal ordering.</p>
 
-<h4 id="beta-synchronizer">Beta Synchronizer</h4>
+<h3 id="birmanschiperstephenson-algorithm-for-causal-message-ordering-of-broadcast-messages">Birman-Schiper-Stephenson Algorithm for Causal Message Ordering of Broadcast Messages</h3>
 
-<p>In the $\beta$-synchronizer, the nodes first elect a leader and create a spanning tree with the leader as the root. In every round there is a wave of PULSE messages from the leader downwards, indicating that all nodes can start the next round. When a leaf receives a PULSE message and it knows it is safe (received ACK for every message it sent), it sends a SAFE message. When a non-leaf node in the tree has received a SAFE from all its descendants and is itself safe, it sends a SAFE message to its parent. When the root has received a SAFE message from all its descendants and is itself safe, it generates a new PULSE for the next round.</p>
+<p>Every process maintains a vector logical clock $V$ and numbers its broadcast consecutively in its own component and sends the vector along with the message. If a receiving process finds that the message cannot yet be delivered, $D_j(m)=(V+e_j\ge V_m)$, stating that message $m$ is what the process expected (is up to date with respect of all other processes as $P_j$ is), and if not the message will be buffered.</p>
 
-<p><strong>Message and time complexity</strong> are both in the order of $O(N)$ as there are $N-1$ links in the spanning tree and the maximum depth is $O(N)$.</p>
+<h3 id="schiperegglisandoz-algorithm-for-causal-message-ordering-of-pointtopoint-messages">Schiper-Eggli-Sandoz Algorithm for Causal Message Ordering of Point-to-Point Messages</h3>
 
-<h4 id="gamma-synchronizer">Gamma Synchronizer</h4>
+<p>Processes keep vector logical clocks initialized to all zeroes for assigning timestamps to all events in the system, and every process maintains an initially empty buffer $S$ of ordered pairs of a process id and a vector timestamp. Whenever a process sends a message it sends the contents of the buffer along (basically sending its knowledge of the system). The receiving process can then check if it is up to date with the knowledge of the sender by seeing if its own id is in the buffer sent in the message. If its id sis not there it is not missing any messages and can deliver the message, and it will also update its own knowledge about the other processes by taking the maximum of its own buffer $S$ and the one in the message. If its id is in the message buffer, it compares its own vector clock to the buffer and if it is smaller, it is missing messages and has to buffer the message. After receiving a new message it can then check the buffer to see if now it can deliver any buffered message. For each receive, send, deliver event the local vector clock is also incremented.</p>
 
-<p>In the $\gamma$-synchronizer nodes are partitioned into clusters, where each selects a leader and constructs a spanning tree ($\beta$-synchronizer), and a single preferred link is selected that connects any two nodes of every pair of clusters. The $\beta$-synchronizer is executed in every tree, and the $\alpha$-synchronizer is executed among the trees, and when a root knows its whole tree is safe it sends a CLUSTER_SAFE down its tree and across the preferred link to its neighboring tree.</p>
+<h3 id="total-ordering-of-broadcast-messages">Total Ordering of Broadcast Messages</h3>
 
-<p>The <strong>message complexity</strong> if of the order $O(E)$ with $E$ the total number of links. The <strong>time complexity</strong> is in the oder of $O(H)$ with $H$ the maximal height of the spanning trees.</p>
+<p>Very inefficiently total ordering can be achieved using a central component for total ordering with a special process (called <em>sequencer</em>)to which all processes send their broadcast messages. The special process gives each message a sequence number and broadcasts it to all processes.</p>
 
-<p>Synchronizers only work in fault free systems, therefore wen faults occur synchronous systems are more powerful.</p>
+<p>Another algorithm uses FIFO links and scalar clocks with process ids as tie breakers (hence total order achieved). Every process also maintains a queue of non-delivered messages (but received, just buffered), which are ordered based on the timestamp. Every message is acknowledged to all other processes (including self). When a process has received an acknowledgment for the message at the head of its queue from every other process, that message is removed from the queue and is delivered.</p>
 
         <script>
   MathJax = {
@@ -208,7 +208,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        424 Words
+        524 Words
       </p>
 
       <p>
@@ -219,7 +219,7 @@
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-01-13
+          2021-01-14
         
 
          
@@ -237,18 +237,11 @@
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
-              <a href="https://nicktehrany.github.io/in4150-notes/messageodering/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Message Ordering</span>
-              </a>
-            </span>
-          
 
           
             <span class="button next">
-              <a href="https://nicktehrany.github.io/in4150-notes/timeconcepts/">
-                <span class="button__text">Time Concepts</span>
+              <a href="https://nicktehrany.github.io/in4150-notes/synchronizers/">
+                <span class="button__text">Synchronizers</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

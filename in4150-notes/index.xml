@@ -6,10 +6,21 @@
     <description>Recent content in IN4150 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 14 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4150-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Message Ordering</title>
+      <link>https://nicktehrany.github.io/in4150-notes/messageodering/</link>
+      <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/messageodering/</guid>
+      <description>In asynchronous systems messages may have arbitrary but finite delays but the applications may impose some kind of ordering on the messages (causal order). Multicasting is when a message is sent to group of processes rather than just to a single process.
+Ordering A message order is causal when for every two messages $m_1$ and $m_2$, if $m(m_1)\rightarrow m(m_2)$ then $d_i(d_1)\rightarrow d_i(d_2)$ for all $i\in Dest(m_1)\cap Dest(m_2)$.
+A message order is total when for every two messages $m_1$ and $m_2$, $d_i(m_1)\rightarrow d_i(m_2)$ iff $d_j(m_1)\rightarrow d_j(m_2)$ for all $i,j \in Dest(m_1) \cap Dest(m_1)$.</description>
+    </item>
     
     <item>
       <title>Synchronizers</title>
