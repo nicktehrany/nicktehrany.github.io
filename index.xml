@@ -24,6 +24,18 @@ Reconstruction: Protocol in which a qualified set of parties pool their shares t
     </item>
     
     <item>
+      <title>Global States</title>
+      <link>https://nicktehrany.github.io/in4150-notes/globalstates/</link>
+      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/globalstates/</guid>
+      <description>Detecting of global states is the recording of an asynchronous system at some point in time for checkpointing or detecting stable properties such as deadlock or termination.
+A cut presents a set of internal events and can be considered consistent (when receiving events happens after sending events) or inconsistent (when receiving events happen without the send events).
+
+Chandy&#39;s and Lamport&#39;s algorithm for detecting global states in distributed systems with unidirectional FIFO channels Any processor wishing to record the global state of the system first records its own local state and then sends a marker on every outgoing channel.</description>
+    </item>
+    
+    <item>
       <title>Lecture 11: Certificates, Key Transport, and Key Agreement</title>
       <link>https://nicktehrany.github.io/in4191-notes/lecture-11/</link>
       <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>

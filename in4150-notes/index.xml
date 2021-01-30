@@ -6,10 +6,22 @@
     <description>Recent content in IN4150 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4150-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Global States</title>
+      <link>https://nicktehrany.github.io/in4150-notes/globalstates/</link>
+      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/globalstates/</guid>
+      <description>Detecting of global states is the recording of an asynchronous system at some point in time for checkpointing or detecting stable properties such as deadlock or termination.
+A cut presents a set of internal events and can be considered consistent (when receiving events happens after sending events) or inconsistent (when receiving events happen without the send events).
+
+Chandy&#39;s and Lamport&#39;s algorithm for detecting global states in distributed systems with unidirectional FIFO channels Any processor wishing to record the global state of the system first records its own local state and then sends a marker on every outgoing channel.</description>
+    </item>
     
     <item>
       <title>Message Ordering</title>
