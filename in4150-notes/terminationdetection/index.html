@@ -9,12 +9,12 @@
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nicktehrany.github.io/in4150-notes/messageodering/" />
+<link rel="canonical" href="https://nicktehrany.github.io/in4150-notes/terminationdetection/" />
 
 
     <title>
         
-            Message Ordering :: Nick Tehrany 
+            Termination Detection :: Nick Tehrany 
         
     </title>
 
@@ -33,13 +33,13 @@
 
 
 
-<meta itemprop="name" content="Message Ordering">
+<meta itemprop="name" content="Termination Detection">
 <meta itemprop="description" content="IN4150 Distributed Algorithms Notes">
 
 
-<meta itemprop="datePublished" content="2021-01-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-01-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="525">
+<meta itemprop="datePublished" content="2021-01-16T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-01-16T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="348">
 
 
 
@@ -48,27 +48,27 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nicktehrany.github.io"/>
 
-<meta name="twitter:title" content="Message Ordering"/>
+<meta name="twitter:title" content="Termination Detection"/>
 <meta name="twitter:description" content="IN4150 Distributed Algorithms Notes"/>
 
 
 
 
-    <meta property="og:title" content="Message Ordering" />
+    <meta property="og:title" content="Termination Detection" />
 <meta property="og:description" content="IN4150 Distributed Algorithms Notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nicktehrany.github.io/in4150-notes/messageodering/" />
+<meta property="og:url" content="https://nicktehrany.github.io/in4150-notes/terminationdetection/" />
 
 <meta property="og:image" content="https://nicktehrany.github.io" />
-<meta property="article:published_time" content="2021-01-14T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2021-01-14T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
+<meta property="article:published_time" content="2021-01-16T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2021-01-16T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2021-01-14 00:00:00 &#43;0000 UTC" />
+    <meta property="article:published_time" content="2021-01-16 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -139,35 +139,30 @@
   
   <article>
     <h1 class="post-title">
-      <a href="https://nicktehrany.github.io/in4150-notes/messageodering/">Message Ordering</a>
+      <a href="https://nicktehrany.github.io/in4150-notes/terminationdetection/">Termination Detection</a>
     </h1>
     
       
       
       <div class="post-content">
-        <p>In asynchronous systems messages may have arbitrary but finite delays but the applications may impose some kind of ordering on the messages (<em>causal order</em>). <em>Multicasting</em> is when a message is sent to group of processes rather than just to a single process.</p>
+        <p>Termination detection is the problem of determining whether a distributed computation in a distributed system consisting of processes which communicate by means of message, has terminated.</p>
 
-<h3 id="ordering">Ordering</h3>
+<p>Distributed computations have the following properties:</p>
 
-<p>A message order is <strong>causal</strong> when for every two messages $m_1$ and $m_2$, if $m(m_1)\rightarrow m(m_2)$ then $d_i(d_1)\rightarrow d_i(d_2)$ for all $i\in Dest(m_1)\cap Dest(m_2)$.</p>
+<ul>
+<li>A process is either <em>active</em> or <em>passive</em></li>
+<li>Only active processes can send messages</li>
+<li>An active process may become passive spontaneously</li>
+<li>A passive process becomes active ate the reception of a message</li>
+</ul>
 
-<p>A message order is <strong>total</strong> when for every two messages $m_1$ and $m_2$, $d_i(m_1)\rightarrow d_i(m_2)$ iff $d_j(m_1)\rightarrow d_j(m_2)$ for all $i,j \in Dest(m_1) \cap Dest(m_1)$.</p>
+<h3 id="termination-detection-in-an-asynchronous-unidirectional-ring-with-fifo-communication">Termination Detection in an Asynchronous Unidirectional Ring with FIFO Communication</h3>
 
-<p>Therefore causal message ordering implies FIFO message ordering among separate channels, but total ordering does not imply causal ordering.</p>
+<p>There exits a process $P<em>0$ that is on top of the ring and other processes are connected to it in the order of $P</em>{n-1}$ to the right of $P_0$ and $P_1$ to the left. $P_0$ sends a <em>token</em> to detect termination to $P_{n-1}$, and each process and the token has a color (black or white, initially white). The token is only forwarded when a process becomes passive, but a passive process can be woken up by a message from a process that the token has not been to yet (a lower numbered process), at which point the process sending the message will change its color to black. When a token arrives at a black process its color is changed to black and no decision can be reached in the current round and the token is relayed immediately. The process also sets its color back to white to start the new round. When $P_0$ receives a white token and is itself passive, it concludes termination.</p>
 
-<h3 id="birmanschiperstephenson-algorithm-for-causal-message-ordering-of-broadcast-messages">Birman-Schiper-Stephenson Algorithm for Causal Message Ordering of Broadcast Messages</h3>
+<h3 id="termination-detection-in-a-general-network">Termination Detection in a General Network</h3>
 
-<p>Every process maintains a vector logical clock $V$ and numbers its broadcast consecutively in its own component and sends the vector along with the message. If a receiving process finds that the message cannot yet be delivered, $D_j(m)=(V+e_j\ge V_m)$, stating that message $m$ is what the process expected (is up to date with respect of all other processes as $P_j$ is), and if not the message will be buffered.</p>
-
-<h3 id="schiperegglisandoz-algorithm-for-causal-message-ordering-of-pointtopoint-messages">Schiper-Eggli-Sandoz Algorithm for Causal Message Ordering of Point-to-Point Messages</h3>
-
-<p>Processes keep vector logical clocks initialized to all zeroes for assigning timestamps to all events in the system, and every process maintains an initially empty buffer $S$ of ordered pairs of a process id and a vector timestamp. Whenever a process sends a message it sends the contents of the buffer along (basically sending its knowledge of the system). The receiving process can then check if it is up to date with the knowledge of the sender by seeing if its own id is in the buffer sent in the message. If its id sis not there it is not missing any messages and can deliver the message, and it will also update its own knowledge about the other processes by taking the maximum of its own buffer $S$ and the one in the message. If its id is in the message buffer, it compares its own vector clock to the buffer and if it is smaller, it is missing messages and has to buffer the message. After receiving a new message it can then check the buffer to see if now it can deliver any buffered message. For each receive, send, deliver event the local vector clock is also incremented.</p>
-
-<h3 id="total-ordering-of-broadcast-messages">Total Ordering of Broadcast Messages</h3>
-
-<p>Very inefficiently total ordering can be achieved using a central component for total ordering with a special process (called <em>sequencer</em>) to which all processes send their broadcast messages. The special process gives each message a sequence number and broadcasts it to all processes.</p>
-
-<p>Another algorithm uses FIFO links and scalar clocks with process ids as tie breakers (hence total order achieved). Every process also maintains a queue of non-delivered messages (but received, just buffered), which are ordered based on the timestamp. Every message is acknowledged to all other processes (including self). When a process has received an acknowledgment for the message at the head of its queue from every other process, that message is removed from the queue and is delivered.</p>
+<p>A special process $P$ controls the algorithm but does not participate in the computation. All processes and messages carry non-negative weights, which are assigned by process $P$. $P$ initially has weight $1$ and splits its weight over all the processes. When a process wants to send a message, it halves its own weight and sends the half along in the message. The receiving process adds the weight from the message to its own weight. When a process terminates, it sends its remaining weight to process $P$ and sets its own weight to $0$. Terminated is detected when the weight of process $P$ is $1$ again.</p>
 
         <script>
   MathJax = {
@@ -208,7 +203,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        525 Words
+        348 Words
       </p>
 
       <p>
@@ -219,7 +214,7 @@
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-01-14
+          2021-01-16
         
 
          
@@ -237,18 +232,11 @@
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
-              <a href="https://nicktehrany.github.io/in4150-notes/globalstates/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Global States</span>
-              </a>
-            </span>
-          
 
           
             <span class="button next">
-              <a href="https://nicktehrany.github.io/in4150-notes/synchronizers/">
-                <span class="button__text">Synchronizers</span>
+              <a href="https://nicktehrany.github.io/in4150-notes/globalstates/">
+                <span class="button__text">Global States</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

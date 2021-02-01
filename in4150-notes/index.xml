@@ -6,10 +6,21 @@
     <description>Recent content in IN4150 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 16 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4150-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Termination Detection</title>
+      <link>https://nicktehrany.github.io/in4150-notes/terminationdetection/</link>
+      <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/terminationdetection/</guid>
+      <description>Termination detection is the problem of determining whether a distributed computation in a distributed system consisting of processes which communicate by means of message, has terminated.
+Distributed computations have the following properties:
+ A process is either active or passive Only active processes can send messages An active process may become passive spontaneously A passive process becomes active ate the reception of a message  Termination Detection in an Asynchronous Unidirectional Ring with FIFO Communication There exits a process $P0$ that is on top of the ring and other processes are connected to it in the order of $P{n-1}$ to the right of $P_0$ and $P_1$ to the left.</description>
+    </item>
     
     <item>
       <title>Global States</title>
