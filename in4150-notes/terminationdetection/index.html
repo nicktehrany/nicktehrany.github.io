@@ -158,7 +158,7 @@
 
 <h3 id="termination-detection-in-an-asynchronous-unidirectional-ring-with-fifo-communication">Termination Detection in an Asynchronous Unidirectional Ring with FIFO Communication</h3>
 
-<p>There exits a process $P<em>0$ that is on top of the ring and other processes are connected to it in the order of $P</em>{n-1}$ to the right of $P_0$ and $P_1$ to the left. $P_0$ sends a <em>token</em> to detect termination to $P_{n-1}$, and each process and the token has a color (black or white, initially white). The token is only forwarded when a process becomes passive, but a passive process can be woken up by a message from a process that the token has not been to yet (a lower numbered process), at which point the process sending the message will change its color to black. When a token arrives at a black process its color is changed to black and no decision can be reached in the current round and the token is relayed immediately. The process also sets its color back to white to start the new round. When $P_0$ receives a white token and is itself passive, it concludes termination.</p>
+<p>There exits a process $P_{0}$ that is on top of the ring and other processes are connected to it in the order of $P_{n-1}$ to the right of $P_0$ and $P_1$ to the left. $P_0$ sends a <em>token</em> to detect termination to $P_{n-1}$, and each process and the token has a color (black or white, initially white). The token is only forwarded when a process becomes passive, but a passive process can be woken up by a message from a process that the token has not been to yet (a lower numbered process), at which point the process sending the message will change its color to black. When a token arrives at a black process its color is changed to black and no decision can be reached in the current round and the token is relayed immediately. The process also sets its color back to white to start the new round. When $P_0$ receives a white token and is itself passive, it concludes termination.</p>
 
 <h3 id="termination-detection-in-a-general-network">Termination Detection in a General Network</h3>
 
@@ -231,6 +231,13 @@
         </div>
 
         <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://nicktehrany.github.io/in4150-notes/deadlockdetection/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Deadlock Detection</span>
+              </a>
+            </span>
           
 
           

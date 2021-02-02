@@ -6,10 +6,20 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 17 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Deadlock Detection</title>
+      <link>https://nicktehrany.github.io/in4150-notes/deadlockdetection/</link>
+      <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/deadlockdetection/</guid>
+      <description>Models for Deadlock A (directed) Wait-For-Graph (WFG) can be maintained with the processes as nodes and with an edge from process $P$ to process $Q$ when $Q$ is holding a resource that $P$ is requesting.
+In the resource mode resources are associated with a process (e.g. $R_a$) anf processes can then request said resource. When a process $P$ wants access to a resource $a$ from $R_a$, an edge is created from $P$ to $R_a$, and when the resource is granted, the edge is removed and replaced by an edge from $R_a$ to $P$ indicating that $R_a$ is waiting for $P$ to release the resource.</description>
+    </item>
     
     <item>
       <title>Lecture 12: Secret Sharing</title>
@@ -31,7 +41,7 @@ Reconstruction: Protocol in which a qualified set of parties pool their shares t
       <guid>https://nicktehrany.github.io/in4150-notes/terminationdetection/</guid>
       <description>Termination detection is the problem of determining whether a distributed computation in a distributed system consisting of processes which communicate by means of message, has terminated.
 Distributed computations have the following properties:
- A process is either active or passive Only active processes can send messages An active process may become passive spontaneously A passive process becomes active ate the reception of a message  Termination Detection in an Asynchronous Unidirectional Ring with FIFO Communication There exits a process $P0$ that is on top of the ring and other processes are connected to it in the order of $P{n-1}$ to the right of $P_0$ and $P_1$ to the left.</description>
+ A process is either active or passive Only active processes can send messages An active process may become passive spontaneously A passive process becomes active ate the reception of a message  Termination Detection in an Asynchronous Unidirectional Ring with FIFO Communication There exits a process $P_{0}$ that is on top of the ring and other processes are connected to it in the order of $P_{n-1}$ to the right of $P_0$ and $P_1$ to the left.</description>
     </item>
     
     <item>
