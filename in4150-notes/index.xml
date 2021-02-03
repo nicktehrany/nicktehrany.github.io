@@ -6,10 +6,20 @@
     <description>Recent content in IN4150 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4150-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mutual Exclusion</title>
+      <link>https://nicktehrany.github.io/in4150-notes/mutualexclusion/</link>
+      <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/mutualexclusion/</guid>
+      <description>In a distributed system in order to access the resource, a process will execute the critical section of the resource, hence it is required to guarantee that at most one process is in the critical section at a time. These algorithms aim to solve mutual exclusion with no deadlocks, no starvation, and some notion of fairness.
+Assertion-Based Mutual Exclusion A process has to request permission from all or part of the other processes and based on their replies it may conclude that is the only one with rights to enter its CS.</description>
+    </item>
     
     <item>
       <title>Deadlock Detection</title>
