@@ -6,10 +6,20 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 19 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Token Loss</title>
+      <link>https://nicktehrany.github.io/in4150-notes/tokenloss/</link>
+      <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/tokenloss/</guid>
+      <description>Since token based systems require the presence of a single token, if a token is lost due to unreliable links, this has to be detected and a single new token has to be generated n a unidirectional ring.
+It works by using two tokens $t_0$ and $t_1$ that detect the loss of each other. The token message that transfers the token contains a token number that is the index of the token and a counter which is equal to plus or minus the number of times the tokens have met, plus if the token id is 0 and minus if it is 1.</description>
+    </item>
     
     <item>
       <title>Mutual Exclusion</title>
@@ -283,7 +293,7 @@ All content and images are based on and retrieved from the book and the lecture 
       <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://nicktehrany.github.io/publications/amsterdam-data-science-thesis-award/</guid>
-      <description>The Amsterdam Data Science Thesis awarad &amp;hellip; https://amsterdamdatascience.nl/events/thesis-awards/</description>
+      <description>For my BSc Computer Science Thesis I received the Amsterdam Data Science Thesis award. The thesis was completed in 2020 at the Vrije Universiteit Amsterdam with @Large Massivizing Computer Systems research group. The full thesis is available here and more information on the Amsterdam Data Science award can be found here.</description>
     </item>
     
     <item>
