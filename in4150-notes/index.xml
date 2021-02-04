@@ -6,10 +6,28 @@
     <description>Recent content in IN4150 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4150-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Minimum-Weight Spanning Trees</title>
+      <link>https://nicktehrany.github.io/in4150-notes/mst/</link>
+      <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/mst/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Traversal Algorithms</title>
+      <link>https://nicktehrany.github.io/in4150-notes/traversal/</link>
+      <pubDate>Thu, 21 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/traversal/</guid>
+      <description>Information in a DS may need to be propagated from a single node to all other nodes and the originator may want to receive information back. In a spanning tree of an undirected network, which is a sub-network of the original network that contains all nodes of the original network and that has the structure of a tree (the sparsest type of sub-network that keeps the system connected), messages need to traverse the tree efficiently.</description>
+    </item>
     
     <item>
       <title>Election</title>
