@@ -6,10 +6,19 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Consensus</title>
+      <link>https://nicktehrany.github.io/in4150-notes/consensus/</link>
+      <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/consensus/</guid>
+      <description>Distributed systems will have to deal with faults caused by software or hardware components, not operating according to specification. Faults can be classified as permanent, once a processor exhibits a fault it will be considered as faulty for ever, which also leads to crash failures and malicious or Byzantine failures. Transient faults are when a processor may exhibit a fault but will return to correct operation again, i.e. transmission error or short power loss.</description>
+    </item>
     
     <item>
       <title>Minimum-Weight Spanning Trees</title>

@@ -9,12 +9,12 @@
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nicktehrany.github.io/in4150-notes/mst/" />
+<link rel="canonical" href="https://nicktehrany.github.io/in4150-notes/consensus/" />
 
 
     <title>
         
-            Minimum-Weight Spanning Trees :: Nick Tehrany 
+            Consensus :: Nick Tehrany 
         
     </title>
 
@@ -33,13 +33,13 @@
 
 
 
-<meta itemprop="name" content="Minimum-Weight Spanning Trees">
+<meta itemprop="name" content="Consensus">
 <meta itemprop="description" content="IN4150 Distributed Algorithms Notes">
 
 
-<meta itemprop="datePublished" content="2021-01-22T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-01-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="233">
+<meta itemprop="datePublished" content="2021-01-23T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-01-23T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="600">
 
 
 
@@ -48,27 +48,27 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nicktehrany.github.io"/>
 
-<meta name="twitter:title" content="Minimum-Weight Spanning Trees"/>
+<meta name="twitter:title" content="Consensus"/>
 <meta name="twitter:description" content="IN4150 Distributed Algorithms Notes"/>
 
 
 
 
-    <meta property="og:title" content="Minimum-Weight Spanning Trees" />
+    <meta property="og:title" content="Consensus" />
 <meta property="og:description" content="IN4150 Distributed Algorithms Notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nicktehrany.github.io/in4150-notes/mst/" />
+<meta property="og:url" content="https://nicktehrany.github.io/in4150-notes/consensus/" />
 
 <meta property="og:image" content="https://nicktehrany.github.io" />
-<meta property="article:published_time" content="2021-01-22T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2021-01-22T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
+<meta property="article:published_time" content="2021-01-23T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2021-01-23T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2021-01-22 00:00:00 &#43;0000 UTC" />
+    <meta property="article:published_time" content="2021-01-23 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -139,19 +139,51 @@
   
   <article>
     <h1 class="post-title">
-      <a href="https://nicktehrany.github.io/in4150-notes/mst/">Minimum-Weight Spanning Trees</a>
+      <a href="https://nicktehrany.github.io/in4150-notes/consensus/">Consensus</a>
     </h1>
     
       
       
       <div class="post-content">
-        <p>A reason for using minimum-weight spanning trees (MST) is to broadcast some message along the tree with minimum weight, if for example the transmission cost is used as the weight for edges. MSTs are constructed from weighted (unique weights) undirected graphs. Unique weights are required for finding a unique solution for an MST, and for the following algorithm. a <em>fragment</em> of graph $G$ is a subtree of its MST. Edge $e$ of $G$ is the minimum-weight outgoing edge (MOE) of fragment $F$ if it has the minimum weight that connects $F$ to another fragment.</p>
+        <p>Distributed systems will have to deal with faults caused by software or hardware components, not operating according to specification. Faults can be classified as <em>permanent</em>, once a processor exhibits a fault it will be considered as faulty for ever, which also leads to crash failures and malicious or Byzantine failures. <em>Transient</em> faults are when a processor may exhibit a fault but will return to correct operation again, i.e. transmission error or short power loss.</p>
 
-<h3 id="gallagers-humblets-and-spiras-algorithm-for-the-mst-of-an-undirected-weighted-graph-with-unique-edge-weights">Gallager’s, Humblet’s, and Spira’s Algorithm for the MST of an Undirected Weighted Graph with Unique Edge Weights</h3>
+<p>Reaching agreement based on every process starting with a value from the set of possible initial values has the following conditions,</p>
 
-<p>The idea of the algorithm is to have fragments connect to each other along their MOEs, starting with single node fragments and resulting with the final MST. The MST is constructed by repeatedly connecting pairs of fragments along a single edge that is the MOE of one of the fragments. Each fragment has a <em>level</em>, and single node fragments start with level 0, and a <em>core</em>. The level is used for deciding wether to merge or absorb other fragments, and is only increased when a merge happens. With a merge, the core will also be changed to the edge along which the merge happened.</p>
+<ol>
+<li><em>Agreement:</em> No two processes decide on different values.</li>
+<li><em>Validity:</em> If all processes start with the same value then no process decides on a different value (The final agreement is related to the original problem).</li>
+<li><em>Termination:</em> All non-faulty processes decide within finite time.</li>
+</ol>
 
-<p><strong>Message complexity</strong> is $O(5*|V|* \text{ log }|V|+2*|E|)$. A MST of level $k$ has a maximum of $2^k$ nodes.</p>
+<h3 id="consensus-in-synchronous-systems-with-crash-failures">Consensus in Synchronous Systems with Crash Failures</h3>
+
+<h4 id="an-algorithm-ofr-agreement-in-a-synchronous-system-with-at-most-f-crash-failures">An Algorithm ofr Agreement in a Synchronous System with at most $f$ Crash Failures</h4>
+
+<p>Every process maintains a set $W$ which initially only contains the value it start with. In each round out of a total of $f+1$ they all broadcasts their sets $W$ and set their set $W$ to the union of all sets received and their own. If after the $f+1$ rounds the set $W$ only contains one element the process decides on that element, otherwise the process decides on the default value.</p>
+
+<p>Since there are $f+1$ rounds and at most $f$ processor failures, there is at least one round during which no processor fails. At the end of this round all still active processes will have identical sets $W$ and they will not change anymore.</p>
+
+<p><strong>Message complexity</strong> with $n$ processes is $O(f*n^2)$.</p>
+
+<h3 id="consensus-in-synchronous-systems-with-byzantine-failures">Consensus in Synchronous Systems with Byzantine Failures</h3>
+
+<p>Algorithms solving the Byzantine-generals problem in synchronous systems with $n$ processes, the maximal number of faulty processes $f$ has to satisfy $f&lt; n/3$.</p>
+
+<h4 id="impossibility-for-three-generals">Impossibility for THree Generals</h4>
+
+<p><em>Impossibility results</em> are consensus problems where no solutions exits, which is shown by two different scenarios that are indisitinguishable to at least one process and two processes have to reach different conclusions. Among two lieutenants and one commander there is one disloyal one and in the following two scenarios to $L_1$ the they are both the same.</p>
+
+<p><figure><img src="/images/IN4150/ThreeGenerals.png" alt="Three Generals"></figure></p>
+
+<h4 id="lamportpeaseshostak-algorithm-for-consensus-in-synchronous-systems-without-authentication">Lamport-Pease-Shostak Algorithm for Consensus in Synchronous Systems without Authentication</h4>
+
+<p>The algorithm can tolerate a maximum of $f$ faults. As the bottom case when $f$ equals $0$ the commander sends his value to the lieutenants who simply decide on this value. When $f$ is positive, the commander sends his value to the lieutenants each of whom then executes the algorithm recursively with parameter $f-1$ as themselves as the commander and the others as the lieutenants (except the commander). Each lieutenant decides on the majority value among the value received directly from the commander and the values on which he decides as a lieutenant of the other lieutenants acting as commander. When a process does not receive a message because the sender is faulty it assumes the default value. Messages contain a value and a sequence of lieutenants through which it passed. The recursive part is taking decisions starting at level $(OM(0))$ which is the leaf level, the last value he receives, and since it is just one value he chooses it. The next level $(OM(1))$ he picks the majority of the value at the current level and all the children. THis continues until he reaches the root.</p>
+
+<p><figure><img src="/images/IN4150/ByzantineAgreement.png" alt="Byzantine Agreement"></figure></p>
+
+<p><strong>Message complexity</strong> is $(n-1)+(n-1)(n-2)+...+(n-1)(n-2)(n-f-1)=On^{f+1}$, since in each round the sending to processes becomes one less as the message is not sent to the acting commander.</p>
+
+<h4 id="lamportpeaseshostak-algorithm-for-consensus-in-synchronous-systems-with-authentication">Lamport-Pease-Shostak Algorithm for Consensus in Synchronous Systems with Authentication</h4>
 
         <script>
   MathJax = {
@@ -192,7 +224,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        233 Words
+        600 Words
       </p>
 
       <p>
@@ -203,7 +235,7 @@
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-01-22
+          2021-01-23
         
 
          
@@ -221,18 +253,11 @@
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
-              <a href="https://nicktehrany.github.io/in4150-notes/consensus/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Consensus</span>
-              </a>
-            </span>
-          
 
           
             <span class="button next">
-              <a href="https://nicktehrany.github.io/in4150-notes/traversal/">
-                <span class="button__text">Traversal Algorithms</span>
+              <a href="https://nicktehrany.github.io/in4150-notes/mst/">
+                <span class="button__text">Minimum-Weight Spanning Trees</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

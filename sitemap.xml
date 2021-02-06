@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nicktehrany.github.io/in4150-notes/consensus/</loc>
+    <lastmod>2021-01-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nicktehrany.github.io/in4150-notes/mst/</loc>
     <lastmod>2021-01-22T00:00:00+00:00</lastmod>
   </url>
@@ -196,7 +201,7 @@
   
   <url>
     <loc>https://nicktehrany.github.io/in4150-notes/</loc>
-    <lastmod>2021-01-22T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -208,7 +213,7 @@
   
   <url>
     <loc>https://nicktehrany.github.io/</loc>
-    <lastmod>2021-01-22T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
