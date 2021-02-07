@@ -6,10 +6,20 @@
     <description>Recent content in IN4150 Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 24 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4150-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Stabilization</title>
+      <link>https://nicktehrany.github.io/in4150-notes/stabilization/</link>
+      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-notes/stabilization/</guid>
+      <description>For dealing with transient faults, which means that components in a distributed system may only fail temporarily, stabilizing algorithms have been devised that bring a system back into a correct sate from any incorrect sate it may be in.
+A predicate, which is the defined order of saying what functions correctly and incorrectly and is defined as legal and illegal configurations, is called stable if once it holds and no faults occur, it continues to hold.</description>
+    </item>
     
     <item>
       <title>Consensus</title>
