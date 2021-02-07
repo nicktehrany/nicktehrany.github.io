@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-23T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-23T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="600">
+<meta itemprop="wordCount" content="818">
 
 
 
@@ -185,6 +185,16 @@
 
 <h4 id="lamportpeaseshostak-algorithm-for-consensus-in-synchronous-systems-with-authentication">Lamport-Pease-Shostak Algorithm for Consensus in Synchronous Systems with Authentication</h4>
 
+<p>With authentication signatures cannot be forged and modifications of a signed message can be detected. This way a false acting commander cannot change contents of previous messages from the commander when sending the values down the tree. If signatures are modified, the receiver will use the default value.</p>
+
+<h4 id="srikanthtoueg-algorithm-for-consensus-with-authenticated-broadcast-in-synchronous-systems-with-a-completely-connected-network">Srikanth-Toueg Algorithm for Consensus with Authenticated broadcast in Synchronous Systems with a Completely Connected Network</h4>
+
+<p><em>Note, this algorithm is not exam material.</em></p>
+
+<p>The commander stars with some binary value $v$ that it wants to send to all other processes, which initialize their own variable $v$ to $0$. The algorithm consists of two layers, where the bottom one implements the authenticated broadcast and the upper one implements the actual algorithm. The upper layer has $f+1$ rounds. In the first round if the general is correct (non-fault) and it has $v=0$ it will never broadcast a message, and if $v=1$ it will broadcast a $1$ to all others. The other processes broadcast a $1$ only once and once they have set their own value to $1$, which happens when they received in all rounds up to and including round $r$ a $1$ from at least $r$ processes including the general.</p>
+
+<p>The lower layer has the requirement that a faulty process may send a signed message to some but not all correct processes.</p>
+
         <script>
   MathJax = {
     tex: {
@@ -224,7 +234,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        600 Words
+        818 Words
       </p>
 
       <p>
