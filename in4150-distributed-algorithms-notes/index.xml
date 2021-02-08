@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IN4150 Distributed Algorithms Notes on Nick Tehrany</title>
+    <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/</link>
+    <description>Recent content in IN4150 Distributed Algorithms Notes on Nick Tehrany</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://nicktehrany.github.io/in4150-distributed-algorithms-notes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>State Machine Replication</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/smr/</link>
+      <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/smr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stabilization</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/stabilization/</link>
+      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/stabilization/</guid>
+      <description>For dealing with transient faults, which means that components in a distributed system may only fail temporarily, stabilizing algorithms have been devised that bring a system back into a correct sate from any incorrect sate it may be in.
+A predicate, which is the defined order of saying what functions correctly and incorrectly and is defined as legal and illegal configurations, is called stable if once it holds and no faults occur, it continues to hold.</description>
+    </item>
+    
+    <item>
+      <title>Consensus</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/consensus/</link>
+      <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/consensus/</guid>
+      <description>Distributed systems will have to deal with faults caused by software or hardware components, not operating according to specification. Faults can be classified as permanent, once a processor exhibits a fault it will be considered as faulty for ever, which also leads to crash failures and malicious or Byzantine failures. Transient faults are when a processor may exhibit a fault but will return to correct operation again, i.e. transmission error or short power loss.</description>
+    </item>
+    
+    <item>
+      <title>Minimum-Weight Spanning Trees</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/mst/</link>
+      <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/mst/</guid>
+      <description>A reason for using minimum-weight spanning trees (MST) is to broadcast some message along the tree with minimum weight, if for example the transmission cost is used as the weight for edges. MSTs are constructed from weighted (unique weights) undirected graphs. Unique weights are required for finding a unique solution for an MST, and for the following algorithm. a fragment of graph $G$ is a subtree of its MST. Edge $e$ of $G$ is the minimum-weight outgoing edge (MOE) of fragment $F$ if it has the minimum weight that connects $F$ to another fragment.</description>
+    </item>
+    
+    <item>
+      <title>Traversal Algorithms</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/traversal/</link>
+      <pubDate>Thu, 21 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/traversal/</guid>
+      <description>Information in a DS may need to be propagated from a single node to all other nodes and the originator may want to receive information back. In a spanning tree of an undirected network, which is a sub-network of the original network that contains all nodes of the original network and that has the structure of a tree (the sparsest type of sub-network that keeps the system connected), messages need to traverse the tree efficiently.</description>
+    </item>
+    
+    <item>
+      <title>Election</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/election/</link>
+      <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/election/</guid>
+      <description>It may sometimes be necessary in a DS to assign a certain process with a higher privilege, for which election is used. If each process has a unique integer id, the system isa said to be non-anonymous and anonymous otherwise. In anonymous rings no deterministic solution exists to election, as processes need to randomly generate some id value (e.g. 64 bit number). Algorithms that work in a ring of an unknown size are called uniform.</description>
+    </item>
+    
+    <item>
+      <title>Token Loss</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/tokenloss/</link>
+      <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/tokenloss/</guid>
+      <description>Since token based systems require the presence of a single token, if a token is lost due to unreliable links, this has to be detected and a single new token has to be generated n a unidirectional ring.
+It works by using two tokens $t_0$ and $t_1$ that detect the loss of each other. The token message that transfers the token contains a token number that is the index of the token and a counter which is equal to plus or minus the number of times the tokens have met, plus if the token id is 0 and minus if it is 1.</description>
+    </item>
+    
+    <item>
+      <title>Mutual Exclusion</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/mutualexclusion/</link>
+      <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/mutualexclusion/</guid>
+      <description>In a distributed system in order to access the resource, a process will execute the critical section of the resource, hence it is required to guarantee that at most one process is in the critical section at a time. These algorithms aim to solve mutual exclusion with no deadlocks, no starvation, and some notion of fairness.
+Assertion-Based Mutual Exclusion A process has to request permission from all or part of the other processes and based on their replies it may conclude that is the only one with rights to enter its CS.</description>
+    </item>
+    
+    <item>
+      <title>Deadlock Detection</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/deadlockdetection/</link>
+      <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/deadlockdetection/</guid>
+      <description>Models for Deadlock A (directed) Wait-For-Graph (WFG) can be maintained with the processes as nodes and with an edge from process $P$ to process $Q$ when $Q$ is holding a resource that $P$ is requesting.
+In the resource mode resources are associated with a process (e.g. $R_a$) anf processes can then request said resource. When a process $P$ wants access to a resource $a$ from $R_a$, an edge is created from $P$ to $R_a$, and when the resource is granted, the edge is removed and replaced by an edge from $R_a$ to $P$ indicating that $R_a$ is waiting for $P$ to release the resource.</description>
+    </item>
+    
+    <item>
+      <title>Termination Detection</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/terminationdetection/</link>
+      <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/terminationdetection/</guid>
+      <description>Termination detection is the problem of determining whether a distributed computation in a distributed system consisting of processes which communicate by means of message, has terminated.
+Distributed computations have the following properties:
+ A process is either active or passive Only active processes can send messages An active process may become passive spontaneously A passive process becomes active ate the reception of a message  Termination Detection in an Asynchronous Unidirectional Ring with FIFO Communication There exits a process $P_{0}$ that is on top of the ring and other processes are connected to it in the order of $P_{n-1}$ to the right of $P_0$ and $P_1$ to the left.</description>
+    </item>
+    
+    <item>
+      <title>Global States</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/globalstates/</link>
+      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/globalstates/</guid>
+      <description>Detecting of global states is the recording of an asynchronous system at some point in time for checkpointing or detecting stable properties such as deadlock or termination.
+A cut presents a set of internal events and can be considered consistent (when receiving events happens after sending events) or inconsistent (when receiving events happen without the send events).
+
+Chandy&#39;s and Lamport&#39;s algorithm for detecting global states in distributed systems with unidirectional FIFO channels Any processor wishing to record the global state of the system first records its own local state and then sends a marker on every outgoing channel.</description>
+    </item>
+    
+    <item>
+      <title>Message Ordering</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/messageodering/</link>
+      <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/messageodering/</guid>
+      <description>In asynchronous systems messages may have arbitrary but finite delays but the applications may impose some kind of ordering on the messages (causal order). Multicasting is when a message is sent to group of processes rather than just to a single process.
+Ordering A message order is causal when for every two messages $m_1$ and $m_2$, if $m(m_1)\rightarrow m(m_2)$ then $d_i(d_1)\rightarrow d_i(d_2)$ for all $i\in Dest(m_1)\cap Dest(m_2)$.
+A message order is total when for every two messages $m_1$ and $m_2$, $d_i(m_1)\rightarrow d_i(m_2)$ iff $d_j(m_1)\rightarrow d_j(m_2)$ for all $i,j \in Dest(m_1) \cap Dest(m_1)$.</description>
+    </item>
+    
+    <item>
+      <title>Synchronizers</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/synchronizers/</link>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/synchronizers/</guid>
+      <description>Synchronizers are algorithms that simulate synchronous systems on top of asynchronous systems. They proceed in rounds of sending messages, receiving messages, and performing local computations, and these algorithms work on the foundation of issuing a pulse (clock) to allow a process to move to the next round.
+Types of Synchronizers Alpha Synchronizer In $\alpha$-synchronizers, when a node receives a message, it sends an ACK message back to the sender. When a process received an ACK for every message it has sent in some round, it is called safe.</description>
+    </item>
+    
+    <item>
+      <title>Time Concepts</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/timeconcepts/</link>
+      <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/timeconcepts/</guid>
+      <description>Time has an important role in computer systems, the applications that they run need to be able to keep track of time and events and compare timestamps. In asynchronous systems it may be necessary to reason about events based on their order of occurrence.
+Happened-Before Relation The basis of the theory of ordering events in distributed systems is the happened-before relation, and is given as $\rightarrow$ as the following
+ Local Order: If $a,b\in E_i$ for $i$ and $a$ occurred in $P_i$ before $b$ then $a\rightarrow b$.</description>
+    </item>
+    
+    <item>
+      <title>Modeling Distributed Systems</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/modelingds/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/modelingds/</guid>
+      <description>DSs and DAs are modelled with a set of processors or processes, which do local computations and send and receive messages, and are connected by unidirectional communication channels, and networks are assumed to be connected such that there is a path from every process to every other process.
+In a complete network there is a link from every processor to every other processor. In ring every processor is connected to two other processors.</description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/introduction/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/introduction/</guid>
+      <description>What is a Distributed System? Distributed computer systems are collections of computer systems that present themselves as single entities to their users and are characterized by
+ Autonomy: The components of the DS have a certain power or authority to make their own decisions. Cooperation: The components iof a DS are working together towards common goals. Communication: The components of the DS exchange information.  Properties of Distributed Systems  There is no regular structure such that a DS may be connected by heterogenous network technologies and consist of many different processors.</description>
+    </item>
+    
+    <item>
+      <title>Info</title>
+      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/info/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/info/</guid>
+      <description>IN4150 Distributed Algorithms notes at TUDelft (Q2).
+Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55229
+All content and images are based on and retrieved from the slides and the provided lecture notes for the course.</description>
+    </item>
+    
+  </channel>
+</rss>
