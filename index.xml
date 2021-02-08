@@ -12,9 +12,20 @@
     
     
     <item>
+      <title>Introduction</title>
+      <link>https://nicktehrany.github.io/in4391-distributed-systems-notes/introduction/</link>
+      <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4391-distributed-systems-notes/introduction/</guid>
+      <description>What is the difference between parallel computing and distributed computing?
+In parallel computing there typically is one job that is split into multiple tasks, which are then split up to different cores/threads that run simultaneously. Such systems typically are homogenous, the hardware is all the same, i.e. the threads run in the same system on the same CPU.
+In distributed computing there are also multiple tasks, but these can come from one job or possibly multiple jobs.</description>
+    </item>
+    
+    <item>
       <title>IN4391 Distributed Systems</title>
       <link>https://nicktehrany.github.io/in4391-distributed-systems-notes/</link>
-      <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://nicktehrany.github.io/in4391-distributed-systems-notes/</guid>
       <description></description>
@@ -23,12 +34,12 @@
     <item>
       <title>Info</title>
       <link>https://nicktehrany.github.io/in4391-distributed-systems-notes/info/</link>
-      <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://nicktehrany.github.io/in4391-distributed-systems-notes/info/</guid>
       <description>IN4391 Distributed Systems notes at TUDelft (Q3).
 Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55274 Book: Andrew S. Tanenbaum, Maarten Van Steen, Distributed Systems, Principles and Paradigms (2nd Edition), Prentice Hall, 2006.
-All content and images are based on and retrieved from the book and the lecture slides.</description>
+All content and images are based on and retrieved from the book in addition to the content of the lectures.</description>
     </item>
     
     <item>
