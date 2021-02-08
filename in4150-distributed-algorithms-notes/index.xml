@@ -17,7 +17,8 @@
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/smr/</guid>
-      <description></description>
+      <description>The state of a machine is constituted by the contents of the data store (data written by the clients), and for redundancy might want to be replicated across multiple machines, such that if one fails another can immediately take over. In order for all machines to maintain the same state they have to implement linearizability, since they all need to execute the client requests in the exact same order.
+Stopping Failure Tolerant SMR Algorithms Lamport&#39;s Single-Value Paxos Consensus Algorithm The algorithm assumes only stopping failures (may restart later, mut no malicious or bugs(Byzantine fault)) and an asynchronous system.</description>
     </item>
     
     <item>

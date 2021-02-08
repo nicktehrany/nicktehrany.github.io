@@ -39,7 +39,7 @@ In distributed computing there are also multiple tasks, but these can come from 
       <guid>https://nicktehrany.github.io/in4391-distributed-systems-notes/info/</guid>
       <description>IN4391 Distributed Systems notes at TUDelft (Q3).
 Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55274 Book: Andrew S. Tanenbaum, Maarten Van Steen, Distributed Systems, Principles and Paradigms (2nd Edition), Prentice Hall, 2006.
-All content and images are based on and retrieved from the book in addition to the content of the lectures.</description>
+The content is based on the lecture material and summarized by myself, due to licensing no actual content of the course is copied here and any images and phrases used come from the book.</description>
     </item>
     
     <item>
@@ -48,7 +48,8 @@ All content and images are based on and retrieved from the book in addition to t
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/smr/</guid>
-      <description></description>
+      <description>The state of a machine is constituted by the contents of the data store (data written by the clients), and for redundancy might want to be replicated across multiple machines, such that if one fails another can immediately take over. In order for all machines to maintain the same state they have to implement linearizability, since they all need to execute the client requests in the exact same order.
+Stopping Failure Tolerant SMR Algorithms Lamport&#39;s Single-Value Paxos Consensus Algorithm The algorithm assumes only stopping failures (may restart later, mut no malicious or bugs(Byzantine fault)) and an asynchronous system.</description>
     </item>
     
     <item>
