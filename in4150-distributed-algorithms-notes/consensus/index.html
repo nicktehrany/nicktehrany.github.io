@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-23T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-23T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="818">
+<meta itemprop="wordCount" content="857">
 
 
 
@@ -157,9 +157,9 @@
 
 <h3 id="consensus-in-synchronous-systems-with-crash-failures">Consensus in Synchronous Systems with Crash Failures</h3>
 
-<h4 id="an-algorithm-ofr-agreement-in-a-synchronous-system-with-at-most-f-crash-failures">An Algorithm ofr Agreement in a Synchronous System with at most $f$ Crash Failures</h4>
+<h4 id="an-algorithm-for-agreement-in-a-synchronous-system-with-at-most-f-crash-failures">An Algorithm for Agreement in a Synchronous System with at most f Crash Failures</h4>
 
-<p>Every process maintains a set $W$ which initially only contains the value it start with. In each round out of a total of $f+1$ they all broadcasts their sets $W$ and set their set $W$ to the union of all sets received and their own. If after the $f+1$ rounds the set $W$ only contains one element the process decides on that element, otherwise the process decides on the default value.</p>
+<p>Every process maintains a set $W$ which initially only contains the value it starts with. In each round out of a total of $f+1$ they all broadcasts their sets $W$ and set their set $W$ to the union of all sets received and their own. If after the $f+1$ rounds the set $W$ only contains one element the process decides on that element, otherwise the process decides on the default value.</p>
 
 <p>Since there are $f+1$ rounds and at most $f$ processor failures, there is at least one round during which no processor fails. At the end of this round all still active processes will have identical sets $W$ and they will not change anymore.</p>
 
@@ -167,9 +167,9 @@
 
 <h3 id="consensus-in-synchronous-systems-with-byzantine-failures">Consensus in Synchronous Systems with Byzantine Failures</h3>
 
-<p>Algorithms solving the Byzantine-generals problem in synchronous systems with $n$ processes, the maximal number of faulty processes $f$ has to satisfy $f&lt; n/3$.</p>
+<p>Algorithms solving the Byzantine-generals problem in synchronous systems with $n$ processes, the maximal number of faulty processes $f$ has to satisfy $f&lt; n/3$. This is interpreted as the 3 sets that exist, the malicious processes, the majority, and the minority, where there should be at least more than in the other sets. All deterministic byzantine algorithms require a minimum of $f+1$ rounds.</p>
 
-<h4 id="impossibility-for-three-generals">Impossibility for THree Generals</h4>
+<h4 id="impossibility-for-three-generals">Impossibility for Three Generals</h4>
 
 <p><em>Impossibility results</em> are consensus problems where no solutions exits, which is shown by two different scenarios that are indisitinguishable to at least one process and two processes have to reach different conclusions. Among two lieutenants and one commander there is one disloyal one and in the following two scenarios to $L_1$ the they are both the same.</p>
 
@@ -177,11 +177,11 @@
 
 <h4 id="lamportpeaseshostak-algorithm-for-consensus-in-synchronous-systems-without-authentication">Lamport-Pease-Shostak Algorithm for Consensus in Synchronous Systems without Authentication</h4>
 
-<p>The algorithm can tolerate a maximum of $f$ faults. As the bottom case when $f$ equals $0$ the commander sends his value to the lieutenants who simply decide on this value. When $f$ is positive, the commander sends his value to the lieutenants each of whom then executes the algorithm recursively with parameter $f-1$ as themselves as the commander and the others as the lieutenants (except the commander). Each lieutenant decides on the majority value among the value received directly from the commander and the values on which he decides as a lieutenant of the other lieutenants acting as commander. When a process does not receive a message because the sender is faulty it assumes the default value. Messages contain a value and a sequence of lieutenants through which it passed. The recursive part is taking decisions starting at level $(OM(0))$ which is the leaf level, the last value he receives, and since it is just one value he chooses it. The next level $(OM(1))$ he picks the majority of the value at the current level and all the children. THis continues until he reaches the root.</p>
+<p>The algorithm can tolerate a maximum of $f$ faults. As the bottom case when $f$ equals $0$ the commander sends his value to the lieutenants who simply decide on this value. When $f$ is positive, the commander sends his value to the lieutenants each of whom then executes the algorithm recursively with parameter $f-1$ as themselves as the commander and the others as the lieutenants (except the commander). Each lieutenant decides on the majority value among the value received directly from the commander and the values on which he decides as a lieutenant of the other lieutenants acting as commander. When a process does not receive a message because the sender is faulty it assumes the default value. Messages contain a value and a sequence of lieutenants through which it passed. The recursive part is taking decisions starting at level $(OM(0))$ which is the leaf level, the last value he receives, and since it is just one value he chooses it. The next level $(OM(1))$ he picks the majority of the value at the current level and all the children. This continues until he reaches the root.</p>
 
 <p><figure><img src="/images/IN4150/ByzantineAgreement.png" alt="Byzantine Agreement"></figure></p>
 
-<p><strong>Message complexity</strong> is $(n-1)+(n-1)(n-2)+...+(n-1)(n-2)(n-f-1)=On^{f+1}$, since in each round the sending to processes becomes one less as the message is not sent to the acting commander.</p>
+<p><strong>Message complexity</strong> is $(n-1)+(n-1)(n-2)+...+(n-1)(n-2)(n-f-1)=O(n^{f+1})$, since in each round the sending to processes becomes one less as the message is not sent to the acting commander.</p>
 
 <h4 id="lamportpeaseshostak-algorithm-for-consensus-in-synchronous-systems-with-authentication">Lamport-Pease-Shostak Algorithm for Consensus in Synchronous Systems with Authentication</h4>
 
@@ -234,7 +234,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        818 Words
+        857 Words
       </p>
 
       <p>

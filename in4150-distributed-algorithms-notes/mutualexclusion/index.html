@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-18T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-18T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1552">
+<meta itemprop="wordCount" content="1548">
 
 
 
@@ -159,7 +159,7 @@
 
 <h4 id="ricarts-and-agrawalas-mutual-exclusion-algorithm">Ricart's and Agrawala's Mutual Exclusion Algorithm</h4>
 
-<p>Since in the previous algorithm the sending of reply messages while one process is in the CS is superfluous, as the other process needs to wait for the release anyways. In this algorithm a process defers sending a <em>REPLY</em> to a request if it is currently if it currently has a request of its own that is older until its own request has been satisfied, If a process does not have a request of its own it sends a <em>REPLY</em> immediately, and this way <em>RELEASE</em> messages are no longer needed.</p>
+<p>Since in the previous algorithm the sending of reply messages while one process is in the CS is superfluous, as the other process needs to wait for the release anyways. In this algorithm a process defers sending a <em>REPLY</em> to a request if it currently has a request of its own that is older until its own request has been satisfied, If a process does not have a request of its own it sends a <em>REPLY</em> immediately, and this way <em>RELEASE</em> messages are no longer needed.</p>
 
 <p>Message complexity becomes $2(n-1)$.</p>
 
@@ -169,12 +169,12 @@
 
 <ol>
 <li>Every two request sets have a non-empty intersection: $R_i\cap R_n\ne0$</li>
-<li>Evert process is contained in its own request set: $i\in R_i$</li>
+<li>Every process is contained in its own request set: $i\in R_i$</li>
 <li>Every request set has the same number of elements, so $|R_i|=K$ for a positive int $K$</li>
 <li>Every process appears the same number of times in a request set, so $i\in R_j$ for $D$ values of $j$ for some positive int $D$</li>
 </ol>
 
-<p>When a process w ants to enter its CS it multicasts a <em>REQUEST</em> message to the members of its request set $R$. After a process received a <em>GRANT</em> from all processes in $R$, it can enter its CS, and when done it sends a <em>RELEASE</em> to every process in $R$. In order to avoid deadlocks, when a process received a <em>REQUEST</em> it replies with a <em>GRANT</em> if it has not sent the grant to another process. If it had already sent a grant, it checks the timestamp of the request and if it is new, it enqueues it in the request queue $Q$ and sends a <em>POSTPONE</em> message to the requesting process, otherwise it will send an <em>INQUIRE</em> to the process to whom it has sent the grant. A process that receives a <em>GRANT</em> will either wait for grants from every process in $R$ or until it received a <em>POSTPONE</em> (i.e. once it knows if it will be able to enter its CS). If it cannot enter its CS it will send a <em>RELINQUISH</em> to give the grant back, and the receiver will enqueue the request in $R$ (the process where the relinquish came from), and send a <em>GRANT</em> message to the head of request queue. (Note: the request queue is sorted by oldest request first, based on the timestamp and ids as tiebreakers).</p>
+<p>When a process wants to enter its CS it multicasts a <em>REQUEST</em> message to the members of its request set $R$. After a process received a <em>GRANT</em> from all processes in $R$, it can enter its CS, and when done it sends a <em>RELEASE</em> to every process in $R$. In order to avoid deadlocks, when a process received a <em>REQUEST</em> it replies with a <em>GRANT</em> if it has not sent the grant to another process. If it had already sent a grant, it checks the timestamp of the request and if it is new, it enqueues it in the request queue $Q$ and sends a <em>POSTPONE</em> message to the requesting process, otherwise it will send an <em>INQUIRE</em> to the process to whom it has sent the grant. A process that receives a <em>GRANT</em> will either wait for grants from every process in $R$ or until it received a <em>POSTPONE</em> (i.e. once it knows if it will be able to enter its CS). If it cannot enter its CS it will send a <em>RELINQUISH</em> to give the grant back, and the receiver will enqueue the request in $R$ (the process where the relinquish came from), and send a <em>GRANT</em> message to the head of request queue. (Note: the request queue is sorted by oldest request first, based on the timestamp and ids as tiebreakers).</p>
 
 <p>Under light system load the message complexity will be $3(K-1)$ since only <em>REQUEST, GRANT,RELEASE</em> messages will be sent. Under more contention it will be $4(K-1)$ since some additional <em>POSTPONE</em> messages will be sent, and when there is old requests it will be $5(K-1)$ since additionally now <em>RELINQUISH</em> messages will be sent.</p>
 
@@ -190,7 +190,7 @@
 
 <h4 id="suzukis-and-kasamis-broadcastbased-mutual-exclusion-algorithm">Suzuki's and Kasami's Broadcast-Based Mutual Exclusion Algorithm</h4>
 
-<p>A single token exists that is circulated among the processes and the process holding the token can enter its CS. When a process wants to enter its CS it sends a request tot all other processes (including itself). Every process maintains a local queue of requests with the process id as index (e.g. with 3 processes $LN=[0,0,0]$, and increments $LN_i$ when it receives a request from $P_i$). The token also has an array $N$ of all the satisfied requests and same as before increments $N_i$ when the request of $P_i$ has been satisfied. By comparing the elements in the two arrays $N$ and $LN$ it decides who is next to receive the token. In order to avoid starvation the search starts at the index of the own id.</p>
+<p>A single token exists that is circulated among the processes and the process holding the token can enter its CS. When a process wants to enter its CS it sends a request to all other processes (including itself). Every process maintains a local queue of requests with the process id as index (e.g. with 3 processes $LN=[0,0,0]$, and increments $LN_i$ when it receives a request from $P_i$). The token also has an array $N$ of all the satisfied requests and same as before increments $N_i$ when the request of $P_i$ has been satisfied. By comparing the elements in the two arrays $N$ and $LN$ it decides who is next to receive the token. In order to avoid starvation the search starts at the index of the own id.</p>
 
 <p>Message complexity is $n-1$ plus the one message for the token transfer.</p>
 
@@ -221,7 +221,7 @@
 
 <h4 id="raymonds-tokenbased-mutual-exclusion-algorithm-in-a-tree">Raymond's Token-Based Mutual Exclusion Algorithm in a Tree</h4>
 
-<p>This algorithm uses a spanning tree for the processes and assumes this has been created ahead of time, and the root of the tree may change over time.  The process that holds the token is the current root of the tree and can enter its CS. Every process stores its parent in a variable <em>holder</em> (the neighbor on the path to the root). Every process maintains a queue of ids of those neighbors that requested the token. When a process wants to enter the CS it adds itself to its own queue and sends a <em>REQUEST</em> message to its parent. Upon receiving a <em>REQUEST</em> message, the process appends the sender's id to its local queue, if not already done it sets <em>asked=false</em> (this is to not serve multiple requests, i.e. only propagate the first request and then queue everything else without propagating), and sends a request to its parent. The root sends the token the head of its queue (removes the element from the queue) and assigns it to be its parent. A process receiving the token enters the CS if it is at the head of its own queue and otherwise it sends the token to the head of its queue (remove it as well) and sets it to be its parent.</p>
+<p>This algorithm uses a spanning tree for the processes and assumes this has been created ahead of time, and the root of the tree may change over time.  The process that holds the token is the current root of the tree and can enter its CS. Every process stores its parent in a variable <em>holder</em> (the neighbor on the path to the root). Every process maintains a queue of ids of those neighbors that requested the token. When a process wants to enter the CS it adds itself to its own queue and sends a <em>REQUEST</em> message to its parent. Upon receiving a <em>REQUEST</em> message, the process appends the sender's id to its local queue, if not already done it sets <em>asked=false</em> (this is to not serve multiple requests, i.e. only propagate the first request and then queue everything else without propagating), and sends a request to its parent. The root sends the token to the head of its queue (removes the element from the queue) and assigns it to be its parent. A process receiving the token enters the CS if it is at the head of its own queue and otherwise it sends the token to the head of its queue (remove it as well) and sets it to be its parent.</p>
 
 <p>Worst case message complexity is $2(N-1)$ if the tree is just a chain.</p>
 
@@ -264,7 +264,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1552 Words
+        1548 Words
       </p>
 
       <p>

@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-14T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="525">
+<meta itemprop="wordCount" content="546">
 
 
 
@@ -151,7 +151,8 @@
 
 <p>A message order is <strong>causal</strong> when for every two messages $m_1$ and $m_2$, if $m(m_1)\rightarrow m(m_2)$ then $d_i(d_1)\rightarrow d_i(d_2)$ for all $i\in Dest(m_1)\cap Dest(m_2)$.</p>
 
-<p>A message order is <strong>total</strong> when for every two messages $m_1$ and $m_2$, $d_i(m_1)\rightarrow d_i(m_2)$ iff $d_j(m_1)\rightarrow d_j(m_2)$ for all $i,j \in Dest(m_1) \cap Dest(m_1)$.</p>
+<p>A message order is <strong>total</strong> when for every two messages $m_1$ and $m_2$, $d_i(m_1)\rightarrow d_i(m_2)$ iff $d_j(m_1)\rightarrow d_j(m_2)$ for all $i,j \in Dest(m_1) \cap Dest(m_1)$. No matter what ordering messages have (FIFO, causal) they need to be delivered in the exact same order
+to all processes.</p>
 
 <p>Therefore causal message ordering implies FIFO message ordering among separate channels, but total ordering does not imply causal ordering.</p>
 
@@ -161,7 +162,7 @@
 
 <h3 id="schiperegglisandoz-algorithm-for-causal-message-ordering-of-pointtopoint-messages">Schiper-Eggli-Sandoz Algorithm for Causal Message Ordering of Point-to-Point Messages</h3>
 
-<p>Processes keep vector logical clocks initialized to all zeroes for assigning timestamps to all events in the system, and every process maintains an initially empty buffer $S$ of ordered pairs of a process id and a vector timestamp. Whenever a process sends a message it sends the contents of the buffer along (basically sending its knowledge of the system). The receiving process can then check if it is up to date with the knowledge of the sender by seeing if its own id is in the buffer sent in the message. If its id sis not there it is not missing any messages and can deliver the message, and it will also update its own knowledge about the other processes by taking the maximum of its own buffer $S$ and the one in the message. If its id is in the message buffer, it compares its own vector clock to the buffer and if it is smaller, it is missing messages and has to buffer the message. After receiving a new message it can then check the buffer to see if now it can deliver any buffered message. For each receive, send, deliver event the local vector clock is also incremented.</p>
+<p>Processes keep vector logical clocks initialized to all zeroes for assigning timestamps to all events in the system, and every process maintains an initially empty buffer $S$ of ordered pairs of a process id and a vector timestamp. Whenever a process sends a message it sends the contents of the buffer along (basically sending its knowledge of the system). The receiving process can then check if it is up to date with the knowledge of the sender by seeing if its own id is in the buffer sent in the message. If its id is not there it is not missing any messages and can deliver the message, and it will also update its own knowledge about the other processes by taking the maximum of its own buffer $S$ and the one in the message. If its id is in the message buffer, it compares its own vector clock to the buffer and if it is smaller, it is missing messages and has to buffer the message. After receiving a new message it can then check the buffer to see if now it can deliver any buffered message. For each receive, send, deliver event the local vector clock is also incremented.</p>
 
 <h3 id="total-ordering-of-broadcast-messages">Total Ordering of Broadcast Messages</h3>
 
@@ -208,7 +209,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        525 Words
+        546 Words
       </p>
 
       <p>

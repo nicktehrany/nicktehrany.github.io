@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-20T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-20T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1482">
+<meta itemprop="wordCount" content="1486">
 
 
 
@@ -145,19 +145,19 @@
       
       
       <div class="post-content">
-        <p>It may sometimes be necessary in a DS to assign a certain process with a higher privilege, for which election is used. If each process has a unique integer id, the system isa said to be <em>non-anonymous</em> and <em>anonymous</em> otherwise. In anonymous rings no deterministic solution exists to election, as processes need to randomly generate some id value (e.g. 64 bit number). Algorithms that work in a ring of an unknown size are called <em>uniform</em>. <em>Comparison based</em> algorithms rely on the comparison of ids, hence they can only send and receive messages and compare process ids. The message complexity of comparison based algorithms in rings is $\Omega(n\text{ log }n)$.</p>
+        <p>It may sometimes be necessary in a DS to assign a certain process with a higher privilege, for which election is used. If each process has a unique integer id, the system is said to be <em>non-anonymous</em> and <em>anonymous</em> otherwise. In anonymous rings no deterministic solution exists to election, as processes need to randomly generate some id value (e.g. 64 bit number). Algorithms that work in a ring of an unknown size are called <em>uniform</em>. <em>Comparison based</em> algorithms rely on the comparison of ids, hence they can only send and receive messages and compare process ids. The message complexity of comparison based algorithms in rings is $\Omega(n\text{ log }n)$.</p>
 
 <h3 id="bidirectional-rings">Bidirectional Rings</h3>
 
 <h4 id="hirschbergs-and-sinclairs-election-algorithm-in-bidirectional-rings">Hirschberg's and Sinclair's Election Algorithm in Bidirectional Rings</h4>
 
-<p>A process tries to establish if its id is larger than that of its neighbors. In the first round it sends a <em>PROBE</em>  with its id and a hope counter (to know when to stop forwarding the message) to both its neighbors (both directions) and if it is larger the neighbors send an <em>OK</em> if the hop counter is 0 otherwise it decrements the hop counter and forwards it, otherwise if its id is larger than that in the message it discards the message. In the next round, if the process received an <em>OK</em> from both its neighbors it continues by checking its next 4 neighbors (2 in each direction) by sending its own id. In the next round, if it received <em>OK</em> from the neighbors it sends its id to 8 of its neighbors (4 in each direction) and does the same. Each round the number of neighbors is increased by double (2x). If the ring size is known the processor knows it has been elected when it received <em>OK</em> in round when the probe messages meet at the other side of the ring, and if the size is not known it knows it has been elected when it receives its own <em>PROBE</em> from the wrong side.</p>
+<p>A process tries to establish if its id is larger than that of its neighbors. In the first round it sends a <em>PROBE</em>  with its id and a hop counter (to know when to stop forwarding the message) to both its neighbors (both directions) and if it is larger the neighbors send an <em>OK</em> if the hop counter is 0 otherwise it decrements the hop counter and forwards it, otherwise if its id is larger than that in the message it discards the message. In the next round, if the process received an <em>OK</em> from both its neighbors it continues by checking its next 4 neighbors (2 in each direction) by sending its own id. In the next round, if it received <em>OK</em> from the neighbors it sends its id to 8 of its neighbors (4 in each direction) and does the same. Each round the number of neighbors is increased by double (2x). If the ring size is known the processor knows it has been elected when it received <em>OK</em> in round when the probe messages meet at the other side of the ring, and if the size is not known it knows it has been elected when it receives its own <em>PROBE</em> from the wrong side.</p>
 
 <p><strong>Message complexity</strong> is $O(n\text{ log }n)$, since $n$ messages will be sent and in each round at least half of the processes stop, hence the $\text{log }n$ part.</p>
 
 <h4 id="enhanced-version">Enhanced Version</h4>
 
-<p>As in the comparisons still happen if a process already knows it will now be elected, this algorithm cuts down on this extra by assigning states to processes. If a process detects that ts own id is larger than those of its neighbors it remains active and initiates the next phase, otherwise it becomes passive. In subsequent rounds only the active processes execute the same algorithm in the <em>virtual</em> ring of still active processes (passive ones simply relay messages). When a process receives its own id it has been elected.</p>
+<p>As the comparisons still happen if a process already knows it will not be elected, this algorithm cuts down on this extra by assigning states to processes. If a process detects that its own id is larger than those of its neighbors it remains active and initiates the next phase, otherwise it becomes passive. In subsequent rounds only the active processes execute the same algorithm in the <em>virtual</em> ring of still active processes (passive ones simply relay messages). When a process receives its own id it has been elected.</p>
 
 <h3 id="unidirectional-rings">Unidirectional Rings</h3>
 
@@ -185,9 +185,9 @@
 
 <h4 id="afeks-and-gafinis-election-algorithm-in-synchronous-complete-networks">Afek's and Gafini's Election Algorithm in Synchronous Complete Networks</h4>
 
-<p>In this algorithm a node that wants to b e elected sends its id repeatedly to ever larger different subsets of other nodes, which only return acks if the id received exceeds the largest id in the system that they know about. When a candidate does not receive enough acks, not equal to the number of nodes in its subset, it ceases to be a candidate, otherwise if it received all acks for its subset it is elected. The initial subset is size 1 and every round the subset is doubled. Nodes keep track of other nodes they have sent their id to in order to not send them the id again if they are in the subset.</p>
+<p>In this algorithm a node that wants to be elected sends its id repeatedly to ever larger different subsets of other nodes, which only return acks if the id received exceeds the largest id in the system that they know about. When a candidate does not receive enough acks, not equal to the number of nodes in its subset, it ceases to be a candidate, otherwise if it received all acks for its subset it is elected. The initial subset is size 1 and every round the subset is doubled. Nodes keep track of other nodes they have sent their id to in order to not send them the id again if they are in the subset.</p>
 
-<p>Any process can spontaneously start the algorithm by creating a <em>candidate</em> process and an <em>ordinary</em> process, other nodes that did not start the algorithm just start an <em>ordinary</em> process. The <em>candidate</em> process keeps track of their <em>level</em> which is the round number since they started. Candidates send messages containing the level and their own id to the nodes in the subset. Processes order the messages they received in every round based on the level (higher is better and level first) and then id as tiebreaker. If the maximum of the candidate ids is larger than the own id of the process it sends an <em>ACK</em> to only that process. Then it is said that the ordinary process is <em>captured</em> by the candidate process (since it assumes its id), also called the <em>owner</em>. Ordinary processes keep track of their level which is incremented by 1 in every round, or is set to the level of a received message, if larger. The node elected is the node with the largest id (among all candidates) and was earlier to start the algorithm.</p>
+<p>Any process can spontaneously start the algorithm by creating a <em>candidate</em> process and an <em>ordinary</em> process, other nodes that did not start the algorithm just start an <em>ordinary</em> process. The <em>candidate</em> process keeps track of their <em>level</em> which is the round number since they started. Candidates send messages containing the level (the round number since they started) and their own id to the nodes in the subset. Processes order the messages they received in every round based on the level (higher is better and level first) and then id as tiebreaker. If the maximum of the candidate ids is larger than the own id of the process it sends an <em>ACK</em> to only that process. Then it is said that the ordinary process is <em>captured</em> by the candidate process (since it assumes its id), also called the <em>owner</em>. Ordinary processes keep track of their level which is incremented by 1 in every round, or is set to the level of a received message, if larger. The node elected is the node with the largest id (among all candidates) and was earlier to start the algorithm.</p>
 
 <p>Maximum number of rounds is $\text{log }n$ since after this the winner will have captured all nodes. Maximum number of messages is $2n*\text{ log }n$, since every node sends at most $n*\text{ log }n$ acks (one every round).</p>
 
@@ -201,7 +201,7 @@
 
 <h4 id="general-networks">General Networks</h4>
 
-<p>Leader election in general networks by one process initiating it and creating a spanning tree on which it propagates its own id down. Nodes only propagate the message further if the id is larger than their own, and leave nodes will send a <em>SUCCESS</em> message up the tree. When the initiator receives <em>SUCCESS</em> messages on all its links it has been elected, if not some other process can then start their own initiation procedure.</p>
+<p>Leader election in general networks by one process initiating it and creating a spanning tree on which it propagates its own id down. Nodes only propagate the message further if the id is larger than their own, and leaf nodes will send a <em>SUCCESS</em> message up the tree. When the initiator receives <em>SUCCESS</em> messages on all its links it has been elected, if not some other process can then start their own initiation procedure.</p>
 
         <script>
   MathJax = {
@@ -242,7 +242,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1482 Words
+        1486 Words
       </p>
 
       <p>

@@ -176,7 +176,7 @@ occurrence.</p>
 <p>Scalar or Lamport clocks cannot characterize the HB relation, hence partial order can be introduced with 1-dimensional vector clocks $C$. Vector clocks are constructed by having each process $P_i$ maintain an integer counter for each other process, with initial value 0 and using it as follows</p>
 
 <ol>
-<li>If $a\in E$ and if $aa$ is not a message receive event, then $P_i$ first increments $C_i$ by $1$ and sets $C(a)$ equal to the new value of $C_I$.</li>
+<li>If $a\in E$ and if $a$ is not a message receive event, then $P_i$ first increments $C_i$ by $1$ and sets $C(a)$ equal to the new value of $C_I$.</li>
 <li>If $a\in E_i$ is the event of $P_i$ sending a message $m$ and $b\in E_j$ is the event in $P_j$ receiving message $m$ for some $i,j$ with $i\ne j$, then $P_i$ sends $C(a)$ along with message $m$ to $P_j$. On receipt, $P_j$ assigns $C_j$ the value $max(C_j+1,C(a)+1)$ and then sets $C(b)$ to the new value of $C_j$.</li>
 </ol>
 

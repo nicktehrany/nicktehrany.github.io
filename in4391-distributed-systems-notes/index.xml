@@ -6,10 +6,20 @@
     <description>Recent content in IN4391 Distributed Systems Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/in4391-distributed-systems-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Functional Requirements</title>
+      <link>https://nicktehrany.github.io/in4391-distributed-systems-notes/functionalrequirements/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4391-distributed-systems-notes/functionalrequirements/</guid>
+      <description>Remote Procedure Call (RPC) RPC allows one program to call a procedure (subroutine or method) in another address space than its own, typically on another system, without the programmer explicitly implementing this remote interaction but instead it is the same as if a local process would invoke some method, except now it comes from a non-local process.
+Message Bus Since distributed systems rely on message passing between different systems for sharing of data, the message bus enables this with the addition of hotplugging systems to this at any point in time without affecting any other system.</description>
+    </item>
     
     <item>
       <title>Introduction</title>
