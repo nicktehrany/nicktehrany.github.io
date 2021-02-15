@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-20T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-20T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1486">
+<meta itemprop="wordCount" content="1497">
 
 
 
@@ -151,7 +151,7 @@
 
 <h4 id="hirschbergs-and-sinclairs-election-algorithm-in-bidirectional-rings">Hirschberg's and Sinclair's Election Algorithm in Bidirectional Rings</h4>
 
-<p>A process tries to establish if its id is larger than that of its neighbors. In the first round it sends a <em>PROBE</em>  with its id and a hop counter (to know when to stop forwarding the message) to both its neighbors (both directions) and if it is larger the neighbors send an <em>OK</em> if the hop counter is 0 otherwise it decrements the hop counter and forwards it, otherwise if its id is larger than that in the message it discards the message. In the next round, if the process received an <em>OK</em> from both its neighbors it continues by checking its next 4 neighbors (2 in each direction) by sending its own id. In the next round, if it received <em>OK</em> from the neighbors it sends its id to 8 of its neighbors (4 in each direction) and does the same. Each round the number of neighbors is increased by double (2x). If the ring size is known the processor knows it has been elected when it received <em>OK</em> in round when the probe messages meet at the other side of the ring, and if the size is not known it knows it has been elected when it receives its own <em>PROBE</em> from the wrong side.</p>
+<p>A process tries to establish if its id is larger than that of its neighbors. In the first round it sends a <em>PROBE</em>  with its id and a hop counter (to know when to stop forwarding the message) to both its neighbors (both directions) and if it is larger the neighbors send an <em>OK</em> if the hop counter is 0 otherwise it decrements the hop counter and forwards it, otherwise if its id is larger than that in the message it discards the message. In the next round, if the process received an <em>OK</em> from both its neighbors it continues by checking its next larger neighbors (with $k$ starting at $0$ in the first round and then $2^k+1$ in each direction) by sending its own id. In the next round, if it received <em>OK</em> from the neighbors it sends its id to 8 of its neighbors (4 in each direction) and does the same. Each round the number of neighbors is increased by double (2x). If the ring size is known the processor knows it has been elected when it received <em>OK</em> in round when the probe messages meet at the other side of the ring, and if the size is not known it knows it has been elected when it receives its own <em>PROBE</em> from the wrong side.</p>
 
 <p><strong>Message complexity</strong> is $O(n\text{ log }n)$, since $n$ messages will be sent and in each round at least half of the processes stop, hence the $\text{log }n$ part.</p>
 
@@ -242,7 +242,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1486 Words
+        1497 Words
       </p>
 
       <p>

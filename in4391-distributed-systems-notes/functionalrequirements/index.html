@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-02-12T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-02-12T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="345">
+<meta itemprop="wordCount" content="381">
 
 
 
@@ -145,7 +145,9 @@
       
       
       <div class="post-content">
-        <h3 id="remote-procedure-call-rpc">Remote Procedure Call (RPC)</h3>
+        <h2 id="reading-material-before-lecture">Reading Material Before Lecture</h2>
+
+<h3 id="remote-procedure-call-rpc">Remote Procedure Call (RPC)</h3>
 
 <p>RPC allows one program to call a procedure (subroutine or method) in another address space than its own, typically on
 another system, without the programmer explicitly implementing this remote interaction but instead it is the same as
@@ -166,6 +168,9 @@ timestamps can be used to timestamp events with a simple and lightweight algorit
 <p>Vector clocks are a more advanced algorithm for generating causal ordering (adhering to the HB relation) in which each
 message contains the state of the logical clock of the sender. This is an array the size of the number of processes (an
 index for each process) of clocks for the state of each process.</p>
+
+<p>The difference between Lamport and Vector clocks is that Lamport is only a single value (single clock) whereas Vector
+is a collection of clocks of all processes in the system.</p>
 
 <h3 id="flat-naming">Flat Naming</h3>
 
@@ -188,6 +193,8 @@ top-level domain nodes.</p>
 <p>LDAP is a directory service similar to flat naming in order to provide lightweight directory naming by associating a
 record in a directory entry with an associated attribute such that each record is represented as a (attribute, value)
 pair.</p>
+
+<h3 id="lecture-notes">Lecture Notes</h3>
 
         <script>
   MathJax = {
@@ -228,7 +235,7 @@ pair.</p>
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        345 Words
+        381 Words
       </p>
 
       <p>

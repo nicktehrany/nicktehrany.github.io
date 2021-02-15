@@ -94,7 +94,7 @@ Assertion-Based Mutual Exclusion A process has to request permission from all or
       
       <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/deadlockdetection/</guid>
       <description>Models for Deadlock A (directed) Wait-For-Graph (WFG) can be maintained with the processes as nodes and with an edge from process $P$ to process $Q$ when $Q$ is holding a resource that $P$ is requesting.
-In the resource mode resources are associated with a process (e.g. $R_a$) and processes can then request said resource. When a process $P$ wants access to a resource $a$ from $R_a$, an edge is created from $P$ to $R_a$, and when the resource is granted, the edge is removed and replaced by an edge from $R_a$ to $P$ indicating that $R_a$ is waiting for $P$ to release the resource.</description>
+In the resource model resources are associated with a process (e.g. $R_a$) and processes can then request said resource. When a process $P$ wants access to a resource $a$ from $R_a$, an edge is created from $P$ to $R_a$, and when the resource is granted, the edge is removed and replaced by an edge from $R_a$ to $P$ indicating that $R_a$ is waiting for $P$ to release the resource.</description>
     </item>
     
     <item>

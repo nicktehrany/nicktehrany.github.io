@@ -17,7 +17,7 @@
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://nicktehrany.github.io/in4391-distributed-systems-notes/functionalrequirements/</guid>
-      <description>Remote Procedure Call (RPC) RPC allows one program to call a procedure (subroutine or method) in another address space than its own, typically on another system, without the programmer explicitly implementing this remote interaction but instead it is the same as if a local process would invoke some method, except now it comes from a non-local process.
+      <description>Reading Material Before Lecture Remote Procedure Call (RPC) RPC allows one program to call a procedure (subroutine or method) in another address space than its own, typically on another system, without the programmer explicitly implementing this remote interaction but instead it is the same as if a local process would invoke some method, except now it comes from a non-local process.
 Message Bus Since distributed systems rely on message passing between different systems for sharing of data, the message bus enables this with the addition of hotplugging systems to this at any point in time without affecting any other system.</description>
     </item>
     

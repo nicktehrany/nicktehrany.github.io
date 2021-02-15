@@ -171,7 +171,7 @@
 
 <p>There is a window size $w$ (represents the number of messages that have been sent but not yet received), and the sender maintains <em>ns</em> and <em>na</em> for the number of the next message to be sent and for the number of the next message to be acknowledged. The receiver has a counter <em>nr</em> for the number of the next message to be received.</p>
 
-<p>When the receiver sends an acknowledgment it sends its current value of <em>nr</em> which means that it acknowledges the correct recept of messages up to but not including <em>nr</em>. Upon receiving an ack, the receiver will set its value of <em>na</em> equal to the received value if the received value is larger than <em>na</em>. Upon a time out in the sender it resends any message sent but not yet acked. The algorithm should stabilize to</p>
+<p>When the receiver sends an acknowledgment it sends its current value of <em>nr</em> which means that it acknowledges the correct receipt of messages up to but not including <em>nr</em>. Upon receiving an ack, the receiver will set its value of <em>na</em> equal to the received value if the received value is larger than <em>na</em>. Upon a time out in the sender it resends any message sent but not yet acked. The algorithm should stabilize to</p>
 
 <p><span  class="math">\[((na\le nr) \text{ and } (nr \le ns)\text{ and }(ns\le na+w)\]</span></p>
 
