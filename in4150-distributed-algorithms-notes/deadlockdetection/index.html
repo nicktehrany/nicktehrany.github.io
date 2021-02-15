@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-01-17T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-17T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1040">
+<meta itemprop="wordCount" content="1072">
 
 
 
@@ -165,7 +165,7 @@
 
 <p>Every blocked process has a <em>dependent set</em> of processes that contains the process for which it is waiting to receive a message, and upon receiving a message from any process in the dependent set, it becomes active again.</p>
 
-<p>When a process suspects to be deadlocked, it sends a <em>QUERY</em> to all processes in its dependant. Blocked processes will check the sequence number of the query, and if it has not seen it yet, propagate these messages to their dependent sets (generating a tree structure). Processes send a <em>REPLY</em> message back to their engager process (from whom they received the query), once they have received a <em>REPLY</em> from all the processes they themselves engaged (keep a counter of sent messages and received replies). A process is deadlocked if for every <em>QUERY</em> message it sent it receives a <em>REPLY</em>.</p>
+<p>When a process suspects to be deadlocked, it sends a <em>QUERY</em> to all processes in its dependant. Blocked processes will check the sequence number of the query, and if it has not seen it yet, propagate these messages to their dependent sets (generating a tree structure). Processes send a <em>REPLY</em> message back to their engager process (from whom they received the query), once they have received a <em>REPLY</em> from all the processes they themselves engaged (keep a counter of sent messages and received replies). A <em>REPLY</em> is only sent when the process is still blocked by the same query (it has not become active by getting a response from someone else, then there is no deadlock) A process is deadlocked if for every <em>QUERY</em> message it sent it receives a <em>REPLY</em>.</p>
 
 <h3 id="bracha-and-toueg-deadlock-detection-for-static-systems-with-instantaneous-communication">Bracha and Toueg Deadlock Detection for Static Systems with Instantaneous Communication</h3>
 
@@ -233,7 +233,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1040 Words
+        1072 Words
       </p>
 
       <p>
