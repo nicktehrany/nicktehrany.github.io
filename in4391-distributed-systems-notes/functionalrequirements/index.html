@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-02-12T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-02-12T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="381">
+<meta itemprop="wordCount" content="931">
 
 
 
@@ -196,6 +196,74 @@ pair.</p>
 
 <h3 id="lecture-notes">Lecture Notes</h3>
 
+<h4 id="raft">Raft</h4>
+
+<p><strong>Safety property:</strong> when there are no byzantine failures there should never be an incorrect result.<br>
+<strong>Availability:</strong>  $n/2+1$ servers required to produce valid result.<br>
+<strong>No clocks:</strong> Nodes do not depend on clocks.<br>
+<strong>Stragglers:</strong> It can handle stragglers (nodes making process very slowly) if $N/2+1$ servers vote in the end.</p>
+
+<p>Leaders are elected for each term and each leader keeps track of the current term number, if election failed the term
+has no leader.</p>
+
+<h4 id="replication">Replication</h4>
+
+<p><strong>Advantages:</strong></p>
+
+<ul>
+<li>Reliability/Redundancy</li>
+<li>geographical replication and more nodes to handle client requests</li>
+</ul>
+
+<p><strong>Disadvantages:</strong></p>
+
+<ul>
+<li>Lower performance due to the need to maintain consistency across all servers (CAP theorem, atomic operations difficult
+on many servers)</li>
+<li>Consistency also uses up resources (to manage consistency, i.e. SMR protocols)</li>
+</ul>
+
+<p>Amdahl's Law that is given as</p>
+
+<p><span  class="math">\[S(n)=\frac{1}{(1-P)+\frac{P}{n}}\]</span></p>
+
+<p>stating that speedup of an application is a function of how parallelizable the application is, throwing unlimited resources
+at it will at some point not lead to any performance gains.</p>
+
+<p>Replication systems have <em>Leaders</em> or <em>Masters</em>, which are the servers that take the client requests, and <em>Followers</em>, <em>slaves</em>,
+or <em>Replicas</em> that provide the read only data access. Systems can have a single leader (master-slave configuration), multiple
+leaders (master-master configuration) opr be leaderless replication where all nodes are the same.</p>
+
+<p>When the system is synchronous the writes need to be configured by a specified number of slaves before it can be considered
+successful. In an asynchronous system the master can classify it as successful immediately and the slaves apply changes
+when they are ready.</p>
+
+<p><strong>Push-based</strong> systems are where servers provide the modifications to the slaves, whereas <strong>pull-based</strong> is where clients
+are asking for updates. <strong>Leases</strong> allow for some time the server will send updates but once the lease expires the
+client will have to start pulling or renew the lease to get the updates from the master. Leases can be age-based, renewal-
+frequency based (clients that request more often get longer leases), or overhead based (busy servers give shorter leases).</p>
+
+<h4 id="consistency">Consistency</h4>
+
+<p><strong>A</strong>tomicity: Updates are either done full or not at all.<br>
+<strong>C</strong>onsistency: The system will always be in a valid state, transitions are only from valid to valid.<br>
+<strong>I</strong>solation: Transactions do not interfere with each other.<br>
+<strong>D</strong>urability: Modifications of successfully commited transactions are never lost.</p>
+
+<p>Two schedules are <strong>Equivalence schedules</strong> if they work on the same transactions and the conflict pairs are ordered in
+the same way. A schedule is then considered to be correct if it is equivalent to a serializable schedule and hence is
+also serializable. Serializabily differs from linearizability in that it works on multiple objects in arbitrary order
+while linearizability works on a single object in real time order.</p>
+
+<p>This can be achieved by using <strong>Two-Phase Locking</strong> which means that in order to participate in a transaction it needs
+to acquire all necessary locks for that object (rule 1), and once a transaction releases a lock it cannot acquire any
+more locks (rule 2).</p>
+
+<p>In a distributed system this can be achieved with <strong>Two-Phase Commit (2PC)</strong> where the coordinator sends a <em>VOTE_REQ</em> to
+all slaves, and they respond accordingly <em>VOTE_COMMIT</em> or <em>VOTE_ABORT</em> depending on if the slave succeeded with the transaction,
+and if the coordinator receives a single abort he sends a <em>GLOBAL_ABORT</em> to all slaves to abort everything, otherwise if
+he receives no abort he sends a <em>GLOBAL_COMMIT</em> to all the slaves.</p>
+
         <script>
   MathJax = {
     tex: {
@@ -235,7 +303,7 @@ pair.</p>
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        381 Words
+        931 Words
       </p>
 
       <p>
