@@ -6,10 +6,20 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Resource Management and Scheduling</title>
+      <link>https://nicktehrany.github.io/in4391-distributed-systems-notes/management/</link>
+      <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/in4391-distributed-systems-notes/management/</guid>
+      <description>Reading Material Before Lecture Google Borg Google Borg is a management system for clusters that run several hundreds of thousands of jobs from many different applications, on many different clusters with each having several thousands machines.
+Resource Management in Cloud Clouds contain large quantities of shared resources that provide provide these to large pools of data and compting with a variety of different interfaces. An important part of cloud computing is resource management, as there only are finite resources available.</description>
+    </item>
     
     <item>
       <title>Functional Requirements</title>
@@ -447,7 +457,7 @@ git clone https://github.com/nicktehrany/textemp  Source the textemp script in y
       
       <guid>https://nicktehrany.github.io/active-projects/dotfiles/</guid>
       <description>My dotfiles repository, which is more of a continuous project likely to never be done, for managing all my config files for vim, zsh, tmux, git, other dotfiles and utilities I use.
-Installation git clone https://github.com/nicktehrany/dotfiles cd dotfiles sudo ./install  Check the .packages.conf.yaml for packages that will be installed, if not already installed. All existing links or config files will be overwritten! (Check .install.conf.yaml for all links)</description>
+Installation git clone https://github.com/nicktehrany/dotfiles cd dotfiles sudo ./install  Check the .travis.yml for packages that will be installed, if not already installed. All existing links or config files will be overwritten! (Check .install.conf.yaml for all links)</description>
     </item>
     
   </channel>
