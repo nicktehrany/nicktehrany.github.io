@@ -194,9 +194,9 @@ top-level domain nodes.</p>
 record in a directory entry with an associated attribute such that each record is represented as a (attribute, value)
 pair.</p>
 
-<h3 id="lecture-notes">Lecture Notes</h3>
+<h2 id="lecture-notes">Lecture Notes</h2>
 
-<h4 id="raft">Raft</h4>
+<h3 id="raft">Raft</h3>
 
 <p><strong>Safety property:</strong> when there are no byzantine failures there should never be an incorrect result.<br>
 <strong>Availability:</strong>  $n/2+1$ servers required to produce valid result.<br>
@@ -206,7 +206,7 @@ pair.</p>
 <p>Leaders are elected for each term and each leader keeps track of the current term number, if election failed the term
 has no leader.</p>
 
-<h4 id="replication">Replication</h4>
+<h3 id="replication">Replication</h3>
 
 <p><strong>Advantages:</strong></p>
 
@@ -243,7 +243,7 @@ are asking for updates. <strong>Leases</strong> allow for some time the server w
 client will have to start pulling or renew the lease to get the updates from the master. Leases can be age-based, renewal-
 frequency based (clients that request more often get longer leases), or overhead based (busy servers give shorter leases).</p>
 
-<h4 id="consistency">Consistency</h4>
+<h3 id="consistency">Consistency</h3>
 
 <p><strong>A</strong>tomicity: Updates are either done full or not at all.<br>
 <strong>C</strong>onsistency: The system will always be in a valid state, transitions are only from valid to valid.<br>

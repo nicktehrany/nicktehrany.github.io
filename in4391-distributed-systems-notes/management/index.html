@@ -39,7 +39,7 @@
 
 <meta itemprop="datePublished" content="2021-02-22T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-02-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="153">
+<meta itemprop="wordCount" content="542">
 
 
 
@@ -169,6 +169,52 @@ it is open source.</p>
 hardware and find the tradeoff between performance and energy efficiency, in order to not use enormous amounts of energy,
 while still meeting the quality of service (QoS) requirements.</p>
 
+<h2 id="lecture-notes">Lecture Notes</h2>
+
+<h3 id="scheduling">Scheduling</h3>
+
+<p>The goal of scheduling is to achieve some form of mutual agreement between the resource providers (operators) and
+consumers (e.g clients). It also aims to maximize the resource utilization and hence will schedule workloads in a
+certain way.</p>
+
+<p>The scheduling <strong>mechanism</strong> explains what to do, (ie.e use this policy for making a decision), and the scheduling
+<strong>policy</strong> explains how to do something (schedule with FIFO or randomly).</p>
+
+<p>There are many different scheduling policies such as FIFO (does not always achieve minimal avg RT: average return time
+that is the addition of the return times of all tasks divided by the number of tasks), or shortest job first (suffers
+from starvation if a continuous stream of short jobs get scheduled when a long job is waiting to be run), or more
+advanced policies such as time slicing, which is used in OS, gives jobs a certain time slice and interrupts them once
+the time is done. Time slices can be assigned in round robin fashion. There are other techniques such as proportional
+share (jobs get resources proportional to what they require). Time slicing is efficient in OS but not for cluster
+scheduling.</p>
+
+<p>The scheduler has the jobs to manage the environment, goals and other metrics for optimization, and based on the information
+schedule incoming workloads efficiently. Typically schedulers consumer 5% of the cycles in datacenters (relatively low
+overhead considering the overhead of more advanced optimizations).</p>
+
+<h3 id="portfolio-scheduling">Portfolio Scheduling</h3>
+
+<p>Since datacenters cannot work without a scheduler, here is proposed to use a set of schedulers, and apply some scheduler
+for some period, analyze its performance, and then use the next scheduler and repeat this.</p>
+
+<h3 id="types-of-jobs-in-ds">Types of Jobs in DS</h3>
+
+<ul>
+<li>Parallel jobs: high-performance computing</li>
+<li>Bags-of-tasks: bag tasks together (e.g. parameter sweep computing (PSC)), high throughput computing</li>
+<li>Workflows: MapReduce, event streaming and applying filters</li>
+</ul>
+
+<h3 id="architecture-for-distributed-management">Architecture for Distributed Management</h3>
+
+<p>The goal is to execute the full workloads while ensuring the service level agreement (SLA) and objectives (SLO) are met.
+The issues come from how resources are allocated, the complexity of the software that manages the architecture, load
+imbalance of different machines being used much more than others, having central points (single point of failure), and
+having the ability to scale significantly.</p>
+
+<p>Single Cluster Architecture: Uses a single headnode and several nodes to which the headnode then assigns jobs (master
+and worker nodes).</p>
+
         <script>
   MathJax = {
     tex: {
@@ -208,7 +254,7 @@ while still meeting the quality of service (QoS) requirements.</p>
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        153 Words
+        542 Words
       </p>
 
       <p>
