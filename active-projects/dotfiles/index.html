@@ -32,14 +32,12 @@
 
 
 
-
 <meta itemprop="name" content="Dotfiles">
 <meta itemprop="description" content="Dotfiles">
-
-
-<meta itemprop="datePublished" content="2020-01-11T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-01-11T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2020-01-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-01-11T00:00:00+00:00" />
 <meta itemprop="wordCount" content="274">
+<meta itemprop="image" content="https://nicktehrany.github.io"/>
 
 
 
@@ -58,10 +56,9 @@
 <meta property="og:description" content="Dotfiles" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nicktehrany.github.io/active-projects/dotfiles/" />
-
-<meta property="og:image" content="https://nicktehrany.github.io" />
-<meta property="article:published_time" content="2020-01-11T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2020-01-11T00:00:00&#43;00:00"/><meta property="og:site_name" content="Nick Tehrany" />
+<meta property="og:image" content="https://nicktehrany.github.io"/>
+<meta property="article:published_time" content="2020-01-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-11T00:00:00+00:00" /><meta property="og:site_name" content="Nick Tehrany" />
 
 
 
@@ -103,7 +100,7 @@
         <span class="header__right">
             
                 <nav class="menu">
-    <ul class="menu__inner"><li><a href="/projects">Projects</a></li><li><a href="/publications">Publications</a></li><li><a href="/thesis">Thesis</a></li><li><a href="/notes">Uni Notes</a></li>
+    <ul class="menu__inner"><li><a href="/projects">Projects</a></li><li><a href="/publications">Publications</a></li><li><a href="/thesis">Theses</a></li><li><a href="/notes">Uni Notes</a></li>
     </ul>
 </nav>
 
@@ -143,53 +140,32 @@
             
 
             <div class="post-content">
-                
-
-<p><a href="https://travis-ci.com/nicktehrany/dotfiles"><img src="https://travis-ci.com/nicktehrany/dotfiles.svg?branch=master" alt="Build Status" /></a></p>
-
+                <p><a href="https://travis-ci.com/nicktehrany/dotfiles"><img src="https://travis-ci.com/nicktehrany/dotfiles.svg?branch=master" alt="Build Status"></a></p>
 <p>My <a href="https://github.com/nicktehrany/dotfiles">dotfiles</a> repository, which is more of a continuous project likely to never be done,
 for managing all my config files for vim, zsh, tmux, git, other dotfiles and utilities I use.</p>
-
 <h2 id="installation">Installation</h2>
-
-<pre><code class="language-shell">git clone https://github.com/nicktehrany/dotfiles
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/nicktehrany/dotfiles
 cd dotfiles
 sudo ./install
-</code></pre>
-
-<p>Check the <a href="https://github.com/nicktehrany/dotfiles/blob/master/.travis.yml">.travis.yml</a> for packages that will be installed,
+</code></pre></div><p>Check the <a href="https://github.com/nicktehrany/dotfiles/blob/master/.travis.yml">.travis.yml</a> for packages that will be installed,
 if not already installed. <strong>All existing links or config files will be overwritten!</strong> (Check <a href="https://github.com/nicktehrany/dotfiles/blob/master/install.conf.yaml">.install.conf.yaml</a> for all links)</p>
-
 <p>Then just open a new konsole. The updating and installing of submodules and vscode plugins will take a few minutes.</p>
-
 <p>Next, to set the default konsole theme, open the konsole menu (<code>Ctrl</code> + <code>Shift</code> + <code>m</code>),
 under settings select manage profiles, then select <code>blue_default</code> and set it as default.
 Lastly, to have the status bar of tmux work correctly run inside tmux <code>prefix</code> + <code>I</code> to install required plugins via tpm, followed by
 reloading tmux with <code>prefix</code> + <code>R</code>.</p>
-
 <h2 id="commands">Commands</h2>
-
 <p>In order to update submodules if their remote repository changes.</p>
-
-<pre><code class="language-shell">git submodule update --remote --merge
-</code></pre>
-
-<p>If you only want to relink config files or run all commands except shell (in the <a href="https://github.com/nicktehrany/dotfiles/blob/master/install.conf.yaml">.install.conf.yaml</a> file)</p>
-
-<pre><code class="language-shell">./install --only link # or
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git submodule update --remote --merge
+</code></pre></div><p>If you only want to relink config files or run all commands except shell (in the <a href="https://github.com/nicktehrany/dotfiles/blob/master/install.conf.yaml">.install.conf.yaml</a> file)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./install --only link <span style="color:#75715e"># or</span>
 ./install --except shell
-</code></pre>
-
-<h2 id="visuals">Visuals</h2>
-
-<p>The current overall look for my shell and other setup (shell theme and so forth can also all be seen in the neofetch output).<br />
-<img src="/images/dotfiles/visuals.png" alt="Visuals" /></p>
-
+</code></pre></div><h2 id="visuals">Visuals</h2>
+<p>The current overall look for my shell and other setup (shell theme and so forth can also all be seen in the neofetch output).<br>
+<img src="/images/dotfiles/visuals.png" alt="Visuals"></p>
 <h3 id="vs-code">VS Code</h3>
-
 <p>My vscode is still a work in progress as far as the right color scheme goes. Thus far it looks as follows,</p>
-
-<p><img src="/images/dotfiles/vscode.png" alt="VSCode" />
+<p><img src="/images/dotfiles/vscode.png" alt="VSCode">
 If you want to play around with different colors, adjust workbench.colorCustomizations in the <a href="https://github.com/nicktehrany/dotfiles/blob/master/vscode/settings.json">settings.json</a> file, and possibly add more of the vscode color variables you can set. A nicely compiled list of
 these can be found <a href="https://gist.github.com/lol-russo/1c7a0b958be4b9434c5a120f24d5e7c3">here</a>.</p>
 
@@ -216,7 +192,7 @@ these can be found <a href="https://gist.github.com/lol-russo/1c7a0b958be4b9434c
     <div class="footer__inner">
         <div class="footer__content">
             <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
-            <span>Theme created by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+            <span>Themed by <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello Friend NG</a></span>
           </div>
     </div>
     
@@ -230,7 +206,7 @@ these can be found <a href="https://gist.github.com/lol-russo/1c7a0b958be4b9434c
 
 
 
-<script type="text/javascript" src="/bundle.min.28499481978221c4b835b9371cf490e7511775ef1b1d0aa73faf6f4dff18ea62355cd43681da19dd1e1e4081b9cb5d70d9472d958439cc15c60203b462f67532.js" integrity="sha512-KEmUgZeCIcS4Nbk3HPSQ51EXde8bHQqnP69vTf8Y6mI1XNQ2gdoZ3R4eQIG5y11w2UctlYQ5zBXGAgO0YvZ1Mg=="></script>
+<script type="text/javascript" src="/bundle.min.9dd6c4fd1eb55000d257db1269676cdb26bfcc9ab1b1dc8885a54f94b97fa86e6d72e435907d76f8662e0f65472e78ab8ad69c36624d8d4a96c04c42e029d957.js" integrity="sha512-ndbE/R61UADSV9sSaWds2ya/zJqxsdyIhaVPlLl/qG5tcuQ1kH12&#43;GYuD2VHLniritacNmJNjUqWwExC4CnZVw=="></script>
 
 
 

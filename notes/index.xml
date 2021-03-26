@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Notes on Nick Tehrany</title>
@@ -11,30 +10,30 @@
         
         <item>
             <title>IN4391 Distributed Systems</title>
-            <link>https://nicktehrany.github.io/in4391-distributed-systems-notes/</link>
+            <link>https://nicktehrany.github.io/IN4391%20Distributed%20Systems%20Notes/</link>
             <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
             
-            <guid>https://nicktehrany.github.io/in4391-distributed-systems-notes/</guid>
+            <guid>https://nicktehrany.github.io/IN4391%20Distributed%20Systems%20Notes/</guid>
             <description></description>
             <content type="html"><![CDATA[]]></content>
         </item>
         
         <item>
             <title>IN4150 Distributed Algorithms</title>
-            <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/</link>
+            <link>https://nicktehrany.github.io/IN4150%20Distributed%20Algorithms%20Notes/</link>
             <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
             
-            <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/</guid>
+            <guid>https://nicktehrany.github.io/IN4150%20Distributed%20Algorithms%20Notes/</guid>
             <description></description>
             <content type="html"><![CDATA[]]></content>
         </item>
         
         <item>
             <title>IN4191 Security and Cryptography</title>
-            <link>https://nicktehrany.github.io/in4191-security-and-cryptography-notes/</link>
+            <link>https://nicktehrany.github.io/IN4191%20Security%20and%20Cryptography%20Notes/</link>
             <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
             
-            <guid>https://nicktehrany.github.io/in4191-security-and-cryptography-notes/</guid>
+            <guid>https://nicktehrany.github.io/IN4191%20Security%20and%20Cryptography%20Notes/</guid>
             <description></description>
             <content type="html"><![CDATA[]]></content>
         </item>

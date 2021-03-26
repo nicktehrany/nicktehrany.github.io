@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nick Tehrany</title>
@@ -6,11 +6,7 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Resource Management and Scheduling</title>
       <link>https://nicktehrany.github.io/in4391-distributed-systems-notes/management/</link>
@@ -44,10 +40,10 @@ In distributed computing there are also multiple tasks, but these can come from 
     
     <item>
       <title>IN4391 Distributed Systems</title>
-      <link>https://nicktehrany.github.io/in4391-distributed-systems-notes/</link>
+      <link>https://nicktehrany.github.io/IN4391%20Distributed%20Systems%20Notes/</link>
       <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://nicktehrany.github.io/in4391-distributed-systems-notes/</guid>
+      <guid>https://nicktehrany.github.io/IN4391%20Distributed%20Systems%20Notes/</guid>
       <description></description>
     </item>
     
@@ -359,7 +355,7 @@ The key above needs to be known to both parties, but must be kept secret from al
 Confidentiality: Access to systems or data is limited to authorized parties.
 Integrity: When you receive data, you get the &amp;quot;right&amp;quot; data.
 Availability: The system or data is there when you want it.
-Objectives of Cryptography - Message authentication: valid message? - Data origin authentication: valid sender? - Entity authentication: authenticate each other for communication  Kerckhoff&#39;s principle: The adversary knows all details about the crypto system except the private key.</description>
+Objectives of Cryptography - Message authentication: valid message? - Data origin authentication: valid sender? - Entity authentication: authenticate each other for communication Kerckhoff&#39;s principle: The adversary knows all details about the crypto system except the private key.</description>
     </item>
     
     <item>
@@ -387,10 +383,10 @@ All content and images are based on and retrieved from the book and the lecture 
     
     <item>
       <title>Active Projects</title>
-      <link>https://nicktehrany.github.io/active-projects/</link>
+      <link>https://nicktehrany.github.io/active%20Projects/</link>
       <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://nicktehrany.github.io/active-projects/</guid>
+      <guid>https://nicktehrany.github.io/active%20Projects/</guid>
       <description></description>
     </item>
     
@@ -405,10 +401,10 @@ All content and images are based on and retrieved from the book and the lecture 
     
     <item>
       <title>IN4150 Distributed Algorithms</title>
-      <link>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/</link>
+      <link>https://nicktehrany.github.io/IN4150%20Distributed%20Algorithms%20Notes/</link>
       <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://nicktehrany.github.io/in4150-distributed-algorithms-notes/</guid>
+      <guid>https://nicktehrany.github.io/IN4150%20Distributed%20Algorithms%20Notes/</guid>
       <description></description>
     </item>
     
@@ -420,15 +416,15 @@ All content and images are based on and retrieved from the book and the lecture 
       <guid>https://nicktehrany.github.io/completed-projects/textemp/</guid>
       <description>I was tired of having to create new folder structure and latex files every time I had to create a new latex project (which was quite often). Therefore I made a quick and simple command to set up the basic directory structure and initialize the .tex files with the most basic necessities.
 Setup Clone the repo anywhere you like,
-git clone https://github.com/nicktehrany/textemp  Source the textemp script in your .</description>
+git clone https://github.com/nicktehrany/textemp Source the textemp script in your .bashrc, .zshrc or other .</description>
     </item>
     
     <item>
       <title>IN4191 Security and Cryptography</title>
-      <link>https://nicktehrany.github.io/in4191-security-and-cryptography-notes/</link>
+      <link>https://nicktehrany.github.io/IN4191%20Security%20and%20Cryptography%20Notes/</link>
       <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://nicktehrany.github.io/in4191-security-and-cryptography-notes/</guid>
+      <guid>https://nicktehrany.github.io/IN4191%20Security%20and%20Cryptography%20Notes/</guid>
       <description></description>
     </item>
     
@@ -443,10 +439,10 @@ git clone https://github.com/nicktehrany/textemp  Source the textemp script in y
     
     <item>
       <title>Completed Projects</title>
-      <link>https://nicktehrany.github.io/completed-projects/</link>
+      <link>https://nicktehrany.github.io/completed%20Projects/</link>
       <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://nicktehrany.github.io/completed-projects/</guid>
+      <guid>https://nicktehrany.github.io/completed%20Projects/</guid>
       <description></description>
     </item>
     
@@ -457,7 +453,8 @@ git clone https://github.com/nicktehrany/textemp  Source the textemp script in y
       
       <guid>https://nicktehrany.github.io/active-projects/dotfiles/</guid>
       <description>My dotfiles repository, which is more of a continuous project likely to never be done, for managing all my config files for vim, zsh, tmux, git, other dotfiles and utilities I use.
-Installation git clone https://github.com/nicktehrany/dotfiles cd dotfiles sudo ./install  Check the .travis.yml for packages that will be installed, if not already installed. All existing links or config files will be overwritten! (Check .install.conf.yaml for all links)</description>
+Installation git clone https://github.com/nicktehrany/dotfiles cd dotfiles sudo ./install Check the .travis.yml for packages that will be installed, if not already installed. All existing links or config files will be overwritten! (Check .install.conf.yaml for all links)
+Then just open a new konsole.</description>
     </item>
     
   </channel>

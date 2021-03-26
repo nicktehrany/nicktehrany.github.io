@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>IN4191 Security and Cryptography Notes on Nick Tehrany</title>
@@ -6,11 +6,7 @@
     <description>Recent content in IN4191 Security and Cryptography Notes on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Jan 2021 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://nicktehrany.github.io/in4191-security-and-cryptography-notes/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 16 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://nicktehrany.github.io/in4191-security-and-cryptography-notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lecture 12: Secret Sharing</title>
       <link>https://nicktehrany.github.io/in4191-security-and-cryptography-notes/lecture-12/</link>
@@ -147,7 +143,7 @@ The key above needs to be known to both parties, but must be kept secret from al
 Confidentiality: Access to systems or data is limited to authorized parties.
 Integrity: When you receive data, you get the &amp;quot;right&amp;quot; data.
 Availability: The system or data is there when you want it.
-Objectives of Cryptography - Message authentication: valid message? - Data origin authentication: valid sender? - Entity authentication: authenticate each other for communication  Kerckhoff&#39;s principle: The adversary knows all details about the crypto system except the private key.</description>
+Objectives of Cryptography - Message authentication: valid message? - Data origin authentication: valid sender? - Entity authentication: authenticate each other for communication Kerckhoff&#39;s principle: The adversary knows all details about the crypto system except the private key.</description>
     </item>
     
     <item>
