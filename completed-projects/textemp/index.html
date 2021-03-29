@@ -36,7 +36,7 @@
 <meta itemprop="description" content="textemp">
 <meta itemprop="datePublished" content="2020-11-08T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-11-08T00:00:00+00:00" />
-<meta itemprop="wordCount" content="242">
+<meta itemprop="wordCount" content="252">
 <meta itemprop="image" content="https://nicktehrany.github.io"/>
 
 
@@ -144,7 +144,7 @@
 (which was quite often). Therefore I made a quick and simple command to set up the basic directory structure
 and initialize the .tex files with the most basic necessities.</p>
 <h2 id="setup">Setup</h2>
-<p>Clone the <a href="https://github.com/nicktehrany/textemp">repo</a> anywhere you like,</p>
+<p>Clone the repo anywhere you like,</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/nicktehrany/textemp
 </code></pre></div><p>Source the textemp script in your .bashrc, .zshrc or other .*rc file you are using, and add an export of the path to the
 textemp folder, like so:</p>
@@ -156,8 +156,8 @@ as well as the script)</p>
 within my <a href="https://github.com/nicktehrany/dotfiles">dotfiles</a> repository.</p>
 <h2 id="execution">Execution</h2>
 <p>Execution is very simple. Templates will initialize the folder with basic latex files and a full Makefile for the project.
-There are currently only 4 templates available; article template, article template with code listing style, exercise
-report (handy for multiple exercises in an assignments), and exercise report with code listing style.
+There are currently only 5 templates available; article template, article template with code listing style, exercise
+report (handy for multiple exercises in an assignments), exercise report with code listing style, and the IEEE trans template.
 The command would look as follows:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">textemp <span style="color:#f92672">[</span>FOLDER<span style="color:#f92672">]</span> -<span style="color:#f92672">[</span>FLAG<span style="color:#f92672">]</span>
 </code></pre></div><p>with possible flags:</p>
@@ -165,6 +165,7 @@ The command would look as follows:</p>
 ac <span style="color:#75715e"># Article with Code template</span>
 e <span style="color:#75715e"># Exercise report template</span>
 ec <span style="color:#75715e"># Exercise report with Code template</span>
+IEEE <span style="color:#75715e"># For IEEE trans template</span>
 </code></pre></div><p>A possible execution would look as follows,</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">textemp Report -ac
 </code></pre></div><p>to create a folder called &ldquo;Report&rdquo; with the Article Code version template.</p>
