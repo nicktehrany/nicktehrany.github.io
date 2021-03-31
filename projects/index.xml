@@ -6,24 +6,6 @@
     <description>Recent content in Projects on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://nicktehrany.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Active Projects</title>
-      <link>https://nicktehrany.github.io/active%20Projects/</link>
-      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://nicktehrany.github.io/active%20Projects/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Completed Projects</title>
-      <link>https://nicktehrany.github.io/completed%20Projects/</link>
-      <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://nicktehrany.github.io/completed%20Projects/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Tue, 05 Sep 2017 08:34:56 -0600</lastBuildDate><atom:link href="https://nicktehrany.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

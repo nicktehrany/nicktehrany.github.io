@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="IN4191 Security and Cryptography Notes" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-4/" />
+
+
+    <title>
+        
+            Lecture 4: Defining Security :: Nick Tehrany 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.9655fd5f70c904b04634d3d3e59f77a994f4471ec393982efe724d829b71f6e7.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Lecture 4: Defining Security">
+<meta itemprop="description" content="IN4191 Security and Cryptography Notes">
+<meta itemprop="datePublished" content="2021-01-07T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1136">
+<meta itemprop="image" content="https://nicktehrany.github.io"/>
+
+
+
+<meta itemprop="keywords" content="" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nicktehrany.github.io"/>
+
+<meta name="twitter:title" content="Lecture 4: Defining Security"/>
+<meta name="twitter:description" content="IN4191 Security and Cryptography Notes"/>
+
+
+
+
+    <meta property="og:title" content="Lecture 4: Defining Security" />
+<meta property="og:description" content="IN4191 Security and Cryptography Notes" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-4/" />
+<meta property="og:image" content="https://nicktehrany.github.io"/>
+<meta property="article:published_time" content="2021-01-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-07T00:00:00+00:00" /><meta property="og:site_name" content="Nick Tehrany" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-01-07 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body class="dark-theme">
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">$</span>
+            <span class="logo__text">cd nicktehrany</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/projects">Projects</a></li><li><a href="/publications">Publications</a></li><li><a href="/thesis">Theses</a></li><li><a href="/notes">Uni Notes</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+<main class="posts">
+  
+  <div class="post-info">
+    <p>
+      
+      
+    </p>
+  </div>
+  
+  <article>
+    <h1 class="post-title">
+      <a href="https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-4/">Lecture 4: Defining Security</a>
+    </h1>
+    
+      
+      
+      <div class="post-content">
+        <h4 id="security-games-chapter-22">Security Games (Chapter 2.2)</h4>
+<p>Security games are used to define security for cryptographic components, which contain an adversary and a challenger, and the idea is that the adversary needs to reach a certain objective given data provided by the challenger. These are typically represented visually with the adversary in a box and the challenger outside with the data it provides. The advantage of an adversary $$A$$ is defined as a function bounded by time $$t$$ that the adversary spends to try to solve the problem. For RSA and SQRROOT games this is defined as</p>
+<p>$$Adv_v^X(A,t)=Pr[A \text{ wins the game X for }v=log_2N \text{ in time less than }t]$$</p>
+<p>Finding the quadratic residue of a value is done by checking all values that it comprises (i.e. with value 7, $\mathbb{Z}_7=\{0,1,2,3,4,5,6\}$), and squaring each containing value (except 0 of course) modulo the value itself. For the example with $\mathbb{Z}=7$ this will be,</p>
+<p>$$\displaylines{1^2\equiv1 \text{ mod }7\<br>
+2^2\equiv4 \text{ mod }7\<br>
+3^2\equiv2 \text{ mod }7\<br>
+4^2\equiv2 \text{ mod }7\<br>
+5^2\equiv4 \text{ mod }7\<br>
+6^2\equiv1 \text{ mod }7}$$</p>
+<p>Where the residue class is all remainders, in this case $Q_7=\{1,2,4\}$.</p>
+<p>For the QUADRES game, where the challenger picks a value $$a$$ to be a quadratic residue and the adversary guesses if it is a quadratic residue or not (50/50 chance with random guessing). Hence, the advantage is zero if the adversary just guesses, which makes the function</p>
+<p>$$Adv_v^{QUADRES}(A)=2*\lvert Pr[A \text{ wins the QUADRES game for }v=log_2N]-\frac{1}{2}\lvert$$</p>
+<h4 id="discrete-logarithms-chapter-31">Discrete Logarithms (Chapter 3.1)</h4>
+<p>The discrete log problem (DLP) states that given a finite group $G$, and $g,h \in G$</p>
+<p>$$g^x=h\text{ or }x=dlog_g(h)$$</p>
+<p>in other words $a^x=y\text{ mod }p$, given $a$ and $y$ it is difficult to find $x$.</p>
+<h3 id="defining-security-chapter-11">Defining Security (Chapter 11)</h3>
+<p>Three aspects of modern cryptography:</p>
+<ul>
+<li><strong>Definitions:</strong> The first challenge for modern cryptography is to arrive at a concrete mathematical definition of what it means for a particular cryptographic mechanism to be secure.</li>
+<li><strong>Schemes:</strong> Once it has a security definition, we want to design schemes which it hoped will meet the security definition (i.e. system whose security relies on factoring large numbers).</li>
+<li><strong>Proofs:</strong> Ask whether the design meets the security definition.</li>
+</ul>
+<p>A pseudo random function (PRF) is a function that appears random to the adversary, such that he cannot predict the output.</p>
+<p>In the security game, instead of giving the adversary the Function $F$ and value pair (x,y), the adversary is provided with a family of functions $\{F_k\} K$ from which one function is chosen with private key $K$ and the adversary has access to an oracle for querying function applications. This is done, as if the adversary is supplied directly with the function, he can directly apply the function and win, and without the oracle the adversary would have no chance. The PRF security game will be,</p>
+<p><img src="/images/IN4191/PRF_sec_game.png" alt="PRF_sec_game"></p>
+<h4 id="one-way-functions-and-trapdoor-one-way-functions">One-Way Functions and Trapdoor One-Way Functions</h4>
+<p>One way functions (OWF) work by giving the adversary a public function and asking him to invert the function on an element of the challenger&rsquo;s choosing, shown below</p>
+<p><img src="/images/IN4191/OWF_sec_game.png" alt="OWF_sec_game"></p>
+<p>Examples of OWFs are the discrete logarithm problem and RSA, but RSA also has an extra value $d$ for efficiently inverting the function, called the <em>trapdoor</em>.</p>
+<h4 id="public-key-cryptography">Public Key Cryptography</h4>
+<p>Users hold a public and private key pair, where the public key is used to encrypt messages and send them to the user and the private key is the only one that can decrypt the message. The keys are linked in a mathematical way such that obtaining the private key from the public key is difficult but the public from private is easy.</p>
+<h4 id="security-of-encryption">Security of Encryption</h4>
+<p>Different types of attacks:</p>
+<ul>
+<li>
+<p><strong>PASS:</strong> Passive attack where the adversary should not learn the message underlying a specific ciphertext. E.g. OW-PASS depicted below, the same applies to public key crypto with public and private key pairs
+<img src="/images/IN4191/OW_PASS.png" alt="ow-pass"></p>
+</li>
+<li>
+<p><strong>CPA:</strong> Chosen plaintext attack where the adversary also has access to an oracle for encrypting a chosen plaintext. This is done as with PASS, the adversary has very limited power.
+E.g. in symmetric crypto this would be as follows,
+<img src="/images/IN4191/OW_CPA.png" alt="OW-CPA">
+Note that in the previous game with public crypto, it is also CPA as the adversary has the public key and can encrypt whatever plaintext he chooses.</p>
+</li>
+<li>
+<p><strong>CCA:</strong> Chosen ciphertext attack gives the adversary an oracle to decrypt chosen ciphertexts, except of course decrypting the original ciphertext. This game looks as follows for symmetric and public crypto,
+<img src="/images/IN4191/OW-CCA.png" alt="OW-CCA">
+As this notion only provides a sense of fully breaking the encryption but not retrieving parts of the message, there are additional security classifications about how secure a message should be, such that the adversary cannot retrieve any information about the plaintext.</p>
+</li>
+<li>
+<p><strong>Perfect Security:</strong> As was seen in earlier chapters, perfect security is when the adversary cannot gain any information about the message, by using a key with the same length as the plaintext. This is not used in practice as it is highly unpractical.</p>
+</li>
+<li>
+<p><strong>Semantic Security:</strong> Similar to perfect security but the run time of the adversary is bounded by a polynomial function of the underlying security parameter (i.e. the key size).</p>
+</li>
+<li>
+<p><strong>IND Security:</strong> As semantic security is difficult to show, indistinguishability (IND) is easier to show and a system that is IND secure is also semantically secure. IND works in two stages,</p>
+<ul>
+<li><strong>Find</strong> stage where the adversary produces two plaintexts of the same length</li>
+<li><strong>Guess</strong> stage where the adversary is given the encryption of one of the plaintexts ($$m_b$$) and has to guess the bit $$b$$ with probability greater than one half.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/IN4191/IND-CCA.png" alt="IND-CCA"></p>
+<p>Any encryption function that is IND-CPA secure must be probabilistic.</p>
+<p>Definition: A crypto algorithm is secure if it is semantically secure against a CPA attack.<br>
+Definition: An encryption algorithm is secure if it is IND-CCA secure.<br>
+Theorem: A system that is IND-PASS secure must be semantically secure against passive adversaries.</p>
+<p>$$\displaylines{\prod \text{ is IND-CCA} \Longrightarrow\prod \text{ is IND-CPA}\Longrightarrow\prod\text{ is IND-PASS}\ \prod \text{ is IND-XXX}\Longrightarrow\prod\text{ is OW-XXX}}$$</p>
+<h4 id="other-notions-of-security">Other Notions of Security</h4>
+<ul>
+<li>Many time security: How many times can we use the LR oracle?</li>
+<li>Real or random: RoR oracle encrypts either the real message or a random message.</li>
+<li>Lunchtime attack (CCA1): Adversary has the decryption oracle during the find stage for some time.</li>
+<li>Nonce-based encryption: Deterministic algorithms are not IND-CPA secure, therefore use a nonce (number used once) to provide some randomness.</li>
+<li>Data encapsulation mechanism: Symmetric system but the key is used only once.</li>
+<li>Non-malleability: Based on having the ciphertext of an unknown plaintext, the adversary can compute a new ciphertext for a related plaintext.</li>
+<li>Plaintext aware: It is computationally difficult to construct a valid ciphertext without being given the corresponding plaintext.</li>
+</ul>
+<p><img src="/images/IN4191/NotionsOfSec.png" alt="Notions of Security"></p>
+<p>Random Oracle Model (ROM): All parties have a random function with domain {0,1}* and a finite codomain C, the challenger has the control of the oracle, and the adversary can call her. This kind of function cannot exist in the real world, but hash functions act as such an oracle.</p>
+
+        <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      </div>
+    </article>
+    
+    <hr />
+
+    <div class="post-info">
+      
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1136 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-01-07
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-5/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Lecture 5: Modern Stream Ciphers</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-3/">
+                <span class="button__text">Lecture 3: Information Theoretic Security</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+  </main>
+  
+            </div>
+
+            
+                <footer class="footer">
+    <div>
+            <div>
+                &nbsp; <a href="https://github.com/nicktehrany" target="_blank" rel="noopener" title="Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a> &nbsp;&nbsp; <a href="https://www.linkedin.com/in/nicktehrany/" target="_blank" rel="noopener" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a> &nbsp;
+            </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Themed by <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello Friend NG</a></span>
+          </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.9dd6c4fd1eb55000d257db1269676cdb26bfcc9ab1b1dc8885a54f94b97fa86e6d72e435907d76f8662e0f65472e78ab8ad69c36624d8d4a96c04c42e029d957.js" integrity="sha512-ndbE/R61UADSV9sSaWds2ya/zJqxsdyIhaVPlLl/qG5tcuQ1kH12&#43;GYuD2VHLniritacNmJNjUqWwExC4CnZVw=="></script>
+
+
+
+    </body>
+</html>

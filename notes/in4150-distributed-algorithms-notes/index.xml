@@ -1,0 +1,558 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>IN4391 Distributed Algorithms on Nick Tehrany</title>
+        <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/</link>
+        <description>Recent content in IN4391 Distributed Algorithms on Nick Tehrany</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 30 Nov 2020 08:34:56 -0600</lastBuildDate>
+        <atom:link href="https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>State Machine Replication</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/smr/</link>
+            <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/smr/</guid>
+            <description>The state of a machine is constituted by the contents of the data store (data written by the clients), and for redundancy might want to be replicated across multiple machines, such that if one fails another can immediately take over. In order for all machines to maintain the same state they have to implement linearizability, since they all need to execute the client requests in the exact same order.
+Stopping Failure Tolerant SMR Algorithms Lamport&amp;rsquo;s Single-Value Paxos Consensus Algorithm The algorithm assumes only stopping failures (may restart later, mut no malicious or bugs(Byzantine fault)) and an asynchronous system.</description>
+            <content type="html"><![CDATA[<p>The state of a machine is constituted by the contents of the data store (data written by the clients), and for redundancy might want to be replicated across multiple machines, such that if one fails another can immediately take over. In order for all machines to maintain the same state they have to implement <em>linearizability</em>, since they all need to execute the client requests in the exact same order.</p>
+<h3 id="stopping-failure-tolerant-smr-algorithms">Stopping Failure Tolerant SMR Algorithms</h3>
+<h4 id="lamports-single-value-paxos-consensus-algorithm">Lamport&rsquo;s Single-Value Paxos Consensus Algorithm</h4>
+<p>The algorithm assumes only stopping failures (may restart later, mut no malicious or bugs(Byzantine fault)) and an asynchronous system. This is the single-value paxos, in which a group of processes agrees on a single value proposed by one of its participants, and there is also a multi-value paxos, where a group of processes decides on a sequence of values. Messages may be reordered, duplicated, or lost, but not corrupted. Votes can only be in favour or no vote at all (no message reply), but <strong>no</strong> voting against.</p>
+<p>There are three types of processes,</p>
+<ol>
+<li><em>Proposers</em> that start with a value each that they may propose.</li>
+<li><em>Acceptors</em> that accept and decide on a value (essentially voters)</li>
+<li><em>Learners</em> that learn about the final outcome (essentially the servers)</li>
+</ol>
+<p>The algorithm runs in rounds, each with a sequence number, and only one proposer per round proposes its value (use a predefined list of which proposer does which round). A round has two phases.</p>
+<p>Phase 1 where the proposer tries to build the majority without actually sending them the value, using <em>REQUEST_TO_PARTICIPATE</em> messages that are sent to some of the processes. When the acceptor receives the message and the round number is new, it sends a <em>PARTICIPATE</em> with its last vote and the round number of that last vote.</p>
+<p>Phase 2 where the proposer selects the most recent vote (highest round number) with the majority and proposes the corresponding value of the vote with a <em>REQUEST_TO_VOTE</em> message. The proposer itself sends a message to the learner if it votes in favour (the learners receive all the votes and accept a value if at least one learner has received a value with the majority).</p>
+<p>Variables that processes have are; <em>rnd</em> the highest round number it has participated in, <em>vrnd</em> the highest round number it has voted in, <em>vval</em> the value it has voted for in the highest round number, <em>prnd</em> is what the proposer maintains for the round number it initiated and <em>pval</em> for the value it is proposing.</p>
+<p>This algorithm has livelock, which can be solved with an election algorithm for electing a leader that is the only one doing proposals.</p>
+<h3 id="byzantine-fault-tolerant-smr-algorithms">Byzantine Fault Tolerant SMR Algorithms</h3>
+<p>These algorithms work with signatures and hashing, and use the notion of <em>views</em> where each view has a <em>primary</em> replica and the remainders the the <em>backup</em> replicas. Views are numbered consecutively and the primary of a view $v$ is replica $p$ such that $p=v\text{ mod }n$ for $n$ total number of severs. Local data for replicas is the state machine, current view number, message log, and checkpoints of client requests that have been served. When all requests in a checkpoint are validated by all replica the checkpoint is called <em>stable</em>.</p>
+<h4 id="castros-and-liskovs-practical-byzantine-fault-tolerance-pbft">Castro’s and Liskov’s Practical Byzantine Fault Tolerance (PBFT)</h4>
+<p>In each view one of the replicas acts as the <em>primary</em> and others are the backups. If a replica suspects a primary to be failing it will initiate a view change with $v+1$. Replicas broadcast their checkpoints in separate messages with a digest of the state and the number of the last request executed in it. When a replica received $2f+1$ matching checkpoint messages the checkpoint is <em>stable</em>, and previous checkpoints are deleted.</p>
+<p>The operation of the algorithm consists of three phases,</p>
+<ol>
+<li>After a client sent a timestamped request to the primary the primary gives the request a sequence number and sends a <em>pre-prepare</em> message with the request, the view, and request number to all replicas. Replicas accept this message if it is in its current view and it has not accepted another <em>pre-prepare</em> message in the same view and request number.</li>
+<li>Each replica then sends a <em>prepare</em> with the view and request number to all replicas (including themselves), and when a replica has received this and the corresponding <em>pre-prepare</em>, and at least $2f$ corresponding <em>prepare</em> messages it sends a <em>commit</em> message to all replicas.</li>
+<li>When a replica received at least $2f+1$ <em>commit</em> messages (also counting its own) with the correct view and request number its local state reflects the execution of all previous requests. It then runs the request and replies to the client.</li>
+</ol>
+<p>A view change request from the backup (i.e. when it thinks the primary is faulty after some timeout and not receiving a <em>pre-prepare</em>) contains view number $v+1$ and the sequence number of the last stable checkpoint, the set of $2f+1$ messages that constituted the checkpoint, and for all request after the checkpoint for which it did the <em>pre-prepare</em> the corresponding <em>pre-prepare</em> and <em>prepare</em> messages, which is all broadcasted to all replicas. When the primary of the new view receives $2f$ of these view change messages it broadcasts a <em>new-view</em> message with the new view number, all <em>view-change</em> messages it received and <em>pre-prepare</em> messages for client request that may not have been executed. This way all replicas can sync up on the state of their checkpoint by retrieving missing information from other replicas (it knows its behind or ahead when comparing the sent data from the primary).</p>
+<h4 id="kotla-et-als-speculative-byzantine-fault-tolerance-zyzzyva">Kotla et al.’s Speculative Byzantine Fault Tolerance (Zyzzyva)</h4>
+<p>Again, the client sends its request to the primary which assigns it a sequence number and forwards it to all replicas (including self). Replicas immediately execute the request and reply to the client. If with no failures and fast replies a client receives $3f+1$ messages the request is considered done.</p>
+<p>If there are failures or delays and the client receives less than $3f+1$ but at least $2f+1$ it sends a commit certificate to all replicas with proof that the majority of servers replied. When replicas receive the commit they respond with a local commit and when the client receives at least $2f+1$ such local-commit messages it considers the request done.</p>
+<p>If the client receives less than $2f+1$ replies, it sends the request to all replicas who then expect the primary to still act on it. If the primary does nothing the replicas build a quorum of $f+1$ replicas that think the primary is failing by exchanging <em>I_hate-the-primary</em> messages, and once a replica receives $f+1$ such messages it sends a <em>view-change</em> to all replicas. When the new primary (are assigned in pre-defined circular order) gets $2f+1$ <em>view-change</em> messages it announces the new view with a broadcast.</p>
+<h3 id="randomized-solutions">Randomized Solutions</h3>
+<p>With random algorithms at some points one or more processes flip a coin to make progress towards a solution. These algorithms may always terminate but only have a correct result with some probability, or it may terminate with some probability but with a correct result, or it may only both terminate and produce a correct result with some probability.</p>
+<h4 id="ben-ors-randomized-algorithm-for-consensus-in-synchronous-and-asynchronous-systems-with-crash-failures">Ben-Or’s Randomized Algorithm for Consensus in Synchronous and Asynchronous Systems with Crash Failures</h4>
+<p>Every process has a binary input value $v$ and the number of faulty servers $f$ is $f&lt; n/2$. The algorithm runs in rounds $r$ with three phases</p>
+<ol>
+<li>The <em>notification</em> phase where messages contain the message type $N$</li>
+<li>The <em>proposal</em> phase where messages contain the message type $P$</li>
+<li>The <em>decision</em> phase.</li>
+</ol>
+<p>Processes wait for $n-f$ messages when they expect messages from all other processes.</p>
+<p>The value $v$ is changed to $w$ (from the message with either a 0 or 1) after a single message was received and a decision on this value is made after more than $f$ messages with that value were received.</p>
+<h4 id="ben-ors-randomized-algorithm-for-consensus-in-synchronous-and-asynchronous-systems-with-byzantine-failures">Ben-Or’s Randomized Algorithm for Consensus in Synchronous and Asynchronous Systems with Byzantine Failures</h4>
+<p>This algorithm has a different decision procedure, in which the value of $v$ is only changed to $w$ (from the message which is either 0 or 1) when more than $f$ messages were received, and decision is then only made when more than $f$ messages with the same $w$ were received.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Stabilization</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/stabilization/</link>
+            <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/stabilization/</guid>
+            <description>For dealing with transient faults, which means that components in a distributed system may only fail temporarily, stabilizing algorithms have been devised that bring a system back into a correct sate from any incorrect sate it may be in.
+A predicate, which is the defined order of saying what functions correctly and incorrectly and is defined as legal and illegal configurations, is called stable if once it holds and no faults occur, it continues to hold.</description>
+            <content type="html"><![CDATA[<p>For dealing with transient faults, which means that components in a distributed system may only fail temporarily, <em>stabilizing</em> algorithms have been devised that bring a system back into a correct sate from any incorrect sate it may be in.</p>
+<p>A <em>predicate</em>, which is the defined order of saying what functions correctly and incorrectly and is defined as legal and illegal configurations, is called stable if once it holds and no faults occur, it continues to hold.</p>
+<p>In systems with a <em>distributed demon</em>, it picks one process at a time to make a step.</p>
+<h3 id="stabilizing-mutual-exclusion-algorithms">Stabilizing Mutual Exclusion Algorithms</h3>
+<h4 id="dijkstras-stabilizing-mutual-exclusion-algorithm-for-a-unidirectional-ring-in-the-shared-memory-model-with-a-central-or-a-distributed-demon">Dijkstra’s Stabilizing Mutual-Exclusion Algorithm for a Unidirectional Ring in the Shared-Memory Model with a Central or a Distributed Demon</h4>
+<p>The network is a unidirectional ring with $N$ processes $P_{0},P_1,&hellip;,P_{N-1}$ which are in clockwise order (so $P_0\rightarrow P_1,&hellip;$). Each process maintains one variable, which is an integer modulo $K$ for some positive value $K$. Per step, a process reads the value of its predecessor and if it is not equal to their own value sets it to the value of the predecessor. When process $P_0$ finds that his value is equal to his predecessor, it assigns the value $v_0+1\text{ mod }K$ to its value and its successor will then adapt this value and so forth. This can be seen as whenever one process can change their value they can enter the CS, then change the value and the next process then does the same, like a token going around the ring.</p>
+<p>Process $P_0$ is constantly introducing new numbers into the system up to $K$, which is called the <em>missing-label</em> technique or <em>counter flushing</em>.</p>
+<p>An illegal state in this system is when $P_0$ introduces a new value that is already present in the system.</p>
+<h3 id="stabilizing-datalink-algorithms">Stabilizing Datalink Algorithms</h3>
+<h4 id="a-stabilizing-stop-and-wait-datalink-algorithm">A Stabilizing Stop-and-Wait Datalink Algorithm</h4>
+<p>For every message a process sends, it waits for an acknowledgment before sending the next message. This is done by keeping a counter, which is sent along the message and incremented on receive and compared to the local send counter that is incremented on sending a new message (when the receive counter is greater or equal to the send counter). In essence every message has a message number and each process maintains a counter and sends the message number along with the message and waits for the response with that message number before sending any more messages. The system is in a legal state if all counters (in the sender, receiver, and the message) are the same.</p>
+<h4 id="non-stabilizing-sliding-window-datalink-algorithm">Non-Stabilizing Sliding-Window Datalink Algorithm</h4>
+<p>There is a window size $w$ (represents the number of messages that have been sent but not yet received), and the sender maintains <em>ns</em> and <em>na</em> for the number of the next message to be sent and for the number of the next message to be acknowledged. The receiver has a counter <em>nr</em> for the number of the next message to be received.</p>
+<p>When the receiver sends an acknowledgment it sends its current value of <em>nr</em> which means that it acknowledges the correct receipt of messages up to but not including <em>nr</em>. Upon receiving an ack, the receiver will set its value of <em>na</em> equal to the received value if the received value is larger than <em>na</em>. Upon a time out in the sender it resends any message sent but not yet acked. The algorithm should stabilize to</p>
+<p>$$((na\le nr) \text{ and } (nr \le ns)\text{ and }(ns\le na+w)$$</p>
+<p>$$\text{and}$$</p>
+<p>$$\text{for  each }(message;i)\text{ in channel SR }(i,ns)$$</p>
+<p>$$\text{and}$$</p>
+<p>$$\text{for each }(ack;i)\text{ in channel RS }(i\le nr)$$</p>
+<p>This states that the number of messages to be acked cannot exceed the number of the next message to be received, the number of the next message to be sent has to be at least equal to the number of the next message to be received, and the numbers of the next message to be sent and acked cannot differ by more than the widow size.</p>
+<p>The second clause says that the number of the next message to be sent is larger than the numbers of the message on the channel.</p>
+<p>The last clause says that no ack on the channel has a higher number than the number of the next message.</p>
+<h4 id="stabilizing-sliding-window-datalink-algorithm">Stabilizing Sliding-Window Datalink Algorithm</h4>
+<p>The sender and the receiver maintain the same counters as before, but now messages sent by the sender carry two integer counters, the first for the message number and the second has the value of <em>na</em> at the time of sending the message. This way when receiving the message, the receiver can catch up with the sender and send the ack that he is waiting for. When the sender times out, the counters <em>ns</em> and <em>ma</em> are made consistent if they are not in a way that indicates the channel is empty, otherwise any unacked messages are resent. The stabilization predicates are</p>
+<p>$$((na\le nr) \text{ and } (nr \le ns)\text{ and }(ns\le na+w)$$</p>
+<p>$$\text{and}$$</p>
+<p>$$\text{for  each }(message;i,j)\text{ in channel SR }$$</p>
+<p>$$(( i &lt; ns) \text{ and }(j \le nr)\text{ and }(j &lt; ns))$$</p>
+<p>$$\text{and}$$</p>
+<p>$$\text{for each }(ack;i)\text{ in channel RS }(i\le nr)$$</p>
+<p>Only the second clause changed which now means that the number of the next message to be acked in the messages sent but not yet received cannot be higher than the number of the next message to be received, and it is strictly smaller than the number of the next message to be sent.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Consensus</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/consensus/</link>
+            <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/consensus/</guid>
+            <description>Distributed systems will have to deal with faults caused by software or hardware components, not operating according to specification. Faults can be classified as permanent, once a processor exhibits a fault it will be considered as faulty for ever, which also leads to crash failures and malicious or Byzantine failures. Transient faults are when a processor may exhibit a fault but will return to correct operation again, i.e. transmission error or short power loss.</description>
+            <content type="html"><![CDATA[<p>Distributed systems will have to deal with faults caused by software or hardware components, not operating according to specification. Faults can be classified as <em>permanent</em>, once a processor exhibits a fault it will be considered as faulty for ever, which also leads to crash failures and malicious or Byzantine failures. <em>Transient</em> faults are when a processor may exhibit a fault but will return to correct operation again, i.e. transmission error or short power loss.</p>
+<p>Reaching agreement based on every process starting with a value from the set of possible initial values has the following conditions,</p>
+<ol>
+<li><em>Agreement:</em> No two processes decide on different values.</li>
+<li><em>Validity:</em> If all processes start with the same value then no process decides on a different value (The final agreement is related to the original problem).</li>
+<li><em>Termination:</em> All non-faulty processes decide within finite time.</li>
+</ol>
+<h3 id="consensus-in-synchronous-systems-with-crash-failures">Consensus in Synchronous Systems with Crash Failures</h3>
+<h4 id="an-algorithm-for-agreement-in-a-synchronous-system-with-at-most-f-crash-failures">An Algorithm for Agreement in a Synchronous System with at most f Crash Failures</h4>
+<p>Every process maintains a set $W$ which initially only contains the value it starts with. In each round out of a total of $f+1$ they all broadcasts their sets $W$ and set their set $W$ to the union of all sets received and their own. If after the $f+1$ rounds the set $W$ only contains one element the process decides on that element, otherwise the process decides on the default value.</p>
+<p>Since there are $f+1$ rounds and at most $f$ processor failures, there is at least one round during which no processor fails. At the end of this round all still active processes will have identical sets $W$ and they will not change anymore.</p>
+<p><strong>Message complexity</strong> with $n$ processes is $O(f*n^2)$.</p>
+<h3 id="consensus-in-synchronous-systems-with-byzantine-failures">Consensus in Synchronous Systems with Byzantine Failures</h3>
+<p>Algorithms solving the Byzantine-generals problem in synchronous systems with $n$ processes, the maximal number of faulty processes $f$ has to satisfy $f&lt; n/3$. This is interpreted as the 3 sets that exist, the malicious processes, the majority, and the minority, where there should be at least more than in the other sets. All deterministic byzantine algorithms require a minimum of $f+1$ rounds.</p>
+<h4 id="impossibility-for-three-generals">Impossibility for Three Generals</h4>
+<p><em>Impossibility results</em> are consensus problems where no solutions exits, which is shown by two different scenarios that are indisitinguishable to at least one process and two processes have to reach different conclusions. Among two lieutenants and one commander there is one disloyal one and in the following two scenarios to $L_1$ the they are both the same.</p>
+<p><img src="/images/IN4150/ThreeGenerals.png" alt="Three Generals"></p>
+<h4 id="lamport-pease-shostak-algorithm-for-consensus-in-synchronous-systems-without-authentication">Lamport-Pease-Shostak Algorithm for Consensus in Synchronous Systems without Authentication</h4>
+<p>The algorithm can tolerate a maximum of $f$ faults. As the bottom case when $f$ equals $0$ the commander sends his value to the lieutenants who simply decide on this value. When $f$ is positive, the commander sends his value to the lieutenants each of whom then executes the algorithm recursively with parameter $f-1$ as themselves as the commander and the others as the lieutenants (except the commander). Each lieutenant decides on the majority value among the value received directly from the commander and the values on which he decides as a lieutenant of the other lieutenants acting as commander. When a process does not receive a message because the sender is faulty it assumes the default value. Messages contain a value and a sequence of lieutenants through which it passed. The recursive part is taking decisions starting at level $(OM(0))$ which is the leaf level, the last value he receives, and since it is just one value he chooses it. The next level $(OM(1))$ he picks the majority of the value at the current level and all the children. This continues until he reaches the root.</p>
+<p><img src="/images/IN4150/ByzantineAgreement.png" alt="Byzantine Agreement"></p>
+<p><strong>Message complexity</strong> is $(n-1)+(n-1)(n-2)+&hellip;+(n-1)(n-2)(n-f-1)=O(n^{f+1})$, since in each round the sending to processes becomes one less as the message is not sent to the acting commander.</p>
+<h4 id="lamport-pease-shostak-algorithm-for-consensus-in-synchronous-systems-with-authentication">Lamport-Pease-Shostak Algorithm for Consensus in Synchronous Systems with Authentication</h4>
+<p>With authentication signatures cannot be forged and modifications of a signed message can be detected. This way a false acting commander cannot change contents of previous messages from the commander when sending the values down the tree. If signatures are modified, the receiver will use the default value.</p>
+<h4 id="srikanth-toueg-algorithm-for-consensus-with-authenticated-broadcast-in-synchronous-systems-with-a-completely-connected-network">Srikanth-Toueg Algorithm for Consensus with Authenticated broadcast in Synchronous Systems with a Completely Connected Network</h4>
+<p><em>Note, this algorithm is not exam material.</em></p>
+<p>The commander stars with some binary value $v$ that it wants to send to all other processes, which initialize their own variable $v$ to $0$. The algorithm consists of two layers, where the bottom one implements the authenticated broadcast and the upper one implements the actual algorithm. The upper layer has $f+1$ rounds. In the first round if the general is correct (non-fault) and it has $v=0$ it will never broadcast a message, and if $v=1$ it will broadcast a $1$ to all others. The other processes broadcast a $1$ only once and once they have set their own value to $1$, which happens when they received in all rounds up to and including round $r$ a $1$ from at least $r$ processes including the general.</p>
+<p>The lower layer has the requirement that a faulty process may send a signed message to some but not all correct processes.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Minimum-Weight Spanning Trees</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mst/</link>
+            <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mst/</guid>
+            <description>A reason for using minimum-weight spanning trees (MST) is to broadcast some message along the tree with minimum weight, if for example the transmission cost is used as the weight for edges. MSTs are constructed from weighted (unique weights) undirected graphs. Unique weights are required for finding a unique solution for an MST, and for the following algorithm. A fragment of graph $G$ is a subtree of its MST. Edge $e$ of $G$ is the minimum-weight outgoing edge (MOE) of fragment $F$ if it has the minimum weight that connects $F$ to another fragment.</description>
+            <content type="html"><![CDATA[<p>A reason for using minimum-weight spanning trees (MST) is to broadcast some message along the tree with minimum weight, if for example the transmission cost is used as the weight for edges. MSTs are constructed from weighted (unique weights) undirected graphs. Unique weights are required for finding a unique solution for an MST, and for the following algorithm. A <em>fragment</em> of graph $G$ is a subtree of its MST. Edge $e$ of $G$ is the minimum-weight outgoing edge (MOE) of fragment $F$ if it has the minimum weight that connects $F$ to another fragment.</p>
+<h3 id="gallagers-humblets-and-spiras-algorithm-for-the-mst-of-an-undirected-weighted-graph-with-unique-edge-weights">Gallager’s, Humblet’s, and Spira’s Algorithm for the MST of an Undirected Weighted Graph with Unique Edge Weights</h3>
+<p>The idea of the algorithm is to have fragments connect to each other along their MOEs, starting with single node fragments and resulting with the final MST. The MST is constructed by repeatedly connecting pairs of fragments along a single edge that is the MOE of one of the fragments. Each fragment has a <em>level</em>, and single node fragments start with level 0, and a <em>core</em>. The level is used for deciding wether to merge or absorb other fragments, and is only increased when a merge happens. With a merge, the core will also be changed to the edge along which the merge happened.</p>
+<p><strong>Message complexity</strong> is $O(5*|V|* \text{ log }|V|+2*|E|)$. A MST of level $k$ has a maximum of $2^k$ nodes.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Traversal Algorithms</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/</link>
+            <pubDate>Thu, 21 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/</guid>
+            <description>Information in a DS may need to be propagated from a single node to all other nodes and the originator may want to receive information back. In a spanning tree of an undirected network, which is a sub-network of the original network that contains all nodes of the original network and that has the structure of a tree (the sparsest type of sub-network that keeps the system connected), messages need to traverse the tree efficiently.</description>
+            <content type="html"><![CDATA[<p>Information in a DS may need to be propagated from a single node to all other nodes and the originator may want to receive information back. In a <em>spanning tree</em> of an undirected network, which is a sub-network of the original network that contains all nodes of the original network and that has the structure of a tree (the sparsest type of sub-network that keeps the system connected), messages need to traverse the tree efficiently. In all algorithms the originating node starts by sending a <em>TOKEN</em> on any of its edges, which then traverses the whole system and returns to the originator. The node from which a node receives the token is its <em>parent</em>.</p>
+<h3 id="tarrys-traversal-algorithm-in-a-general-undirected-network">Tarry&rsquo;s Traversal Algorithm in a General Undirected Network</h3>
+<p>Every node maintains the set of edges it has not yet sent the token to, except their parent. If that set is not empty when a node receives the token it sends it along one of the edges in the set, and otherwise sends it back to its parent.</p>
+<p><strong>Message complexity</strong> is $2|E|$ since the token travels along all edges twice.</p>
+<h3 id="cheungs-depth-first-search-algorithm">Cheung&rsquo;s Depth-First Search Algorithm</h3>
+<p>Every node that receives the <em>TOKEN</em> for the first time forwards it to any of its unused edges, if there are any, and if no edge exists it sends it back to its parent. If a node receives the <em>TOKEN</em> when it had already received it before it immediately returns it.</p>
+<p><strong>Message complexity</strong> is also $2|E|$.</p>
+<h3 id="awerbuchs-depth-first-search-algorithm">Awerbuch&rsquo;s Depth-First Search Algorithm</h3>
+<p>When a node receives the <em>TOKEN</em> it sends a <em>VISITED</em> message to all its neighbors, except the parent, stopping them from ever sending it the token again (removing it from the set of unvisited neighbors), and hence cutting down on unnecessary token sends to already visited nodes. The node then waits for an <em>ACK</em> from all the neighbors (except the parent of course) before forwarding the token to an unvisited neighbor, or back to its parent if all neighbors are visited.</p>
+<p><strong>Message complexity</strong> is $2(|V|-1)$ ($V$ number of nodes). <em>VISITED</em> and <em>ACK</em> messages are bounded by $4|E|$ since max 2 of each can be sent along each link</p>
+<h3 id="cidons-depth-first-search-algorithm">Cidon&rsquo;s Depth-First Search Algorithm</h3>
+<p>When a node receives the <em>TOKEN</em> for the first time it immediately forwards it to a node it assumes has not been visited yet and sends a <em>VISITED</em> message too all its neighbors except for that node and its parent. This means the token can be sent to a node that had already been visited (the visited message of that token might still be in transit), and once that visited message shows up the node knows it made a mistake, regenerates the token and sends it to another node. The already visited node that received the token does nothing with it.</p>
+<p><strong>Message complexity</strong> is $3|E|$ since visited message is sent both ways across any edge and at most one <em>TOKEN</em> message can be sent along it.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Election</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/election/</link>
+            <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/election/</guid>
+            <description>It may sometimes be necessary in a DS to assign a certain process with a higher privilege, for which election is used. If each process has a unique integer id, the system is said to be non-anonymous and anonymous otherwise. In anonymous rings no deterministic solution exists to election, as processes need to randomly generate some id value (e.g. 64 bit number). Algorithms that work in a ring of an unknown size are called uniform.</description>
+            <content type="html"><![CDATA[<p>It may sometimes be necessary in a DS to assign a certain process with a higher privilege, for which election is used. If each process has a unique integer id, the system is said to be <em>non-anonymous</em> and <em>anonymous</em> otherwise. In anonymous rings no deterministic solution exists to election, as processes need to randomly generate some id value (e.g. 64 bit number). Algorithms that work in a ring of an unknown size are called <em>uniform</em>. <em>Comparison based</em> algorithms rely on the comparison of ids, hence they can only send and receive messages and compare process ids. The message complexity of comparison based algorithms in rings is $\Omega(n\text{ log }n)$.</p>
+<h3 id="bidirectional-rings">Bidirectional Rings</h3>
+<h4 id="hirschbergs-and-sinclairs-election-algorithm-in-bidirectional-rings">Hirschberg&rsquo;s and Sinclair&rsquo;s Election Algorithm in Bidirectional Rings</h4>
+<p>A process tries to establish if its id is larger than that of its neighbors. In the first round it sends a <em>PROBE</em>  with its id and a hop counter (to know when to stop forwarding the message) to both its neighbors (both directions) and if it is larger the neighbors send an <em>OK</em> if the hop counter is 0 otherwise it decrements the hop counter and forwards it, otherwise if its id is larger than that in the message it discards the message. In the next round, if the process received an <em>OK</em> from both its neighbors it continues by checking its next larger neighbors (with $k$ starting at $0$ in the first round and then $2^k+1$ in each direction) by sending its own id. In the next round, if it received <em>OK</em> from the neighbors it sends its id to 8 of its neighbors (4 in each direction) and does the same. Each round the number of neighbors is increased by double (2x). If the ring size is known the processor knows it has been elected when it received <em>OK</em> in round when the probe messages meet at the other side of the ring, and if the size is not known it knows it has been elected when it receives its own <em>PROBE</em> from the wrong side.</p>
+<p><strong>Message complexity</strong> is $O(n\text{ log }n)$, since $n$ messages will be sent and in each round at least half of the processes stop, hence the $\text{log }n$ part.</p>
+<h4 id="enhanced-version">Enhanced Version</h4>
+<p>As the comparisons still happen if a process already knows it will not be elected, this algorithm cuts down on this extra by assigning states to processes. If a process detects that its own id is larger than those of its neighbors it remains active and initiates the next phase, otherwise it becomes passive. In subsequent rounds only the active processes execute the same algorithm in the <em>virtual</em> ring of still active processes (passive ones simply relay messages). When a process receives its own id it has been elected.</p>
+<h3 id="unidirectional-rings">Unidirectional Rings</h3>
+<p>Assume that neighboring processes can only send to their right hand neighbors.</p>
+<h4 id="non-comparison-based-algorithm-in-a-unidirectional-ring">Non-Comparison Based Algorithm in a Unidirectional Ring</h4>
+<p>In this algorithm the process with the minimum id is elected, and the size of the ring is known to all processes. When a process finds that its id is equal to 1 it knows that it will be elected and sends its id to its neighbor. Every process immediately relays received ids. If a process does not receive a 1, it knows id 1 does not exist and in the next round id 2 is checked. This continues with rounds until a process has an id that is equal to the round number.</p>
+<p><strong>Message complexity</strong> is $n$, the size of the ring, and <strong>time complexity</strong> is $n$ times the minimum of the ids (so $n$ rounds until id is equal).</p>
+<h4 id="changs-and-roberts-election-algorithm-in-a-unidirectional-ring">Chang&rsquo;s and Robert&rsquo;s Election Algorithm in a Unidirectional Ring</h4>
+<p>At least one processor randomly starts the algorithm by sending a message with its id to its neighbor. Upon receiving a message, if the id is larger than the processes' own id it forwards the received id, and if it is smaller it sends its own id. A process is elected when it receives its own id.</p>
+<p><strong>Message complexity</strong> is at least $n$, at most $n(n+1)/2$ and on average $O(n\text{ log }n)$.</p>
+<h4 id="petersons-election-algorithm-in-a-unidirectional-ring">Peterson&rsquo;s Election Algorithm in a Unidirectional Ring</h4>
+<p>This algorithm works similar to the improved version of the bidirectional algorithm, in that it will simulate bidirectional rings in unidirectional rings. It works by having every process send its id to its right neighbor and this neighbor then sends the maximum of its own id and the value it received to its right neighbor. This way the third one has information about the 2 predecessors, which is the same as in bidirectional rings where processes talk to both neighbors, viewing the 3 ids it has as the middle one the requesting one. Among three values it received, it checks that the value of the middle one of the three is at least as large as both its neighbors, and if so the process remains active and its id is now represented as the middle value, otherwise it becomes passive. A process is elected when it receives its own id.</p>
+<p>The number of rounds is at least equal to $\text{log }n$ since in every round the number of active processes is cut in half. <strong>Message complexity</strong> is $2n\text{ log }n$ since in every round exactly two messages are sent along every link.</p>
+<h3 id="complete-networks">Complete Networks</h3>
+<h4 id="afeks-and-gafinis-election-algorithm-in-synchronous-complete-networks">Afek&rsquo;s and Gafini&rsquo;s Election Algorithm in Synchronous Complete Networks</h4>
+<p>In this algorithm a node that wants to be elected sends its id repeatedly to ever larger different subsets of other nodes, which only return acks if the id received exceeds the largest id in the system that they know about. When a candidate does not receive enough acks, not equal to the number of nodes in its subset, it ceases to be a candidate, otherwise if it received all acks for its subset it is elected. The initial subset is size 1 and every round the subset is doubled. Nodes keep track of other nodes they have sent their id to in order to not send them the id again if they are in the subset.</p>
+<p>Any process can spontaneously start the algorithm by creating a <em>candidate</em> process and an <em>ordinary</em> process, other nodes that did not start the algorithm just start an <em>ordinary</em> process. The <em>candidate</em> process keeps track of their <em>level</em> which is the round number since they started. Candidates send messages containing the level (the round number since they started) and their own id to the nodes in the subset. Processes order the messages they received in every round based on the level (higher is better and level first) and then id as tiebreaker. If the maximum of the candidate ids is larger than the own id of the process it sends an <em>ACK</em> to only that process. Then it is said that the ordinary process is <em>captured</em> by the candidate process (since it assumes its id), also called the <em>owner</em>. Ordinary processes keep track of their level which is incremented by 1 in every round, or is set to the level of a received message, if larger. The node elected is the node with the largest id (among all candidates) and was earlier to start the algorithm.</p>
+<p>Maximum number of rounds is $\text{log }n$ since after this the winner will have captured all nodes. Maximum number of messages is $2n*\text{ log }n$, since every node sends at most $n*\text{ log }n$ acks (one every round).</p>
+<p><strong>Note</strong> that in any round the set of nodes captured by different candidate processes are disjoint (do not contain any common elements).</p>
+<h4 id="afeks-and-gafinis-election-algorithm-in-asynchronous-complete-networks">Afek&rsquo;s and Gafini&rsquo;s Election Algorithm in Asynchronous Complete Networks</h4>
+<p>This algorithm works in the same way as the previous but now the level indicates the number of nodes a candidate process has captured. This introduces the problem, of a candidate process capturing a node that had already been captured by another process. Since the current owner will not be elected anyways, and to reduce the number of messages, the node captured again tries to kill its owner. It does this by first maintaining a pointer to the <em>owner</em> and the <em>potential-owner</em> and since this is asynchronous, the previous owner may already have been killed by another node.</p>
+<p><strong>Time complexity</strong> is $n$ since candidates capture 1 nodes independently and in the end will have $n-1$ captures. When a candidate process kills another candidate process, the former must  have done at least the same amount of work as the latter, since it needs to have a higher level to take over ownership of a node. <strong>Message complexity</strong> is $n\text{ log }n$.</p>
+<h4 id="general-networks">General Networks</h4>
+<p>Leader election in general networks by one process initiating it and creating a spanning tree on which it propagates its own id down. Nodes only propagate the message further if the id is larger than their own, and leaf nodes will send a <em>SUCCESS</em> message up the tree. When the initiator receives <em>SUCCESS</em> messages on all its links it has been elected, if not some other process can then start their own initiation procedure.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Token Loss</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/tokenloss/</link>
+            <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/tokenloss/</guid>
+            <description>Since token based systems require the presence of a single token, if a token is lost due to unreliable links, this has to be detected and a single new token has to be generated n a unidirectional ring.
+It works by using two tokens $t_0$ and $t_1$ that detect the loss of each other. The token message that transfers the token contains a token number that is the index of the token and a counter which is equal to plus or minus the number of times the tokens have met, plus if the token id is 0 and minus if it is 1.</description>
+            <content type="html"><![CDATA[<p>Since token based systems require the presence of a single token, if a token is lost due to unreliable links, this has to be detected and a single new token has to be generated n a unidirectional ring.</p>
+<p>It works by using two tokens $t_0$ and $t_1$ that detect the loss of each other. The <em>token</em> message that transfers the token contains a token number that is the index of the token and a counter which is equal to plus or minus the number of times the tokens have met, plus if the token id is 0 and minus if it is 1. Every node records the counter of the last token it sent in $l$. The token $t_1$ is lost when at some point $t_0$ arrives at a node and the condition $l=c$ is met. Then $t_1$ is regenerated.</p>
+<p>This works by the logic that if in a unidirectional ring a process encounters the same token twice without the tokens having met each other on the way, it is lost (doing a cycle in the ring without encountering the token is not possible unless it is lost).</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Mutual Exclusion</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mutualexclusion/</link>
+            <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mutualexclusion/</guid>
+            <description>In a distributed system in order to access the resource, a process will execute the critical section of the resource, hence it is required to guarantee that at most one process is in the critical section at a time. These algorithms aim to solve mutual exclusion with no deadlocks, no starvation, and some notion of fairness.
+Assertion-Based Mutual Exclusion A process has to request permission from all or part of the other processes and based on their replies it may conclude that is the only one with rights to enter its CS.</description>
+            <content type="html"><![CDATA[<p>In a distributed system in order to access the resource, a process will execute the critical section of the resource, hence it is required to guarantee that at most one process is in the critical section at a time. These algorithms aim to solve mutual exclusion with no deadlocks, no starvation, and some notion of fairness.</p>
+<h3 id="assertion-based-mutual-exclusion">Assertion-Based Mutual Exclusion</h3>
+<p>A process has to request permission from all or part of the other processes and based on their replies it may conclude that is the only one with rights to enter its CS.</p>
+<h4 id="lamports-mutual-exclusion-algorithm">Lamport&rsquo;s Mutual Exclusion Algorithm</h4>
+<p>All links are FIFO and all messages carry a timestamp with a pair consisting of a scalar logical time and the id of the sending process. A process that wants to enter its CS broadcasts a <em>REQUEST</em> message (including to itself). Upon receiving a request, a process enters the request in its request queue, which is ordered according to timestamp (with ids as tie breakers), and sends a <em>REPLY</em>. When a process has received a reply from every other process and is at the head of its request queue, it enters its CS. When a process leaves the CS, it sends a <em>RELEASE</em> message to all processes, and upon receiving the <em>RELEASE</em> processes remove the sending process from their request queue.</p>
+<p>Message complexity is $3(n-1)$.</p>
+<h4 id="ricarts-and-agrawalas-mutual-exclusion-algorithm">Ricart&rsquo;s and Agrawala&rsquo;s Mutual Exclusion Algorithm</h4>
+<p>Since in the previous algorithm the sending of reply messages while one process is in the CS is superfluous, as the other process needs to wait for the release anyways. In this algorithm a process defers sending a <em>REPLY</em> to a request if it currently has a request of its own that is older until its own request has been satisfied, If a process does not have a request of its own it sends a <em>REPLY</em> immediately, and this way <em>RELEASE</em> messages are no longer needed.</p>
+<p>Message complexity becomes $2(n-1)$.</p>
+<h4 id="maekawas-mutual-exclusion-algorithm">Maekawa&rsquo;s Mutual Exclusion Algorithm</h4>
+<p>Request sets have the following properties:</p>
+<ol>
+<li>Every two request sets have a non-empty intersection: $R_i\cap R_n\ne0$</li>
+<li>Every process is contained in its own request set: $i\in R_i$</li>
+<li>Every request set has the same number of elements, so $|R_i|=K$ for a positive int $K$</li>
+<li>Every process appears the same number of times in a request set, so $i\in R_j$ for $D$ values of $j$ for some positive int $D$</li>
+</ol>
+<p>When a process wants to enter its CS it multicasts a <em>REQUEST</em> message to the members of its request set $R$. After a process received a <em>GRANT</em> from all processes in $R$, it can enter its CS, and when done it sends a <em>RELEASE</em> to every process in $R$. In order to avoid deadlocks, when a process received a <em>REQUEST</em> it replies with a <em>GRANT</em> if it has not sent the grant to another process. If it had already sent a grant, it checks the timestamp of the request and if it is new, it enqueues it in the request queue $Q$ and sends a <em>POSTPONE</em> message to the requesting process, otherwise it will send an <em>INQUIRE</em> to the process to whom it has sent the grant. A process that receives a <em>GRANT</em> will either wait for grants from every process in $R$ or until it received a <em>POSTPONE</em> (i.e. once it knows if it will be able to enter its CS). If it cannot enter its CS it will send a <em>RELINQUISH</em> to give the grant back, and the receiver will enqueue the request in $R$ (the process where the relinquish came from), and send a <em>GRANT</em> message to the head of request queue. (Note: the request queue is sorted by oldest request first, based on the timestamp and ids as tiebreakers).</p>
+<p>Under light system load the message complexity will be $3(K-1)$ since only <em>REQUEST, GRANT,RELEASE</em> messages will be sent. Under more contention it will be $4(K-1)$ since some additional <em>POSTPONE</em> messages will be sent, and when there is old requests it will be $5(K-1)$ since additionally now <em>RELINQUISH</em> messages will be sent.</p>
+<h4 id="generalized-mutual-exclusion-algorithm">Generalized Mutual Exclusion Algorithm</h4>
+<p>Every process has a request set $R_i$ and an inform set $I_i$. The processes that are informed about releases are the inform set, which is a subset of the request set. This way requests are sent to all processes in the request set and releases are only sent to a subset of it. Grants also come from the complete request set. The status set is the converse of the inform set, e.g. process $P_i$ informs $P_j$ about its state, then we know that $P_j$ is in the inform set of $P_i$ and therefore the status set of $P_j$ will contain $P_i$.</p>
+<p>When a process wants to access the CS it sends a <em>REQUEST</em> to all processes in the request set and waits for a <em>GRANT</em> from all. When leaving the CS a process only sends a <em>RELEASE</em> to its inform set, where each process keeps a variable <em>p_in_CS</em> for all processes to which it has sent a <em>GRANT</em> and not yet received a release from. Grants are then given if <em>p_in_CS</em> is NULL (no one has the grant). When receiving a release the <em>p_in_CS</em> is reset and it checks its queue if it has outstanding requests and sends the grant and setting the variable to the next outstanding request.</p>
+<h3 id="token-based-mutual-exclusion">Token-Based Mutual Exclusion</h3>
+<p>Token based algorithms are based on the use of a single token that grants access to the CS to the process holding it, hence mutual exclusion is trivially satisfied.</p>
+<h4 id="suzukis-and-kasamis-broadcast-based-mutual-exclusion-algorithm">Suzuki&rsquo;s and Kasami&rsquo;s Broadcast-Based Mutual Exclusion Algorithm</h4>
+<p>A single token exists that is circulated among the processes and the process holding the token can enter its CS. When a process wants to enter its CS it sends a request to all other processes (including itself). Every process maintains a local queue of requests with the process id as index (e.g. with 3 processes $LN=[0,0,0]$, and increments $LN_i$ when it receives a request from $P_i$). The token also has an array $N$ of all the satisfied requests and same as before increments $N_i$ when the request of $P_i$ has been satisfied. By comparing the elements in the two arrays $N$ and $LN$ it decides who is next to receive the token. In order to avoid starvation the search starts at the index of the own id.</p>
+<p>Message complexity is $n-1$ plus the one message for the token transfer.</p>
+<h4 id="singhals-multicast-based-mutual-exclusion-algorithm">Singhal’s Multicast-Based Mutual Exclusion Algorithm</h4>
+<p>In this algorithm processes only send a request to the processes they think may have the token, cutting down on message complexity. Processes can be in four states:</p>
+<ol>
+<li><strong>R:</strong> requesting the token</li>
+<li><strong>E:</strong> executing the critical section</li>
+<li><strong>H:</strong> holding the token but not in the critical section and not aware of any other requests</li>
+<li><strong>O:</strong> other</li>
+</ol>
+<p>Every process has an array $N$ of integers counting the number of requests for each process (initialized to all 0) and an array $S$ of the state of the processes. The array $S$ is initialized in the shape of a triangular matrix, meaning that $P_0$ will initialize it to</p>
+<p>$$S[0]=H,$$
+$$S[j]=0,j=1..,n-1$$</p>
+<p>meaning that it is the only process in state $H$ (holding the token), and process $P_i,i=1&hellip;,n-1$ as</p>
+<p>$$S[j]=R,j=0,&hellip;i-1,$$
+$$S[j]=O,j=i,&hellip;,n-1$$</p>
+<p>meaning that all processes with lower ids get state $R$ and higher ids get state $O$. This way processes always think the token is in one of the processes with a lower id. The token has an array $TN$ which works exactly as in the previous algorithm and an array $TS$ to maintain knowledge on the state of the processes. When a process $P_i$ requests the token and receives a request from $P_j$, it sends $P_j$ a request message, as it can get the token earlier in the future and so $P_i$ can request it.</p>
+<p>Message complexity is on average in a very low contention system $n/2$ <em>REQUESTS</em> and the token transfer. In high contention when almost every process has an outstanding request message complexity approaches $n$.</p>
+<h4 id="raymonds-token-based-mutual-exclusion-algorithm-in-a-tree">Raymond&rsquo;s Token-Based Mutual Exclusion Algorithm in a Tree</h4>
+<p>This algorithm uses a spanning tree for the processes and assumes this has been created ahead of time, and the root of the tree may change over time.  The process that holds the token is the current root of the tree and can enter its CS. Every process stores its parent in a variable <em>holder</em> (the neighbor on the path to the root). Every process maintains a queue of ids of those neighbors that requested the token. When a process wants to enter the CS it adds itself to its own queue and sends a <em>REQUEST</em> message to its parent. Upon receiving a <em>REQUEST</em> message, the process appends the sender&rsquo;s id to its local queue, if not already done it sets <em>asked=false</em> (this is to not serve multiple requests, i.e. only propagate the first request and then queue everything else without propagating), and sends a request to its parent. The root sends the token to the head of its queue (removes the element from the queue) and assigns it to be its parent. A process receiving the token enters the CS if it is at the head of its own queue and otherwise it sends the token to the head of its queue (remove it as well) and sets it to be its parent.</p>
+<p>Worst case message complexity is $2(N-1)$ if the tree is just a chain.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Deadlock Detection</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/deadlockdetection/</link>
+            <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/deadlockdetection/</guid>
+            <description>Models for Deadlock A (directed) Wait-For-Graph (WFG) can be maintained with the processes as nodes and with an edge from process $P$ to process $Q$ when $Q$ is holding a resource that $P$ is requesting.
+In the resource model resources are associated with a process (e.g. $R_a$) and processes can then request said resource. When a process $P$ wants access to a resource $a$ from $R_a$, an edge is created from $P$ to $R_a$, and when the resource is granted, the edge is removed and replaced by an edge from $R_a$ to $P$ indicating that $R_a$ is waiting for $P$ to release the resource.</description>
+            <content type="html"><![CDATA[<h3 id="models-for-deadlock">Models for Deadlock</h3>
+<p>A (directed) Wait-For-Graph (WFG) can be maintained with the processes as nodes and with an edge from process $P$ to process $Q$ when $Q$ is holding a resource that $P$ is requesting.</p>
+<p>In the <em>resource model</em> resources are associated with a process (e.g. $R_a$) and processes can then request said  resource. When a process $P$ wants access to a resource $a$ from $R_a$, an edge is created from $P$ to $R_a$, and when the resource is granted, the edge is removed and replaced by an edge from $R_a$ to $P$ indicating that $R_a$ is waiting for $P$ to release the resource. If the WFG contains a cycle there exits a deadlock and all processes in cycles on paths leading to cycles are deadlocked.</p>
+<p>In the <em>communication model</em> processes can do a blocking <em>RECEIVE</em> operation to a set of processes, indicating that they want to receive a message from one process in this set (called the <em>dependent set</em>). After this <em>RECEIVE</em> operation, the WFG contains an edge from $P$ to every process in its dependent set. If there exits a <em>knot</em> in the WFG, there is a deadlock. A knot is present if a set of processes with a path from every process in the set to every other process in the set exists, and there are no edges from any process in the set to any process outside the set.</p>
+<p>In <em>N-out-of-M</em> requests a process sends a request to $M$ processes that can satisfy the request and it can proceed as soon as it has received $N$ <em>REPLY</em> messages (It may send a <em>RELINQUISH</em> to processes from which it has not received a <em>REPLY</em>). For static systems when $N=1$ this request is called OR-request, and when $N=M$ this request is called AND-request.</p>
+<h3 id="chandy-misra-and-haas-deadlock-detection-for-and-resource-model-wfg-requests">Chandy, Misra, and Haas Deadlock Detection for AND (resource model WFG) Requests</h3>
+<p>A process is said to be <em>dependant</em> if there is a path from it to some other process in the WFG. Processes maintain an array of dependencies <em>dep</em>, initially all set to false, and sets $dep_i(j)$ to true if $P_j$ knows $P_i$ is depending on it.</p>
+<p>When a process suspects to be deadlocked, it sends a <em>PROBE</em> message to the processes it is waiting for. The <em>PROBE</em> messages are propagated by the receiver further through the system to the processes that the receiving process is waiting for. When the initiating process receives the <em>PROBE</em> message, a cycle is detected and it is deadlocked (the <em>PROBE</em> message is the form <em>probe(i,j,k)</em> with id <em>i</em>, initiating process <em>j</em>, and receiving process <em>k</em>).</p>
+<h3 id="chandy-misra-and-haas-deadlock-detection-for-or-communication-model-requests">Chandy, Misra, and Haas Deadlock Detection for OR (communication model) Requests</h3>
+<p>Every blocked process has a <em>dependent set</em> of processes that contains the process for which it is waiting to receive a message, and upon receiving a message from any process in the dependent set, it becomes active again.</p>
+<p>When a process suspects to be deadlocked, it sends a <em>QUERY</em> to all processes in its dependant. Blocked processes will check the sequence number of the query, and if it has not seen it yet, propagate these messages to their dependent sets (generating a tree structure). Processes send a <em>REPLY</em> message back to their engager process (from whom they received the query), once they have received a <em>REPLY</em> from all the processes they themselves engaged (keep a counter of sent messages and received replies). A <em>REPLY</em> is only sent when the process is still blocked by the same query (it has not become active by getting a response from someone else, then there is no deadlock) A process is deadlocked if for every <em>QUERY</em> message it sent it receives a <em>REPLY</em>.</p>
+<h3 id="bracha-and-toueg-deadlock-detection-for-static-systems-with-instantaneous-communication">Bracha and Toueg Deadlock Detection for Static Systems with Instantaneous Communication</h3>
+<p>Every node $P$ maintains a set of <em>OUT</em> nodes $Q$ such that $(P,Q)$ is in $W$ (WFG) (the nodes to which P has sent a request but not received a reply from and also has not sent a relinquish to) and a set of <em>IN</em> nodes $Q$ such that $(Q,P)$ is in $W$ (opposite set of nodes as the other one, the nodes to which it should send a reply or receive a relinquish from). The algorithm has two phases, the <em>notify</em> phase where the spanning tree is created. When a node does not have any pending requests ($n=0$), it performs the <em>grant</em> procedure (send a reply to any request it receives) and sets its <em>free</em> variable to <strong>true</strong>. Sending of grants ends when a process has received a <em>REPLY</em> from every process in its <em>OUT</em> set. During the <em>simulate</em> phase, <em>GRANT</em> messages are used to simulate <em>REPLY</em> messages, and when a process receives enough <em>GRANT</em> messages, it becomes active again. If the initiating process has <em>free</em> set as <strong>false</strong>, it is deadlocked.</p>
+<h3 id="bracha-and-toueg-deadlock-detection-for-static-systems-without-instantaneous-communication">Bracha and Toueg Deadlock Detection for Static Systems without Instantaneous Communication</h3>
+<p>The problem with the previous algorithm is the assumption of instantaneous messages, in this algorithm messages can be in transit. Messages now have different colors</p>
+<ul>
+<li><em>gray</em>, if $P$ has sent a <em>REQUEST</em> to $Q$ which has not yet been received and $P$ has not sent a <em>RELINQUISH</em> to $Q$</li>
+<li><em>black</em>, if $Q$ has received a <em>REQUEST</em> from $P$ but has not yet replied and $P$ has not sent a <em>RELINQUISH</em> to $Q$</li>
+<li><em>white</em> if $Q$ has sent a <em>REPLY</em> to $P$ which has not yet been received and $P$ has not sent a <em>RELINQUISH</em> to $Q$</li>
+<li><em>translucent</em>, if $P$ has sent a <em>RELINQUISH</em> to $Q$ which $Q$ has not yet received</li>
+</ul>
+<p>The algorithm is identical to the previous algorithm except the local sets <em>IN</em> and <em>OUT</em> now only contain black edges, and $n_v-$ #$graywhite_v$ is used instead of $n_v$.</p>
+<p>At some point gray edges will become black, and white and translucent edges will disappear. We look at the total number of outgoing gray and white edges (#graywhite) and a node $v$ is active is $n_v\le$ #$graywhite_v$.</p>
+<p>There may be a deadlock without detecting it, which means the algorithm has to be rerun to detect one.</p>
+<p>Colors of edges are exchanged between messages by sending their <em>IN</em> and <em>OUT</em> sets to each other and comparing them to see the color (i.e. when  $u$ is not in $IN_v$ and $v$ in $OUT_u$ the edge is gray or white).</p>
+<h3 id="dynamic-systems">Dynamic Systems</h3>
+<p>No static WFG graph of the system is available, but deadlock detection can be done by detecting a global state (e.g. with Chandy-Lamport) and then applying the algorithm for static systems with messages.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Termination Detection</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/terminationdetection/</link>
+            <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/terminationdetection/</guid>
+            <description>Termination detection is the problem of determining whether a distributed computation in a distributed system consisting of processes which communicate by means of message, has terminated.
+Distributed computations have the following properties:
+ A process is either active or passive Only active processes can send messages An active process may become passive spontaneously A passive process becomes active at the reception of a message  Termination Detection in an Asynchronous Unidirectional Ring with FIFO Communication There exits a process $P_{0}$ that is on top of the ring and other processes are connected to it in the order of $P_{n-1}$ to the right of $P_0$ and $P_1$ to the left.</description>
+            <content type="html"><![CDATA[<p>Termination detection is the problem of determining whether a distributed computation in a distributed system consisting of processes which communicate by means of message, has terminated.</p>
+<p>Distributed computations have the following properties:</p>
+<ul>
+<li>A process is either <em>active</em> or <em>passive</em></li>
+<li>Only active processes can send messages</li>
+<li>An active process may become passive spontaneously</li>
+<li>A passive process becomes active at the reception of a message</li>
+</ul>
+<h3 id="termination-detection-in-an-asynchronous-unidirectional-ring-with-fifo-communication">Termination Detection in an Asynchronous Unidirectional Ring with FIFO Communication</h3>
+<p>There exits a process $P_{0}$ that is on top of the ring and other processes are connected to it in the order of $P_{n-1}$ to the right of $P_0$ and $P_1$ to the left. $P_0$ sends a _token_ to detect termination to $P_{n-1}$, and each process and the token has a color (black or white, initially white). The token is only forwarded when a process becomes passive, but a passive process can be woken up by a message from a process that the token has not been to yet (a lower numbered process), at which point the process sending the message will change its color to black. When a token arrives at a black process its color is changed to black and no decision can be reached in the current round and the token is relayed immediately. The process also sets its color back to white to start the new round. When $P_0$ receives a white token and is itself passive, it concludes termination.</p>
+<h3 id="termination-detection-in-a-general-network">Termination Detection in a General Network</h3>
+<p>A special process $P$ controls the algorithm but does not participate in the computation. All processes and messages carry non-negative weights, which are assigned by process $P$. $P$ initially has weight $1$ and splits its weight over all the processes. When a process wants to send a message, it halves its own weight and sends the half along in the message. The receiving process adds the weight from the message to its own weight. When a process terminates, it sends its remaining weight to process $P$ and sets its own weight to $0$. Terminated is detected when the weight of process $P$ is $1$ again.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Global States</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/globalstates/</link>
+            <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/globalstates/</guid>
+            <description>Detecting of global states is the recording of an asynchronous system at some point in time for checkpointing or detecting stable properties such as deadlock or termination.
+A cut presents a set of internal events and can be considered consistent (when receiving events happens after sending events) or inconsistent (when receiving events happen without the send events).
+Chandy&amp;rsquo;s and Lamport&amp;rsquo;s algorithm for detecting global states in distributed systems with unidirectional FIFO channels Any processor wishing to record the global state of the system first records its own local state and then sends a marker on every outgoing channel.</description>
+            <content type="html"><![CDATA[<p>Detecting of global states is the recording of an asynchronous system at some point in time for checkpointing or detecting <em>stable properties</em> such as deadlock or termination.</p>
+<p>A cut presents a set of internal events and can be considered consistent (when receiving events happens after sending events) or inconsistent (when receiving events happen without the send events).</p>
+<p><img src="/images/IN4150/GlobalStates.png" alt="Cuts"></p>
+<h3 id="chandys-and-lamports-algorithm-for-detecting-global-states-in-distributed-systems-with-unidirectional-fifo-channels">Chandy&rsquo;s and Lamport&rsquo;s algorithm for detecting global states in distributed systems with unidirectional FIFO channels</h3>
+<p>Any processor wishing to record the global state of the system first records its own local state and then sends a <em>marker</em> on every outgoing channel. Upon the first receive of a marker along any channel, that process records the state of that channel as the empty state, records its own state and sends a marker along every outgoing channel, and creates an empty FIFO message buffer for each of its incoming channels (except the one on which the original marker came). For any later received markers on a channel, the state of that channel is recorded as the sequence of messages in the corresponding buffer. When a process receives a marker along every incoming channel it is done.</p>
+<p>An event that happens local to some process before the process recorded its own state is called a <em>pre-recording</em> event, and one that happens after it recorded its own state is called a <em>post-recording</em> event.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Message Ordering</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/messageodering/</link>
+            <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/messageodering/</guid>
+            <description>In asynchronous systems messages may have arbitrary but finite delays but the applications may impose some kind of ordering on the messages (causal order). Multicasting is when a message is sent to group of processes rather than just to a single process.
+Ordering A message order is causal when for every two messages $m_1$ and $m_2$, if $m(m_1)\rightarrow m(m_2)$ then $d_i(d_1)\rightarrow d_i(d_2)$ for all $i\in Dest(m_1)\cap Dest(m_2)$.
+A message order is total when for every two messages $m_1$ and $m_2$, $d_i(m_1)\rightarrow d_i(m_2)$ iff $d_j(m_1)\rightarrow d_j(m_2)$ for all $i,j \in Dest(m_1) \cap Dest(m_1)$.</description>
+            <content type="html"><![CDATA[<p>In asynchronous systems messages may have arbitrary but finite delays but the applications may impose some kind of ordering on the messages (<em>causal order</em>). <em>Multicasting</em> is when a message is sent to group of processes rather than just to a single process.</p>
+<h3 id="ordering">Ordering</h3>
+<p>A message order is <strong>causal</strong> when for every two messages $m_1$ and $m_2$, if $m(m_1)\rightarrow m(m_2)$ then $d_i(d_1)\rightarrow d_i(d_2)$ for all $i\in Dest(m_1)\cap Dest(m_2)$.</p>
+<p>A message order is <strong>total</strong> when for every two messages $m_1$ and $m_2$, $d_i(m_1)\rightarrow d_i(m_2)$ iff $d_j(m_1)\rightarrow d_j(m_2)$ for all $i,j \in Dest(m_1) \cap Dest(m_1)$. No matter what ordering messages have (FIFO, causal) they need to be delivered in the exact same order
+to all processes.</p>
+<p>Therefore causal message ordering implies FIFO message ordering among separate channels, but total ordering does not imply causal ordering.</p>
+<h3 id="birman-schiper-stephenson-algorithm-for-causal-message-ordering-of-broadcast-messages">Birman-Schiper-Stephenson Algorithm for Causal Message Ordering of Broadcast Messages</h3>
+<p>Every process maintains a vector logical clock $V$ and numbers its broadcast consecutively in its own component and sends the vector along with the message. If a receiving process finds that the message cannot yet be delivered, $D_j(m)=(V+e_j\ge V_m)$, stating that message $m$ is what the process expected (is up to date with respect of all other processes as $P_j$ is), and if not the message will be buffered.</p>
+<h3 id="schiper-eggli-sandoz-algorithm-for-causal-message-ordering-of-point-to-point-messages">Schiper-Eggli-Sandoz Algorithm for Causal Message Ordering of Point-to-Point Messages</h3>
+<p>Processes keep vector logical clocks initialized to all zeroes for assigning timestamps to all events in the system, and every process maintains an initially empty buffer $S$ of ordered pairs of a process id and a vector timestamp. Whenever a process sends a message it sends the contents of the buffer along (basically sending its knowledge of the system). The receiving process can then check if it is up to date with the knowledge of the sender by seeing if its own id is in the buffer sent in the message. If its id is not there it is not missing any messages and can deliver the message, and it will also update its own knowledge about the other processes by taking the maximum of its own buffer $S$ and the one in the message. If its id is in the message buffer, it compares its own vector clock to the buffer and if it is smaller, it is missing messages and has to buffer the message. After receiving a new message it can then check the buffer to see if now it can deliver any buffered message. For each receive, send, deliver event the local vector clock is also incremented.</p>
+<h3 id="total-ordering-of-broadcast-messages">Total Ordering of Broadcast Messages</h3>
+<p>Very inefficiently total ordering can be achieved using a central component for total ordering with a special process (called <em>sequencer</em>) to which all processes send their broadcast messages. The special process gives each message a sequence number and broadcasts it to all processes.</p>
+<p>Another algorithm uses FIFO links and scalar clocks with process ids as tie breakers (hence total order achieved). Every process also maintains a queue of non-delivered messages (but received, just buffered), which are ordered based on the timestamp. Every message is acknowledged to all other processes (including self). When a process has received an acknowledgment for the message at the head of its queue from every other process, that message is removed from the queue and is delivered.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Synchronizers</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/synchronizers/</link>
+            <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/synchronizers/</guid>
+            <description>Synchronizers are algorithms that simulate synchronous systems on top of asynchronous systems. They proceed in rounds of sending messages, receiving messages, and performing local computations, and these algorithms work on the foundation of issuing a pulse (clock) to allow a process to move to the next round.
+Types of Synchronizers Alpha Synchronizer In $\alpha$-synchronizers, when a node receives a message, it sends an ACK message back to the sender. When a process received an ACK for every message it has sent in some round, it is called safe.</description>
+            <content type="html"><![CDATA[<p>Synchronizers are algorithms that simulate synchronous systems on top of asynchronous systems. They proceed in rounds of sending messages, receiving messages, and performing local computations, and these algorithms work on the foundation of issuing a <em>pulse (clock)</em> to allow a process to move to the next round.</p>
+<h3 id="types-of-synchronizers">Types of Synchronizers</h3>
+<h4 id="alpha-synchronizer">Alpha Synchronizer</h4>
+<p>In $\alpha$-synchronizers, when a node receives a message, it sends an ACK message back to the sender. When a process received an ACK for every message it has sent in some round, it is called <em>safe</em>. It then sends a SAFE message to its neighbors, and when a node is safe and has received a SAFE message from all its neighbors it can proceed to the next round.</p>
+<p><strong>Communication complexity</strong> is twice the number of edges (1 for the ACK, 1 for the SAFE) additional to the conventional messages that are sent.
+With $N$ number of nodes, the worst case communication complexity is $O(N^2)$.</p>
+<h4 id="beta-synchronizer">Beta Synchronizer</h4>
+<p>In the $\beta$-synchronizer, the nodes first elect a leader and create a spanning tree with the leader as the root. In every round there is a wave of PULSE messages from the leader downwards, indicating that all nodes can start the next round. When a leaf receives a PULSE message and it knows it is safe (received ACK for every message it sent), it sends a SAFE message. When a non-leaf node in the tree has received a SAFE from all its descendants and is itself safe, it sends a SAFE message to its parent. When the root has received a SAFE message from all its descendants and is itself safe, it generates a new PULSE for the next round.</p>
+<p><strong>Message and time complexity</strong> are both in the order of $O(N)$ as there are $N-1$ links in the spanning tree and the maximum depth is $O(N)$.</p>
+<h4 id="gamma-synchronizer">Gamma Synchronizer</h4>
+<p>In the $\gamma$-synchronizer nodes are partitioned into clusters, where each selects a leader and constructs a spanning tree ($\beta$-synchronizer), and a single preferred link is selected that connects any two nodes of every pair of clusters. The $\beta$-synchronizer is executed in every tree, and the $\alpha$-synchronizer is executed among the trees, and when a root knows its whole tree is safe it sends a CLUSTER_SAFE down its tree and across the preferred link to its neighboring tree. CLUSTER_SAFE messages stop at the node in the other cluster with the preferred link. Once that cluster
+is then safe it will send its own CLUSTER_SAFE messages down the tree, and once a node has received READY messages from all its
+descendants and has received a CLUSTER_SAFE on all the preferred links it is connected to it will propagate a READY message
+upwards (leaf nodes start since they do not have any descendants). When a root receives all READY messages it knows that its
+own tree is safe and that all its neighbors are safe.</p>
+<p>The <strong>message complexity</strong> if of the order $O(E)$ with $E$ the total number of links. The <strong>time complexity</strong> is in the oder of $O(H)$ with $H$ the maximal height of the spanning trees.</p>
+<p>Synchronizers only work in fault free systems, therefore wen faults occur synchronous systems are more powerful.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Time Concepts</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/timeconcepts/</link>
+            <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/timeconcepts/</guid>
+            <description>Time has an important role in computer systems, the applications that they run need to be able to keep track of time and events and compare timestamps. In asynchronous systems it may be necessary to reason about events based on their order of occurrence.
+Happened-Before Relation The basis of the theory of ordering events in distributed systems is the happened-before relation, and is given as $\rightarrow$ as the following
+ Local Order: If $a,b\in E_i$ for $i$ and $a$ occurred in $P_i$ before $b$ then $a\rightarrow b$.</description>
+            <content type="html"><![CDATA[<p>Time has an important role in computer systems, the applications that they run need to be able to keep track of time and
+events and compare timestamps. In asynchronous systems it may be necessary to reason about events based on their order of
+occurrence.</p>
+<h3 id="happened-before-relation">Happened-Before Relation</h3>
+<p>The basis of the theory of ordering events in distributed systems is the <em>happened-before</em> relation, and is given as $\rightarrow$ as the following</p>
+<ol>
+<li><strong>Local Order:</strong> If $a,b\in E_i$ for $i$ and $a$ occurred in $P_i$ before $b$ then $a\rightarrow b$.</li>
+<li><strong>Message Exchange:</strong> If $a\in E_i$ is the event in $P_i$ of sending message $m$ and $b\in E_j$ is the event in $P_j$ of receiving message $m$ for some $i,j$ with $i\ne j$ then $a\rightarrow b$.</li>
+<li><strong>Transitivity:</strong> If for $a,b,c\in E$, $a\rightarrow b\text{ and }b\rightarrow c$, then $a\rightarrow c$.</li>
+</ol>
+<p>This is often called the <em>causality relation</em>, such that if $a\rightarrow b$ it is said that $a$ causally effects $b$.</p>
+<p>The <em>concurrency relation</em> states that two events $a,b\in E$ are concurrent (written as $a||b$) when neither $a\rightarrow b$ nor $b\rightarrow a$ holds.</p>
+<p><strong>Causal Past</strong> (history) is given as $P(a)=\{b\in E|b\rightarrow a\}$.</p>
+<p><strong>Current Events</strong> are given as $C(a)=\{b\in E|b|| a\}$.</p>
+<p><strong>Causal Future</strong> is given as $F(a)=\{b\in E|a\rightarrow b\}$.</p>
+<h3 id="logical-clocks">Logical Clocks</h3>
+<p>Logical clocks are functions $C:E\rightarrow S$  that assign an element of some totally ordered set to each event with a timestamp that respects the HB relation in some way (if $a\rightarrow b$, then $C(a)&lt;C(b)$).</p>
+<p>Scalar or Lamport clocks cannot characterize the HB relation, hence partial order can be introduced with 1-dimensional vector clocks $C$. Vector clocks are constructed by having each process $P_i$ maintain an integer counter for each other process, with initial value 0 and using it as follows</p>
+<ol>
+<li>If $a\in E$ and if $a$ is not a message receive event, then $P_i$ first increments $C_i$ by $1$ and sets $C(a)$ equal to the new value of $C_I$.</li>
+<li>If $a\in E_i$ is the event of $P_i$ sending a message $m$ and $b\in E_j$ is the event in $P_j$ receiving message $m$ for some $i,j$ with $i\ne j$, then $P_i$ sends $C(a)$ along with message $m$ to $P_j$. On receipt, $P_j$ assigns $C_j$ the value $max(C_j+1,C(a)+1)$ and then sets $C(b)$ to the new value of $C_j$.</li>
+</ol>
+<p><img src="/images/IN4150/VectorClocks.png" alt="Vector Clocks"></p>
+<p>The size of the vector clocks needs to be at least the number of processes, $k\ge n$.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Modeling Distributed Systems</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/modelingds/</link>
+            <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/modelingds/</guid>
+            <description>DSs and DAs are modelled with a set of processors or processes, which do local computations and send and receive messages, and are connected by unidirectional communication channels, and networks are assumed to be connected such that there is a path from every process to every other process.
+In a complete network there is a link from every processor to every other processor. In ring every processor is connected to two other processors.</description>
+            <content type="html"><![CDATA[<p>DSs and DAs are modelled with a set of processors or processes, which do local computations and send and receive messages,
+and are connected by unidirectional communication channels, and networks are assumed to be connected such that there is a
+path from every process to every other process.</p>
+<p>In a <em>complete network</em> there is a link from every processor to every other processor.
+In  <em>ring</em> every processor is connected to two other processors. In a <em>unidirectional ring</em> every processor can only
+send messages to one of its neighbors, called the <em>downstream neighbor</em> and receive messages from its other neighbor,
+called the <em>upstream neighbor</em>.</p>
+<p>Message passing is synchronous when the message delays are bounded.</p>
+<p>Processors are synchronous when the ratios of their speeds are bounded.</p>
+<p>In systems with <em>asynchronous communication</em> the events of sending a message and receiving the same message are truly
+separate events, with the latter occurring after the former (receive may be blocking).</p>
+<p>In systems with <em>synchronous communication</em> the two events of sending a message and receiving it occur logically simultaneously.</p>
+<p>A synchronous system can be simulated as an asynchronous system by requiring explicit acknowledgements to force the sender
+only to continue when the message has been received.</p>
+<p>An asynchronous system can be simulated as a synchronous system by introducing for every link a process with a buffer that
+may delay messages.</p>
+<p>At any point in time a process is in a certain <em>state</em> which is defined as the set of values of all its variables.
+The state of a channel is the set of messages sent along it but not yet received.
+A <em>global state</em> or <em>configuration state</em> is made up of the joint local states of all its processes and channels. A state
+change is then called a <em>transition</em>, which are caused by <em>events</em> in one or more processes.
+There are three types of events:</p>
+<ul>
+<li><em>Internal events</em> in a process only causes its local state to be modified.</li>
+<li><em>Message send events</em> that modifies the state of one of the outgoing channels by adding a message to it.</li>
+<li><em>Message receive events</em> that modify the state of one the process' incoming channels by removing a message from it.</li>
+</ul>
+<p>An <em>execution</em> of an asynchronous DS is a finite or infinite sequence of events that start with all processes in one
+of their initial states and all channels empty. The order in a sequence of events which constitutes an execution is a
+<em>partial order</em>.</p>
+<p><em>Local simulation</em> makes a process(or) in the system $(M',P)$ look like $M$, but to an outsider observer there may be a
+difference. In <em>global simulation</em> also to an outside observer there is no difference.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Introduction</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/introduction/</link>
+            <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/introduction/</guid>
+            <description>What is a Distributed System? Distributed computer systems are collections of computer systems that present themselves as single entities to their users and are characterized by
+ Autonomy: The components of the DS have a certain power or authority to make their own decisions. Cooperation: The components of a DS are working together towards common goals. Communication: The components of the DS exchange information.  Properties of Distributed Systems  There is no regular structure such that a DS may be connected by heterogenous network technologies and consist of many different processors.</description>
+            <content type="html"><![CDATA[<h4 id="what-is-a-distributed-system">What is a Distributed System?</h4>
+<p>Distributed computer systems are collections of computer systems that present themselves as single entities to their
+users and are characterized by</p>
+<ul>
+<li><strong>Autonomy:</strong> The components of the DS have a certain power or authority to make their own decisions.</li>
+<li><strong>Cooperation:</strong> The components of a DS are working together towards common goals.</li>
+<li><strong>Communication:</strong> The components of the DS exchange information.</li>
+</ul>
+<h4 id="properties-of-distributed-systems">Properties of Distributed Systems</h4>
+<ol>
+<li>There is no regular structure such that a DS may be connected by heterogenous network technologies and consist of
+many different processors. (They still use the same communication protocols)</li>
+<li>There is no directly accessible common state such as shared variables in a shared memory.</li>
+<li>There is no common clock. <em>Synchronous</em> systems maintain a notion of a common clock through message exchanges where there is a bound on transmission times, whereas in
+<em>asynchronous</em> systems there are no assumptions about message transfer times.</li>
+<li>There is nondeterminism such that different components of the system can progress independently.</li>
+<li>There are independent failure nodes.</li>
+</ol>
+<h4 id="requirements-of-distributed-systems">Requirements of Distributed Systems</h4>
+<ol>
+<li><strong>Transparency:</strong> DSs have to present themselves to their users and the applications running on them as single entities
+without revealing that they are in fact built from many components.</li>
+<li><strong>Scalability:</strong> DSs should be extensible without bottlenecks and the increase of capacity should be proportional to the extension.</li>
+<li><strong>Consistency:</strong> DSs should be consistent in terms of their performance, user interface, and the global view.</li>
+<li><strong>Modularity and Openness:</strong> In DSs, there is a strong emphasis on the design and standardization of interfaces, which is in particular
+helpful when systems are heterogenous.</li>
+</ol>
+<p>There are two main algorithms running in distributed systems, algorithms that compute something (e.g. linear algebra computations) and
+control algorithms that execute some function to ensure the proper operation of some aspect of a DS.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Info</title>
+            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/info/</link>
+            <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/info/</guid>
+            <description>IN4150 Distributed Algorithms notes at TUDelft (Q2).
+Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55229
+All content and images are based on and retrieved from the slides and the provided lecture notes for the course.</description>
+            <content type="html"><![CDATA[<p>IN4150 Distributed Algorithms notes at TUDelft (Q2).</p>
+<p>Studyguide: <a href="https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55229">https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55229</a></p>
+<p>All content and images are based on and retrieved from the slides and the provided lecture notes for the course.</p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>
