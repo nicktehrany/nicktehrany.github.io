@@ -9,6 +9,51 @@
         <atom:link href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Functional Requirements</title>
+            <link>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/systemsarchtecture/</link>
+            <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/systemsarchtecture/</guid>
+            <description>Design Elements of a Distributed System  The Architecture, is it client-server, hierarchical, peer-to-peer, etc. The programmign model that is used, is it remote procedure call (RPC), libary based, actor model based (akka), mapreduce, etc.  Tradeoffs between the different programming modles and the sotware architecture have to be made, based on the function/non-functional requirements, the cost of convenience, which is easier to use based on the hardware for example, and which is needed for a large scale system.</description>
+            <content type="html"><![CDATA[<h2 id="design-elements-of-a-distributed-system">Design Elements of a Distributed System</h2>
+<ul>
+<li>The Architecture, is it client-server, hierarchical, peer-to-peer, etc.</li>
+<li>The programmign model that is used, is it remote procedure call (RPC), libary based, actor model based (akka), mapreduce, etc.</li>
+</ul>
+<p>Tradeoffs between the different programming modles and the sotware architecture have to be made, based on the function/non-functional requirements, the cost of convenience, which is easier to use based on the hardware for example, and which is needed for a large scale system.</p>
+<h3 id="programming-model">Programming Model</h3>
+<p>The programming model is the abstaraction of the underlying hardware that forms the execution environment.</p>
+<p>These models are often based on multiple abstractions such as the model of computation, communication, or data.</p>
+<p>Certain programming models exist for parallel and distributed systems, such as pthread. Different models then offer different funcitons, one might be synchronous while another is asynchronous.</p>
+<p>MPI (message passing interface) is anothyer programming model that offers message passing on point-to-point links or broadcasting.</p>
+<h4 id="middleware">Middleware</h4>
+<p>Middleware is the part that goes between the OS (or lower level parts) and the applications, these define a set of protocols and APIs between the applications and the network or OS for services and communtication. Java RMI is an example of this. Three lefes of middleware exist:</p>
+<ol>
+<li>Basic messaging</li>
+<li>Programming primitives (such as RMI)</li>
+<li>Full services (platform)</li>
+</ol>
+<h4 id="tuple-spaces">Tuple Spaces</h4>
+<p>Tuple spaces is another form of a programming model which offers a form of distributed shared memory that is paired with synchronization mechanisms.</p>
+<h4 id="actors">Actors</h4>
+<p>Actors is another well know model where only an actor can access their internal state and messages can be sent (asynchronously) to other actors. Akka is the Scala example of such a model.</p>
+<h3 id="system-architecture">System Architecture</h3>
+<p>Pthread implies an implicit system model of MIMD (Multiple Instruction Multiple Data), which is shared memory such that threads can use the same memory.</p>
+<p>In large scale systems failures are the norm and will happen.
+Message passing with RPC is very tough at a large scale (unless there is a minimal known amount of message passing that only happens between certain edges).</p>
+<p>The goal is to restict the progamming modes so that the sytem can do more automatically (scheduling, data distribution, fault-tolerance, etc.).</p>
+<h4 id="different-system-architectures">Different System Architectures</h4>
+<p>Many different architectures exist:</p>
+<ul>
+<li>Star (centralized): such as clients only communicating with servers but not with other clients. Or Spark nodes only communicating with the master (though sometimes nodes can communicate with each other)</li>
+<li>Hierarchical: DNS is the best example for this, and provides a quicker way to send messages. Imagine peer-to-peer for looking up an IP you would have to possible ask everyone, but with DNS you can find it thorugh three traversal from the root down.</li>
+<li>Super-peers: peers are connected to other peers that have some additional responsiblity (hence super), and these super nodes are then connected to other super nodes. This replaces the need for servers, as it was used by Skype earlier.</li>
+<li>All-peers (decntralized): BitTorrent or other peer-to-peer networks.</li>
+</ul>
+]]></content>
+        </item>
+        
+        <item>
             <title>Resource Management and Scheduling</title>
             <link>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/management/</link>
             <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
