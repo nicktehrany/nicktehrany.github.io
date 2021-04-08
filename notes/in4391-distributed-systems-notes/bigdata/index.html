@@ -9,12 +9,12 @@
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/middleware/" />
+<link rel="canonical" href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/bigdata/" />
 
 
     <title>
         
-            Middleware :: Nick Tehrany 
+            Big Data and Distributed ML :: Nick Tehrany 
         
     </title>
 
@@ -32,11 +32,11 @@
 
 
 
-<meta itemprop="name" content="Middleware">
+<meta itemprop="name" content="Big Data and Distributed ML">
 <meta itemprop="description" content="IN4150 Distributed Systems Notes">
-<meta itemprop="datePublished" content="2021-03-19T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-03-19T00:00:00+00:00" />
-<meta itemprop="wordCount" content="185">
+<meta itemprop="datePublished" content="2021-03-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-03-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="694">
 <meta itemprop="image" content="https://nicktehrany.github.io"/>
 
 
@@ -46,26 +46,26 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nicktehrany.github.io"/>
 
-<meta name="twitter:title" content="Middleware"/>
+<meta name="twitter:title" content="Big Data and Distributed ML"/>
 <meta name="twitter:description" content="IN4150 Distributed Systems Notes"/>
 
 
 
 
-    <meta property="og:title" content="Middleware" />
+    <meta property="og:title" content="Big Data and Distributed ML" />
 <meta property="og:description" content="IN4150 Distributed Systems Notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/middleware/" />
+<meta property="og:url" content="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/bigdata/" />
 <meta property="og:image" content="https://nicktehrany.github.io"/>
-<meta property="article:published_time" content="2021-03-19T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-03-19T00:00:00+00:00" /><meta property="og:site_name" content="Nick Tehrany" />
+<meta property="article:published_time" content="2021-03-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-03-26T00:00:00+00:00" /><meta property="og:site_name" content="Nick Tehrany" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2021-03-19 00:00:00 &#43;0000 UTC" />
+    <meta property="article:published_time" content="2021-03-26 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -136,27 +136,30 @@
   
   <article>
     <h1 class="post-title">
-      <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/middleware/">Middleware</a>
+      <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/bigdata/">Big Data and Distributed ML</a>
     </h1>
     
       
       
       <div class="post-content">
-        <h2 id="middleware">Middleware</h2>
-<p>Middleware is the part that goes between the OS (or lower level parts) and the applications, these define a set of protocols and APIs between the applications and the network or OS for services and communication. Java RMI is an example of this. Three levels of middleware exist:</p>
+        <h2 id="big-data-and-distributed-ml">Big Data and Distributed ML</h2>
+<p>Three different models of parallel computing:</p>
 <ol>
-<li>Basic messaging</li>
-<li>Programming primitives (such as RMI)</li>
-<li>Full services (platform)</li>
+<li>Shared memory with multiple CPUs connected to a cache-coherent interconnect to multiple RAM modules, to which all have access.</li>
+<li>Distributed memory with multiple CPUs all being connected to their own RAM module and a non-cache-coherent interconnect.</li>
+<li>OpenMP where data is used where the computation is, which is the interface for multi-plaotform shared memory multiprocessing.</li>
 </ol>
-<p>There are different classes of middleware; the remote-call oriented (RPC), the object-oriented (RMI), the service-oriented (CORBA, web services), and the message-oriented (pub/sub, message bus).</p>
-<h3 id="corba">CORBA</h3>
-<p>CORBA is a Common Object Request Broker Architecture, that handles interaction between components such as transactions, security, time, etc. across multiple servers that run the client stub for providing an interface to remote calls, and marshalling serialization with the CORBA library to make objects serializable, which all runs on top of the Object Request Broker (ORB).</p>
-<h3 id="types-of-middleware">Types of Middleware</h3>
-<h4 id="reflection">Reflection</h4>
-<p>This method can examine the properties of an object and possibly modify it.</p>
-<h4 id="adaption">Adaption</h4>
-<p>Adaption can change the behavior of the system, for example at compile-time with macros or at load-time with library interpositioning or at run-time with self modifying code.</p>
+<h3 id="big-data">Big Data</h3>
+<h4 id="first-generation-distributed-file-systems">First Generation Distributed File Systems</h4>
+<p>The first open-source system is HDFS, which is a block based file system with built in replication and metadata journaling. It typically keeps 3 data nodes that receive the writes and the name node receives the addBlock that the client has added a block of data, after which then the data nodes confirm to the name node that they have received the new data.</p>
+<p>MapReduce on the other hand works with map workers that apply some mapping function on the data, and the reduce worker that reduce the data of the mappers (e.g. summing counts of words). It first splits the input into chunks, which then go to the mapper. A possible optimization is to pre-reduce data during the map phase to save network bandwidth (this can be done if the function is commutative and associative such as adding to each element in an array individually). Lastly the data of the mappers is shuffled, since the reduce node depends on the data of all the mappers.</p>
+<h4 id="second-generation-systems">Second Generation Systems</h4>
+<p>Apache Spark is the next gen system that uses Resilient Distributed Datasets (RDD) of which partitions can be kept in memory, and it works on course granular transformations instead of fine grained ones. For this Spark has a master node that splits up the tasks and multiple executor nodes of which one is the driver. Executor nodes are then also used for replication of partitions of the RDDs. RDDs are partitions that are immutable (read-only). However also here the reducer has a wide depency (it depends on all the data of all the mappers). To solve this we can shuffle using a hash function that then maps the result of each map operation on a partition to the same result partition for the reducer. The problem with this is that there are a lot of files for each mapper writing its results to the same partition. To solve this a consolidate hash function is used that creates only a single file for a partition to which the mappers write their result, but this can generate random I/O instead of sequential I/O, which is bad for performance.</p>
+<p>To solve this a sortShuffle is used in which partitions are append only maps and as soon as they fill up (in memory) data is spilled to a file. These files are sorted and indexed such that the reducer can then use some sorting algorithm (e.g. minHeapMerge) to reduce based on already sorted values. This way there is only a narrow dependency from the resulting partitions to the data partitions from the mappers. The group by key would still have a wide dependency, therefore Spark uses execution stages which end at shuffle boundaries and allow for full synchronization between stages. Stages themselves will be parallelized.</p>
+<h3 id="distributed-ml">Distributed ML</h3>
+<p>There are two kinds of parallelism in distributed ML, data parallel in which data is split and trained by the same model in parallel, and model parallel where different models are used on the same data to then combine the model in the end.</p>
+<p>Distributed ML can be done centralized with different ML models combining results in some ensembling node which then gives the final trained model, or in a tree structure where data goes to every node, each node sends its gradient to the root of the tree (or its forwarded there across other nodes) and the root combines it and sends it down the tree.</p>
+<p>The same can be done with a parameter server (just a kv-store) to which all nodes send their results and at which point the final trained model is computed. Or this can be done fully distributed in a P2P network where nodes inform each other about the training and train based on this.</p>
 
         <script>
   MathJax = {
@@ -197,7 +200,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        185 Words
+        694 Words
       </p>
 
       <p>
@@ -208,7 +211,7 @@
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-03-19
+          2021-03-26
         
 
          
@@ -226,18 +229,11 @@
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
-              <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/bigdata/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Big Data and Distributed ML</span>
-              </a>
-            </span>
-          
 
           
             <span class="button next">
-              <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/systemsarchtecture/">
-                <span class="button__text">Programming Models and System Architecture</span>
+              <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/middleware/">
+                <span class="button__text">Middleware</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

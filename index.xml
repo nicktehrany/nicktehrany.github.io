@@ -6,10 +6,20 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 26 Mar 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Big Data and Distributed ML</title>
+      <link>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/bigdata/</link>
+      <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/bigdata/</guid>
+      <description>Big Data and Distributed ML Three different models of parallel computing:
+ Shared memory with multiple CPUs connected to a cache-coherent interconnect to multiple RAM modules, to which all have access. Distributed memory with multiple CPUs all being connected to their own RAM module and a non-cache-coherent interconnect. OpenMP where data is used where the computation is, which is the interface for multi-plaotform shared memory multiprocessing.  Big Data First Generation Distributed File Systems The first open-source system is HDFS, which is a block based file system with built in replication and metadata journaling.</description>
+    </item>
     
     <item>
       <title>Middleware</title>
