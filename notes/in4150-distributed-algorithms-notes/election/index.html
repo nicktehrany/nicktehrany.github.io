@@ -25,7 +25,7 @@
 
 
 
-<link rel="stylesheet" href="/main.9655fd5f70c904b04634d3d3e59f77a994f4471ec393982efe724d829b71f6e7.css">
+<link rel="stylesheet" href="/main.89fa80e2143f71bd5c96a7c94e531dec3276a367e22f87e74a76026ab64680bf.css">
 
 
 
@@ -155,7 +155,7 @@
 <p>In this algorithm the process with the minimum id is elected, and the size of the ring is known to all processes. When a process finds that its id is equal to 1 it knows that it will be elected and sends its id to its neighbor. Every process immediately relays received ids. If a process does not receive a 1, it knows id 1 does not exist and in the next round id 2 is checked. This continues with rounds until a process has an id that is equal to the round number.</p>
 <p><strong>Message complexity</strong> is $n$, the size of the ring, and <strong>time complexity</strong> is $n$ times the minimum of the ids (so $n$ rounds until id is equal).</p>
 <h4 id="changs-and-roberts-election-algorithm-in-a-unidirectional-ring">Chang&rsquo;s and Robert&rsquo;s Election Algorithm in a Unidirectional Ring</h4>
-<p>At least one processor randomly starts the algorithm by sending a message with its id to its neighbor. Upon receiving a message, if the id is larger than the processes' own id it forwards the received id, and if it is smaller it sends its own id. A process is elected when it receives its own id.</p>
+<p>At least one processor randomly starts the algorithm by sending a message with its id to its neighbor. Upon receiving a message, if the id is larger than the processes&rsquo; own id it forwards the received id, and if it is smaller it sends its own id. A process is elected when it receives its own id.</p>
 <p><strong>Message complexity</strong> is at least $n$, at most $n(n+1)/2$ and on average $O(n\text{ log }n)$.</p>
 <h4 id="petersons-election-algorithm-in-a-unidirectional-ring">Peterson&rsquo;s Election Algorithm in a Unidirectional Ring</h4>
 <p>This algorithm works similar to the improved version of the bidirectional algorithm, in that it will simulate bidirectional rings in unidirectional rings. It works by having every process send its id to its right neighbor and this neighbor then sends the maximum of its own id and the value it received to its right neighbor. This way the third one has information about the 2 predecessors, which is the same as in bidirectional rings where processes talk to both neighbors, viewing the 3 ids it has as the middle one the requesting one. Among three values it received, it checks that the value of the middle one of the three is at least as large as both its neighbors, and if so the process remains active and its id is now represented as the middle value, otherwise it becomes passive. A process is elected when it receives its own id.</p>

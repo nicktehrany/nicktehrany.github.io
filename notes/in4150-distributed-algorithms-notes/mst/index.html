@@ -25,7 +25,7 @@
 
 
 
-<link rel="stylesheet" href="/main.9655fd5f70c904b04634d3d3e59f77a994f4471ec393982efe724d829b71f6e7.css">
+<link rel="stylesheet" href="/main.89fa80e2143f71bd5c96a7c94e531dec3276a367e22f87e74a76026ab64680bf.css">
 
 
 
@@ -145,7 +145,7 @@
         <p>A reason for using minimum-weight spanning trees (MST) is to broadcast some message along the tree with minimum weight, if for example the transmission cost is used as the weight for edges. MSTs are constructed from weighted (unique weights) undirected graphs. Unique weights are required for finding a unique solution for an MST, and for the following algorithm. A <em>fragment</em> of graph $G$ is a subtree of its MST. Edge $e$ of $G$ is the minimum-weight outgoing edge (MOE) of fragment $F$ if it has the minimum weight that connects $F$ to another fragment.</p>
 <h3 id="gallagers-humblets-and-spiras-algorithm-for-the-mst-of-an-undirected-weighted-graph-with-unique-edge-weights">Gallager’s, Humblet’s, and Spira’s Algorithm for the MST of an Undirected Weighted Graph with Unique Edge Weights</h3>
 <p>The idea of the algorithm is to have fragments connect to each other along their MOEs, starting with single node fragments and resulting with the final MST. The MST is constructed by repeatedly connecting pairs of fragments along a single edge that is the MOE of one of the fragments. Each fragment has a <em>level</em>, and single node fragments start with level 0, and a <em>core</em>. The level is used for deciding wether to merge or absorb other fragments, and is only increased when a merge happens. With a merge, the core will also be changed to the edge along which the merge happened.</p>
-<p><strong>Message complexity</strong> is $O(5*|V|* \text{ log }|V|+2*|E|)$. A MST of level $k$ has a maximum of $2^k$ nodes.</p>
+<p><strong>Message complexity</strong> is $O(5<em>|V|</em> \text{ log }|V|+2*|E|)$. A MST of level $k$ has a maximum of $2^k$ nodes.</p>
 
         <script>
   MathJax = {

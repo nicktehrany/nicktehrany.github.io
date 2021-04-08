@@ -5,16 +5,16 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="IN4150 Distributed Algorithms Notes" />
+<meta name="description" content="IN4150 Distributed Systems Notes" />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/" />
+<link rel="canonical" href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/middleware/" />
 
 
     <title>
         
-            Traversal Algorithms :: Nick Tehrany 
+            Middleware :: Nick Tehrany 
         
     </title>
 
@@ -32,11 +32,11 @@
 
 
 
-<meta itemprop="name" content="Traversal Algorithms">
-<meta itemprop="description" content="IN4150 Distributed Algorithms Notes">
-<meta itemprop="datePublished" content="2021-01-21T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-01-21T00:00:00+00:00" />
-<meta itemprop="wordCount" content="485">
+<meta itemprop="name" content="Middleware">
+<meta itemprop="description" content="IN4150 Distributed Systems Notes">
+<meta itemprop="datePublished" content="2021-03-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-03-19T00:00:00+00:00" />
+<meta itemprop="wordCount" content="185">
 <meta itemprop="image" content="https://nicktehrany.github.io"/>
 
 
@@ -46,26 +46,26 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nicktehrany.github.io"/>
 
-<meta name="twitter:title" content="Traversal Algorithms"/>
-<meta name="twitter:description" content="IN4150 Distributed Algorithms Notes"/>
+<meta name="twitter:title" content="Middleware"/>
+<meta name="twitter:description" content="IN4150 Distributed Systems Notes"/>
 
 
 
 
-    <meta property="og:title" content="Traversal Algorithms" />
-<meta property="og:description" content="IN4150 Distributed Algorithms Notes" />
+    <meta property="og:title" content="Middleware" />
+<meta property="og:description" content="IN4150 Distributed Systems Notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/" />
+<meta property="og:url" content="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/middleware/" />
 <meta property="og:image" content="https://nicktehrany.github.io"/>
-<meta property="article:published_time" content="2021-01-21T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-01-21T00:00:00+00:00" /><meta property="og:site_name" content="Nick Tehrany" />
+<meta property="article:published_time" content="2021-03-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-03-19T00:00:00+00:00" /><meta property="og:site_name" content="Nick Tehrany" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2021-01-21 00:00:00 &#43;0000 UTC" />
+    <meta property="article:published_time" content="2021-03-19 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -136,25 +136,27 @@
   
   <article>
     <h1 class="post-title">
-      <a href="https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/">Traversal Algorithms</a>
+      <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/middleware/">Middleware</a>
     </h1>
     
       
       
       <div class="post-content">
-        <p>Information in a DS may need to be propagated from a single node to all other nodes and the originator may want to receive information back. In a <em>spanning tree</em> of an undirected network, which is a sub-network of the original network that contains all nodes of the original network and that has the structure of a tree (the sparsest type of sub-network that keeps the system connected), messages need to traverse the tree efficiently. In all algorithms the originating node starts by sending a <em>TOKEN</em> on any of its edges, which then traverses the whole system and returns to the originator. The node from which a node receives the token is its <em>parent</em>.</p>
-<h3 id="tarrys-traversal-algorithm-in-a-general-undirected-network">Tarry&rsquo;s Traversal Algorithm in a General Undirected Network</h3>
-<p>Every node maintains the set of edges it has not yet sent the token to, except their parent. If that set is not empty when a node receives the token it sends it along one of the edges in the set, and otherwise sends it back to its parent.</p>
-<p><strong>Message complexity</strong> is $2|E|$ since the token travels along all edges twice.</p>
-<h3 id="cheungs-depth-first-search-algorithm">Cheung&rsquo;s Depth-First Search Algorithm</h3>
-<p>Every node that receives the <em>TOKEN</em> for the first time forwards it to any of its unused edges, if there are any, and if no edge exists it sends it back to its parent. If a node receives the <em>TOKEN</em> when it had already received it before it immediately returns it.</p>
-<p><strong>Message complexity</strong> is also $2|E|$.</p>
-<h3 id="awerbuchs-depth-first-search-algorithm">Awerbuch&rsquo;s Depth-First Search Algorithm</h3>
-<p>When a node receives the <em>TOKEN</em> it sends a <em>VISITED</em> message to all its neighbors, except the parent, stopping them from ever sending it the token again (removing it from the set of unvisited neighbors), and hence cutting down on unnecessary token sends to already visited nodes. The node then waits for an <em>ACK</em> from all the neighbors (except the parent of course) before forwarding the token to an unvisited neighbor, or back to its parent if all neighbors are visited.</p>
-<p><strong>Message complexity</strong> is $2(|V|-1)$ ($V$ number of nodes). <em>VISITED</em> and <em>ACK</em> messages are bounded by $4|E|$ since max 2 of each can be sent along each link</p>
-<h3 id="cidons-depth-first-search-algorithm">Cidon&rsquo;s Depth-First Search Algorithm</h3>
-<p>When a node receives the <em>TOKEN</em> for the first time it immediately forwards it to a node it assumes has not been visited yet and sends a <em>VISITED</em> message too all its neighbors except for that node and its parent. This means the token can be sent to a node that had already been visited (the visited message of that token might still be in transit), and once that visited message shows up the node knows it made a mistake, regenerates the token and sends it to another node. The already visited node that received the token does nothing with it.</p>
-<p><strong>Message complexity</strong> is $3|E|$ since visited message is sent both ways across any edge and at most one <em>TOKEN</em> message can be sent along it.</p>
+        <h2 id="middleware">Middleware</h2>
+<p>Middleware is the part that goes between the OS (or lower level parts) and the applications, these define a set of protocols and APIs between the applications and the network or OS for services and communication. Java RMI is an example of this. Three levels of middleware exist:</p>
+<ol>
+<li>Basic messaging</li>
+<li>Programming primitives (such as RMI)</li>
+<li>Full services (platform)</li>
+</ol>
+<p>There are different classes of middleware; the remote-call oriented (RPC), the object-oriented (RMI), the service-oriented (CORBA, web services), and the message-oriented (pub/sub, message bus).</p>
+<h3 id="corba">CORBA</h3>
+<p>CORBA is a Common Object Request Broker Architecture, that handles interaction between components such as transactions, security, time, etc. across multiple servers that run the client stub for providing an interface to remote calls, and marshalling serialization with the CORBA library to make objects serializable, which all runs on top of the Object Request Broker (ORB).</p>
+<h3 id="types-of-middleware">Types of Middleware</h3>
+<h4 id="reflection">Reflection</h4>
+<p>This method can examine the properties of an object and possibly modify it.</p>
+<h4 id="adaption">Adaption</h4>
+<p>Adaption can change the behavior of the system, for example at compile-time with macros or at load-time with library interpositioning or at run-time with self modifying code.</p>
 
         <script>
   MathJax = {
@@ -195,7 +197,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        485 Words
+        185 Words
       </p>
 
       <p>
@@ -206,7 +208,7 @@
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-01-21
+          2021-03-19
         
 
          
@@ -224,18 +226,11 @@
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
-              <a href="https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mst/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Minimum-Weight Spanning Trees</span>
-              </a>
-            </span>
-          
 
           
             <span class="button next">
-              <a href="https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/election/">
-                <span class="button__text">Election</span>
+              <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/systemsarchtecture/">
+                <span class="button__text">Programming Models and System Architecture</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

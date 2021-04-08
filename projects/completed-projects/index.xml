@@ -6,7 +6,11 @@
     <description>Recent content in Completed Projects on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Nov 2020 08:34:56 -0600</lastBuildDate><atom:link href="https://nicktehrany.github.io/projects/completed-projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Nov 2020 08:34:56 -0600</lastBuildDate>
+    
+	<atom:link href="https://nicktehrany.github.io/projects/completed-projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>textemp</title>
       <link>https://nicktehrany.github.io/projects/completed-projects/textemp/</link>

@@ -6,9 +6,23 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Mar 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
-      <title>Functional Requirements</title>
+      <title>Middleware</title>
+      <link>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/middleware/</link>
+      <pubDate>Fri, 19 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/middleware/</guid>
+      <description>Middleware Middleware is the part that goes between the OS (or lower level parts) and the applications, these define a set of protocols and APIs between the applications and the network or OS for services and communication. Java RMI is an example of this. Three levels of middleware exist:
+ Basic messaging Programming primitives (such as RMI) Full services (platform)  There are different classes of middleware; the remote-call oriented (RPC), the object-oriented (RMI), the service-oriented (CORBA, web services), and the message-oriented (pub/sub, message bus).</description>
+    </item>
+    
+    <item>
+      <title>Programming Models and System Architecture</title>
       <link>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/systemsarchtecture/</link>
       <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
       

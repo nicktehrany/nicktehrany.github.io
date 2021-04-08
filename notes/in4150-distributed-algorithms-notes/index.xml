@@ -151,7 +151,7 @@ A predicate, which is the defined order of saying what functions correctly and i
             <content type="html"><![CDATA[<p>A reason for using minimum-weight spanning trees (MST) is to broadcast some message along the tree with minimum weight, if for example the transmission cost is used as the weight for edges. MSTs are constructed from weighted (unique weights) undirected graphs. Unique weights are required for finding a unique solution for an MST, and for the following algorithm. A <em>fragment</em> of graph $G$ is a subtree of its MST. Edge $e$ of $G$ is the minimum-weight outgoing edge (MOE) of fragment $F$ if it has the minimum weight that connects $F$ to another fragment.</p>
 <h3 id="gallagers-humblets-and-spiras-algorithm-for-the-mst-of-an-undirected-weighted-graph-with-unique-edge-weights">Gallager’s, Humblet’s, and Spira’s Algorithm for the MST of an Undirected Weighted Graph with Unique Edge Weights</h3>
 <p>The idea of the algorithm is to have fragments connect to each other along their MOEs, starting with single node fragments and resulting with the final MST. The MST is constructed by repeatedly connecting pairs of fragments along a single edge that is the MOE of one of the fragments. Each fragment has a <em>level</em>, and single node fragments start with level 0, and a <em>core</em>. The level is used for deciding wether to merge or absorb other fragments, and is only increased when a merge happens. With a merge, the core will also be changed to the edge along which the merge happened.</p>
-<p><strong>Message complexity</strong> is $O(5*|V|* \text{ log }|V|+2*|E|)$. A MST of level $k$ has a maximum of $2^k$ nodes.</p>
+<p><strong>Message complexity</strong> is $O(5<em>|V|</em> \text{ log }|V|+2*|E|)$. A MST of level $k$ has a maximum of $2^k$ nodes.</p>
 ]]></content>
         </item>
         
@@ -198,7 +198,7 @@ A predicate, which is the defined order of saying what functions correctly and i
 <p>In this algorithm the process with the minimum id is elected, and the size of the ring is known to all processes. When a process finds that its id is equal to 1 it knows that it will be elected and sends its id to its neighbor. Every process immediately relays received ids. If a process does not receive a 1, it knows id 1 does not exist and in the next round id 2 is checked. This continues with rounds until a process has an id that is equal to the round number.</p>
 <p><strong>Message complexity</strong> is $n$, the size of the ring, and <strong>time complexity</strong> is $n$ times the minimum of the ids (so $n$ rounds until id is equal).</p>
 <h4 id="changs-and-roberts-election-algorithm-in-a-unidirectional-ring">Chang&rsquo;s and Robert&rsquo;s Election Algorithm in a Unidirectional Ring</h4>
-<p>At least one processor randomly starts the algorithm by sending a message with its id to its neighbor. Upon receiving a message, if the id is larger than the processes' own id it forwards the received id, and if it is smaller it sends its own id. A process is elected when it receives its own id.</p>
+<p>At least one processor randomly starts the algorithm by sending a message with its id to its neighbor. Upon receiving a message, if the id is larger than the processes&rsquo; own id it forwards the received id, and if it is smaller it sends its own id. A process is elected when it receives its own id.</p>
 <p><strong>Message complexity</strong> is at least $n$, at most $n(n+1)/2$ and on average $O(n\text{ log }n)$.</p>
 <h4 id="petersons-election-algorithm-in-a-unidirectional-ring">Peterson&rsquo;s Election Algorithm in a Unidirectional Ring</h4>
 <p>This algorithm works similar to the improved version of the bidirectional algorithm, in that it will simulate bidirectional rings in unidirectional rings. It works by having every process send its id to its right neighbor and this neighbor then sends the maximum of its own id and the value it received to its right neighbor. This way the third one has information about the 2 predecessors, which is the same as in bidirectional rings where processes talk to both neighbors, viewing the 3 ids it has as the middle one the requesting one. Among three values it received, it checks that the value of the middle one of the three is at least as large as both its neighbors, and if so the process remains active and its id is now represented as the middle value, otherwise it becomes passive. A process is elected when it receives its own id.</p>
@@ -489,12 +489,12 @@ There are three types of events:</p>
 <ul>
 <li><em>Internal events</em> in a process only causes its local state to be modified.</li>
 <li><em>Message send events</em> that modifies the state of one of the outgoing channels by adding a message to it.</li>
-<li><em>Message receive events</em> that modify the state of one the process' incoming channels by removing a message from it.</li>
+<li><em>Message receive events</em> that modify the state of one the process&rsquo; incoming channels by removing a message from it.</li>
 </ul>
 <p>An <em>execution</em> of an asynchronous DS is a finite or infinite sequence of events that start with all processes in one
 of their initial states and all channels empty. The order in a sequence of events which constitutes an execution is a
 <em>partial order</em>.</p>
-<p><em>Local simulation</em> makes a process(or) in the system $(M',P)$ look like $M$, but to an outsider observer there may be a
+<p><em>Local simulation</em> makes a process(or) in the system $(M&rsquo;,P)$ look like $M$, but to an outsider observer there may be a
 difference. In <em>global simulation</em> also to an outside observer there is no difference.</p>
 ]]></content>
         </item>

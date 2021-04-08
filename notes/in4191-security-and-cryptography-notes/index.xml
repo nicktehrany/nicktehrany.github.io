@@ -181,7 +181,7 @@ Definitions:</p>
 <h4 id="fujisaki-okamoto-transform">Fujisaki-Okamoto Transform</h4>
 <p>Using this transform to obtain IND-CCA secure schemes from IND-CPA secure schemes.</p>
 <p>$$\text{Original scheme: }E(m,r)$$</p>
-<p>$$\text{new scheme: }E'(m,r)=E(m||r,H(m||r))$$</p>
+<p>$$\text{new scheme: }E&rsquo;(m,r)=E(m||r,H(m||r))$$</p>
 <h3 id="hybrid-systems">Hybrid Systems</h3>
 <p>In practice the KEM/DEM approach is used, meaning that data will be encrypted using a symmetric cipher and the key of the encryption is sent using an asymmetric cipher.</p>
 <p><strong>KEM:</strong> Key encapsulation mechanism (public key component)</p>

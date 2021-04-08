@@ -9,7 +9,33 @@
         <atom:link href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>Functional Requirements</title>
+            <title>Middleware</title>
+            <link>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/middleware/</link>
+            <pubDate>Fri, 19 Mar 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/middleware/</guid>
+            <description>Middleware Middleware is the part that goes between the OS (or lower level parts) and the applications, these define a set of protocols and APIs between the applications and the network or OS for services and communication. Java RMI is an example of this. Three levels of middleware exist:
+ Basic messaging Programming primitives (such as RMI) Full services (platform)  There are different classes of middleware; the remote-call oriented (RPC), the object-oriented (RMI), the service-oriented (CORBA, web services), and the message-oriented (pub/sub, message bus).</description>
+            <content type="html"><![CDATA[<h2 id="middleware">Middleware</h2>
+<p>Middleware is the part that goes between the OS (or lower level parts) and the applications, these define a set of protocols and APIs between the applications and the network or OS for services and communication. Java RMI is an example of this. Three levels of middleware exist:</p>
+<ol>
+<li>Basic messaging</li>
+<li>Programming primitives (such as RMI)</li>
+<li>Full services (platform)</li>
+</ol>
+<p>There are different classes of middleware; the remote-call oriented (RPC), the object-oriented (RMI), the service-oriented (CORBA, web services), and the message-oriented (pub/sub, message bus).</p>
+<h3 id="corba">CORBA</h3>
+<p>CORBA is a Common Object Request Broker Architecture, that handles interaction between components such as transactions, security, time, etc. across multiple servers that run the client stub for providing an interface to remote calls, and marshalling serialization with the CORBA library to make objects serializable, which all runs on top of the Object Request Broker (ORB).</p>
+<h3 id="types-of-middleware">Types of Middleware</h3>
+<h4 id="reflection">Reflection</h4>
+<p>This method can examine the properties of an object and possibly modify it.</p>
+<h4 id="adaption">Adaption</h4>
+<p>Adaption can change the behavior of the system, for example at compile-time with macros or at load-time with library interpositioning or at run-time with self modifying code.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Programming Models and System Architecture</title>
             <link>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/systemsarchtecture/</link>
             <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
             
