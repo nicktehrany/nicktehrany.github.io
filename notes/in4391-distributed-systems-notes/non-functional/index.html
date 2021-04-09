@@ -5,16 +5,16 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="IN4391 Distributed Systems Notes" />
+<meta name="description" content="IN4150 Distributed Systems Notes" />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/info/" />
+<link rel="canonical" href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/non-functional/" />
 
 
     <title>
         
-            Info :: Nick Tehrany 
+            Non-Functional Requirements :: Nick Tehrany 
         
     </title>
 
@@ -32,11 +32,10 @@
 
 
 
-<meta itemprop="name" content="Info">
-<meta itemprop="description" content="IN4391 Distributed Systems Notes">
-<meta itemprop="datePublished" content="2021-02-07T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-02-07T00:00:00+00:00" />
-<meta itemprop="wordCount" content="60">
+<meta itemprop="name" content="Non-Functional Requirements">
+<meta itemprop="description" content="IN4150 Distributed Systems Notes">
+
+<meta itemprop="wordCount" content="368">
 <meta itemprop="image" content="https://nicktehrany.github.io"/>
 
 
@@ -46,26 +45,23 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nicktehrany.github.io"/>
 
-<meta name="twitter:title" content="Info"/>
-<meta name="twitter:description" content="IN4391 Distributed Systems Notes"/>
+<meta name="twitter:title" content="Non-Functional Requirements"/>
+<meta name="twitter:description" content="IN4150 Distributed Systems Notes"/>
 
 
 
 
-    <meta property="og:title" content="Info" />
-<meta property="og:description" content="IN4391 Distributed Systems Notes" />
+    <meta property="og:title" content="Non-Functional Requirements" />
+<meta property="og:description" content="IN4150 Distributed Systems Notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/info/" />
+<meta property="og:url" content="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/non-functional/" />
 <meta property="og:image" content="https://nicktehrany.github.io"/>
-<meta property="article:published_time" content="2021-02-07T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-07T00:00:00+00:00" /><meta property="og:site_name" content="Nick Tehrany" />
+<meta property="og:site_name" content="Nick Tehrany" />
 
 
 
 
 
-
-    <meta property="article:published_time" content="2021-02-07 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -136,18 +132,52 @@
   
   <article>
     <h1 class="post-title">
-      <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/info/">Info</a>
+      <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/non-functional/">Non-Functional Requirements</a>
     </h1>
     
       
       
       <div class="post-content">
-        <p>IN4391 Distributed Systems notes at TUDelft (Q3).</p>
-<p>Studyguide: <a href="https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55274">https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55274</a>
-Book: Andrew S. Tanenbaum, Maarten Van Steen, Distributed Systems, Principles and Paradigms (2nd Edition), Prentice Hall, 2006.</p>
-<p>The content is based on the lecture material and summarized by myself, due to licensing no actual content of the course is copied here and any images and phrases used come from the book.</p>
+        <h2 id="non-functional-requirements">Non-Functional Requirements</h2>
+<h3 id="consistency">Consistency</h3>
+<p>Client vs. data centric consistency, in the client side model there is a consistency model for every client but not a global consistency. From the perspective of the client there is no difference in the two models. When to use which model is a tradeoff decision again, therefore when you can afford it you want to use a weaker consistency model. The client consistency can be used if there is some notion of a client session.</p>
+<p>Sequential vs. causal consistency, sequential consistency execution of everything is done in some sequential order but everyone applies in the same order that everyone agreed upon (it creates a total order of operations), in causal order you reason about which pairs of operations need to be in a certain order, causal is weaker than sequential.</p>
+<p>Eventual consistency, things will converge to a consistent state if the writes stop at some point, since consistency is not immediate. Therefore the client can see states that are not directly consistent, as some writes may have not reached all the devices.</p>
+<h3 id="metrics">Metrics</h3>
+<p>As most systems use a queue for storing tasks before they can be executed, queuing theory can be used for measuring the performance of a system with the arrival time, start time, end time, wait time, etc.</p>
+<p>One of the modern metrics is elasticity which is the degree to which a system adapts to workload changes that adapting resources dynamically depending on the needs.</p>
+<h3 id="gustafsons-law-of-weak-scaling">Gustafson&rsquo;s Law of Weak Scaling</h3>
+<p>For any problem that we look at, we look at the relationship between smaller and larger jobs, the communication overhead is almost the same, therefore if we exploit more parallelsim for larger jobs, the sequential parts stay constant and additional resources are only used for larger lobs and the speedup comes from the sequential portion.</p>
+<h3 id="evaluating-performance-metrics">Evaluating Performance Metrics</h3>
+<ul>
+<li>Micro-Benchmark: test individual components of a system such as perf or stream</li>
+<li>(Micro-)Kernel Bechmark: benchmark hot functions of a system such as Berkeley dwarfs</li>
+<li>Synthetic workloads: approximate a model of the behavior of a system with made up scenarios that aim to represent real world workloads such as application skeletons</li>
+<li>Real-world workloads: Model the behavior of real word scenarios on systems such as TPC-DS</li>
+</ul>
 
-        
+        <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       </div>
     </article>
     
@@ -165,7 +195,7 @@ Book: Andrew S. Tanenbaum, Maarten Van Steen, Distributed Systems, Principles an
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        60 Words
+        368 Words
       </p>
 
       <p>
@@ -176,11 +206,9 @@ Book: Andrew S. Tanenbaum, Maarten Van Steen, Distributed Systems, Principles an
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-02-07
+          0001-01-01
         
 
-         
-          
         
       </p>
     </div>
@@ -195,20 +223,13 @@ Book: Andrew S. Tanenbaum, Maarten Van Steen, Distributed Systems, Principles an
         <div class="pagination__buttons">
           
             <span class="button previous">
-              <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/introduction/">
+              <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/info/">
                 <span class="button__icon">←</span>
-                <span class="button__text">Introduction</span>
+                <span class="button__text">Info</span>
               </a>
             </span>
           
 
-          
-            <span class="button next">
-              <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/non-functional/">
-                <span class="button__text">Non-Functional Requirements</span>
-                <span class="button__icon">→</span>
-              </a>
-            </span>
           
         </div>
       </div>
