@@ -37,7 +37,7 @@
       <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/systemsarchtecture/</guid>
-      <description>Design Elements of a Distributed System  The Architecture, is it client-server, hierarchical, peer-to-peer, etc. The programmign model that is used, is it remote procedure call (RPC), libary based, actor model based (akka), mapreduce, etc.  Tradeoffs between the different programming modles and the sotware architecture have to be made, based on the function/non-functional requirements, the cost of convenience, which is easier to use based on the hardware for example, and which is needed for a large scale system.</description>
+      <description>Design Elements of a Distributed System  The Architecture, is it client-server, hierarchical, peer-to-peer, etc. The programming model that is used, is it remote procedure call (RPC), library based, actor model based (akka), mapreduce, etc.  Tradeoffs between the different programming modles and the sotware architecture have to be made, based on the function/non-functional requirements, the cost of convenience, which is easier to use based on the hardware for example, and which is needed for a large scale system.</description>
     </item>
     
     <item>

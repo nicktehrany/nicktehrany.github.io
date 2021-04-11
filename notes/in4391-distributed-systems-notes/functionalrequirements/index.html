@@ -36,7 +36,7 @@
 <meta itemprop="description" content="IN4150 Distributed Systems Notes">
 <meta itemprop="datePublished" content="2021-02-12T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-02-12T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1115">
+<meta itemprop="wordCount" content="1165">
 <meta itemprop="image" content="https://nicktehrany.github.io"/>
 
 
@@ -184,6 +184,13 @@
 <strong>No clocks:</strong> Nodes do not depend on clocks.
 <strong>Stragglers:</strong> It can handle stragglers (nodes making process very slowly) if $N/2+1$ servers vote in the end.</p>
 <p>Leaders are elected for each term and each leader keeps track of the current term number, if election failed the term has no leader.</p>
+<h3 id="consensus">Consensus</h3>
+<p>A correct consensus protocol needs to fulfill:</p>
+<ol>
+<li>Termination: At some point every correct process needs to decide on some value.</li>
+<li>Integrity: If all correct processes propose some value $v$ then the final result must be that value $v$.</li>
+<li>Agreement: Every correct process has to agree on the same value.</li>
+</ol>
 <h3 id="replication">Replication</h3>
 <p><strong>Advantages:</strong></p>
 <ul>
@@ -249,7 +256,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1115 Words
+        1165 Words
       </p>
 
       <p>
