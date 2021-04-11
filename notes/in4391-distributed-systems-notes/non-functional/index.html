@@ -34,7 +34,8 @@
 
 <meta itemprop="name" content="Non-Functional Requirements">
 <meta itemprop="description" content="IN4150 Distributed Systems Notes">
-
+<meta itemprop="datePublished" content="2021-02-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-28T00:00:00+00:00" />
 <meta itemprop="wordCount" content="488">
 <meta itemprop="image" content="https://nicktehrany.github.io"/>
 
@@ -56,12 +57,15 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/non-functional/" />
 <meta property="og:image" content="https://nicktehrany.github.io"/>
-<meta property="og:site_name" content="Nick Tehrany" />
+<meta property="article:published_time" content="2021-02-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-28T00:00:00+00:00" /><meta property="og:site_name" content="Nick Tehrany" />
 
 
 
 
 
+
+    <meta property="article:published_time" content="2021-02-28 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -149,7 +153,7 @@
 <li>Monotonic reads: accessing the data on different devices</li>
 <li>Monotonic writes: updating the data locally and propagating all changes to other servers</li>
 </ul>
-<p>Different notions in writing $W_2(x_1;x_2)) reads as the second write happens with $x_2$ being derived from $x_1$, which is a monotonical write (the updates of $x_1$ are propagated to the next server and the next write depends on it). Writing $W_1(x_1|x_2)$ is a write of $x_2$ that is not derived from $x_1$ therefore a read from $x_2$ would be a valid monotonical read.</p>
+<p>Different notions in writing $W_2(x_1;x_2))$ reads as the second write happens with $x_2$ being derived from $x_1$, which is a monotonical write (the updates of $x_1$ are propagated to the next server and the next write depends on it). Writing $W_1(x_1|x_2)$ is a write of $x_2$ that is not derived from $x_1$ therefore a read from $x_2$ would be a valid monotonical read.</p>
 <h3 id="metrics">Metrics</h3>
 <p>As most systems use a queue for storing tasks before they can be executed, queuing theory can be used for measuring the performance of a system with the arrival time, start time, end time, wait time, etc.</p>
 <p>One of the modern metrics is elasticity which is the degree to which a system adapts to workload changes that adapting resources dynamically depending on the needs.</p>
@@ -213,9 +217,11 @@
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          0001-01-01
+          2021-02-28
         
 
+         
+          
         
       </p>
     </div>
@@ -230,13 +236,20 @@
         <div class="pagination__buttons">
           
             <span class="button previous">
-              <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/info/">
+              <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/systemsarchtecture/">
                 <span class="button__icon">←</span>
-                <span class="button__text">Info</span>
+                <span class="button__text">Programming Models and System Architecture</span>
               </a>
             </span>
           
 
+          
+            <span class="button next">
+              <a href="https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/management/">
+                <span class="button__text">Resource Management and Scheduling</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
           
         </div>
       </div>

@@ -41,6 +41,15 @@
     </item>
     
     <item>
+      <title>Non-Functional Requirements</title>
+      <link>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/non-functional/</link>
+      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/non-functional/</guid>
+      <description>Non-Functional Requirements Consistency Client vs. data centric consistency, in the client side model there is a consistency model for every client but not a global consistency. From the perspective of the client there is no difference in the two models. When to use which model is a tradeoff decision again, therefore when you can afford it you want to use a weaker consistency model. The client consistency can be used if there is some notion of a client session.</description>
+    </item>
+    
+    <item>
       <title>Resource Management and Scheduling</title>
       <link>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/management/</link>
       <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
@@ -440,15 +449,6 @@ git clone https://github.com/nicktehrany/textemp Source the textemp script in yo
       <description>My dotfiles repository, which is more of a continuous project likely to never be done, for managing all my config files for vim, zsh, tmux, git, other dotfiles and utilities I use.
 Installation git clone https://github.com/nicktehrany/dotfiles cd dotfiles sudo ./install Check the .travis.yml for packages that will be installed, if not already installed. All existing links or config files will be overwritten! (Check .install.conf.yaml for all links)
 Then just open a new konsole.</description>
-    </item>
-    
-    <item>
-      <title>Non-Functional Requirements</title>
-      <link>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/non-functional/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/non-functional/</guid>
-      <description>Non-Functional Requirements Consistency Client vs. data centric consistency, in the client side model there is a consistency model for every client but not a global consistency. From the perspective of the client there is no difference in the two models. When to use which model is a tradeoff decision again, therefore when you can afford it you want to use a weaker consistency model. The client consistency can be used if there is some notion of a client session.</description>
     </item>
     
   </channel>
