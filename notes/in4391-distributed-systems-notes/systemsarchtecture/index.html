@@ -147,7 +147,7 @@
 <li>The Architecture, is it client-server, hierarchical, peer-to-peer, etc.</li>
 <li>The programming model that is used, is it remote procedure call (RPC), library based, actor model based (akka), mapreduce, etc.</li>
 </ul>
-<p>Tradeoffs between the different programming modles and the sotware architecture have to be made, based on the function/non-functional requirements, the cost of convenience, which is easier to use based on the hardware for example, and which is needed for a large scale system.</p>
+<p>Tradeoffs between the different programming modles and the sotware architecture have to be made, based on the functional/non-functional requirements, the cost of convenience, which is easier to use based on the hardware for example, and which is needed for a large scale system.</p>
 <h3 id="programming-model">Programming Model</h3>
 <p>The programming model is the abstraction of the underlying hardware that forms the execution environment.</p>
 <p>These models are often based on multiple abstractions such as the model of computation, communication, or data.</p>
@@ -176,7 +176,7 @@ Message passing with RPC is very tough at a large scale (unless there is a minim
 <p>Many different architectures exist:</p>
 <ul>
 <li>Star (centralized): such as clients only communicating with servers but not with other clients. Or Spark nodes only communicating with the master (though sometimes nodes can communicate with each other)</li>
-<li>Hierarchical: DNS is the best example for this, and provides a quicker way to send messages. Imagine peer-to-peer for looking up an IP you would have to possible ask everyone, but with DNS you can find it through three traversal from the root down.</li>
+<li>Hierarchical: DNS is the best example for this, and provides a quicker way to send messages. Imagine peer-to-peer for looking up an IP you would have to possible ask everyone, but with DNS you can find it through tree traversal from the root down.</li>
 <li>Super-peers: peers are connected to other peers that have some additional responsiblity (hence super), and these super nodes are then connected to other super nodes. This replaces the need for servers, as it was used by Skype earlier.</li>
 <li>All-peers (decentralized): BitTorrent or other peer-to-peer networks.</li>
 </ul>
