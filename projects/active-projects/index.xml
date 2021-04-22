@@ -18,8 +18,7 @@
       
       <guid>https://nicktehrany.github.io/projects/active-projects/dotfiles/</guid>
       <description>My dotfiles repository, which is more of a continuous project likely to never be done, for managing all my config files for vim, zsh, tmux, git, other dotfiles and utilities I use.
-Installation git clone https://github.com/nicktehrany/dotfiles cd dotfiles sudo ./install Check the .travis.yml for packages that will be installed, if not already installed. All existing links or config files will be overwritten! (Check .install.conf.yaml for all links)
-Then just open a new konsole.</description>
+Requirements  polybar, can build it from sources or check if the os repo has it  Installation git clone https://github.com/nicktehrany/dotfiles cd dotfiles sudo ./install I currently don&amp;rsquo;t use vscode so the install is disabled, but if you want to install vscode along with all the extensions run</description>
     </item>
     
   </channel>
