@@ -9,6 +9,16 @@
         <atom:link href="https://nicktehrany.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>IN4331 Web-Scale Data Management</title>
+            <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/</link>
+            <pubDate>Thu, 22 Apr 2021 08:34:56 -0600</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/</guid>
+            <description></description>
+            <content type="html"><![CDATA[]]></content>
+        </item>
+        
+        <item>
             <title>IN4391 Distributed Systems</title>
             <link>https://nicktehrany.github.io/notes/in4391-distributed-systems-notes/</link>
             <pubDate>Sun, 07 Feb 2021 08:34:56 -0600</pubDate>

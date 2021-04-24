@@ -1,0 +1,37 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>IN4331 Web-Scale Data Management on Nick Tehrany</title>
+        <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/</link>
+        <description>Recent content in IN4331 Web-Scale Data Management on Nick Tehrany</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 22 Apr 2021 08:34:56 -0600</lastBuildDate>
+        <atom:link href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Info</title>
+            <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/info/</link>
+            <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/info/</guid>
+            <description>IN4331 Web-Scale Data Management notes at TUDelft (Q4).
+Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287
+The content is based on the lecture material/slides and summarized by myself.</description>
+            <content type="html"><![CDATA[<p>IN4331 Web-Scale Data Management notes at TUDelft (Q4).</p>
+<p>Studyguide: <a href="https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287">https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287</a></p>
+<p>The content is based on the lecture material/slides and summarized by myself.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Introduction</title>
+            <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/</link>
+            <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/</guid>
+            <description></description>
+            <content type="html"><![CDATA[]]></content>
+        </item>
+        
+    </channel>
+</rss>
