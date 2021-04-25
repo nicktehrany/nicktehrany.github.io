@@ -5,16 +5,16 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="IN4331 Web-Scale Data Management" />
+<meta name="description" content="IN4331 Web-Scale Data Management Notes" />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/info/" />
+<link rel="canonical" href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/p2p/" />
 
 
     <title>
         
-            Info :: Nick Tehrany 
+            P2P Storage :: Nick Tehrany 
         
     </title>
 
@@ -32,11 +32,11 @@
 
 
 
-<meta itemprop="name" content="Info">
-<meta itemprop="description" content="IN4331 Web-Scale Data Management">
+<meta itemprop="name" content="P2P Storage">
+<meta itemprop="description" content="IN4331 Web-Scale Data Management Notes">
 <meta itemprop="datePublished" content="2021-04-22T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-04-22T00:00:00+00:00" />
-<meta itemprop="wordCount" content="22">
+<meta itemprop="wordCount" content="642">
 <meta itemprop="image" content="https://nicktehrany.github.io"/>
 
 
@@ -46,16 +46,16 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nicktehrany.github.io"/>
 
-<meta name="twitter:title" content="Info"/>
-<meta name="twitter:description" content="IN4331 Web-Scale Data Management"/>
+<meta name="twitter:title" content="P2P Storage"/>
+<meta name="twitter:description" content="IN4331 Web-Scale Data Management Notes"/>
 
 
 
 
-    <meta property="og:title" content="Info" />
-<meta property="og:description" content="IN4331 Web-Scale Data Management" />
+    <meta property="og:title" content="P2P Storage" />
+<meta property="og:description" content="IN4331 Web-Scale Data Management Notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/info/" />
+<meta property="og:url" content="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/p2p/" />
 <meta property="og:image" content="https://nicktehrany.github.io"/>
 <meta property="article:published_time" content="2021-04-22T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-04-22T00:00:00+00:00" /><meta property="og:site_name" content="Nick Tehrany" />
@@ -136,17 +136,63 @@
   
   <article>
     <h1 class="post-title">
-      <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/info/">Info</a>
+      <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/p2p/">P2P Storage</a>
     </h1>
     
       
       
       <div class="post-content">
-        <p>IN4331 Web-Scale Data Management notes at TUDelft (Q4).</p>
-<p>Studyguide: <a href="https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287">https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287</a></p>
-<p>The content is based on the lecture material/slides and summarized by myself.</p>
+        <p>Databases have some sort of model to represent the data in this model,</p>
+<h2 id="relational-databases">Relational databases</h2>
+<p>Based on the relational model, it typically presented in tables that have some relation to each other among which tables can be joined, and includes indices.</p>
+<h3 id="application-db">Application DB</h3>
+<p>The benefit of relational DBs is that they can easily be incorporated into multiple applications since they have defined schemas for the tables and a universal interface. Each application has its own data model and applications then communicate via some sort of messaging model. However now since each application has its own data model there is no unique model for all databases (no central data model as there wold be with integration DBs that integrate multiple applications into a single central database).</p>
+<p>These types of databases are also easier to manage since there is no one central point where all data needs to go and there is no need for synchronization between the different points accessing the central point (easier to scale, distribute, and load balance).</p>
+<h2 id="p2p-storage">P2P Storage</h2>
+<p>The goal with P2P systems is to scale out (distribute the data) that also have resilience to failures, such that failing nodes can easily be handled (and replaced).</p>
+<p>There are several different P2P systems:</p>
+<ul>
+<li>
+<p><strong>Client-Server</strong>: A central server that provides some service or content and clients directly connect to the central server.</p>
+</li>
+<li>
+<p><strong>Centralized P2P</strong>: A central entity to provide a service that is used for indexing of data/groups of where data is located on other peers, and peers are connected to each other. They can request a location of some data from the central server and receive where the data is located and can request the data from that node. This poses a difficulty of load balancing of hot and cold data (what is hot? when is it how? how often replicate it?), and the system still relied on a central server for indexing.</p>
+</li>
+<li>
+<p><strong>Pure P2P</strong>: All nodes are connected to each other and there is no single entity. This allows for leaving and joining to the system without any loss, however it is difficult to manage indexing and what data is on what node, since each node would need to broadcast the data it has to all other nodes to let them know that they have this data.</p>
+</li>
+<li>
+<p><strong>Hybrid P2P</strong>: This aims to solve the problem of pure P2P by having super peers to which individual peers are connected and super peers are connected to each other. This allows for dynamic central entities that host indexing.</p>
+</li>
+<li>
+<p><strong>Pure P2P (DHT Based)</strong>: Distributed hash tables (DHT) where searching and routing (and having information about other machines) can all be done in $\mathcal{O}(\log{}n)$. Can only be hashed by a single value, so if for example you want to share songs you need multiple DHTs to allow for hashing only by song, by song with artist, and so forth, so that songs can be found without all the information (valid existing hashes can be created without all the info). DHTs have a ring structure (which is where the $\log{}n$ comes from). Solving load balancing can be done by hashing yourself when joining, then have a resulting hash range and have yourself routed along the network to the range where you ended up in (this works since the hash function is uniformly distributed and have the avalanche effect). Finding a hash is done by each node maintaining information of $\log{}n$ other nodes in a <em>finger table</em> where different distances to on the ring are stored and which nodes are responsible for that. The addresses you need are</p>
+<p>$$targedId = (currId + 2^i) \text{ mod } 2^m$$</p>
+<p>Routing requests for a node can then be directly forwarded to the node by sending it to the most distant known node which is below the value that is being looked up (always cutting the search space in half).</p>
+</li>
+</ul>
 
-        
+        <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       </div>
     </article>
     
@@ -164,7 +210,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        22 Words
+        642 Words
       </p>
 
       <p>
@@ -193,11 +239,18 @@
 
         <div class="pagination__buttons">
           
+            <span class="button previous">
+              <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/info/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Info</span>
+              </a>
+            </span>
+          
 
           
             <span class="button next">
-              <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/p2p/">
-                <span class="button__text">P2P Storage</span>
+              <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/">
+                <span class="button__text">Introduction</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

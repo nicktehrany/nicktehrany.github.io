@@ -6,7 +6,7 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Apr 2021 08:34:56 -0600</lastBuildDate>
+    <lastBuildDate>Thu, 22 Apr 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -23,12 +23,24 @@ The content is based on the lecture material/slides and summarized by myself.</d
     </item>
     
     <item>
-      <title>Introduction</title>
-      <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/</link>
+      <title>P2P Storage</title>
+      <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/p2p/</link>
       <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
       
+      <guid>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/p2p/</guid>
+      <description>Databases have some sort of model to represent the data in this model,
+Relational databases Based on the relational model, it typically presented in tables that have some relation to each other among which tables can be joined, and includes indices.
+Application DB The benefit of relational DBs is that they can easily be incorporated into multiple applications since they have defined schemas for the tables and a universal interface. Each application has its own data model and applications then communicate via some sort of messaging model.</description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
       <guid>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/</guid>
-      <description></description>
+      <description>Web scale scale data management is the management of large scale datasets with the goal of how to efficiently store, query, and run large amounts of transactions on the datasets.
+Multiple different systems exist, such as P2P systems or cloud storage.</description>
     </item>
     
     <item>
