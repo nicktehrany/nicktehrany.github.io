@@ -9,17 +9,15 @@
         <atom:link href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>Info</title>
-            <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/info/</link>
+            <title>Introduction</title>
+            <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/</link>
             <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
             
-            <guid>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/info/</guid>
-            <description>IN4331 Web-Scale Data Management notes at TUDelft (Q4).
-Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287
-The content is based on the lecture material/slides and summarized by myself.</description>
-            <content type="html"><![CDATA[<p>IN4331 Web-Scale Data Management notes at TUDelft (Q4).</p>
-<p>Studyguide: <a href="https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287">https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287</a></p>
-<p>The content is based on the lecture material/slides and summarized by myself.</p>
+            <guid>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/</guid>
+            <description>Web scale scale data management is the management of large scale datasets with the goal of how to efficiently store, query, and run large amounts of transactions on the datasets.
+Multiple different systems exist, such as P2P systems or cloud storage.</description>
+            <content type="html"><![CDATA[<p>Web scale scale data management is the management of large scale datasets with the goal of how to efficiently store, query, and run large amounts of transactions on the datasets.</p>
+<p>Multiple different systems exist, such as P2P systems or cloud storage.</p>
 ]]></content>
         </item>
         
@@ -64,15 +62,17 @@ Application DB The benefit of relational DBs is that they can easily be incorpor
         </item>
         
         <item>
-            <title>Introduction</title>
-            <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/</link>
+            <title>Info</title>
+            <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/info/</link>
             <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
             
-            <guid>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/</guid>
-            <description>Web scale scale data management is the management of large scale datasets with the goal of how to efficiently store, query, and run large amounts of transactions on the datasets.
-Multiple different systems exist, such as P2P systems or cloud storage.</description>
-            <content type="html"><![CDATA[<p>Web scale scale data management is the management of large scale datasets with the goal of how to efficiently store, query, and run large amounts of transactions on the datasets.</p>
-<p>Multiple different systems exist, such as P2P systems or cloud storage.</p>
+            <guid>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/info/</guid>
+            <description>IN4331 Web-Scale Data Management notes at TUDelft (Q4).
+Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287
+The content is based on the lecture material/slides and summarized by myself.</description>
+            <content type="html"><![CDATA[<p>IN4331 Web-Scale Data Management notes at TUDelft (Q4).</p>
+<p>Studyguide: <a href="https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287">https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287</a></p>
+<p>The content is based on the lecture material/slides and summarized by myself.</p>
 ]]></content>
         </item>
         
