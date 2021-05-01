@@ -36,7 +36,7 @@
 <meta itemprop="description" content="IN4331 Web-Scale Data Management Notes">
 <meta itemprop="datePublished" content="2021-04-22T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-04-22T00:00:00+00:00" />
-<meta itemprop="wordCount" content="642">
+<meta itemprop="wordCount" content="775">
 <meta itemprop="image" content="https://nicktehrany.github.io"/>
 
 
@@ -170,6 +170,9 @@
 <p>Routing requests for a node can then be directly forwarded to the node by sending it to the most distant known node which is below the value that is being looked up (always cutting the search space in half).</p>
 </li>
 </ul>
+<h3 id="amazon-dynamo">Amazon Dynamo</h3>
+<p>Assumes that there are not malicious nodes (no need for fraud detection), and implements a <code>put()</code> and <code>get()</code> for the storage system based on a DHT. In order to answer queries fast, each node maintains a full finger table (therefore the ring is fully connected) and there are no varying response times in the network. For load balancing each node also creates an additional virtual server so that if a node if under heavy load the virtual server (its partitions it is responsible for) can just be moved to a new node.</p>
+<p>Updates (after <code>put()</code>) updates are propagated asynchronously, resulting in eventual consistency. It also uses read/write quorums such that the <code>put()</code> operation does not return until the majority of replicas have been updated (or however many nodes the quorum requires).</p>
 
         <script>
   MathJax = {
@@ -210,7 +213,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        642 Words
+        775 Words
       </p>
 
       <p>

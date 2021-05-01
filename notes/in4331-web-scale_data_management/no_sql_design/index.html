@@ -9,12 +9,12 @@
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/" />
+<link rel="canonical" href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/" />
 
 
     <title>
         
-            Introduction :: Nick Tehrany 
+            NoSQL - Design Principles :: Nick Tehrany 
         
     </title>
 
@@ -32,11 +32,11 @@
 
 
 
-<meta itemprop="name" content="Introduction">
+<meta itemprop="name" content="NoSQL - Design Principles">
 <meta itemprop="description" content="IN4331 Web-Scale Data Management Notes">
-<meta itemprop="datePublished" content="2021-04-22T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-04-22T00:00:00+00:00" />
-<meta itemprop="wordCount" content="41">
+<meta itemprop="datePublished" content="2021-04-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="226">
 <meta itemprop="image" content="https://nicktehrany.github.io"/>
 
 
@@ -46,26 +46,26 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nicktehrany.github.io"/>
 
-<meta name="twitter:title" content="Introduction"/>
+<meta name="twitter:title" content="NoSQL - Design Principles"/>
 <meta name="twitter:description" content="IN4331 Web-Scale Data Management Notes"/>
 
 
 
 
-    <meta property="og:title" content="Introduction" />
+    <meta property="og:title" content="NoSQL - Design Principles" />
 <meta property="og:description" content="IN4331 Web-Scale Data Management Notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/" />
+<meta property="og:url" content="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/" />
 <meta property="og:image" content="https://nicktehrany.github.io"/>
-<meta property="article:published_time" content="2021-04-22T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-04-22T00:00:00+00:00" /><meta property="og:site_name" content="Nick Tehrany" />
+<meta property="article:published_time" content="2021-04-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-29T00:00:00+00:00" /><meta property="og:site_name" content="Nick Tehrany" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2021-04-22 00:00:00 &#43;0000 UTC" />
+    <meta property="article:published_time" content="2021-04-29 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -136,14 +136,28 @@
   
   <article>
     <h1 class="post-title">
-      <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/">Introduction</a>
+      <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/">NoSQL - Design Principles</a>
     </h1>
     
       
       
       <div class="post-content">
-        <p>Web scale scale data management is the management of large scale datasets with the goal of how to efficiently store, query, and run large amounts of transactions on the datasets.</p>
-<p>Multiple different systems exist, such as P2P systems or cloud storage.</p>
+        <h2 id="replication">Replication</h2>
+<h3 id="master-slave-replication">Master-Slave Replication</h3>
+<p>All updates are made directly to the master which then propagates the changes to all the slaves.</p>
+<h3 id="p2p-replication">P2P Replication</h3>
+<p>Replication without a master node, now updates can be on any of the replicas which then propagate the updates to all the replicas.</p>
+<h2 id="distributed-transactions">Distributed Transactions</h2>
+<h3 id="two-phase-commit-2pc">Two Phase Commit (2PC)</h3>
+<p>Transactions are submitted to a coordinator which then sends a prepare to all workers. The workers log the request and respond to the coordinator. When the coordinator receives an <em>ready</em> from all the workers it sends a commit message to all workers which says that the workers should do all the work that was proposed in the prepare. In the prepare the workers just say if the request is possible. If any of the workers responds with a <em>failure</em> the coordinator will stop the request and tell all the workers to abort via an <em>ABORT</em> message and any preparation work by the worker will be stopped (clean the log).</p>
+<h3 id="linearizability-vs-serializability">Linearizability vs. Serializability</h3>
+<p>In linearizability there is one correct order of operations on one element that all servers have to agree upon. With serializability there can be multiple orders of operations across servers, however the final state of the database is the same with any of the orders and is consistent to the operations that were run and expected.</p>
+<h3 id="base">Base</h3>
+<ul>
+<li><strong>B</strong>asically <strong>A</strong>vailable</li>
+<li><strong>S</strong>oft State</li>
+<li><strong>E</strong>ventually Consistent</li>
+</ul>
 
         <script>
   MathJax = {
@@ -184,7 +198,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        41 Words
+        226 Words
       </p>
 
       <p>
@@ -195,7 +209,7 @@
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-04-22
+          2021-04-29
         
 
          
@@ -213,18 +227,11 @@
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
-              <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/">
-                <span class="button__icon">←</span>
-                <span class="button__text">NoSQL - Design Principles</span>
-              </a>
-            </span>
-          
 
           
             <span class="button next">
-              <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/p2p/">
-                <span class="button__text">P2P Storage</span>
+              <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/">
+                <span class="button__text">Introduction</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

@@ -152,7 +152,7 @@ A predicate, which is the defined order of saying what functions correctly and i
 <h3 id="gallagers-humblets-and-spiras-algorithm-for-the-mst-of-an-undirected-weighted-graph-with-unique-edge-weights">Gallager’s, Humblet’s, and Spira’s Algorithm for the MST of an Undirected Weighted Graph with Unique Edge Weights</h3>
 <p>The idea of the algorithm is to have fragments connect to each other along their MOEs, starting with single node fragments and resulting with the final MST. The MST is constructed by repeatedly connecting pairs of fragments along a single edge that is the MOE of one of the fragments. Each fragment has a <em>level</em>, and single node fragments start with level 0, and a <em>core</em>. The level is used for deciding wether to merge or absorb other fragments, and is only increased when a merge happens. With a merge, the core will also be changed to the edge along which the merge happened.</p>
 <p><strong>Message complexity</strong> is</p>
-<p>$$O(5<em>|V|</em> \text{ log }|V|+2*|E|)$$</p>
+<p>$$O(5*|V|* \log{} |V|+2*|E|)$$</p>
 <p>A MST of level $k$ has a maximum of $2^k$ nodes.</p>
 ]]></content>
         </item>

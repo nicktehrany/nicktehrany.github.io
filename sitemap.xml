@@ -3,12 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/</loc>
-    <lastmod>2021-04-22T00:00:00+00:00</lastmod>
+    <loc>https://nicktehrany.github.io/</loc>
+    <lastmod>2021-04-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://nicktehrany.github.io/</loc>
+    <loc>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/</loc>
+    <lastmod>2021-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/</loc>
     <lastmod>2021-04-22T00:00:00+00:00</lastmod>
   </url>
   

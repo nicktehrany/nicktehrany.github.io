@@ -6,10 +6,21 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Apr 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>NoSQL - Design Principles</title>
+      <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/</link>
+      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/</guid>
+      <description>Replication Master-Slave Replication All updates are made directly to the master which then propagates the changes to all the slaves.
+P2P Replication Replication without a master node, now updates can be on any of the replicas which then propagate the updates to all the replicas.
+Distributed Transactions Two Phase Commit (2PC) Transactions are submitted to a coordinator which then sends a prepare to all workers. The workers log the request and respond to the coordinator.</description>
+    </item>
     
     <item>
       <title>Introduction</title>

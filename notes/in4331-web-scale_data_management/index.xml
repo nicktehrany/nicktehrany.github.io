@@ -9,6 +9,34 @@
         <atom:link href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>NoSQL - Design Principles</title>
+            <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/</link>
+            <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/</guid>
+            <description>Replication Master-Slave Replication All updates are made directly to the master which then propagates the changes to all the slaves.
+P2P Replication Replication without a master node, now updates can be on any of the replicas which then propagate the updates to all the replicas.
+Distributed Transactions Two Phase Commit (2PC) Transactions are submitted to a coordinator which then sends a prepare to all workers. The workers log the request and respond to the coordinator.</description>
+            <content type="html"><![CDATA[<h2 id="replication">Replication</h2>
+<h3 id="master-slave-replication">Master-Slave Replication</h3>
+<p>All updates are made directly to the master which then propagates the changes to all the slaves.</p>
+<h3 id="p2p-replication">P2P Replication</h3>
+<p>Replication without a master node, now updates can be on any of the replicas which then propagate the updates to all the replicas.</p>
+<h2 id="distributed-transactions">Distributed Transactions</h2>
+<h3 id="two-phase-commit-2pc">Two Phase Commit (2PC)</h3>
+<p>Transactions are submitted to a coordinator which then sends a prepare to all workers. The workers log the request and respond to the coordinator. When the coordinator receives an <em>ready</em> from all the workers it sends a commit message to all workers which says that the workers should do all the work that was proposed in the prepare. In the prepare the workers just say if the request is possible. If any of the workers responds with a <em>failure</em> the coordinator will stop the request and tell all the workers to abort via an <em>ABORT</em> message and any preparation work by the worker will be stopped (clean the log).</p>
+<h3 id="linearizability-vs-serializability">Linearizability vs. Serializability</h3>
+<p>In linearizability there is one correct order of operations on one element that all servers have to agree upon. With serializability there can be multiple orders of operations across servers, however the final state of the database is the same with any of the orders and is consistent to the operations that were run and expected.</p>
+<h3 id="base">Base</h3>
+<ul>
+<li><strong>B</strong>asically <strong>A</strong>vailable</li>
+<li><strong>S</strong>oft State</li>
+<li><strong>E</strong>ventually Consistent</li>
+</ul>
+]]></content>
+        </item>
+        
+        <item>
             <title>Introduction</title>
             <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/</link>
             <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
@@ -58,6 +86,9 @@ Application DB The benefit of relational DBs is that they can easily be incorpor
 <p>Routing requests for a node can then be directly forwarded to the node by sending it to the most distant known node which is below the value that is being looked up (always cutting the search space in half).</p>
 </li>
 </ul>
+<h3 id="amazon-dynamo">Amazon Dynamo</h3>
+<p>Assumes that there are not malicious nodes (no need for fraud detection), and implements a <code>put()</code> and <code>get()</code> for the storage system based on a DHT. In order to answer queries fast, each node maintains a full finger table (therefore the ring is fully connected) and there are no varying response times in the network. For load balancing each node also creates an additional virtual server so that if a node if under heavy load the virtual server (its partitions it is responsible for) can just be moved to a new node.</p>
+<p>Updates (after <code>put()</code>) updates are propagated asynchronously, resulting in eventual consistency. It also uses read/write quorums such that the <code>put()</code> operation does not return until the majority of replicas have been updated (or however many nodes the quorum requires).</p>
 ]]></content>
         </item>
         
