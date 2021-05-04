@@ -6,10 +6,20 @@
     <description>Recent content on Nick Tehrany</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 May 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://nicktehrany.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Scalable Data Integration and Discovery in Data Lakes</title>
+      <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/datalake/</link>
+      <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/datalake/</guid>
+      <description>Data Lakes The problem starts in the management of big data, which has the following requirements:
+ Volume: the data is typically large Variety: the type of the data varies Velocity: the data needs to be accessed and processed quickly Veracity: the quality of the data needs to be maintained and guaranteed Value: the data is used for intended purposes and holds value to that purpose  Data lakes are a way of storing large amounts of data without strict structure and guidelines, and all data is just &amp;ldquo;dumped&amp;rdquo; there.</description>
+    </item>
     
     <item>
       <title>NoSQL - Design Principles</title>

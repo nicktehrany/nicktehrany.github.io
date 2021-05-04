@@ -9,12 +9,12 @@
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/" />
+<link rel="canonical" href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/datalake/" />
 
 
     <title>
         
-            NoSQL - Design Principles :: Nick Tehrany 
+            Scalable Data Integration and Discovery in Data Lakes :: Nick Tehrany 
         
     </title>
 
@@ -32,11 +32,11 @@
 
 
 
-<meta itemprop="name" content="NoSQL - Design Principles">
+<meta itemprop="name" content="Scalable Data Integration and Discovery in Data Lakes">
 <meta itemprop="description" content="IN4331 Web-Scale Data Management Notes">
-<meta itemprop="datePublished" content="2021-04-29T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-04-29T00:00:00+00:00" />
-<meta itemprop="wordCount" content="226">
+<meta itemprop="datePublished" content="2021-05-04T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-05-04T00:00:00+00:00" />
+<meta itemprop="wordCount" content="220">
 <meta itemprop="image" content="https://nicktehrany.github.io"/>
 
 
@@ -46,26 +46,26 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nicktehrany.github.io"/>
 
-<meta name="twitter:title" content="NoSQL - Design Principles"/>
+<meta name="twitter:title" content="Scalable Data Integration and Discovery in Data Lakes"/>
 <meta name="twitter:description" content="IN4331 Web-Scale Data Management Notes"/>
 
 
 
 
-    <meta property="og:title" content="NoSQL - Design Principles" />
+    <meta property="og:title" content="Scalable Data Integration and Discovery in Data Lakes" />
 <meta property="og:description" content="IN4331 Web-Scale Data Management Notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/" />
+<meta property="og:url" content="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/datalake/" />
 <meta property="og:image" content="https://nicktehrany.github.io"/>
-<meta property="article:published_time" content="2021-04-29T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-04-29T00:00:00+00:00" /><meta property="og:site_name" content="Nick Tehrany" />
+<meta property="article:published_time" content="2021-05-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-05-04T00:00:00+00:00" /><meta property="og:site_name" content="Nick Tehrany" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2021-04-29 00:00:00 &#43;0000 UTC" />
+    <meta property="article:published_time" content="2021-05-04 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -136,28 +136,28 @@
   
   <article>
     <h1 class="post-title">
-      <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/">NoSQL - Design Principles</a>
+      <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/datalake/">Scalable Data Integration and Discovery in Data Lakes</a>
     </h1>
     
       
       
       <div class="post-content">
-        <h2 id="replication">Replication</h2>
-<h3 id="master-slave-replication">Master-Slave Replication</h3>
-<p>All updates are made directly to the master which then propagates the changes to all the slaves.</p>
-<h3 id="p2p-replication">P2P Replication</h3>
-<p>Replication without a master node, now updates can be on any of the replicas which then propagate the updates to all the replicas.</p>
-<h2 id="distributed-transactions">Distributed Transactions</h2>
-<h3 id="two-phase-commit-2pc">Two Phase Commit (2PC)</h3>
-<p>Transactions are submitted to a coordinator which then sends a prepare to all workers. The workers log the request and respond to the coordinator. When the coordinator receives an <em>ready</em> from all the workers it sends a commit message to all workers which says that the workers should do all the work that was proposed in the prepare. In the prepare the workers just say if the request is possible. If any of the workers responds with a <em>failure</em> the coordinator will stop the request and tell all the workers to abort via an <em>ABORT</em> message and any preparation work by the worker will be stopped (clean the log).</p>
-<h3 id="linearizability-vs-serializability">Linearizability vs. Serializability</h3>
-<p>In linearizability there is one correct order of operations on one element that all servers have to agree upon. With serializability there can be multiple orders of operations across servers, however the final state of the database is the same with any of the orders and is consistent to the operations that were run and expected.</p>
-<h3 id="base">Base</h3>
+        <h2 id="data-lakes">Data Lakes</h2>
+<p>The problem starts in the management of big data, which has the following requirements:</p>
 <ul>
-<li><strong>B</strong>asically <strong>A</strong>vailable</li>
-<li><strong>S</strong>oft State</li>
-<li><strong>E</strong>ventually Consistent</li>
+<li><strong>Volume:</strong> the data is typically large</li>
+<li><strong>Variety:</strong> the type of the data varies</li>
+<li><strong>Velocity:</strong> the data needs to be accessed and processed quickly</li>
+<li>Veracity: the quality of the data needs to be maintained and guaranteed</li>
+<li>Value: the data is used for intended purposes and holds value to that purpose</li>
 </ul>
+<p>Data lakes are a way of storing large amounts of data without strict structure and guidelines, and all data is just &ldquo;dumped&rdquo; there. However, this can quickly lead to data swamps, therefore the data lake is more of a set of centralized repositories of raw data, which can be structure or unstructured. There must be metadata to describe and organize the data and be able to quicky query or process the data.</p>
+<h2 id="data-integration">Data Integration</h2>
+<p>Data integration is a unified and transparent way of providing access to the raw data in a data lake or other data sources. These data sources can be heterogeneous (structure, content, sources, etc.). There are two types of architectures for data integration:</p>
+<ol>
+<li><strong>Data Warehouse:</strong> a single data store where the data from different sources is stored</li>
+<li><strong>Virtual Integration:</strong> queries are applied online after query reformulation on the mediated data schema. This way the data does not need to leave the database.</li>
+</ol>
 
         <script>
   MathJax = {
@@ -198,7 +198,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        226 Words
+        220 Words
       </p>
 
       <p>
@@ -209,7 +209,7 @@
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-04-29
+          2021-05-04
         
 
          
@@ -227,18 +227,11 @@
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
-              <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/datalake/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Scalable Data Integration and Discovery in Data Lakes</span>
-              </a>
-            </span>
-          
 
           
             <span class="button next">
-              <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/introduction/">
-                <span class="button__text">Introduction</span>
+              <a href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/">
+                <span class="button__text">NoSQL - Design Principles</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

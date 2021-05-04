@@ -9,6 +9,33 @@
         <atom:link href="https://nicktehrany.github.io/notes/in4331-web-scale_data_management/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Scalable Data Integration and Discovery in Data Lakes</title>
+            <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/datalake/</link>
+            <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/datalake/</guid>
+            <description>Data Lakes The problem starts in the management of big data, which has the following requirements:
+ Volume: the data is typically large Variety: the type of the data varies Velocity: the data needs to be accessed and processed quickly Veracity: the quality of the data needs to be maintained and guaranteed Value: the data is used for intended purposes and holds value to that purpose  Data lakes are a way of storing large amounts of data without strict structure and guidelines, and all data is just &amp;ldquo;dumped&amp;rdquo; there.</description>
+            <content type="html"><![CDATA[<h2 id="data-lakes">Data Lakes</h2>
+<p>The problem starts in the management of big data, which has the following requirements:</p>
+<ul>
+<li><strong>Volume:</strong> the data is typically large</li>
+<li><strong>Variety:</strong> the type of the data varies</li>
+<li><strong>Velocity:</strong> the data needs to be accessed and processed quickly</li>
+<li>Veracity: the quality of the data needs to be maintained and guaranteed</li>
+<li>Value: the data is used for intended purposes and holds value to that purpose</li>
+</ul>
+<p>Data lakes are a way of storing large amounts of data without strict structure and guidelines, and all data is just &ldquo;dumped&rdquo; there. However, this can quickly lead to data swamps, therefore the data lake is more of a set of centralized repositories of raw data, which can be structure or unstructured. There must be metadata to describe and organize the data and be able to quicky query or process the data.</p>
+<h2 id="data-integration">Data Integration</h2>
+<p>Data integration is a unified and transparent way of providing access to the raw data in a data lake or other data sources. These data sources can be heterogeneous (structure, content, sources, etc.). There are two types of architectures for data integration:</p>
+<ol>
+<li><strong>Data Warehouse:</strong> a single data store where the data from different sources is stored</li>
+<li><strong>Virtual Integration:</strong> queries are applied online after query reformulation on the mediated data schema. This way the data does not need to leave the database.</li>
+</ol>
+]]></content>
+        </item>
+        
+        <item>
             <title>NoSQL - Design Principles</title>
             <link>https://nicktehrany.github.io/notes/in4331-web-scale_data_management/no_sql_design/</link>
             <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
