@@ -18,7 +18,7 @@
       
       <guid>https://nicktehrany.github.io/projects/active-projects/dotfiles/</guid>
       <description>My dotfiles repository, which is more of a continuous project likely to never be done, for managing all my config files for vim, zsh, tmux, git, other dotfiles and utilities I use.
-Requirements  polybar, can build it from sources or check if the os repo has it  Installation git clone https://github.com/nicktehrany/dotfiles cd dotfiles sudo ./install I currently don&amp;rsquo;t use vscode so the install is disabled, but if you want to install vscode along with all the extensions run</description>
+Requirements  the default profile contains polybar configs, however these won&amp;rsquo;t be useful until it is installed, can build it from sources or check if the os repo has it. Therefore if you do not want polybar no need to install it.</description>
     </item>
     
   </channel>

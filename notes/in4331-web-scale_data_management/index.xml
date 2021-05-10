@@ -32,6 +32,29 @@
 <li><strong>Data Warehouse:</strong> a single data store where the data from different sources is stored</li>
 <li><strong>Virtual Integration:</strong> queries are applied online after query reformulation on the mediated data schema. This way the data does not need to leave the database.</li>
 </ol>
+<h2 id="dataset-discovery">Dataset Discovery</h2>
+<p>Due to the heterogeneity in data lakes data scientists need to find relevant data from known data sets (find related data to the ones that the data scientist has). <em>Schema Matching</em> is component for finding related data sets.</p>
+<p>Tabular datasets can present relatedness which means that tables are joinable if there are overlapping columns which can be joined. Unionable tables store the same information but also have other data points, then extending data sets is just adding more data points on the same key from different datasets.</p>
+<p>In order for finding overlaps in metrics the Jaccard similarity can be used which is given as for two domains $X$ and $Y$,</p>
+<p>$$s(X,Y)=\frac{\lvert X \cap Y \rvert}{\lvert X \cup Y \rvert}$$</p>
+<p>The higher the Jaccard similarity is the more similarities the two domains have, however it is biased for smaller datasets, as there the Jaccard similarity can more easily reach a higher value.
+For resolving this issue we can use set containment, which is given as for two domains $X$ and $Y$,</p>
+<p>$$t(X,Y)=\frac{\lvert X \cap Y \rvert}{\lvert X \rvert}$$</p>
+<p>as this will ignore the size of the set, and only include the actual overlap.</p>
+<p>Additionally, we have the set overlap given as,</p>
+<p>$$o(X,Y)=\lvert X \cap Y \rvert$$</p>
+<p>which is just the intersection of two sets and can be used for finding joinable tables.</p>
+<h3 id="dataset-discovery-optimizations">Dataset Discovery Optimizations</h3>
+<p>As this is very slow (due to having to do many calculations in data leaks), there have been several proposals for accelerating this procedure</p>
+<h4 id="lsh-ensemble">LSH Ensemble</h4>
+<p>Use a Minwise hash function that will return the minimum hash value of all the hashes of a column, which can then be used to approximate the Jaccard similarity.</p>
+<p>Additionally, there is Locality Sensitive Hashing which prunes the search space of the dataset by mapping signatures of domains to different buckets (not hashing all columns individually).</p>
+<h4 id="lazo">Lazo</h4>
+<p>Using One-Permutation Hashing (OPH) it improves on MinHash LSH by using a single hash function instead of one hash function per domain as in LSH.</p>
+<h4 id="josie">JOSIE</h4>
+<p>Extracts the top most joinable tables given a query column and finding the data in the data lake with the highest overlap.</p>
+<h4 id="silkmoth">SilkMoth</h4>
+<p>Makes related set discovery faster by finding set similarity, set containment, and given a reference set $R$ it can find all related sets</p>
 ]]></content>
         </item>
         
