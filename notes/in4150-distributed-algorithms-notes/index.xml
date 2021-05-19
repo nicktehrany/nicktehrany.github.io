@@ -1,22 +1,5 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>IN4391 Distributed Algorithms on Nick Tehrany</title>
-        <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/</link>
-        <description>Recent content in IN4391 Distributed Algorithms on Nick Tehrany</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Mon, 30 Nov 2020 08:34:56 -0600</lastBuildDate>
-        <atom:link href="https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/index.xml" rel="self" type="application/rss+xml" />
-        
-        <item>
-            <title>State Machine Replication</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/smr/</link>
-            <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/smr/</guid>
-            <description>The state of a machine is constituted by the contents of the data store (data written by the clients), and for redundancy might want to be replicated across multiple machines, such that if one fails another can immediately take over. In order for all machines to maintain the same state they have to implement linearizability, since they all need to execute the client requests in the exact same order.
-Stopping Failure Tolerant SMR Algorithms Lamport&amp;rsquo;s Single-Value Paxos Consensus Algorithm The algorithm assumes only stopping failures (may restart later, mut no malicious or bugs(Byzantine fault)) and an asynchronous system.</description>
-            <content type="html"><![CDATA[<p>The state of a machine is constituted by the contents of the data store (data written by the clients), and for redundancy might want to be replicated across multiple machines, such that if one fails another can immediately take over. In order for all machines to maintain the same state they have to implement <em>linearizability</em>, since they all need to execute the client requests in the exact same order.</p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IN4391 Distributed Algorithms on Nick Tehrany</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/</link><description>Recent content in IN4391 Distributed Algorithms on Nick Tehrany</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 30 Nov 2020 08:34:56 -0600</lastBuildDate><atom:link href="https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/index.xml" rel="self" type="application/rss+xml"/><item><title>State Machine Replication</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/smr/</link><pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/smr/</guid><description>The state of a machine is constituted by the contents of the data store (data written by the clients), and for redundancy might want to be replicated across multiple machines, such that if one fails another can immediately take over. In order for all machines to maintain the same state they have to implement linearizability, since they all need to execute the client requests in the exact same order.
+Stopping Failure Tolerant SMR Algorithms Lamport&amp;rsquo;s Single-Value Paxos Consensus Algorithm The algorithm assumes only stopping failures (may restart later, mut no malicious or bugs(Byzantine fault)) and an asynchronous system.</description><content type="html"><![CDATA[<p>The state of a machine is constituted by the contents of the data store (data written by the clients), and for redundancy might want to be replicated across multiple machines, such that if one fails another can immediately take over. In order for all machines to maintain the same state they have to implement <em>linearizability</em>, since they all need to execute the client requests in the exact same order.</p>
 <h3 id="stopping-failure-tolerant-smr-algorithms">Stopping Failure Tolerant SMR Algorithms</h3>
 <h4 id="lamports-single-value-paxos-consensus-algorithm">Lamport&rsquo;s Single-Value Paxos Consensus Algorithm</h4>
 <p>The algorithm assumes only stopping failures (may restart later, mut no malicious or bugs(Byzantine fault)) and an asynchronous system. This is the single-value paxos, in which a group of processes agrees on a single value proposed by one of its participants, and there is also a multi-value paxos, where a group of processes decides on a sequence of values. Messages may be reordered, duplicated, or lost, but not corrupted. Votes can only be in favour or no vote at all (no message reply), but <strong>no</strong> voting against.</p>
@@ -59,18 +42,8 @@ Stopping Failure Tolerant SMR Algorithms Lamport&amp;rsquo;s Single-Value Paxos 
 <p>The value $v$ is changed to $w$ (from the message with either a 0 or 1) after a single message was received and a decision on this value is made after more than $f$ messages with that value were received.</p>
 <h4 id="ben-ors-randomized-algorithm-for-consensus-in-synchronous-and-asynchronous-systems-with-byzantine-failures">Ben-Or’s Randomized Algorithm for Consensus in Synchronous and Asynchronous Systems with Byzantine Failures</h4>
 <p>This algorithm has a different decision procedure, in which the value of $v$ is only changed to $w$ (from the message which is either 0 or 1) when more than $f$ messages were received, and decision is then only made when more than $f$ messages with the same $w$ were received.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Stabilization</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/stabilization/</link>
-            <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/stabilization/</guid>
-            <description>For dealing with transient faults, which means that components in a distributed system may only fail temporarily, stabilizing algorithms have been devised that bring a system back into a correct sate from any incorrect sate it may be in.
-A predicate, which is the defined order of saying what functions correctly and incorrectly and is defined as legal and illegal configurations, is called stable if once it holds and no faults occur, it continues to hold.</description>
-            <content type="html"><![CDATA[<p>For dealing with transient faults, which means that components in a distributed system may only fail temporarily, <em>stabilizing</em> algorithms have been devised that bring a system back into a correct sate from any incorrect sate it may be in.</p>
+]]></content></item><item><title>Stabilization</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/stabilization/</link><pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/stabilization/</guid><description>For dealing with transient faults, which means that components in a distributed system may only fail temporarily, stabilizing algorithms have been devised that bring a system back into a correct sate from any incorrect sate it may be in.
+A predicate, which is the defined order of saying what functions correctly and incorrectly and is defined as legal and illegal configurations, is called stable if once it holds and no faults occur, it continues to hold.</description><content type="html"><![CDATA[<p>For dealing with transient faults, which means that components in a distributed system may only fail temporarily, <em>stabilizing</em> algorithms have been devised that bring a system back into a correct sate from any incorrect sate it may be in.</p>
 <p>A <em>predicate</em>, which is the defined order of saying what functions correctly and incorrectly and is defined as legal and illegal configurations, is called stable if once it holds and no faults occur, it continues to hold.</p>
 <p>In systems with a <em>distributed demon</em>, it picks one process at a time to make a step.</p>
 <h3 id="stabilizing-mutual-exclusion-algorithms">Stabilizing Mutual Exclusion Algorithms</h3>
@@ -101,17 +74,7 @@ A predicate, which is the defined order of saying what functions correctly and i
 <p>$$\text{and}$$</p>
 <p>$$\text{for each }(ack;i)\text{ in channel RS }(i\le nr)$$</p>
 <p>Only the second clause changed which now means that the number of the next message to be acked in the messages sent but not yet received cannot be higher than the number of the next message to be received, and it is strictly smaller than the number of the next message to be sent.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Consensus</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/consensus/</link>
-            <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/consensus/</guid>
-            <description>Distributed systems will have to deal with faults caused by software or hardware components, not operating according to specification. Faults can be classified as permanent, once a processor exhibits a fault it will be considered as faulty for ever, which also leads to crash failures and malicious or Byzantine failures. Transient faults are when a processor may exhibit a fault but will return to correct operation again, i.e. transmission error or short power loss.</description>
-            <content type="html"><![CDATA[<p>Distributed systems will have to deal with faults caused by software or hardware components, not operating according to specification. Faults can be classified as <em>permanent</em>, once a processor exhibits a fault it will be considered as faulty for ever, which also leads to crash failures and malicious or Byzantine failures. <em>Transient</em> faults are when a processor may exhibit a fault but will return to correct operation again, i.e. transmission error or short power loss.</p>
+]]></content></item><item><title>Consensus</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/consensus/</link><pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/consensus/</guid><description>Distributed systems will have to deal with faults caused by software or hardware components, not operating according to specification. Faults can be classified as permanent, once a processor exhibits a fault it will be considered as faulty for ever, which also leads to crash failures and malicious or Byzantine failures. Transient faults are when a processor may exhibit a fault but will return to correct operation again, i.e. transmission error or short power loss.</description><content type="html"><![CDATA[<p>Distributed systems will have to deal with faults caused by software or hardware components, not operating according to specification. Faults can be classified as <em>permanent</em>, once a processor exhibits a fault it will be considered as faulty for ever, which also leads to crash failures and malicious or Byzantine failures. <em>Transient</em> faults are when a processor may exhibit a fault but will return to correct operation again, i.e. transmission error or short power loss.</p>
 <p>Reaching agreement based on every process starting with a value from the set of possible initial values has the following conditions,</p>
 <ol>
 <li><em>Agreement:</em> No two processes decide on different values.</li>
@@ -138,33 +101,13 @@ A predicate, which is the defined order of saying what functions correctly and i
 <p><em>Note, this algorithm is not exam material.</em></p>
 <p>The commander stars with some binary value $v$ that it wants to send to all other processes, which initialize their own variable $v$ to $0$. The algorithm consists of two layers, where the bottom one implements the authenticated broadcast and the upper one implements the actual algorithm. The upper layer has $f+1$ rounds. In the first round if the general is correct (non-fault) and it has $v=0$ it will never broadcast a message, and if $v=1$ it will broadcast a $1$ to all others. The other processes broadcast a $1$ only once and once they have set their own value to $1$, which happens when they received in all rounds up to and including round $r$ a $1$ from at least $r$ processes including the general.</p>
 <p>The lower layer has the requirement that a faulty process may send a signed message to some but not all correct processes.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Minimum-Weight Spanning Trees</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mst/</link>
-            <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mst/</guid>
-            <description>A reason for using minimum-weight spanning trees (MST) is to broadcast some message along the tree with minimum weight, if for example the transmission cost is used as the weight for edges. MSTs are constructed from weighted (unique weights) undirected graphs. Unique weights are required for finding a unique solution for an MST, and for the following algorithm. A fragment of graph $G$ is a subtree of its MST. Edge $e$ of $G$ is the minimum-weight outgoing edge (MOE) of fragment $F$ if it has the minimum weight that connects $F$ to another fragment.</description>
-            <content type="html"><![CDATA[<p>A reason for using minimum-weight spanning trees (MST) is to broadcast some message along the tree with minimum weight, if for example the transmission cost is used as the weight for edges. MSTs are constructed from weighted (unique weights) undirected graphs. Unique weights are required for finding a unique solution for an MST, and for the following algorithm. A <em>fragment</em> of graph $G$ is a subtree of its MST. Edge $e$ of $G$ is the minimum-weight outgoing edge (MOE) of fragment $F$ if it has the minimum weight that connects $F$ to another fragment.</p>
+]]></content></item><item><title>Minimum-Weight Spanning Trees</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mst/</link><pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mst/</guid><description>A reason for using minimum-weight spanning trees (MST) is to broadcast some message along the tree with minimum weight, if for example the transmission cost is used as the weight for edges. MSTs are constructed from weighted (unique weights) undirected graphs. Unique weights are required for finding a unique solution for an MST, and for the following algorithm. A fragment of graph $G$ is a subtree of its MST. Edge $e$ of $G$ is the minimum-weight outgoing edge (MOE) of fragment $F$ if it has the minimum weight that connects $F$ to another fragment.</description><content type="html"><![CDATA[<p>A reason for using minimum-weight spanning trees (MST) is to broadcast some message along the tree with minimum weight, if for example the transmission cost is used as the weight for edges. MSTs are constructed from weighted (unique weights) undirected graphs. Unique weights are required for finding a unique solution for an MST, and for the following algorithm. A <em>fragment</em> of graph $G$ is a subtree of its MST. Edge $e$ of $G$ is the minimum-weight outgoing edge (MOE) of fragment $F$ if it has the minimum weight that connects $F$ to another fragment.</p>
 <h3 id="gallagers-humblets-and-spiras-algorithm-for-the-mst-of-an-undirected-weighted-graph-with-unique-edge-weights">Gallager’s, Humblet’s, and Spira’s Algorithm for the MST of an Undirected Weighted Graph with Unique Edge Weights</h3>
 <p>The idea of the algorithm is to have fragments connect to each other along their MOEs, starting with single node fragments and resulting with the final MST. The MST is constructed by repeatedly connecting pairs of fragments along a single edge that is the MOE of one of the fragments. Each fragment has a <em>level</em>, and single node fragments start with level 0, and a <em>core</em>. The level is used for deciding wether to merge or absorb other fragments, and is only increased when a merge happens. With a merge, the core will also be changed to the edge along which the merge happened.</p>
 <p><strong>Message complexity</strong> is</p>
 <p>$$O(5*|V|* \log{} |V|+2*|E|)$$</p>
 <p>A MST of level $k$ has a maximum of $2^k$ nodes.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Traversal Algorithms</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/</link>
-            <pubDate>Thu, 21 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/</guid>
-            <description>Information in a DS may need to be propagated from a single node to all other nodes and the originator may want to receive information back. In a spanning tree of an undirected network, which is a sub-network of the original network that contains all nodes of the original network and that has the structure of a tree (the sparsest type of sub-network that keeps the system connected), messages need to traverse the tree efficiently.</description>
-            <content type="html"><![CDATA[<p>Information in a DS may need to be propagated from a single node to all other nodes and the originator may want to receive information back. In a <em>spanning tree</em> of an undirected network, which is a sub-network of the original network that contains all nodes of the original network and that has the structure of a tree (the sparsest type of sub-network that keeps the system connected), messages need to traverse the tree efficiently. In all algorithms the originating node starts by sending a <em>TOKEN</em> on any of its edges, which then traverses the whole system and returns to the originator. The node from which a node receives the token is its <em>parent</em>.</p>
+]]></content></item><item><title>Traversal Algorithms</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/</link><pubDate>Thu, 21 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/</guid><description>Information in a DS may need to be propagated from a single node to all other nodes and the originator may want to receive information back. In a spanning tree of an undirected network, which is a sub-network of the original network that contains all nodes of the original network and that has the structure of a tree (the sparsest type of sub-network that keeps the system connected), messages need to traverse the tree efficiently.</description><content type="html"><![CDATA[<p>Information in a DS may need to be propagated from a single node to all other nodes and the originator may want to receive information back. In a <em>spanning tree</em> of an undirected network, which is a sub-network of the original network that contains all nodes of the original network and that has the structure of a tree (the sparsest type of sub-network that keeps the system connected), messages need to traverse the tree efficiently. In all algorithms the originating node starts by sending a <em>TOKEN</em> on any of its edges, which then traverses the whole system and returns to the originator. The node from which a node receives the token is its <em>parent</em>.</p>
 <h3 id="tarrys-traversal-algorithm-in-a-general-undirected-network">Tarry&rsquo;s Traversal Algorithm in a General Undirected Network</h3>
 <p>Every node maintains the set of edges it has not yet sent the token to, except their parent. If that set is not empty when a node receives the token it sends it along one of the edges in the set, and otherwise sends it back to its parent.</p>
 <p><strong>Message complexity</strong> is $2|E|$ since the token travels along all edges twice.</p>
@@ -177,17 +120,7 @@ A predicate, which is the defined order of saying what functions correctly and i
 <h3 id="cidons-depth-first-search-algorithm">Cidon&rsquo;s Depth-First Search Algorithm</h3>
 <p>When a node receives the <em>TOKEN</em> for the first time it immediately forwards it to a node it assumes has not been visited yet and sends a <em>VISITED</em> message too all its neighbors except for that node and its parent. This means the token can be sent to a node that had already been visited (the visited message of that token might still be in transit), and once that visited message shows up the node knows it made a mistake, regenerates the token and sends it to another node. The already visited node that received the token does nothing with it.</p>
 <p><strong>Message complexity</strong> is $3|E|$ since visited message is sent both ways across any edge and at most one <em>TOKEN</em> message can be sent along it.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Election</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/election/</link>
-            <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/election/</guid>
-            <description>It may sometimes be necessary in a DS to assign a certain process with a higher privilege, for which election is used. If each process has a unique integer id, the system is said to be non-anonymous and anonymous otherwise. In anonymous rings no deterministic solution exists to election, as processes need to randomly generate some id value (e.g. 64 bit number). Algorithms that work in a ring of an unknown size are called uniform.</description>
-            <content type="html"><![CDATA[<p>It may sometimes be necessary in a DS to assign a certain process with a higher privilege, for which election is used. If each process has a unique integer id, the system is said to be <em>non-anonymous</em> and <em>anonymous</em> otherwise. In anonymous rings no deterministic solution exists to election, as processes need to randomly generate some id value (e.g. 64 bit number). Algorithms that work in a ring of an unknown size are called <em>uniform</em>. <em>Comparison based</em> algorithms rely on the comparison of ids, hence they can only send and receive messages and compare process ids. The message complexity of comparison based algorithms in rings is $\Omega(n\text{ log }n)$.</p>
+]]></content></item><item><title>Election</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/election/</link><pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/election/</guid><description>It may sometimes be necessary in a DS to assign a certain process with a higher privilege, for which election is used. If each process has a unique integer id, the system is said to be non-anonymous and anonymous otherwise. In anonymous rings no deterministic solution exists to election, as processes need to randomly generate some id value (e.g. 64 bit number). Algorithms that work in a ring of an unknown size are called uniform.</description><content type="html"><![CDATA[<p>It may sometimes be necessary in a DS to assign a certain process with a higher privilege, for which election is used. If each process has a unique integer id, the system is said to be <em>non-anonymous</em> and <em>anonymous</em> otherwise. In anonymous rings no deterministic solution exists to election, as processes need to randomly generate some id value (e.g. 64 bit number). Algorithms that work in a ring of an unknown size are called <em>uniform</em>. <em>Comparison based</em> algorithms rely on the comparison of ids, hence they can only send and receive messages and compare process ids. The message complexity of comparison based algorithms in rings is $\Omega(n\text{ log }n)$.</p>
 <h3 id="bidirectional-rings">Bidirectional Rings</h3>
 <h4 id="hirschbergs-and-sinclairs-election-algorithm-in-bidirectional-rings">Hirschberg&rsquo;s and Sinclair&rsquo;s Election Algorithm in Bidirectional Rings</h4>
 <p>A process tries to establish if its id is larger than that of its neighbors. In the first round it sends a <em>PROBE</em>  with its id and a hop counter (to know when to stop forwarding the message) to both its neighbors (both directions) and if it is larger the neighbors send an <em>OK</em> if the hop counter is 0 otherwise it decrements the hop counter and forwards it, otherwise if its id is larger than that in the message it discards the message. In the next round, if the process received an <em>OK</em> from both its neighbors it continues by checking its next larger neighbors (with $k$ starting at $0$ in the first round and then $2^k+1$ in each direction) by sending its own id. In the next round, if it received <em>OK</em> from the neighbors it sends its id to 8 of its neighbors (4 in each direction) and does the same. Each round the number of neighbors is increased by double (2x). If the ring size is known the processor knows it has been elected when it received <em>OK</em> in round when the probe messages meet at the other side of the ring, and if the size is not known it knows it has been elected when it receives its own <em>PROBE</em> from the wrong side.</p>
@@ -216,32 +149,12 @@ A predicate, which is the defined order of saying what functions correctly and i
 <p><strong>Time complexity</strong> is $n$ since candidates capture 1 nodes independently and in the end will have $n-1$ captures. When a candidate process kills another candidate process, the former must  have done at least the same amount of work as the latter, since it needs to have a higher level to take over ownership of a node. <strong>Message complexity</strong> is $n\text{ log }n$.</p>
 <h4 id="general-networks">General Networks</h4>
 <p>Leader election in general networks by one process initiating it and creating a spanning tree on which it propagates its own id down. Nodes only propagate the message further if the id is larger than their own, and leaf nodes will send a <em>SUCCESS</em> message up the tree. When the initiator receives <em>SUCCESS</em> messages on all its links it has been elected, if not some other process can then start their own initiation procedure.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Token Loss</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/tokenloss/</link>
-            <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/tokenloss/</guid>
-            <description>Since token based systems require the presence of a single token, if a token is lost due to unreliable links, this has to be detected and a single new token has to be generated n a unidirectional ring.
-It works by using two tokens $t_0$ and $t_1$ that detect the loss of each other. The token message that transfers the token contains a token number that is the index of the token and a counter which is equal to plus or minus the number of times the tokens have met, plus if the token id is 0 and minus if it is 1.</description>
-            <content type="html"><![CDATA[<p>Since token based systems require the presence of a single token, if a token is lost due to unreliable links, this has to be detected and a single new token has to be generated n a unidirectional ring.</p>
+]]></content></item><item><title>Token Loss</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/tokenloss/</link><pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/tokenloss/</guid><description>Since token based systems require the presence of a single token, if a token is lost due to unreliable links, this has to be detected and a single new token has to be generated n a unidirectional ring.
+It works by using two tokens $t_0$ and $t_1$ that detect the loss of each other. The token message that transfers the token contains a token number that is the index of the token and a counter which is equal to plus or minus the number of times the tokens have met, plus if the token id is 0 and minus if it is 1.</description><content type="html"><![CDATA[<p>Since token based systems require the presence of a single token, if a token is lost due to unreliable links, this has to be detected and a single new token has to be generated n a unidirectional ring.</p>
 <p>It works by using two tokens $t_0$ and $t_1$ that detect the loss of each other. The <em>token</em> message that transfers the token contains a token number that is the index of the token and a counter which is equal to plus or minus the number of times the tokens have met, plus if the token id is 0 and minus if it is 1. Every node records the counter of the last token it sent in $l$. The token $t_1$ is lost when at some point $t_0$ arrives at a node and the condition $l=c$ is met. Then $t_1$ is regenerated.</p>
 <p>This works by the logic that if in a unidirectional ring a process encounters the same token twice without the tokens having met each other on the way, it is lost (doing a cycle in the ring without encountering the token is not possible unless it is lost).</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Mutual Exclusion</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mutualexclusion/</link>
-            <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mutualexclusion/</guid>
-            <description>In a distributed system in order to access the resource, a process will execute the critical section of the resource, hence it is required to guarantee that at most one process is in the critical section at a time. These algorithms aim to solve mutual exclusion with no deadlocks, no starvation, and some notion of fairness.
-Assertion-Based Mutual Exclusion A process has to request permission from all or part of the other processes and based on their replies it may conclude that is the only one with rights to enter its CS.</description>
-            <content type="html"><![CDATA[<p>In a distributed system in order to access the resource, a process will execute the critical section of the resource, hence it is required to guarantee that at most one process is in the critical section at a time. These algorithms aim to solve mutual exclusion with no deadlocks, no starvation, and some notion of fairness.</p>
+]]></content></item><item><title>Mutual Exclusion</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mutualexclusion/</link><pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mutualexclusion/</guid><description>In a distributed system in order to access the resource, a process will execute the critical section of the resource, hence it is required to guarantee that at most one process is in the critical section at a time. These algorithms aim to solve mutual exclusion with no deadlocks, no starvation, and some notion of fairness.
+Assertion-Based Mutual Exclusion A process has to request permission from all or part of the other processes and based on their replies it may conclude that is the only one with rights to enter its CS.</description><content type="html"><![CDATA[<p>In a distributed system in order to access the resource, a process will execute the critical section of the resource, hence it is required to guarantee that at most one process is in the critical section at a time. These algorithms aim to solve mutual exclusion with no deadlocks, no starvation, and some notion of fairness.</p>
 <h3 id="assertion-based-mutual-exclusion">Assertion-Based Mutual Exclusion</h3>
 <p>A process has to request permission from all or part of the other processes and based on their replies it may conclude that is the only one with rights to enter its CS.</p>
 <h4 id="lamports-mutual-exclusion-algorithm">Lamport&rsquo;s Mutual Exclusion Algorithm</h4>
@@ -287,18 +200,8 @@ $$S[j]=O,j=i,&hellip;,n-1$$</p>
 <h4 id="raymonds-token-based-mutual-exclusion-algorithm-in-a-tree">Raymond&rsquo;s Token-Based Mutual Exclusion Algorithm in a Tree</h4>
 <p>This algorithm uses a spanning tree for the processes and assumes this has been created ahead of time, and the root of the tree may change over time.  The process that holds the token is the current root of the tree and can enter its CS. Every process stores its parent in a variable <em>holder</em> (the neighbor on the path to the root). Every process maintains a queue of ids of those neighbors that requested the token. When a process wants to enter the CS it adds itself to its own queue and sends a <em>REQUEST</em> message to its parent. Upon receiving a <em>REQUEST</em> message, the process appends the sender&rsquo;s id to its local queue, if not already done it sets <em>asked=false</em> (this is to not serve multiple requests, i.e. only propagate the first request and then queue everything else without propagating), and sends a request to its parent. The root sends the token to the head of its queue (removes the element from the queue) and assigns it to be its parent. A process receiving the token enters the CS if it is at the head of its own queue and otherwise it sends the token to the head of its queue (remove it as well) and sets it to be its parent.</p>
 <p>Worst case message complexity is $2(N-1)$ if the tree is just a chain.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Deadlock Detection</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/deadlockdetection/</link>
-            <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/deadlockdetection/</guid>
-            <description>Models for Deadlock A (directed) Wait-For-Graph (WFG) can be maintained with the processes as nodes and with an edge from process $P$ to process $Q$ when $Q$ is holding a resource that $P$ is requesting.
-In the resource model resources are associated with a process (e.g. $R_a$) and processes can then request said resource. When a process $P$ wants access to a resource $a$ from $R_a$, an edge is created from $P$ to $R_a$, and when the resource is granted, the edge is removed and replaced by an edge from $R_a$ to $P$ indicating that $R_a$ is waiting for $P$ to release the resource.</description>
-            <content type="html"><![CDATA[<h3 id="models-for-deadlock">Models for Deadlock</h3>
+]]></content></item><item><title>Deadlock Detection</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/deadlockdetection/</link><pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/deadlockdetection/</guid><description>Models for Deadlock A (directed) Wait-For-Graph (WFG) can be maintained with the processes as nodes and with an edge from process $P$ to process $Q$ when $Q$ is holding a resource that $P$ is requesting.
+In the resource model resources are associated with a process (e.g. $R_a$) and processes can then request said resource. When a process $P$ wants access to a resource $a$ from $R_a$, an edge is created from $P$ to $R_a$, and when the resource is granted, the edge is removed and replaced by an edge from $R_a$ to $P$ indicating that $R_a$ is waiting for $P$ to release the resource.</description><content type="html"><![CDATA[<h3 id="models-for-deadlock">Models for Deadlock</h3>
 <p>A (directed) Wait-For-Graph (WFG) can be maintained with the processes as nodes and with an edge from process $P$ to process $Q$ when $Q$ is holding a resource that $P$ is requesting.</p>
 <p>In the <em>resource model</em> resources are associated with a process (e.g. $R_a$) and processes can then request said  resource. When a process $P$ wants access to a resource $a$ from $R_a$, an edge is created from $P$ to $R_a$, and when the resource is granted, the edge is removed and replaced by an edge from $R_a$ to $P$ indicating that $R_a$ is waiting for $P$ to release the resource. If the WFG contains a cycle there exits a deadlock and all processes in cycles on paths leading to cycles are deadlocked.</p>
 <p>In the <em>communication model</em> processes can do a blocking <em>RECEIVE</em> operation to a set of processes, indicating that they want to receive a message from one process in this set (called the <em>dependent set</em>). After this <em>RECEIVE</em> operation, the WFG contains an edge from $P$ to every process in its dependent set. If there exits a <em>knot</em> in the WFG, there is a deadlock. A knot is present if a set of processes with a path from every process in the set to every other process in the set exists, and there are no edges from any process in the set to any process outside the set.</p>
@@ -325,19 +228,9 @@ In the resource model resources are associated with a process (e.g. $R_a$) and p
 <p>Colors of edges are exchanged between messages by sending their <em>IN</em> and <em>OUT</em> sets to each other and comparing them to see the color (i.e. when  $u$ is not in $IN_v$ and $v$ in $OUT_u$ the edge is gray or white).</p>
 <h3 id="dynamic-systems">Dynamic Systems</h3>
 <p>No static WFG graph of the system is available, but deadlock detection can be done by detecting a global state (e.g. with Chandy-Lamport) and then applying the algorithm for static systems with messages.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Termination Detection</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/terminationdetection/</link>
-            <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/terminationdetection/</guid>
-            <description>Termination detection is the problem of determining whether a distributed computation in a distributed system consisting of processes which communicate by means of message, has terminated.
+]]></content></item><item><title>Termination Detection</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/terminationdetection/</link><pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/terminationdetection/</guid><description>Termination detection is the problem of determining whether a distributed computation in a distributed system consisting of processes which communicate by means of message, has terminated.
 Distributed computations have the following properties:
- A process is either active or passive Only active processes can send messages An active process may become passive spontaneously A passive process becomes active at the reception of a message  Termination Detection in an Asynchronous Unidirectional Ring with FIFO Communication There exits a process $P_{0}$ that is on top of the ring and other processes are connected to it in the order of $P_{n-1}$ to the right of $P_0$ and $P_1$ to the left.</description>
-            <content type="html"><![CDATA[<p>Termination detection is the problem of determining whether a distributed computation in a distributed system consisting of processes which communicate by means of message, has terminated.</p>
+A process is either active or passive Only active processes can send messages An active process may become passive spontaneously A passive process becomes active at the reception of a message Termination Detection in an Asynchronous Unidirectional Ring with FIFO Communication There exits a process $P_{0}$ that is on top of the ring and other processes are connected to it in the order of $P_{n-1}$ to the right of $P_0$ and $P_1$ to the left.</description><content type="html"><![CDATA[<p>Termination detection is the problem of determining whether a distributed computation in a distributed system consisting of processes which communicate by means of message, has terminated.</p>
 <p>Distributed computations have the following properties:</p>
 <ul>
 <li>A process is either <em>active</em> or <em>passive</em></li>
@@ -349,37 +242,17 @@ Distributed computations have the following properties:
 <p>There exits a process $P_{0}$ that is on top of the ring and other processes are connected to it in the order of $P_{n-1}$ to the right of $P_0$ and $P_1$ to the left. $P_0$ sends a _token_ to detect termination to $P_{n-1}$, and each process and the token has a color (black or white, initially white). The token is only forwarded when a process becomes passive, but a passive process can be woken up by a message from a process that the token has not been to yet (a lower numbered process), at which point the process sending the message will change its color to black. When a token arrives at a black process its color is changed to black and no decision can be reached in the current round and the token is relayed immediately. The process also sets its color back to white to start the new round. When $P_0$ receives a white token and is itself passive, it concludes termination.</p>
 <h3 id="termination-detection-in-a-general-network">Termination Detection in a General Network</h3>
 <p>A special process $P$ controls the algorithm but does not participate in the computation. All processes and messages carry non-negative weights, which are assigned by process $P$. $P$ initially has weight $1$ and splits its weight over all the processes. When a process wants to send a message, it halves its own weight and sends the half along in the message. The receiving process adds the weight from the message to its own weight. When a process terminates, it sends its remaining weight to process $P$ and sets its own weight to $0$. Terminated is detected when the weight of process $P$ is $1$ again.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Global States</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/globalstates/</link>
-            <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/globalstates/</guid>
-            <description>Detecting of global states is the recording of an asynchronous system at some point in time for checkpointing or detecting stable properties such as deadlock or termination.
+]]></content></item><item><title>Global States</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/globalstates/</link><pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/globalstates/</guid><description>Detecting of global states is the recording of an asynchronous system at some point in time for checkpointing or detecting stable properties such as deadlock or termination.
 A cut presents a set of internal events and can be considered consistent (when receiving events happens after sending events) or inconsistent (when receiving events happen without the send events).
-Chandy&amp;rsquo;s and Lamport&amp;rsquo;s algorithm for detecting global states in distributed systems with unidirectional FIFO channels Any processor wishing to record the global state of the system first records its own local state and then sends a marker on every outgoing channel.</description>
-            <content type="html"><![CDATA[<p>Detecting of global states is the recording of an asynchronous system at some point in time for checkpointing or detecting <em>stable properties</em> such as deadlock or termination.</p>
+Chandy&amp;rsquo;s and Lamport&amp;rsquo;s algorithm for detecting global states in distributed systems with unidirectional FIFO channels Any processor wishing to record the global state of the system first records its own local state and then sends a marker on every outgoing channel.</description><content type="html"><![CDATA[<p>Detecting of global states is the recording of an asynchronous system at some point in time for checkpointing or detecting <em>stable properties</em> such as deadlock or termination.</p>
 <p>A cut presents a set of internal events and can be considered consistent (when receiving events happens after sending events) or inconsistent (when receiving events happen without the send events).</p>
 <p><img src="/images/IN4150/GlobalStates.png" alt="Cuts"></p>
 <h3 id="chandys-and-lamports-algorithm-for-detecting-global-states-in-distributed-systems-with-unidirectional-fifo-channels">Chandy&rsquo;s and Lamport&rsquo;s algorithm for detecting global states in distributed systems with unidirectional FIFO channels</h3>
 <p>Any processor wishing to record the global state of the system first records its own local state and then sends a <em>marker</em> on every outgoing channel. Upon the first receive of a marker along any channel, that process records the state of that channel as the empty state, records its own state and sends a marker along every outgoing channel, and creates an empty FIFO message buffer for each of its incoming channels (except the one on which the original marker came). For any later received markers on a channel, the state of that channel is recorded as the sequence of messages in the corresponding buffer. When a process receives a marker along every incoming channel it is done.</p>
 <p>An event that happens local to some process before the process recorded its own state is called a <em>pre-recording</em> event, and one that happens after it recorded its own state is called a <em>post-recording</em> event.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Message Ordering</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/messageodering/</link>
-            <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/messageodering/</guid>
-            <description>In asynchronous systems messages may have arbitrary but finite delays but the applications may impose some kind of ordering on the messages (causal order). Multicasting is when a message is sent to group of processes rather than just to a single process.
+]]></content></item><item><title>Message Ordering</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/messageodering/</link><pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/messageodering/</guid><description>In asynchronous systems messages may have arbitrary but finite delays but the applications may impose some kind of ordering on the messages (causal order). Multicasting is when a message is sent to group of processes rather than just to a single process.
 Ordering A message order is causal when for every two messages $m_1$ and $m_2$, if $m(m_1)\rightarrow m(m_2)$ then $d_i(d_1)\rightarrow d_i(d_2)$ for all $i\in Dest(m_1)\cap Dest(m_2)$.
-A message order is total when for every two messages $m_1$ and $m_2$, $d_i(m_1)\rightarrow d_i(m_2)$ iff $d_j(m_1)\rightarrow d_j(m_2)$ for all $i,j \in Dest(m_1) \cap Dest(m_1)$.</description>
-            <content type="html"><![CDATA[<p>In asynchronous systems messages may have arbitrary but finite delays but the applications may impose some kind of ordering on the messages (<em>causal order</em>). <em>Multicasting</em> is when a message is sent to group of processes rather than just to a single process.</p>
+A message order is total when for every two messages $m_1$ and $m_2$, $d_i(m_1)\rightarrow d_i(m_2)$ iff $d_j(m_1)\rightarrow d_j(m_2)$ for all $i,j \in Dest(m_1) \cap Dest(m_1)$.</description><content type="html"><![CDATA[<p>In asynchronous systems messages may have arbitrary but finite delays but the applications may impose some kind of ordering on the messages (<em>causal order</em>). <em>Multicasting</em> is when a message is sent to group of processes rather than just to a single process.</p>
 <h3 id="ordering">Ordering</h3>
 <p>A message order is <strong>causal</strong> when for every two messages $m_1$ and $m_2$, if $m(m_1)\rightarrow m(m_2)$ then $d_i(d_1)\rightarrow d_i(d_2)$ for all $i\in Dest(m_1)\cap Dest(m_2)$.</p>
 <p>A message order is <strong>total</strong> when for every two messages $m_1$ and $m_2$, $d_i(m_1)\rightarrow d_i(m_2)$ iff $d_j(m_1)\rightarrow d_j(m_2)$ for all $i,j \in Dest(m_1) \cap Dest(m_1)$. No matter what ordering messages have (FIFO, causal) they need to be delivered in the exact same order
@@ -392,18 +265,8 @@ to all processes.</p>
 <h3 id="total-ordering-of-broadcast-messages">Total Ordering of Broadcast Messages</h3>
 <p>Very inefficiently total ordering can be achieved using a central component for total ordering with a special process (called <em>sequencer</em>) to which all processes send their broadcast messages. The special process gives each message a sequence number and broadcasts it to all processes.</p>
 <p>Another algorithm uses FIFO links and scalar clocks with process ids as tie breakers (hence total order achieved). Every process also maintains a queue of non-delivered messages (but received, just buffered), which are ordered based on the timestamp. Every message is acknowledged to all other processes (including self). When a process has received an acknowledgment for the message at the head of its queue from every other process, that message is removed from the queue and is delivered.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Synchronizers</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/synchronizers/</link>
-            <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/synchronizers/</guid>
-            <description>Synchronizers are algorithms that simulate synchronous systems on top of asynchronous systems. They proceed in rounds of sending messages, receiving messages, and performing local computations, and these algorithms work on the foundation of issuing a pulse (clock) to allow a process to move to the next round.
-Types of Synchronizers Alpha Synchronizer In $\alpha$-synchronizers, when a node receives a message, it sends an ACK message back to the sender. When a process received an ACK for every message it has sent in some round, it is called safe.</description>
-            <content type="html"><![CDATA[<p>Synchronizers are algorithms that simulate synchronous systems on top of asynchronous systems. They proceed in rounds of sending messages, receiving messages, and performing local computations, and these algorithms work on the foundation of issuing a <em>pulse (clock)</em> to allow a process to move to the next round.</p>
+]]></content></item><item><title>Synchronizers</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/synchronizers/</link><pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/synchronizers/</guid><description>Synchronizers are algorithms that simulate synchronous systems on top of asynchronous systems. They proceed in rounds of sending messages, receiving messages, and performing local computations, and these algorithms work on the foundation of issuing a pulse (clock) to allow a process to move to the next round.
+Types of Synchronizers Alpha Synchronizer In $\alpha$-synchronizers, when a node receives a message, it sends an ACK message back to the sender. When a process received an ACK for every message it has sent in some round, it is called safe.</description><content type="html"><![CDATA[<p>Synchronizers are algorithms that simulate synchronous systems on top of asynchronous systems. They proceed in rounds of sending messages, receiving messages, and performing local computations, and these algorithms work on the foundation of issuing a <em>pulse (clock)</em> to allow a process to move to the next round.</p>
 <h3 id="types-of-synchronizers">Types of Synchronizers</h3>
 <h4 id="alpha-synchronizer">Alpha Synchronizer</h4>
 <p>In $\alpha$-synchronizers, when a node receives a message, it sends an ACK message back to the sender. When a process received an ACK for every message it has sent in some round, it is called <em>safe</em>. It then sends a SAFE message to its neighbors, and when a node is safe and has received a SAFE message from all its neighbors it can proceed to the next round.</p>
@@ -420,19 +283,9 @@ upwards (leaf nodes start since they do not have any descendants). When a root r
 own tree is safe and that all its neighbors are safe.</p>
 <p>The <strong>message complexity</strong> if of the order $O(E)$ with $E$ the total number of links. The <strong>time complexity</strong> is in the oder of $O(H)$ with $H$ the maximal height of the spanning trees.</p>
 <p>Synchronizers only work in fault free systems, therefore wen faults occur synchronous systems are more powerful.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Time Concepts</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/timeconcepts/</link>
-            <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/timeconcepts/</guid>
-            <description>Time has an important role in computer systems, the applications that they run need to be able to keep track of time and events and compare timestamps. In asynchronous systems it may be necessary to reason about events based on their order of occurrence.
+]]></content></item><item><title>Time Concepts</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/timeconcepts/</link><pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/timeconcepts/</guid><description>Time has an important role in computer systems, the applications that they run need to be able to keep track of time and events and compare timestamps. In asynchronous systems it may be necessary to reason about events based on their order of occurrence.
 Happened-Before Relation The basis of the theory of ordering events in distributed systems is the happened-before relation, and is given as $\rightarrow$ as the following
- Local Order: If $a,b\in E_i$ for $i$ and $a$ occurred in $P_i$ before $b$ then $a\rightarrow b$.</description>
-            <content type="html"><![CDATA[<p>Time has an important role in computer systems, the applications that they run need to be able to keep track of time and
+Local Order: If $a,b\in E_i$ for $i$ and $a$ occurred in $P_i$ before $b$ then $a\rightarrow b$.</description><content type="html"><![CDATA[<p>Time has an important role in computer systems, the applications that they run need to be able to keep track of time and
 events and compare timestamps. In asynchronous systems it may be necessary to reason about events based on their order of
 occurrence.</p>
 <h3 id="happened-before-relation">Happened-Before Relation</h3>
@@ -456,18 +309,8 @@ occurrence.</p>
 </ol>
 <p><img src="/images/IN4150/VectorClocks.png" alt="Vector Clocks"></p>
 <p>The size of the vector clocks needs to be at least the number of processes, $k\ge n$.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Modeling Distributed Systems</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/modelingds/</link>
-            <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/modelingds/</guid>
-            <description>DSs and DAs are modelled with a set of processors or processes, which do local computations and send and receive messages, and are connected by unidirectional communication channels, and networks are assumed to be connected such that there is a path from every process to every other process.
-In a complete network there is a link from every processor to every other processor. In ring every processor is connected to two other processors.</description>
-            <content type="html"><![CDATA[<p>DSs and DAs are modelled with a set of processors or processes, which do local computations and send and receive messages,
+]]></content></item><item><title>Modeling Distributed Systems</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/modelingds/</link><pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/modelingds/</guid><description>DSs and DAs are modelled with a set of processors or processes, which do local computations and send and receive messages, and are connected by unidirectional communication channels, and networks are assumed to be connected such that there is a path from every process to every other process.
+In a complete network there is a link from every processor to every other processor. In ring every processor is connected to two other processors.</description><content type="html"><![CDATA[<p>DSs and DAs are modelled with a set of processors or processes, which do local computations and send and receive messages,
 and are connected by unidirectional communication channels, and networks are assumed to be connected such that there is a
 path from every process to every other process.</p>
 <p>In a <em>complete network</em> there is a link from every processor to every other processor.
@@ -498,18 +341,8 @@ of their initial states and all channels empty. The order in a sequence of event
 <em>partial order</em>.</p>
 <p><em>Local simulation</em> makes a process(or) in the system $(M&rsquo;,P)$ look like $M$, but to an outsider observer there may be a
 difference. In <em>global simulation</em> also to an outside observer there is no difference.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Introduction</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/introduction/</link>
-            <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/introduction/</guid>
-            <description>What is a Distributed System? Distributed computer systems are collections of computer systems that present themselves as single entities to their users and are characterized by
- Autonomy: The components of the DS have a certain power or authority to make their own decisions. Cooperation: The components of a DS are working together towards common goals. Communication: The components of the DS exchange information.  Properties of Distributed Systems  There is no regular structure such that a DS may be connected by heterogenous network technologies and consist of many different processors.</description>
-            <content type="html"><![CDATA[<h4 id="what-is-a-distributed-system">What is a Distributed System?</h4>
+]]></content></item><item><title>Introduction</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/introduction/</link><pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/introduction/</guid><description>What is a Distributed System? Distributed computer systems are collections of computer systems that present themselves as single entities to their users and are characterized by
+Autonomy: The components of the DS have a certain power or authority to make their own decisions. Cooperation: The components of a DS are working together towards common goals. Communication: The components of the DS exchange information. Properties of Distributed Systems There is no regular structure such that a DS may be connected by heterogenous network technologies and consist of many different processors.</description><content type="html"><![CDATA[<h4 id="what-is-a-distributed-system">What is a Distributed System?</h4>
 <p>Distributed computer systems are collections of computer systems that present themselves as single entities to their
 users and are characterized by</p>
 <ul>
@@ -538,23 +371,9 @@ helpful when systems are heterogenous.</li>
 </ol>
 <p>There are two main algorithms running in distributed systems, algorithms that compute something (e.g. linear algebra computations) and
 control algorithms that execute some function to ensure the proper operation of some aspect of a DS.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Info</title>
-            <link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/info/</link>
-            <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/info/</guid>
-            <description>IN4150 Distributed Algorithms notes at TUDelft (Q2).
+]]></content></item><item><title>Info</title><link>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/info/</link><pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/info/</guid><description>IN4150 Distributed Algorithms notes at TUDelft (Q2).
 Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55229
-All content and images are based on and retrieved from the slides and the provided lecture notes for the course.</description>
-            <content type="html"><![CDATA[<p>IN4150 Distributed Algorithms notes at TUDelft (Q2).</p>
+All content and images are based on and retrieved from the slides and the provided lecture notes for the course.</description><content type="html"><![CDATA[<p>IN4150 Distributed Algorithms notes at TUDelft (Q2).</p>
 <p>Studyguide: <a href="https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55229">https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55229</a></p>
 <p>All content and images are based on and retrieved from the slides and the provided lecture notes for the course.</p>
-]]></content>
-        </item>
-        
-    </channel>
-</rss>
+]]></content></item></channel></rss>

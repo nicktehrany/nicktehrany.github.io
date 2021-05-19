@@ -1,24 +1,7 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>IN4191 Security and Cryptography on Nick Tehrany</title>
-        <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/</link>
-        <description>Recent content in IN4191 Security and Cryptography on Nick Tehrany</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Wed, 30 Sep 2020 08:34:56 -0600</lastBuildDate>
-        <atom:link href="https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/index.xml" rel="self" type="application/rss+xml" />
-        
-        <item>
-            <title>Lecture 12: Secret Sharing</title>
-            <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-12/</link>
-            <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-12/</guid>
-            <description>Secret Sharing (Chapter 19) Threshold Cryptography split key into shares and a certain number of then can reconstruct the secret key. Or performing operations jointly (decryption, signing, etc.) but the secret key is not known to anyone (e.g. group signatures).
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IN4191 Security and Cryptography on Nick Tehrany</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/</link><description>Recent content in IN4191 Security and Cryptography on Nick Tehrany</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 30 Sep 2020 08:34:56 -0600</lastBuildDate><atom:link href="https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/index.xml" rel="self" type="application/rss+xml"/><item><title>Lecture 12: Secret Sharing</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-12/</link><pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-12/</guid><description>Secret Sharing (Chapter 19) Threshold Cryptography split key into shares and a certain number of then can reconstruct the secret key. Or performing operations jointly (decryption, signing, etc.) but the secret key is not known to anyone (e.g. group signatures).
 Dealer $(D)$ has the secret key $s$ and provides the shares to different parties $P_1,&amp;hellip;,P_n$
 Distribution: Protocol in which the dealer provides each party $P_i$ a share $s_i$.
-Reconstruction: Protocol in which a qualified set of parties pool their shares to obtain secret $s$.</description>
-            <content type="html"><![CDATA[<h2 id="secret-sharing-chapter-19">Secret Sharing (Chapter 19)</h2>
+Reconstruction: Protocol in which a qualified set of parties pool their shares to obtain secret $s$.</description><content type="html"><![CDATA[<h2 id="secret-sharing-chapter-19">Secret Sharing (Chapter 19)</h2>
 <p><strong>Threshold Cryptography</strong> split key into shares and a certain number of then can reconstruct the secret key. Or performing operations jointly (decryption, signing, etc.) but the secret key is not known to anyone (e.g. group signatures).</p>
 <p>Dealer $(D)$ has the secret key $s$ and provides the shares to different parties $P_1,&hellip;,P_n$</p>
 <p>Distribution: Protocol in which the dealer provides each party $P_i$ a share $s_i$.</p>
@@ -34,21 +17,11 @@ Reconstruction: Protocol in which a qualified set of parties pool their shares t
 <li>user received the shared and constructs the signature from $t$ shares</li>
 </ol>
 <p><img src="/images/IN4191/RSA-Secret-Share.png" alt="RSA Shared Signature"></p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Lecture 11: Certificates, Key Transport, and Key Agreement</title>
-            <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-11/</link>
-            <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-11/</guid>
-            <description>Certificates, Key Transport, and Key Agreement (Chapter 18) What is key management?
- Key generation Key distribution Key storage Key change Key usage Key destruction  Requirements of key generation:
- secret unpredictable strong key  It is often desirable to frequently change the key in a cryptographic system.
+]]></content></item><item><title>Lecture 11: Certificates, Key Transport, and Key Agreement</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-11/</link><pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-11/</guid><description>Certificates, Key Transport, and Key Agreement (Chapter 18) What is key management?
+Key generation Key distribution Key storage Key change Key usage Key destruction Requirements of key generation:
+secret unpredictable strong key It is often desirable to frequently change the key in a cryptographic system.
 Types of keys:
- Static (or Long Term) Keys: few hours to a few years Ephemeral or Session (or Short Term) Keys a few seconds or a day  Certificates and Certificate Authority We need a binding, linking a public key to an entity.</description>
-            <content type="html"><![CDATA[<h2 id="certificates-key-transport-and-key-agreement-chapter-18">Certificates, Key Transport, and Key Agreement (Chapter 18)</h2>
+Static (or Long Term) Keys: few hours to a few years Ephemeral or Session (or Short Term) Keys a few seconds or a day Certificates and Certificate Authority We need a binding, linking a public key to an entity.</description><content type="html"><![CDATA[<h2 id="certificates-key-transport-and-key-agreement-chapter-18">Certificates, Key Transport, and Key Agreement (Chapter 18)</h2>
 <p>What is key management?</p>
 <ul>
 <li>Key generation</li>
@@ -115,17 +88,7 @@ Definitions:</p>
 <p>$$k\leftarrow H(\mathfrak{pk}_B^x,\mathfrak{ek}_B^a)=H(g^{b<em>x},g^{y</em>a})$$</p>
 <p>Bob computes</p>
 <p>$$k\leftarrow H(\mathfrak{ek}_A^b,\mathfrak{pk}_A^y)=H(g^{x<em>b},g^{a</em>y})$$</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Lecture 10: Public Key Encryption and Signature Algorithms</title>
-            <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-10/</link>
-            <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-10/</guid>
-            <description>Public Key Encryption and Signature Algorithms (Chapter 16) Passively Secure Encryption Schemes Goldwasser Micali Encryption Is based on the QUADRES problem, stating that given a composite integer $N$ and an integer $e$, it is hard to test if $a$ is a quadratic residue or not. This is given as checking if a value from the set $J_N$ of values that produce a jacobi symbol of 1 (hence might be quadratic residue) is in the set of real quadratic residues $Q_N$.</description>
-            <content type="html"><![CDATA[<h2 id="public-key-encryption-and-signature-algorithms-chapter-16">Public Key Encryption and Signature Algorithms (Chapter 16)</h2>
+]]></content></item><item><title>Lecture 10: Public Key Encryption and Signature Algorithms</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-10/</link><pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-10/</guid><description>Public Key Encryption and Signature Algorithms (Chapter 16) Passively Secure Encryption Schemes Goldwasser Micali Encryption Is based on the QUADRES problem, stating that given a composite integer $N$ and an integer $e$, it is hard to test if $a$ is a quadratic residue or not. This is given as checking if a value from the set $J_N$ of values that produce a jacobi symbol of 1 (hence might be quadratic residue) is in the set of real quadratic residues $Q_N$.</description><content type="html"><![CDATA[<h2 id="public-key-encryption-and-signature-algorithms-chapter-16">Public Key Encryption and Signature Algorithms (Chapter 16)</h2>
 <h3 id="passively-secure-encryption-schemes">Passively Secure Encryption Schemes</h3>
 <h4 id="goldwasser-micali-encryption">Goldwasser Micali Encryption</h4>
 <p>Is based on the QUADRES problem, stating that given a composite integer $N$ and an integer $e$, it is hard to test if $a$ is a quadratic residue or not. This is given as checking if a value from the set $J_N$ of values that produce a jacobi symbol of 1 (hence might be quadratic residue) is in the set of real quadratic residues $Q_N$.</p>
@@ -252,19 +215,9 @@ Definitions:</p>
 <p>If the message is small we can verify the signature and extract the message from it. This is a log based scheme with message recovery, but it requires redundancy (e.g. doubling the message by concatenating it twice $m||m$) which is easy to revert.</p>
 <p>$G$ is a public abelian group with generator $g$ of prime order $q$ and private key $x=[0,&hellip;,q-1]$ and public key $h=g^x$.</p>
 <p><img src="/images/IN4191/Nyberg-Ruppel.png" alt="Nyber-Ruppel"></p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Lecture 9: The RSA Algorithm</title>
-            <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-9/</link>
-            <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-9/</guid>
-            <description>The RSA Algorithm (Chapter 15) The RSA algorithm is based on the difficulty of the RSA problem that it is difficult to to find $d$ given a large composite number $N$ and $e$. It works by taking two large secret prime numbers $p$ and $q$ and computing $N=p*q$. Then picking an encryption exponent $e$ that satisfies
+]]></content></item><item><title>Lecture 9: The RSA Algorithm</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-9/</link><pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-9/</guid><description>The RSA Algorithm (Chapter 15) The RSA algorithm is based on the difficulty of the RSA problem that it is difficult to to find $d$ given a large composite number $N$ and $e$. It works by taking two large secret prime numbers $p$ and $q$ and computing $N=p*q$. Then picking an encryption exponent $e$ that satisfies
 $$\text{gcd}(e,(p-1)*(q-1))=1$$
-It is common to chose values $e=3,17,65537$. Now the public key will be shared as the pair of $\mathfrak{pC}=(N,e)$.</description>
-            <content type="html"><![CDATA[<h2 id="the-rsa-algorithm-chapter-15">The RSA Algorithm (Chapter 15)</h2>
+It is common to chose values $e=3,17,65537$. Now the public key will be shared as the pair of $\mathfrak{pC}=(N,e)$.</description><content type="html"><![CDATA[<h2 id="the-rsa-algorithm-chapter-15">The RSA Algorithm (Chapter 15)</h2>
 <p>The RSA algorithm is based on the difficulty of the RSA problem that it is difficult to to find $d$ given a large composite number $N$ and $e$. It works by taking two large secret prime numbers $p$ and $q$ and computing $N=p*q$. Then picking an encryption exponent $e$ that satisfies</p>
 <p>$$\text{gcd}(e,(p-1)*(q-1))=1$$</p>
 <p>It is common to chose values $e=3,17,65537$. Now the public key will be shared as the pair of $\mathfrak{pC}=(N,e)$. The private key is computed by applying the extended euclidean algorithm on $e$ and $(p-1)(q-1)$ to obtain the decryption exponent $d$ that satisfies</p>
@@ -329,22 +282,12 @@ It is common to chose values $e=3,17,65537$. Now the public key will be shared a
 <p>The attack uses continued fractions to give a linear time algorithm to determine the private exponent when it is less than $\frac{1}{3}*N^{1/4}$.</p>
 <h4 id="fault-analysis">Fault Analysis</h4>
 <p>Fault analysis is the introduction of faults into a system and tricking it into doing some calculation incorrectly, by for example altering the environment, heating or cooling the chip, or by damaging the circuit in some way.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Lecture 8: Number Theory and Elliptic Curves</title>
-            <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-8/</link>
-            <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-8/</guid>
-            <description>Number Theory and Elliptic Curves (Chapter 1 &amp;amp; 4) Modular Arithmetic A positive integer $N$ called modulus is written as
+]]></content></item><item><title>Lecture 8: Number Theory and Elliptic Curves</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-8/</link><pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-8/</guid><description>Number Theory and Elliptic Curves (Chapter 1 &amp;amp; 4) Modular Arithmetic A positive integer $N$ called modulus is written as
 $$a=b\text{ mod }N$$
 if $N$ divides $b-a$, $a$ and $b$ are congruent modulo $N$.
 The set of values produced by postfix operation mod $N$ is $\mathbb{Z}_N=\{0,1,&amp;hellip;,N-1\}$ (can also be written as $\mathbb{Z}/N\mathbb{Z}$).
 The properties of modulo arithmetic are
-A group is a set which is closed, has an identity, is associative, and every element has an inverse.</description>
-            <content type="html"><![CDATA[<h2 id="number-theory-and-elliptic-curves-chapter-1--4">Number Theory and Elliptic Curves (Chapter 1 &amp; 4)</h2>
+A group is a set which is closed, has an identity, is associative, and every element has an inverse.</description><content type="html"><![CDATA[<h2 id="number-theory-and-elliptic-curves-chapter-1--4">Number Theory and Elliptic Curves (Chapter 1 &amp; 4)</h2>
 <h3 id="modular-arithmetic">Modular Arithmetic</h3>
 <p>A positive integer $N$ called modulus is written as</p>
 <p>$$a=b\text{ mod }N$$</p>
@@ -486,18 +429,8 @@ We can reduce with $\text{gcd}(a,b)=\text{gcd}(a\text{ mod } b,b)$ until we reac
 <h4 id="elliptic-curve-discrete-log-problem">Elliptic Curve Discrete Log Problem</h4>
 <p>The problem states that for a positive integer $m$ and a point $P$, it is easy to compute $Q=mP$, but given $Q$ and $P$ it is difficult to compute $m$.</p>
 <p>For elliptic curves the prime number $p$ can be smaller (e.g. 128 bits) to make it infeasible, as opposed to making the calculation infeasible for DLP based systems (e.g. primer number $\ge1024$ bits). Equivalently hard problems but much smaller values, hence brining much better performance.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Lecture 7: Hash Functions, MAC, and Key Derivation Functions</title>
-            <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-7/</link>
-            <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-7/</guid>
-            <description>Hash Functions, MAC, and Key Derivation Functions (Chapter 14) Hash functions are used for integrity protection (checksum, file system integrity like Bit-torrent), one way encryption (password protection), asymmetric crypto schemes, MACs, key derivations, pseudo random number generators, and many more applications.
-Hash functions receive an arbitrary length bit string and output a fixed length string called the hash value, digest, fingerprint, or hashcode. Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*\rightarrow\{0-1\}^n$</description>
-            <content type="html"><![CDATA[<h2 id="hash-functions-mac-and-key-derivation-functions-chapter-14">Hash Functions, MAC, and Key Derivation Functions (Chapter 14)</h2>
+]]></content></item><item><title>Lecture 7: Hash Functions, MAC, and Key Derivation Functions</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-7/</link><pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-7/</guid><description>Hash Functions, MAC, and Key Derivation Functions (Chapter 14) Hash functions are used for integrity protection (checksum, file system integrity like Bit-torrent), one way encryption (password protection), asymmetric crypto schemes, MACs, key derivations, pseudo random number generators, and many more applications.
+Hash functions receive an arbitrary length bit string and output a fixed length string called the hash value, digest, fingerprint, or hashcode. Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*\rightarrow\{0-1\}^n$</description><content type="html"><![CDATA[<h2 id="hash-functions-mac-and-key-derivation-functions-chapter-14">Hash Functions, MAC, and Key Derivation Functions (Chapter 14)</h2>
 <p>Hash functions are used for integrity protection (checksum, file system integrity like Bit-torrent), one way encryption (password protection), asymmetric crypto schemes, MACs, key derivations, pseudo random number generators, and many more applications.</p>
 <p>Hash functions receive an arbitrary length bit string and output a fixed length string called the hash value, digest, fingerprint, or hashcode.
 Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*\rightarrow\{0-1\}^n$</p>
@@ -583,17 +516,7 @@ Hash functions are one way: easy to compute $y$ given $x$, where $y: H: \{0-1\}*
 <p><img src="/images/IN4191/Sponge.png" alt="Sponge Construction"></p>
 <p>Using this sponge construction <strong>IND-CCA secure</strong> encryption and decryption can also be done, or sponge based MACs and sponge based stream ciphers.</p>
 <p><img src="/images/IN4191/IND-CCA-Sponge.png" alt="IND-CCA Secure Sponge"></p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Lecture 6: Block Ciphers and Modes of Operation</title>
-            <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-6/</link>
-            <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-6/</guid>
-            <description>Block Ciphers and Modes of Operation (Chapter 13) Block ciphers operate on blocks of plaintext at a time to produce blocks of ciphertext. Block sizes tend to be large, 64 bits in DES and 128 bits in other modern block ciphers. In order to limit the advantage of the adversary, the key space is kept very large such that $Adv_{{F_k}K}^{PRP}(A)\approx 1/|K|$. Block cipher is part of an encryption but requires a mode of operation, these are both developed independently.</description>
-            <content type="html"><![CDATA[<h4 id="block-ciphers-and-modes-of-operation-chapter-13">Block Ciphers and Modes of Operation (Chapter 13)</h4>
+]]></content></item><item><title>Lecture 6: Block Ciphers and Modes of Operation</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-6/</link><pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-6/</guid><description>Block Ciphers and Modes of Operation (Chapter 13) Block ciphers operate on blocks of plaintext at a time to produce blocks of ciphertext. Block sizes tend to be large, 64 bits in DES and 128 bits in other modern block ciphers. In order to limit the advantage of the adversary, the key space is kept very large such that $Adv_{{F_k}K}^{PRP}(A)\approx 1/|K|$. Block cipher is part of an encryption but requires a mode of operation, these are both developed independently.</description><content type="html"><![CDATA[<h4 id="block-ciphers-and-modes-of-operation-chapter-13">Block Ciphers and Modes of Operation (Chapter 13)</h4>
 <p>Block ciphers operate on blocks of plaintext at a time to produce blocks of ciphertext. Block sizes tend to be large, 64 bits in DES and 128 bits in other modern block ciphers. In order to limit the advantage of the adversary, the key space is kept very large such that $Adv_{{F_k}K}^{PRP}(A)\approx 1/|K|$.
 Block cipher is part of an encryption but requires a mode of operation, these are both developed independently.</p>
 <p>DES (Data Encryption Standard) was an <em>iterated</em> block cipher which uses a <em>round function</em> repeatedly. DES was deemed unsafe in the 90s but other variants (3DES, shown below) are still being used. Another such cipher is AES (Advanced Encryption Standard). The round function takes a block and returns a block of the same size, and the number of rounds can be fixed or varied. Each use of the round function uses a round key derived from the main secret key using an algorithm called <em>key scheduling</em>. The round function should be invertible for decryption and using round keys in reverse order.</p>
@@ -735,20 +658,10 @@ and the message authentication code is applied to the ciphertext. This <strong>i
 <p><strong>MAC then Encrypt:</strong> MAC the plaintext and then encrypt the MAC and the plaintext together.  With a deterministic MAC it is <strong>not IND-CPA</strong> secure.</p>
 </li>
 </ul>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Lecture 5: Modern Stream Ciphers</title>
-            <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-5/</link>
-            <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-5/</guid>
-            <description>Modern Stream Ciphers (Chapter 12) Encrypt bits rather than blocks as this is faster and easier to implement in hardware and software. Stream ciphers work by
+]]></content></item><item><title>Lecture 5: Modern Stream Ciphers</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-5/</link><pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-5/</guid><description>Modern Stream Ciphers (Chapter 12) Encrypt bits rather than blocks as this is faster and easier to implement in hardware and software. Stream ciphers work by
 $$c=m\oplus F_k(0)$$
 and are IND-PASS secure if the PRF is secure.
-Feedback shift registers are a standard way of producing a binary stream of data. These consist of a number of memory cells, where some of them are tapped that feed a feedback function. Registers are shifted down and the result from the feedback is shifted to the empty cell.</description>
-            <content type="html"><![CDATA[<h4 id="modern-stream-ciphers-chapter-12">Modern Stream Ciphers (Chapter 12)</h4>
+Feedback shift registers are a standard way of producing a binary stream of data. These consist of a number of memory cells, where some of them are tapped that feed a feedback function. Registers are shifted down and the result from the feedback is shifted to the empty cell.</description><content type="html"><![CDATA[<h4 id="modern-stream-ciphers-chapter-12">Modern Stream Ciphers (Chapter 12)</h4>
 <p>Encrypt bits rather than blocks as this is faster and easier to implement in hardware and software. Stream ciphers work by</p>
 <p>$$c=m\oplus F_k(0)$$</p>
 <p>and are IND-PASS secure if the PRF is secure.</p>
@@ -785,17 +698,7 @@ Feedback shift registers are a standard way of producing a binary stream of data
 <li>A5/1 generator: uses three LFSRs and based on the majority bit decides which LFSR to clock.</li>
 <li>Trivium: uses three shift registers with a total 288 bits ($93+84+111$), which are fed into each other with a number of formulas. It is used in practice and has not been broken. The system is clocked 1152 times before the output is used.</li>
 </ul>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Lecture 4: Defining Security</title>
-            <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-4/</link>
-            <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-4/</guid>
-            <description>Security Games (Chapter 2.2) Security games are used to define security for cryptographic components, which contain an adversary and a challenger, and the idea is that the adversary needs to reach a certain objective given data provided by the challenger. These are typically represented visually with the adversary in a box and the challenger outside with the data it provides. The advantage of an adversary $$A$$ is defined as a function bounded by time $$t$$ that the adversary spends to try to solve the problem.</description>
-            <content type="html"><![CDATA[<h4 id="security-games-chapter-22">Security Games (Chapter 2.2)</h4>
+]]></content></item><item><title>Lecture 4: Defining Security</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-4/</link><pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-4/</guid><description>Security Games (Chapter 2.2) Security games are used to define security for cryptographic components, which contain an adversary and a challenger, and the idea is that the adversary needs to reach a certain objective given data provided by the challenger. These are typically represented visually with the adversary in a box and the challenger outside with the data it provides. The advantage of an adversary $$A$$ is defined as a function bounded by time $$t$$ that the adversary spends to try to solve the problem.</description><content type="html"><![CDATA[<h4 id="security-games-chapter-22">Security Games (Chapter 2.2)</h4>
 <p>Security games are used to define security for cryptographic components, which contain an adversary and a challenger, and the idea is that the adversary needs to reach a certain objective given data provided by the challenger. These are typically represented visually with the adversary in a box and the challenger outside with the data it provides. The advantage of an adversary $$A$$ is defined as a function bounded by time $$t$$ that the adversary spends to try to solve the problem. For RSA and SQRROOT games this is defined as</p>
 <p>$$Adv_v^X(A,t)=Pr[A \text{ wins the game X for }v=log_2N \text{ in time less than }t]$$</p>
 <p>Finding the quadratic residue of a value is done by checking all values that it comprises (i.e. with value 7, $\mathbb{Z}_7=\{0,1,2,3,4,5,6\}$), and squaring each containing value (except 0 of course) modulo the value itself. For the example with $\mathbb{Z}=7$ this will be,</p>
@@ -878,17 +781,7 @@ Theorem: A system that is IND-PASS secure must be semantically secure against pa
 </ul>
 <p><img src="/images/IN4191/NotionsOfSec.png" alt="Notions of Security"></p>
 <p>Random Oracle Model (ROM): All parties have a random function with domain {0,1}* and a finite codomain C, the challenger has the control of the oracle, and the adversary can call her. This kind of function cannot exist in the real world, but hash functions act as such an oracle.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Lecture 3: Information Theoretic Security</title>
-            <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-3/</link>
-            <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-3/</guid>
-            <description>Information Theoretic Security (Chapter 9) A crypto system is said to be computationally secure if the best possible algorithm for breaking it requires $$N$$ operations, where $$N$$ is some large number above $2^{128}$. It is impossible to prove that a system is computationally secure, as we do not know if there is a better algorithm for breaking it, hence a system is called secure if the best known algorithm requires a large number of computations.</description>
-            <content type="html"><![CDATA[<h3 id="information-theoretic-security-chapter-9">Information Theoretic Security (Chapter 9)</h3>
+]]></content></item><item><title>Lecture 3: Information Theoretic Security</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-3/</link><pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-3/</guid><description>Information Theoretic Security (Chapter 9) A crypto system is said to be computationally secure if the best possible algorithm for breaking it requires $$N$$ operations, where $$N$$ is some large number above $2^{128}$. It is impossible to prove that a system is computationally secure, as we do not know if there is a better algorithm for breaking it, hence a system is called secure if the best known algorithm requires a large number of computations.</description><content type="html"><![CDATA[<h3 id="information-theoretic-security-chapter-9">Information Theoretic Security (Chapter 9)</h3>
 <p>A crypto system is said to be <em>computationally secure</em> if the best possible algorithm for breaking it requires $$N$$ operations,
 where $$N$$ is some large number above $2^{128}$. It is impossible to prove that a system is computationally secure, as
 we do not know if there is a better algorithm for breaking it, hence a system is called secure if the best <em>known</em> algorithm
@@ -1001,16 +894,7 @@ p(C=1|P=d)= 0.25, \quad &amp;p(C=2|p=d)=0.75, \ p(C=3|P=d)=0, \quad &amp;p(C=4|P
 <p>The <em>unicity distance</em> of a cipher is the average number of ciphertexts for which the expected number of spurious keys becomes zero. It presents the average amount needed of a ciphertext before an attacker can determine the key (assume infinite compute power). It is calculated as</p>
 <p>$$\displaylines{\overline{s}_n\ge\frac{#\mathbb{K}}{#\mathbb{P}^{n<em>R_L}}-1\<br>
 n_0\approx\frac{log_2#\mathbb{K}}{R_L</em>log_2#\mathbb{P}}}$$</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Lecture 2: Classical Systems</title>
-            <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-2/</link>
-            <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-2/</guid>
-            <description>Classical Systems (Chapter 7) An encryption algorithm or cipher is the transformation of plaintext to ciphertext with a secret key, depicted as
+]]></content></item><item><title>Lecture 2: Classical Systems</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-2/</link><pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-2/</guid><description>Classical Systems (Chapter 7) An encryption algorithm or cipher is the transformation of plaintext to ciphertext with a secret key, depicted as
 $$c=e_k(m)$$
 with $m$ being the plaintext,
 $e$ being the cipher function,
@@ -1018,8 +902,7 @@ $k$ being the secret key,
 $c$ being the ciphertext
 The reverse process is called decryption or decipherment, depicted as
 $$m=d_k(c)$$
-The key above needs to be known to both parties, but must be kept secret from all others.</description>
-            <content type="html"><![CDATA[<h3 id="classical-systems-chapter-7">Classical Systems (Chapter 7)</h3>
+The key above needs to be known to both parties, but must be kept secret from all others.</description><content type="html"><![CDATA[<h3 id="classical-systems-chapter-7">Classical Systems (Chapter 7)</h3>
 <p>An encryption algorithm or cipher is the transformation of plaintext to ciphertext with a secret key, depicted as</p>
 <p>$$c=e_k(m)$$</p>
 <p>with $m$ being the plaintext,<br>
@@ -1087,21 +970,11 @@ given ciphertext and the chosen plaintext. Sequences will repeat key at modulo $
 2 &amp; 4 &amp; 1 &amp; 3 &amp; 5 &amp; 7 &amp; 9 &amp; 6 &amp; 8 &amp; 10 &amp; &hellip;
 \end{pmatrix}$$</p>
 <p>where modulo 5 the permutation starts repeating.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Lecture 1: Introduction</title>
-            <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-1/</link>
-            <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-1/</guid>
-            <description>What is Security? Security means:
+]]></content></item><item><title>Lecture 1: Introduction</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-1/</link><pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-1/</guid><description>What is Security? Security means:
 Confidentiality: Access to systems or data is limited to authorized parties.
 Integrity: When you receive data, you get the &amp;ldquo;right&amp;rdquo; data.
 Availability: The system or data is there when you want it.
-Objectives of Cryptography - Message authentication: valid message? - Data origin authentication: valid sender? - Entity authentication: authenticate each other for communication  Kerckhoff&amp;rsquo;s principle: The adversary knows all details about the crypto system except the private key.</description>
-            <content type="html"><![CDATA[<h4 id="what-is-security">What is Security?</h4>
+Objectives of Cryptography - Message authentication: valid message? - Data origin authentication: valid sender? - Entity authentication: authenticate each other for communication Kerckhoff&amp;rsquo;s principle: The adversary knows all details about the crypto system except the private key.</description><content type="html"><![CDATA[<h4 id="what-is-security">What is Security?</h4>
 <p>Security means:</p>
 <p><strong>C</strong>onfidentiality: Access to  systems or data is limited to authorized parties.<br>
 <strong>I</strong>ntegrity: When you receive data, you get the &ldquo;right&rdquo; data.<br>
@@ -1121,25 +994,11 @@ if $k \neq k'$, asymmetric key or public key encryption</p>
 <h4 id="information-theoretic-security">Information Theoretic Security</h4>
 <p>Entropy:</p>
 <p>$$-\sum_{i=1}^np_i*log_2p_i$$</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Info</title>
-            <link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/info/</link>
-            <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/info/</guid>
-            <description>IN4191 Security and Cryptography notes at TUDelft (Q1).
+]]></content></item><item><title>Info</title><link>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/info/</link><pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/info/</guid><description>IN4191 Security and Cryptography notes at TUDelft (Q1).
 Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55221
 Book: Nigel P. Smart. 2015. Cryptography Made Simple (1st. ed.). Springer Publishing Company, Incorporated.
-All content and images are based on and retrieved from the book and the lecture slides.</description>
-            <content type="html"><![CDATA[<p>IN4191 Security and Cryptography notes at TUDelft (Q1).</p>
+All content and images are based on and retrieved from the book and the lecture slides.</description><content type="html"><![CDATA[<p>IN4191 Security and Cryptography notes at TUDelft (Q1).</p>
 <p>Studyguide: <a href="https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55221">https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55221</a><br>
 Book: Nigel P. Smart. 2015. Cryptography Made Simple (1st. ed.). Springer Publishing Company, Incorporated.</p>
 <p>All content and images are based on and retrieved from the book and the lecture slides.</p>
-]]></content>
-        </item>
-        
-    </channel>
-</rss>
+]]></content></item></channel></rss>

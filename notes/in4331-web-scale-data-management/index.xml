@@ -1,21 +1,15 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>IN4331 Web-Scale Data Management on Nick Tehrany</title>
-        <link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/</link>
-        <description>Recent content in IN4331 Web-Scale Data Management on Nick Tehrany</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Thu, 15 Apr 2021 08:34:56 -0600</lastBuildDate>
-        <atom:link href="https://nicktehrany.github.io/notes/in4331-web-scale-data-management/index.xml" rel="self" type="application/rss+xml" />
-        
-        <item>
-            <title>Parallel Analytical Processing</title>
-            <link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/parallel_analytical_processing/</link>
-            <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/parallel_analytical_processing/</guid>
-            <description>Relational DBs vs. Modern Big Data Processing Stack Relational dbs such as SQL go through a stack that starts with the SQL compiler &amp;amp; optimizer and then executes them on a relational dataflow engine, on top of the transaction manager, which then is on top of the storage and the OS. Big data on the other hand, also have the SQL compiler &amp;amp; optimizer which then runs of top of different dataflow engines (Flink, Spark, Hadoop).</description>
-            <content type="html"><![CDATA[<h3 id="relational-dbs-vs-modern-big-data-processing-stack">Relational DBs vs. Modern Big Data Processing Stack</h3>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IN4331 Web-Scale Data Management on Nick Tehrany</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/</link><description>Recent content in IN4331 Web-Scale Data Management on Nick Tehrany</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 15 Apr 2021 08:34:56 -0600</lastBuildDate><atom:link href="https://nicktehrany.github.io/notes/in4331-web-scale-data-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Bigtable</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/bigtable/</link><pubDate>Wed, 19 May 2021 16:03:09 +0200</pubDate><guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/bigtable/</guid><description>Bigtable is a high-performance proprietary database which is used by multiple google services (or was used, has several newer versions mostly replacing it). It is meant for large throughput with very large files. Requirements are that processes update continuously and asynchronously. Additionally, it is required to be fault tolerant, persistent, and can use and work efficiently on cheap hardware, and scale well.
+Google File System (GFS) A file system for very large files.</description><content type="html"><![CDATA[<p>Bigtable is a high-performance proprietary database which is used by multiple google services (or was used, has several
+newer versions mostly replacing it). It is meant for large throughput with very large files. Requirements are that
+processes update continuously and asynchronously. Additionally, it is required to be fault tolerant, persistent, and can
+use and work efficiently on cheap hardware, and scale well.</p>
+<h3 id="google-file-system-gfs">Google File System (GFS)</h3>
+<p>A file system for very large files. Typical systems have block size of 4KiB (PageSize) and GFS has larger blocks of
+minimally 64MB such that storing smaller files below 64MB is a waste of space and very large files can be stored much
+more efficiently. GFS works with a master node and several replica nodes (to store each file 3 times). The master node
+is there to maintain information on where blocks are located, and managing defragmentation and other file system jobs.
+Additionally, GFS is an append-only file system, which is beneficial for google since files are rarely modified.</p>
+]]></content></item><item><title>Parallel Analytical Processing</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/parallel_analytical_processing/</link><pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/parallel_analytical_processing/</guid><description>Relational DBs vs. Modern Big Data Processing Stack Relational dbs such as SQL go through a stack that starts with the SQL compiler &amp;amp; optimizer and then executes them on a relational dataflow engine, on top of the transaction manager, which then is on top of the storage and the OS. Big data on the other hand, also have the SQL compiler &amp;amp; optimizer which then runs of top of different dataflow engines (Flink, Spark, Hadoop).</description><content type="html"><![CDATA[<h3 id="relational-dbs-vs-modern-big-data-processing-stack">Relational DBs vs. Modern Big Data Processing Stack</h3>
 <p>Relational dbs such as SQL go through a stack that starts with the SQL compiler &amp; optimizer and then executes them on a
 relational dataflow engine, on top of the transaction manager, which then is on top of the storage and the OS. Big data
 on the other hand, also have the SQL compiler &amp; optimizer which then runs of top of different dataflow engines (Flink,
@@ -34,18 +28,8 @@ aggregate or other operations) but it is random and balanced in size of each par
 can be used, which groups data by the hash (which can then be on some data that should be joined or aggregated by).
 Another approach is <strong>range partitioning</strong> which splits the data by ranges (e.g. from 0-9 is 1 partition, 10-19 another
 etc.).</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Scalable Data Integration and Discovery in Data Lakes</title>
-            <link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/datalake/</link>
-            <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/datalake/</guid>
-            <description>Data Lakes The problem starts in the management of big data, which has the following requirements:
- Volume: the data is typically large Variety: the type of the data varies Velocity: the data needs to be accessed and processed quickly Veracity: the quality of the data needs to be maintained and guaranteed Value: the data is used for intended purposes and holds value to that purpose  Data lakes are a way of storing large amounts of data without strict structure and guidelines, and all data is just &amp;ldquo;dumped&amp;rdquo; there.</description>
-            <content type="html"><![CDATA[<h2 id="data-lakes">Data Lakes</h2>
+]]></content></item><item><title>Scalable Data Integration and Discovery in Data Lakes</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/datalake/</link><pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/datalake/</guid><description>Data Lakes The problem starts in the management of big data, which has the following requirements:
+Volume: the data is typically large Variety: the type of the data varies Velocity: the data needs to be accessed and processed quickly Veracity: the quality of the data needs to be maintained and guaranteed Value: the data is used for intended purposes and holds value to that purpose Data lakes are a way of storing large amounts of data without strict structure and guidelines, and all data is just &amp;ldquo;dumped&amp;rdquo; there.</description><content type="html"><![CDATA[<h2 id="data-lakes">Data Lakes</h2>
 <p>The problem starts in the management of big data, which has the following requirements:</p>
 <ul>
 <li><strong>Volume:</strong> the data is typically large</li>
@@ -84,19 +68,9 @@ For resolving this issue we can use set containment, which is given as for two d
 <p>Extracts the top most joinable tables given a query column and finding the data in the data lake with the highest overlap.</p>
 <h4 id="silkmoth">SilkMoth</h4>
 <p>Makes related set discovery faster by finding set similarity, set containment, and given a reference set $R$ it can find all related sets</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>NoSQL - Design Principles</title>
-            <link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/no_sql_design/</link>
-            <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/no_sql_design/</guid>
-            <description>Replication Master-Slave Replication All updates are made directly to the master which then propagates the changes to all the slaves.
+]]></content></item><item><title>NoSQL - Design Principles</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/no_sql_design/</link><pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/no_sql_design/</guid><description>Replication Master-Slave Replication All updates are made directly to the master which then propagates the changes to all the slaves.
 P2P Replication Replication without a master node, now updates can be on any of the replicas which then propagate the updates to all the replicas.
-Distributed Transactions Two Phase Commit (2PC) Transactions are submitted to a coordinator which then sends a prepare to all workers. The workers log the request and respond to the coordinator.</description>
-            <content type="html"><![CDATA[<h2 id="replication">Replication</h2>
+Distributed Transactions Two Phase Commit (2PC) Transactions are submitted to a coordinator which then sends a prepare to all workers. The workers log the request and respond to the coordinator.</description><content type="html"><![CDATA[<h2 id="replication">Replication</h2>
 <h3 id="master-slave-replication">Master-Slave Replication</h3>
 <p>All updates are made directly to the master which then propagates the changes to all the slaves.</p>
 <h3 id="p2p-replication">P2P Replication</h3>
@@ -112,32 +86,11 @@ Distributed Transactions Two Phase Commit (2PC) Transactions are submitted to a 
 <li><strong>S</strong>oft State</li>
 <li><strong>E</strong>ventually Consistent</li>
 </ul>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Introduction</title>
-            <link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/introduction/</link>
-            <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/introduction/</guid>
-            <description>Web scale scale data management is the management of large scale datasets with the goal of how to efficiently store, query, and run large amounts of transactions on the datasets.
-Multiple different systems exist, such as P2P systems or cloud storage.</description>
-            <content type="html"><![CDATA[<p>Web scale scale data management is the management of large scale datasets with the goal of how to efficiently store, query, and run large amounts of transactions on the datasets.</p>
-<p>Multiple different systems exist, such as P2P systems or cloud storage.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>P2P Storage</title>
-            <link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/p2p/</link>
-            <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/p2p/</guid>
-            <description>Databases have some sort of model to represent the data in this model,
+]]></content></item><item><title>Introduction</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/introduction/</link><pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/introduction/</guid><description>Web scale scale data management is the management of large scale datasets with the goal of how to efficiently store, query, and run large amounts of transactions on the datasets.
+Multiple different systems exist, such as P2P systems or cloud storage.</description><content type="html">&lt;p>Web scale scale data management is the management of large scale datasets with the goal of how to efficiently store, query, and run large amounts of transactions on the datasets.&lt;/p>
+&lt;p>Multiple different systems exist, such as P2P systems or cloud storage.&lt;/p></content></item><item><title>P2P Storage</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/p2p/</link><pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/p2p/</guid><description>Databases have some sort of model to represent the data in this model,
 Relational databases Based on the relational model, it typically presented in tables that have some relation to each other among which tables can be joined, and includes indices.
-Application DB The benefit of relational DBs is that they can easily be incorporated into multiple applications since they have defined schemas for the tables and a universal interface. Each application has its own data model and applications then communicate via some sort of messaging model.</description>
-            <content type="html"><![CDATA[<p>Databases have some sort of model to represent the data in this model,</p>
+Application DB The benefit of relational DBs is that they can easily be incorporated into multiple applications since they have defined schemas for the tables and a universal interface. Each application has its own data model and applications then communicate via some sort of messaging model.</description><content type="html"><![CDATA[<p>Databases have some sort of model to represent the data in this model,</p>
 <h2 id="relational-databases">Relational databases</h2>
 <p>Based on the relational model, it typically presented in tables that have some relation to each other among which tables can be joined, and includes indices.</p>
 <h3 id="application-db">Application DB</h3>
@@ -168,23 +121,9 @@ Application DB The benefit of relational DBs is that they can easily be incorpor
 <h3 id="amazon-dynamo">Amazon Dynamo</h3>
 <p>Assumes that there are not malicious nodes (no need for fraud detection), and implements a <code>put()</code> and <code>get()</code> for the storage system based on a DHT. In order to answer queries fast, each node maintains a full finger table (therefore the ring is fully connected) and there are no varying response times in the network. For load balancing each node also creates an additional virtual server so that if a node if under heavy load the virtual server (its partitions it is responsible for) can just be moved to a new node.</p>
 <p>Updates (after <code>put()</code>) updates are propagated asynchronously, resulting in eventual consistency. It also uses read/write quorums such that the <code>put()</code> operation does not return until the majority of replicas have been updated (or however many nodes the quorum requires).</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Info</title>
-            <link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/info/</link>
-            <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/info/</guid>
-            <description>IN4331 Web-Scale Data Management notes at TUDelft (Q4).
+]]></content></item><item><title>Info</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/info/</link><pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/info/</guid><description>IN4331 Web-Scale Data Management notes at TUDelft (Q4).
 Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287
-The content is based on the lecture material/slides and summarized by myself.</description>
-            <content type="html"><![CDATA[<p>IN4331 Web-Scale Data Management notes at TUDelft (Q4).</p>
+The content is based on the lecture material/slides and summarized by myself.</description><content type="html"><![CDATA[<p>IN4331 Web-Scale Data Management notes at TUDelft (Q4).</p>
 <p>Studyguide: <a href="https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287">https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=55287</a></p>
 <p>The content is based on the lecture material/slides and summarized by myself.</p>
-]]></content>
-        </item>
-        
-    </channel>
-</rss>
+]]></content></item></channel></rss>
