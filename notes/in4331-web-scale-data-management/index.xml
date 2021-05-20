@@ -9,6 +9,13 @@ minimally 64MB such that storing smaller files below 64MB is a waste of space an
 more efficiently. GFS works with a master node and several replica nodes (to store each file 3 times). The master node
 is there to maintain information on where blocks are located, and managing defragmentation and other file system jobs.
 Additionally, GFS is an append-only file system, which is beneficial for google since files are rarely modified.</p>
+<h3 id="bloom-filters">Bloom Filters</h3>
+<p>Instead of using indexing which has a high overhead, Bigtable uses bloom filters to identify if elements <em>might</em> be in
+the certain SSTable. Bloom filters use multiple hash functions which hash the key you are looking for, and then sets
+the bits in a bit array to 1 according to the result of the hash function. When looking for a key, it again is hashed
+and the according bits are checked, if any of the bits is 0 we know that the element is not in the set, however if all
+bits checked by the hash are 1 the value <em>might</em> be in the set (as combination of other keys might have set those same
+bits to 1 the key might not be there).</p>
 ]]></content></item><item><title>Parallel Analytical Processing</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/parallel_analytical_processing/</link><pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate><guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/parallel_analytical_processing/</guid><description>Relational DBs vs. Modern Big Data Processing Stack Relational dbs such as SQL go through a stack that starts with the SQL compiler &amp;amp; optimizer and then executes them on a relational dataflow engine, on top of the transaction manager, which then is on top of the storage and the OS. Big data on the other hand, also have the SQL compiler &amp;amp; optimizer which then runs of top of different dataflow engines (Flink, Spark, Hadoop).</description><content type="html"><![CDATA[<h3 id="relational-dbs-vs-modern-big-data-processing-stack">Relational DBs vs. Modern Big Data Processing Stack</h3>
 <p>Relational dbs such as SQL go through a stack that starts with the SQL compiler &amp; optimizer and then executes them on a
 relational dataflow engine, on top of the transaction manager, which then is on top of the storage and the OS. Big data
