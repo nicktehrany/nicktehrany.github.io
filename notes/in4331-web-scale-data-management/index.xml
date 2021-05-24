@@ -1,4 +1,34 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IN4331 Web-Scale Data Management on Nick Tehrany</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/</link><description>Recent content in IN4331 Web-Scale Data Management on Nick Tehrany</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 15 Apr 2021 08:34:56 -0600</lastBuildDate><atom:link href="https://nicktehrany.github.io/notes/in4331-web-scale-data-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Bigtable</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/bigtable/</link><pubDate>Wed, 19 May 2021 16:03:09 +0200</pubDate><guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/bigtable/</guid><description>Bigtable is a high-performance proprietary database which is used by multiple google services (or was used, has several newer versions mostly replacing it). It is meant for large throughput with very large files. Requirements are that processes update continuously and asynchronously. Additionally, it is required to be fault tolerant, persistent, and can use and work efficiently on cheap hardware, and scale well.
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IN4331 Web-Scale Data Management on Nick Tehrany</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/</link><description>Recent content in IN4331 Web-Scale Data Management on Nick Tehrany</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 15 Apr 2021 08:34:56 -0600</lastBuildDate><atom:link href="https://nicktehrany.github.io/notes/in4331-web-scale-data-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Streams</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/streams/</link><pubDate>Mon, 24 May 2021 18:22:43 +0200</pubDate><guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/streams/</guid><description>Data can be static (it does not change, is written once and never updated), therefore most commonly used is streaming data, which changes (changes at some point in time, does not have to be frequently or soon but it will eventually change) and is updated. A data stream is a stream of events with each element having a timestamp.
+Types of data:
+Bounded data: a dataset with a beginning and an end.</description><content type="html"><![CDATA[<p>Data can be static (it does not change, is written once and never updated), therefore most commonly used is streaming
+data, which changes (changes at some point in time, does not have to be frequently or soon but it will eventually
+change) and is updated. A data stream is a stream of events with each element having a timestamp.</p>
+<p>Types of data:</p>
+<ul>
+<li><strong>Bounded data:</strong> a dataset with a beginning and an end.</li>
+<li><strong>Unbounded data:</strong> a dataset without an end or an end.</li>
+</ul>
+<p>Types of processing:</p>
+<ul>
+<li><strong>Stream processing:</strong> continuous stream of processing that continuously produces new results, systems such as Apache
+Flink or Apache Storm</li>
+<li>** Batch processing:** processing which takes a finite amount of time to complete and for it to produce results,
+systems such as Apache Hadoop MapReduce and Apache Spark</li>
+</ul>
+<h3 id="stream-processing">Stream Processing</h3>
+<p><strong>Streaming window</strong> is a subset of a stream, such as the average value for a stream within a certain time frame, e.g.
+10-12pm and another average for 9-11pm, which is then a <em>sliding window</em> since they overlap. Another type of stream
+windows is a <em>fixed/tumbling</em> window which is consecutive windows, e.g. from 9-10pm and then 10-11pm. Lastly, there are
+<em>jumping windows</em> which just skip parts of the stream, e.g. from 4-5pm and then 9-10pm.</p>
+<p>Session windows for users are then seen as a period of activity for a user followed by a period of inactivity, on which
+processing can then be done.</p>
+<h3 id="definitions">Definitions</h3>
+<ul>
+<li><strong>Processing time:</strong> the time measured by the machine that executes the operator</li>
+<li><strong>Event time:</strong> the timestamp of an event given in its data record</li>
+<li><strong>Ingress/Ingestion time:</strong> the timestap of the first operator in the program that sees this event</li>
+</ul>
+]]></content></item><item><title>Bigtable</title><link>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/bigtable/</link><pubDate>Wed, 19 May 2021 16:03:09 +0200</pubDate><guid>https://nicktehrany.github.io/notes/in4331-web-scale-data-management/bigtable/</guid><description>Bigtable is a high-performance proprietary database which is used by multiple google services (or was used, has several newer versions mostly replacing it). It is meant for large throughput with very large files. Requirements are that processes update continuously and asynchronously. Additionally, it is required to be fault tolerant, persistent, and can use and work efficiently on cheap hardware, and scale well.
 Google File System (GFS) A file system for very large files.</description><content type="html"><![CDATA[<p>Bigtable is a high-performance proprietary database which is used by multiple google services (or was used, has several
 newer versions mostly replacing it). It is meant for large throughput with very large files. Requirements are that
 processes update continuously and asynchronously. Additionally, it is required to be fault tolerant, persistent, and can
