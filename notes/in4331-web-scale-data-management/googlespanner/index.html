@@ -8,7 +8,7 @@ database. Additionally, it uses transactions with strict 2PL (2 phase locking), 
 timestamp $s$ and data written by transaction $T$ is then timestamped with $s$.</p><h3 id=synchronized-snapshots>Synchronized Snapshots</h3><p>In order to provide synchronized snapshots, Spanner needs to have some notion of a global clock, which it achieves
 through external consistency. This is the property of the commit order respecting the global time order. For achieving
 this, timestamp order is used as the commit order (timestamp_order == commit_order). For generating a timestamp, it
-uses TrueTime.</p><h3 id=truetime>TrueTime</h3><p>Presents a global time with a bounded uncertainty given <code>TT.now()</code> is given in a window with and <code>earliest</code> and
+uses TrueTime.</p><h3 id=truetime>TrueTime</h3><p>Presents a global time with a bounded uncertainty given <code>TT.now()</code> is given in a window with an <code>earliest</code> and
 <code>lastest</code> time which falls in the interval of $2*\varepsilon$. Then picking a time <code>TT.now().latest</code> which is an upper
 bound on time in the future gives that timestamp $s$ falls within the interval of the releasing of locks. This is done
 by waiting out the uncertainty in clocks (waiting for actual releasing of clocks), called the *commit wait*, which in
