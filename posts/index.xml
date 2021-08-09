@@ -1,0 +1,94 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Nick Tehrany</title><link>https://nicktehrany.github.io/posts/</link><description>Recent content in Posts on Nick Tehrany</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 05 Sep 2017 08:34:56 -0600</lastBuildDate><atom:link href="https://nicktehrany.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Useful Commands</title><link>https://nicktehrany.github.io/posts/useful-commands/</link><pubDate>Sat, 17 Jul 2021 14:02:11 +0200</pubDate><guid>https://nicktehrany.github.io/posts/useful-commands/</guid><description>This is not necessarily a blog post but rather a handy spot of where I keep some of the useful commands and shortcuts I use.
+gist with all useful commands that I use or need and tend to forget since it&amp;rsquo;s just too many, a lot of these are custom key mappings so they might not work by default.
+Vim some vim commands
+Ctrl + c # compile latex file Ctrl + l # clear output log from latex compile Ctrl + w arrow # change window to arrow direction Ctrl + b # open NerdTree Ctrl + r # refresh NerdTree :sp # split horizontally :vsp # split vertically # Navigation gg # jump to top of file G # jump to end of file ZZ # save and quit ZQ # quit \tab # switch to next tab in buffer \ Shift tab # swithc to previous tab in buffer / # search use N and Shift + N to navigate them w # goto next word b # goto previous word { # goto previous paragraph } # goto next paragraph 0 # goto beginning of line $ # goto end of line Ctrl + ] # goto function def (requires ctags and other plugins installed) Ctrl + o # go back to previous location u # or U inside Nerdtree to up a dir # Editing Ctrl + w # delete word a # insert mode after character o # insert mode after line dd # delete Line D # delete part of line after cursor cw # delete next word and enter insert mode di( # delete everything inside (), leave the parenthesis da( # delete everything inside (), including the parenthesis gq$ # wrap words until end of line (or gq0 for until beginning of line) :m +1 # move line 1 down (- for up and line numbers) if no plus line number is absolute Zathura K # Zoom in J # Zoom out t # goto top u # go half page up d # go half page down i # invert colors D # change page mode (dual/single) Shell Window Tiling Super + / # go through applications Super + y # Tile windows Super + o # change orientation Super + enter # adjustment mode arrow # move window Ctrl + arrow # swap windows Shift + arrow # resize Super + Shift + down # move window down one workspace Super + Shift + right # move window to right monitor Super + s # stacking mode Super + g # floating mode Key Remapping I use these to remap CAPS lock to esc and home to delete.</description><content type="html"><![CDATA[<p>This is not necessarily a blog post but rather a handy spot of where I keep some of the useful commands and shortcuts I
+use.</p>
+<p>gist with all useful commands that I use or need and tend to forget since it&rsquo;s just too many, a lot of these are custom key mappings so they might not work by default.</p>
+<h3 id="vim">Vim</h3>
+<p>some vim commands</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Ctrl + c <span style="color:#75715e"># compile latex file</span>
+Ctrl + l <span style="color:#75715e"># clear output log from latex compile</span>
+
+Ctrl + w arrow <span style="color:#75715e"># change window to arrow direction</span>
+
+Ctrl + b <span style="color:#75715e"># open NerdTree</span>
+Ctrl + r <span style="color:#75715e"># refresh NerdTree</span>
+
+:sp <span style="color:#75715e"># split horizontally</span>
+:vsp <span style="color:#75715e"># split vertically</span>
+
+<span style="color:#75715e"># Navigation</span>
+gg <span style="color:#75715e"># jump to top of file</span>
+G <span style="color:#75715e"># jump to end of file</span>
+ZZ <span style="color:#75715e"># save and quit</span>
+ZQ <span style="color:#75715e"># quit</span>
+<span style="color:#ae81ff">\t</span>ab <span style="color:#75715e"># switch to next tab in buffer</span>
+<span style="color:#ae81ff">\ </span>Shift tab <span style="color:#75715e"># swithc to previous tab in buffer</span>
+/ <span style="color:#75715e"># search use N and Shift + N to navigate them</span>
+w <span style="color:#75715e"># goto next word</span>
+b <span style="color:#75715e"># goto previous word</span>
+<span style="color:#f92672">{</span> <span style="color:#75715e"># goto previous paragraph</span>
+<span style="color:#f92672">}</span> <span style="color:#75715e"># goto next paragraph</span>
+<span style="color:#ae81ff">0</span> <span style="color:#75715e"># goto beginning of line</span>
+$ <span style="color:#75715e"># goto end of line</span>
+Ctrl + <span style="color:#f92672">]</span> <span style="color:#75715e"># goto function def (requires ctags and other plugins installed)</span>
+Ctrl + o <span style="color:#75715e"># go back to previous location</span>
+u <span style="color:#75715e"># or U inside Nerdtree to up a dir</span>
+
+<span style="color:#75715e"># Editing</span>
+Ctrl + w <span style="color:#75715e"># delete word</span>
+a <span style="color:#75715e"># insert mode after character</span>
+o <span style="color:#75715e"># insert mode after line</span>
+dd <span style="color:#75715e"># delete Line</span>
+D <span style="color:#75715e"># delete part of line after cursor</span>
+cw <span style="color:#75715e"># delete next word and enter insert mode</span>
+di<span style="color:#f92672">(</span> <span style="color:#75715e"># delete everything inside (), leave the parenthesis</span>
+da<span style="color:#f92672">(</span> <span style="color:#75715e"># delete everything inside (), including the parenthesis</span>
+gq$ <span style="color:#75715e"># wrap words until end of line (or gq0 for until beginning of line)</span>
+
+:m +1 <span style="color:#75715e"># move line 1 down (- for up and line numbers) if no plus line number is absolute</span>
+</code></pre></div><h3 id="zathura">Zathura</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">K <span style="color:#75715e"># Zoom in</span>
+J <span style="color:#75715e"># Zoom out</span>
+t <span style="color:#75715e"># goto top</span>
+u <span style="color:#75715e"># go half page up</span>
+d <span style="color:#75715e"># go half page down</span>
+i <span style="color:#75715e"># invert colors</span>
+D <span style="color:#75715e"># change page mode (dual/single)</span>
+</code></pre></div><h3 id="shell-window-tiling">Shell Window Tiling</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Super + / <span style="color:#75715e"># go through applications</span>
+Super + y <span style="color:#75715e"># Tile windows</span>
+Super + o <span style="color:#75715e"># change orientation</span>
+
+Super + enter <span style="color:#75715e"># adjustment mode</span>
+  arrow <span style="color:#75715e"># move window</span>
+  Ctrl + arrow <span style="color:#75715e"># swap windows</span>
+  Shift + arrow <span style="color:#75715e"># resize</span>
+  Super + Shift + down <span style="color:#75715e"># move window down one workspace</span>
+  Super + Shift + right <span style="color:#75715e"># move window to right monitor</span>
+
+Super + s <span style="color:#75715e"># stacking mode</span>
+Super + g <span style="color:#75715e"># floating mode</span>
+</code></pre></div><h3 id="key-remapping">Key Remapping</h3>
+<p>I use these to remap CAPS lock to esc and home to delete.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">xev <span style="color:#75715e"># gui to find out the keycode of a key</span>
+xmodmap -e <span style="color:#e6db74">&#39;keycode 110=Delete&#39;</span> <span style="color:#75715e"># remaps the home key to delete</span>
+</code></pre></div><h3 id="vifm">Vifm</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">zo <span style="color:#75715e"># show hidden files</span>
+zm <span style="color:#75715e"># hide hidden files</span>
+w <span style="color:#75715e"># preview</span>
+cw <span style="color:#75715e"># change name (with extensions)</span>
+cW <span style="color:#75715e"># change name (without extensions)</span>
+Tab <span style="color:#75715e"># switch pane</span>
+Shift Tab <span style="color:#75715e"># switch to preview pane</span>
+</code></pre></div><h3 id="misc">Misc</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grep -rHn <span style="color:#e6db74">&#39;word&#39;</span> *.md <span style="color:#75715e"># grep all md files for the word</span>
+
+pandoc file.md -o file.pdf <span style="color:#75715e"># markdown to pdf conversion</span>
+</code></pre></div><h4 id="docker">Docker</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># delete all exited containers</span>
+docker ps -a | grep Exit | cut -d <span style="color:#e6db74">&#39; &#39;</span> -f <span style="color:#ae81ff">1</span> | xargs docker
+
+<span style="color:#75715e"># delete all untagged images</span>
+docker rmi -f <span style="color:#66d9ef">$(</span>docker images | grep <span style="color:#e6db74">&#34;&lt;none&gt;&#34;</span> | awk <span style="color:#e6db74">&#34;{print \$3}&#34;</span><span style="color:#66d9ef">)</span>
+</code></pre></div>]]></content></item></channel></rss>
