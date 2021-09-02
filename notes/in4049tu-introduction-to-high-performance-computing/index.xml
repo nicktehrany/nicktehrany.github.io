@@ -1,4 +1,27 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IN4049TU Introduction to High Performance Computing on Nick Tehrany</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/</link><description>Recent content in IN4049TU Introduction to High Performance Computing on Nick Tehrany</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 29 Aug 2021 21:53:20 +0200</lastBuildDate><atom:link href="https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/index.xml" rel="self" type="application/rss+xml"/><item><title>Info</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/info/</link><pubDate>Sun, 29 Aug 2021 21:53:20 +0200</pubDate><guid>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/info/</guid><description>IN4049TU Introduction to High Performance Computing: Studyguide: # TODO: FILL IN STUDYGUIDE LINK
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IN4049TU Introduction to High Performance Computing on Nick Tehrany</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/</link><description>Recent content in IN4049TU Introduction to High Performance Computing on Nick Tehrany</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 29 Aug 2021 21:53:20 +0200</lastBuildDate><atom:link href="https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/introduction/</link><pubDate>Tue, 31 Aug 2021 16:27:34 +0200</pubDate><guid>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/introduction/</guid><description>Why do we need powerful computer systems? Because more and more computation is moving to computer systems, experiments, proofs and other theoretical engineering done traditionally on paper. Said engineering is too slow on paper and computationally limited, as well as dangerous sometimes (in scenarios where simulation is needed, e.g. earthquakes, car crashes).
+Computational Science Triangle presents the combination of computer systems, applications and algorithms, out of which a model is then constructed.</description><content type="html"><![CDATA[<h4 id="why-do-we-need-powerful-computer-systems">Why do we need powerful computer systems?</h4>
+<p>Because more and more computation is moving to computer systems, experiments, proofs and other theoretical engineering
+done traditionally on paper. Said engineering is too slow on paper and computationally limited, as well as dangerous
+sometimes (in scenarios where simulation is needed, e.g. earthquakes, car crashes).</p>
+<p><strong>Computational Science Triangle</strong> presents the combination of computer systems, applications and algorithms, out of
+which a model is then constructed. This model is then used to fulfill the computational science paradigm of the
+previously mentioned theoretical engineering scenarios.</p>
+<p>Three new kinds of HPC have emerged with the need for Big Data:</p>
+<ul>
+<li><strong>Volume</strong> - large volumes of data being processed</li>
+<li><strong>Velocity</strong> - new data is being generated quickly</li>
+<li><strong>Variety</strong> - there are a large variety of data formats</li>
+</ul>
+<p>Additionally, HPC systems require large amounts of memory, as the data is stored in memory for processing.</p>
+<p>HPC is also widely used for web applications, such as web crawling, indexing, and sorting (e.g. with MapReduce).</p>
+<h4 id="requirements-of-hpc">Requirements of HPC</h4>
+<p>Modern HPC relies on:</p>
+<ul>
+<li>Powerful supercomputers (enough resources to do the computation)</li>
+<li>Parallelism in the problem (how far can the problem be parallelized?)</li>
+<li>Models and Simulation (how is the model formulated)</li>
+</ul>
+]]></content></item><item><title>Info</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/info/</link><pubDate>Sun, 29 Aug 2021 21:53:20 +0200</pubDate><guid>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/info/</guid><description>IN4049TU Introduction to High Performance Computing: Studyguide: # TODO: FILL IN STUDYGUIDE LINK
 Book: TODO: FILL IN THE BOOK FOR THE COURSE
 All content and images are based on and retrieved from the lecture slides and/or the previously mentioned book and/or any other content that is provided in the course.
 Authors Nick Tehrany</description><content type="html"><![CDATA[<h2 id="in4049tu-introduction-to-high-performance-computing">IN4049TU Introduction to High Performance Computing:</h2>
