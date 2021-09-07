@@ -1,4 +1,31 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IN4049TU Introduction to High Performance Computing on Nick Tehrany</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/</link><description>Recent content in IN4049TU Introduction to High Performance Computing on Nick Tehrany</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 29 Aug 2021 21:53:20 +0200</lastBuildDate><atom:link href="https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/introduction/</link><pubDate>Tue, 31 Aug 2021 16:27:34 +0200</pubDate><guid>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/introduction/</guid><description>Why do we need powerful computer systems? Because more and more computation is moving to computer systems, experiments, proofs and other theoretical engineering done traditionally on paper. Said engineering is too slow on paper and computationally limited, as well as dangerous sometimes (in scenarios where simulation is needed, e.g. earthquakes, car crashes).
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IN4049TU Introduction to High Performance Computing on Nick Tehrany</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/</link><description>Recent content in IN4049TU Introduction to High Performance Computing on Nick Tehrany</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 29 Aug 2021 21:53:20 +0200</lastBuildDate><atom:link href="https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/index.xml" rel="self" type="application/rss+xml"/><item><title>Parallel and Distributed Architecture</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/parallel-and-distributed-architecture/</link><pubDate>Tue, 07 Sep 2021 16:56:12 +0200</pubDate><guid>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/parallel-and-distributed-architecture/</guid><description>Memory Classifications Based on memory organization:
+SM - Shared Memory DM - Distributed Memory Based on access times:
+UMA - Uniform Memory Access NUMA - Non-Uniform Memory Access SMP - Symmetric Multi-Processor Based on data and control flows with Flynn&amp;rsquo;s taxonomy:
+SISD - Single Instruction Single Data MISD - Multiple Instruction Single Data SIMD - Single Instruction Multiple Data MIMD - Multiple Instruction Multiple Data Extensions of memory systems:</description><content type="html"><![CDATA[<h4 id="memory-classifications">Memory Classifications</h4>
+<p>Based on memory organization:</p>
+<ul>
+<li><strong>SM</strong> - Shared Memory</li>
+<li><strong>DM</strong> - Distributed Memory</li>
+</ul>
+<p>Based on access times:</p>
+<ul>
+<li><strong>UMA</strong> - Uniform Memory Access</li>
+<li><strong>NUMA</strong> - Non-Uniform Memory Access</li>
+<li><strong>SMP</strong> - Symmetric Multi-Processor</li>
+</ul>
+<p>Based on data and control flows with <strong>Flynn&rsquo;s taxonomy</strong>:</p>
+<ul>
+<li><strong>SISD</strong> - Single Instruction Single Data</li>
+<li><strong>MISD</strong> - Multiple Instruction Single Data</li>
+<li><strong>SIMD</strong> - Single Instruction Multiple Data</li>
+<li><strong>MIMD</strong> - Multiple Instruction Multiple Data</li>
+</ul>
+<p>Extensions of memory systems:</p>
+<ul>
+<li>Shared cache, where processors share caches and memory.</li>
+<li>Bus-based shared memory (Symmetric Multiprocessors - SMP), where processors share the same memory and bus to it.</li>
+</ul>
+]]></content></item><item><title>Introduction</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/introduction/</link><pubDate>Tue, 31 Aug 2021 16:27:34 +0200</pubDate><guid>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/introduction/</guid><description>Why do we need powerful computer systems? Because more and more computation is moving to computer systems, experiments, proofs and other theoretical engineering done traditionally on paper. Said engineering is too slow on paper and computationally limited, as well as dangerous sometimes (in scenarios where simulation is needed, e.g. earthquakes, car crashes).
 Computational Science Triangle presents the combination of computer systems, applications and algorithms, out of which a model is then constructed.</description><content type="html"><![CDATA[<h4 id="why-do-we-need-powerful-computer-systems">Why do we need powerful computer systems?</h4>
 <p>Because more and more computation is moving to computer systems, experiments, proofs and other theoretical engineering
 done traditionally on paper. Said engineering is too slow on paper and computationally limited, as well as dangerous
@@ -21,6 +48,27 @@ previously mentioned theoretical engineering scenarios.</p>
 <li>Parallelism in the problem (how far can the problem be parallelized?)</li>
 <li>Models and Simulation (how is the model formulated)</li>
 </ul>
+<h4 id="principles-of-parallel-computing">Principles of parallel computing</h4>
+<p>Parallel applications contain of multiple computational tasks which are run concurrently.
+With parallel computing we want to use local data (in the caches) more, for better locality. The task size is also very
+important (what parallelism granularity?), as well as scheduling and load balancing across the different processors and
+tasks.</p>
+<h4 id="performance-metrics">Performance Metrics</h4>
+<p>Important metrics with HPC:</p>
+<ul>
+<li><strong>Execution Time</strong></li>
+<li><strong>Speed-up</strong> typically compared to sequential</li>
+<li><strong>Utilization</strong> $time * \#\text{CPU}$ in use</li>
+</ul>
+<h4 id="parallelism">Parallelism</h4>
+<p>All programs have an intrinsically sequential part which cannot be parallelized. Therefore with Amdahl&rsquo;s law we can find
+the maximal speedup of the program. However, the speedup is bound by the sequential part of the program. With $s$ being
+the sequential part, $p$ the number of processors and $S$ the speedup, we have</p>
+<p>$$S=T_{seq}/T_{par}=\frac{1}{s+\frac{(1-s)}{p}}\le \frac{1}{s}$$</p>
+<p>where $1-s$ is the parallelizable part of the program.</p>
+<h5 id="data-locality">Data Locality</h5>
+<p>Algorithms should be implemented to enable smart data distribution which results in best data locality for quick
+accesses. If locality is not possible other techniques such as prefetching are used.</p>
 ]]></content></item><item><title>Info</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/info/</link><pubDate>Sun, 29 Aug 2021 21:53:20 +0200</pubDate><guid>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/info/</guid><description>IN4049TU Introduction to High Performance Computing: Studyguide: # TODO: FILL IN STUDYGUIDE LINK
 Book: TODO: FILL IN THE BOOK FOR THE COURSE
 All content and images are based on and retrieved from the lecture slides and/or the previously mentioned book and/or any other content that is provided in the course.
