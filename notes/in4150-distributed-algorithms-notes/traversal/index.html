@@ -1,8 +1,135 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=author content><meta name=description content="IN4150 Distributed Algorithms Notes"><meta name=keywords content><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/><title>Traversal Algorithms</title><link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/main.89fa80e2143f71bd5c96a7c94e531dec3276a367e22f87e74a76026ab64680bf.css><meta itemprop=name content="Traversal Algorithms"><meta itemprop=description content="IN4150 Distributed Algorithms Notes"><meta itemprop=datePublished content="2021-01-21T00:00:00+00:00"><meta itemprop=dateModified content="2021-01-21T00:00:00+00:00"><meta itemprop=wordCount content="485"><meta itemprop=image content="https://nicktehrany.github.io"><meta itemprop=keywords content><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://nicktehrany.github.io"><meta name=twitter:title content="Traversal Algorithms"><meta name=twitter:description content="IN4150 Distributed Algorithms Notes"><meta property="og:title" content="Traversal Algorithms"><meta property="og:description" content="IN4150 Distributed Algorithms Notes"><meta property="og:type" content="article"><meta property="og:url" content="https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/"><meta property="og:image" content="https://nicktehrany.github.io"><meta property="article:published_time" content="2021-01-21T00:00:00+00:00"><meta property="article:modified_time" content="2021-01-21T00:00:00+00:00"><meta property="og:site_name" content="Nick Tehrany"><meta property="article:published_time" content="2021-01-21 00:00:00 +0000 UTC"></head><body><div class=container><header class=header><span class=header__inner><a href=/ style=text-decoration:none><div class=logo><span class=logo__mark>$</span>
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=author content>
+<meta name=description content="IN4150 Distributed Algorithms Notes">
+<meta name=keywords content>
+<meta name=robots content="noodp">
+<meta name=theme-color content>
+<link rel=canonical href=https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/>
+<title>
+Traversal Algorithms
+</title>
+<link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css>
+<link rel=stylesheet href=/main.89fa80e2143f71bd5c96a7c94e531dec3276a367e22f87e74a76026ab64680bf.css>
+<meta itemprop=name content="Traversal Algorithms">
+<meta itemprop=description content="IN4150 Distributed Algorithms Notes"><meta itemprop=datePublished content="2021-01-21T00:00:00+00:00">
+<meta itemprop=dateModified content="2021-01-21T00:00:00+00:00">
+<meta itemprop=wordCount content="485"><meta itemprop=image content="https://nicktehrany.github.io">
+<meta itemprop=keywords content>
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://nicktehrany.github.io">
+<meta name=twitter:title content="Traversal Algorithms">
+<meta name=twitter:description content="IN4150 Distributed Algorithms Notes">
+<meta property="og:title" content="Traversal Algorithms">
+<meta property="og:description" content="IN4150 Distributed Algorithms Notes">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/"><meta property="og:image" content="https://nicktehrany.github.io"><meta property="article:section" content="notes">
+<meta property="article:published_time" content="2021-01-21T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-01-21T00:00:00+00:00"><meta property="og:site_name" content="Nick Tehrany">
+<meta property="article:published_time" content="2021-01-21 00:00:00 +0000 UTC">
+</head>
+<body>
+<div class=container>
+<header class=header>
+<span class=header__inner>
+<a href=/ style=text-decoration:none>
+<div class=logo>
+<span class=logo__mark>$</span>
 <span class=logo__text>cd nicktehrany</span>
-<span class=logo__cursor></span></div></a><span class=header__right><nav class=menu><ul class=menu__inner><li><a href=/awards>Awards</a></li><li><a href=/publications>Publications</a></li><li><a href=/projects>Projects</a></li><li><a href=/posts>Blog</a></li><li><a href=/notes>Uni Notes</a></li></ul></nav><span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></span></span></span></header><div class=content><main class=posts><div class=post-info><p></p></div><article><h1 class=post-title><a href=https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/>Traversal Algorithms</a></h1><div class=post-content><p>Information in a DS may need to be propagated from a single node to all other nodes and the originator may want to receive information back. In a <em>spanning tree</em> of an undirected network, which is a sub-network of the original network that contains all nodes of the original network and that has the structure of a tree (the sparsest type of sub-network that keeps the system connected), messages need to traverse the tree efficiently. In all algorithms the originating node starts by sending a <em>TOKEN</em> on any of its edges, which then traverses the whole system and returns to the originator. The node from which a node receives the token is its <em>parent</em>.</p><h3 id=tarrys-traversal-algorithm-in-a-general-undirected-network>Tarry&rsquo;s Traversal Algorithm in a General Undirected Network</h3><p>Every node maintains the set of edges it has not yet sent the token to, except their parent. If that set is not empty when a node receives the token it sends it along one of the edges in the set, and otherwise sends it back to its parent.</p><p><strong>Message complexity</strong> is $2|E|$ since the token travels along all edges twice.</p><h3 id=cheungs-depth-first-search-algorithm>Cheung&rsquo;s Depth-First Search Algorithm</h3><p>Every node that receives the <em>TOKEN</em> for the first time forwards it to any of its unused edges, if there are any, and if no edge exists it sends it back to its parent. If a node receives the <em>TOKEN</em> when it had already received it before it immediately returns it.</p><p><strong>Message complexity</strong> is also $2|E|$.</p><h3 id=awerbuchs-depth-first-search-algorithm>Awerbuch&rsquo;s Depth-First Search Algorithm</h3><p>When a node receives the <em>TOKEN</em> it sends a <em>VISITED</em> message to all its neighbors, except the parent, stopping them from ever sending it the token again (removing it from the set of unvisited neighbors), and hence cutting down on unnecessary token sends to already visited nodes. The node then waits for an <em>ACK</em> from all the neighbors (except the parent of course) before forwarding the token to an unvisited neighbor, or back to its parent if all neighbors are visited.</p><p><strong>Message complexity</strong> is $2(|V|-1)$ ($V$ number of nodes). <em>VISITED</em> and <em>ACK</em> messages are bounded by $4|E|$ since max 2 of each can be sent along each link</p><h3 id=cidons-depth-first-search-algorithm>Cidon&rsquo;s Depth-First Search Algorithm</h3><p>When a node receives the <em>TOKEN</em> for the first time it immediately forwards it to a node it assumes has not been visited yet and sends a <em>VISITED</em> message too all its neighbors except for that node and its parent. This means the token can be sent to a node that had already been visited (the visited message of that token might still be in transit), and once that visited message shows up the node knows it made a mistake, regenerates the token and sends it to another node. The already visited node that received the token does nothing with it.</p><p><strong>Message complexity</strong> is $3|E|$ since visited message is sent both ways across any edge and at most one <em>TOKEN</em> message can be sent along it.</p><script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,processEnvironments:true},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};window.addEventListener('load',(event)=>{document.querySelectorAll("mjx-container").forEach(function(x){x.parentElement.classList+='has-jax'})});</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script></div></article><hr><div class=post-info><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>485 Words</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2021-01-21</p></div><div class=pagination><div class=pagination__title><span class=pagination__title-h>Read other posts</span><hr></div><div class=pagination__buttons><span class="button previous"><a href=https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mst/><span class=button__icon>←</span>
-<span class=button__text>Minimum-Weight Spanning Trees</span></a></span>
-<span class="button next"><a href=https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/election/><span class=button__text>Election</span>
-<span class=button__icon>→</span></a></span></div></div></main></div><footer class=footer><link rel=stylesheet href=https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css><div><div>&nbsp; <a href=https://github.com/nicktehrany target=_blank rel=noopener title=Github><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77a5.44 5.44.0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a>&nbsp;&nbsp; <a href=https://www.linkedin.com/in/nicktehrany/ target=_blank rel=noopener title=Linkedin><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>&nbsp;
-<a href=/misc/cv.pdf target=_self><i class="ai ai-cv ai-2x"></i></a><a href=https://www.semanticscholar.org/author/Tehrany/2105151990 target=_self><i class="ai ai-semantic-scholar ai-2x"></i></a></div></div><div class=footer__inner><div class=footer__content><span>Powered by <a href=http://gohugo.io>Hugo</a></span>
-<span>Themed by <a href=https://github.com/rhazdon/hugo-theme-hello-friend-ng>Hello Friend NG</a></span></div></div></footer></div><script type=text/javascript src=/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj+AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script></body></html>
+<span class=logo__cursor>
+</span>
+</div>
+</a>
+<span class=header__right>
+<nav class=menu>
+<ul class=menu__inner><li><a href=/awards>Awards</a></li><li><a href=/publications>Publications</a></li><li><a href=/projects>Projects</a></li><li><a href=/posts>Blog</a></li><li><a href=/notes>Uni Notes</a></li>
+</ul>
+</nav>
+<span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</span>
+</span>
+</span>
+</header>
+<div class=content>
+<main class=posts>
+<div class=post-info>
+<p>
+</p>
+</div>
+<article>
+<h1 class=post-title>
+<a href=https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/traversal/>Traversal Algorithms</a>
+</h1>
+<div class=post-content>
+<p>Information in a DS may need to be propagated from a single node to all other nodes and the originator may want to receive information back. In a <em>spanning tree</em> of an undirected network, which is a sub-network of the original network that contains all nodes of the original network and that has the structure of a tree (the sparsest type of sub-network that keeps the system connected), messages need to traverse the tree efficiently. In all algorithms the originating node starts by sending a <em>TOKEN</em> on any of its edges, which then traverses the whole system and returns to the originator. The node from which a node receives the token is its <em>parent</em>.</p>
+<h3 id=tarrys-traversal-algorithm-in-a-general-undirected-network>Tarry&rsquo;s Traversal Algorithm in a General Undirected Network</h3>
+<p>Every node maintains the set of edges it has not yet sent the token to, except their parent. If that set is not empty when a node receives the token it sends it along one of the edges in the set, and otherwise sends it back to its parent.</p>
+<p><strong>Message complexity</strong> is $2|E|$ since the token travels along all edges twice.</p>
+<h3 id=cheungs-depth-first-search-algorithm>Cheung&rsquo;s Depth-First Search Algorithm</h3>
+<p>Every node that receives the <em>TOKEN</em> for the first time forwards it to any of its unused edges, if there are any, and if no edge exists it sends it back to its parent. If a node receives the <em>TOKEN</em> when it had already received it before it immediately returns it.</p>
+<p><strong>Message complexity</strong> is also $2|E|$.</p>
+<h3 id=awerbuchs-depth-first-search-algorithm>Awerbuch&rsquo;s Depth-First Search Algorithm</h3>
+<p>When a node receives the <em>TOKEN</em> it sends a <em>VISITED</em> message to all its neighbors, except the parent, stopping them from ever sending it the token again (removing it from the set of unvisited neighbors), and hence cutting down on unnecessary token sends to already visited nodes. The node then waits for an <em>ACK</em> from all the neighbors (except the parent of course) before forwarding the token to an unvisited neighbor, or back to its parent if all neighbors are visited.</p>
+<p><strong>Message complexity</strong> is $2(|V|-1)$ ($V$ number of nodes). <em>VISITED</em> and <em>ACK</em> messages are bounded by $4|E|$ since max 2 of each can be sent along each link</p>
+<h3 id=cidons-depth-first-search-algorithm>Cidon&rsquo;s Depth-First Search Algorithm</h3>
+<p>When a node receives the <em>TOKEN</em> for the first time it immediately forwards it to a node it assumes has not been visited yet and sends a <em>VISITED</em> message too all its neighbors except for that node and its parent. This means the token can be sent to a node that had already been visited (the visited message of that token might still be in transit), and once that visited message shows up the node knows it made a mistake, regenerates the token and sends it to another node. The already visited node that received the token does nothing with it.</p>
+<p><strong>Message complexity</strong> is $3|E|$ since visited message is sent both ways across any edge and at most one <em>TOKEN</em> message can be sent along it.</p>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}},window.addEventListener('load',a=>{document.querySelectorAll("mjx-container").forEach(function(a){a.parentElement.classList+='has-jax'})})</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
+</div>
+</article>
+<hr>
+<div class=post-info>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+485 Words
+</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+2021-01-21
+</p>
+</div>
+<div class=pagination>
+<div class=pagination__title>
+<span class=pagination__title-h>Read other posts</span>
+<hr>
+</div>
+<div class=pagination__buttons>
+<span class="button previous">
+<a href=https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/mst/>
+<span class=button__icon>←</span>
+<span class=button__text>Minimum-Weight Spanning Trees</span>
+</a>
+</span>
+<span class="button next">
+<a href=https://nicktehrany.github.io/notes/in4150-distributed-algorithms-notes/election/>
+<span class=button__text>Election</span>
+<span class=button__icon>→</span>
+</a>
+</span>
+</div>
+</div>
+</main>
+</div>
+<footer class=footer>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css>
+<div>
+<div>
+&nbsp; <a href=https://github.com/nicktehrany target=_blank rel=noopener title=Github><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a> &nbsp;&nbsp; <a href=https://www.linkedin.com/in/nicktehrany/ target=_blank rel=noopener title=Linkedin><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a> &nbsp;
+<a href=/misc/cv.pdf target=_self><i class="ai ai-cv ai-2x"></i></a>
+<a href=https://www.semanticscholar.org/author/Tehrany/2105151990 target=_self><i class="ai ai-semantic-scholar ai-2x"></i></a>
+</div>
+</div>
+<div class=footer__inner>
+<div class=footer__content>
+<span>Powered by <a href=http://gohugo.io>Hugo</a></span>
+<span>Themed by <a href=https://github.com/rhazdon/hugo-theme-hello-friend-ng>Hello Friend NG</a></span>
+</div>
+</div>
+</footer>
+</div>
+<script type=text/javascript src=/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js integrity="sha512-LOZOpupEpysT3YEvwutcyj7+h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
+</body>
+</html>

@@ -6,7 +6,7 @@ use.</p>
 <p>gist with all useful commands that I use or need and tend to forget since it&rsquo;s just too many, a lot of these are custom key mappings so they might not work by default.</p>
 <h3 id="vim">Vim</h3>
 <p>some vim commands</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Ctrl + c <span style="color:#75715e"># compile latex file</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Ctrl + c <span style="color:#75715e"># compile latex file</span>
 Ctrl + l <span style="color:#75715e"># clear output log from latex compile</span>
 
 Ctrl + w arrow <span style="color:#75715e"># change window to arrow direction</span>
@@ -48,7 +48,7 @@ gq$ <span style="color:#75715e"># wrap words until end of line (or gq0 for until
 
 :m +1 <span style="color:#75715e"># move line 1 down (- for up and line numbers) if no plus line number is absolute</span>
 </code></pre></div><h3 id="zathura">Zathura</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">K <span style="color:#75715e"># Zoom in</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">K <span style="color:#75715e"># Zoom in</span>
 J <span style="color:#75715e"># Zoom out</span>
 t <span style="color:#75715e"># goto top</span>
 u <span style="color:#75715e"># go half page up</span>
@@ -56,7 +56,7 @@ d <span style="color:#75715e"># go half page down</span>
 i <span style="color:#75715e"># invert colors</span>
 D <span style="color:#75715e"># change page mode (dual/single)</span>
 </code></pre></div><h3 id="shell-window-tiling">Shell Window Tiling</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Super + / <span style="color:#75715e"># go through applications</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Super + / <span style="color:#75715e"># go through applications</span>
 Super + y <span style="color:#75715e"># Tile windows</span>
 Super + o <span style="color:#75715e"># change orientation</span>
 
@@ -71,10 +71,10 @@ Super + s <span style="color:#75715e"># stacking mode</span>
 Super + g <span style="color:#75715e"># floating mode</span>
 </code></pre></div><h3 id="key-remapping">Key Remapping</h3>
 <p>I use these to remap CAPS lock to esc and home to delete.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">xev <span style="color:#75715e"># gui to find out the keycode of a key</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">xev <span style="color:#75715e"># gui to find out the keycode of a key</span>
 xmodmap -e <span style="color:#e6db74">&#39;keycode 110=Delete&#39;</span> <span style="color:#75715e"># remaps the home key to delete</span>
 </code></pre></div><h3 id="vifm">Vifm</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">zo <span style="color:#75715e"># show hidden files</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">zo <span style="color:#75715e"># show hidden files</span>
 zm <span style="color:#75715e"># hide hidden files</span>
 w <span style="color:#75715e"># preview</span>
 cw <span style="color:#75715e"># change name (with extensions)</span>
@@ -82,11 +82,11 @@ cW <span style="color:#75715e"># change name (without extensions)</span>
 Tab <span style="color:#75715e"># switch pane</span>
 Shift Tab <span style="color:#75715e"># switch to preview pane</span>
 </code></pre></div><h3 id="misc">Misc</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grep -rHn <span style="color:#e6db74">&#39;word&#39;</span> *.md <span style="color:#75715e"># grep all md files for the word</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grep -rHn <span style="color:#e6db74">&#39;word&#39;</span> *.md <span style="color:#75715e"># grep all md files for the word</span>
 
 pandoc file.md -o file.pdf <span style="color:#75715e"># markdown to pdf conversion</span>
 </code></pre></div><h4 id="docker">Docker</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># delete all exited containers</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># delete all exited containers</span>
 docker ps -a | grep Exit | cut -d <span style="color:#e6db74">&#39; &#39;</span> -f <span style="color:#ae81ff">1</span> | xargs docker
 
 <span style="color:#75715e"># delete all untagged images</span>

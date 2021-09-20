@@ -1,11 +1,264 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=author content><meta name=description content="IN4191 Security and Cryptography Notes"><meta name=keywords content><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-8/><title>Lecture 8: Number Theory and Elliptic Curves</title><link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/main.89fa80e2143f71bd5c96a7c94e531dec3276a367e22f87e74a76026ab64680bf.css><meta itemprop=name content="Lecture 8: Number Theory and Elliptic Curves"><meta itemprop=description content="IN4191 Security and Cryptography Notes"><meta itemprop=datePublished content="2021-01-12T00:00:00+00:00"><meta itemprop=dateModified content="2021-01-12T00:00:00+00:00"><meta itemprop=wordCount content="1098"><meta itemprop=image content="https://nicktehrany.github.io"><meta itemprop=keywords content><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://nicktehrany.github.io"><meta name=twitter:title content="Lecture 8: Number Theory and Elliptic Curves"><meta name=twitter:description content="IN4191 Security and Cryptography Notes"><meta property="og:title" content="Lecture 8: Number Theory and Elliptic Curves"><meta property="og:description" content="IN4191 Security and Cryptography Notes"><meta property="og:type" content="article"><meta property="og:url" content="https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-8/"><meta property="og:image" content="https://nicktehrany.github.io"><meta property="article:published_time" content="2021-01-12T00:00:00+00:00"><meta property="article:modified_time" content="2021-01-12T00:00:00+00:00"><meta property="og:site_name" content="Nick Tehrany"><meta property="article:published_time" content="2021-01-12 00:00:00 +0000 UTC"></head><body><div class=container><header class=header><span class=header__inner><a href=/ style=text-decoration:none><div class=logo><span class=logo__mark>$</span>
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=author content>
+<meta name=description content="IN4191 Security and Cryptography Notes">
+<meta name=keywords content>
+<meta name=robots content="noodp">
+<meta name=theme-color content>
+<link rel=canonical href=https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-8/>
+<title>
+Lecture 8: Number Theory and Elliptic Curves
+</title>
+<link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css>
+<link rel=stylesheet href=/main.89fa80e2143f71bd5c96a7c94e531dec3276a367e22f87e74a76026ab64680bf.css>
+<meta itemprop=name content="Lecture 8: Number Theory and Elliptic Curves">
+<meta itemprop=description content="IN4191 Security and Cryptography Notes"><meta itemprop=datePublished content="2021-01-12T00:00:00+00:00">
+<meta itemprop=dateModified content="2021-01-12T00:00:00+00:00">
+<meta itemprop=wordCount content="1098"><meta itemprop=image content="https://nicktehrany.github.io">
+<meta itemprop=keywords content>
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://nicktehrany.github.io">
+<meta name=twitter:title content="Lecture 8: Number Theory and Elliptic Curves">
+<meta name=twitter:description content="IN4191 Security and Cryptography Notes">
+<meta property="og:title" content="Lecture 8: Number Theory and Elliptic Curves">
+<meta property="og:description" content="IN4191 Security and Cryptography Notes">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-8/"><meta property="og:image" content="https://nicktehrany.github.io"><meta property="article:section" content="notes">
+<meta property="article:published_time" content="2021-01-12T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-01-12T00:00:00+00:00"><meta property="og:site_name" content="Nick Tehrany">
+<meta property="article:published_time" content="2021-01-12 00:00:00 +0000 UTC">
+</head>
+<body>
+<div class=container>
+<header class=header>
+<span class=header__inner>
+<a href=/ style=text-decoration:none>
+<div class=logo>
+<span class=logo__mark>$</span>
 <span class=logo__text>cd nicktehrany</span>
-<span class=logo__cursor></span></div></a><span class=header__right><nav class=menu><ul class=menu__inner><li><a href=/awards>Awards</a></li><li><a href=/publications>Publications</a></li><li><a href=/projects>Projects</a></li><li><a href=/posts>Blog</a></li><li><a href=/notes>Uni Notes</a></li></ul></nav><span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></span></span></span></header><div class=content><main class=posts><div class=post-info><p></p></div><article><h1 class=post-title><a href=https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-8/>Lecture 8: Number Theory and Elliptic Curves</a></h1><div class=post-content><h2 id=number-theory-and-elliptic-curves-chapter-1--4>Number Theory and Elliptic Curves (Chapter 1 & 4)</h2><h3 id=modular-arithmetic>Modular Arithmetic</h3><p>A positive integer $N$ called modulus is written as</p><p>$$a=b\text{ mod }N$$</p><p>if $N$ divides $b-a$, $a$ and $b$ are congruent modulo $N$.</p><p>The set of values produced by postfix operation mod $N$ is $\mathbb{Z}_N=\{0,1,&mldr;,N-1\}$ (can also be written as $\mathbb{Z}/N\mathbb{Z}$).</p><p>The properties of modulo arithmetic are</p><p><img src=/images/IN4191/Mod-properties.png alt="Modulo Arithmetic properties"></p><p>A group is a set which is closed, has an identity, is associative, and every element has an inverse. A group that is commutative is called <strong>abelian</strong>.</p><p>Properties 1,2,3,4 are <strong>Groups</strong>.
-Properties 1,2,3,4,5 are <strong>Abelian Groups</strong>.</p><p>Group types:</p><ul><li><strong>multiplicative group</strong> group operation is multiplication to create the group<ul><li>$(G,x):f=g*h \text{ and } g^5=g*g*g*g*g$</li></ul></li><li><strong>additive group</strong> group operation is addition<ul><li>$f=g+h \text{ and } 5*g=g+g+g+g+g$</li></ul></li><li><strong>cyclic abelian group</strong> if there is a special element (generator) from which every other element in the group can be obtained by applying the group operation.</li></ul><p>Rings:</p><p>A ring has two operations (+,*) with properties 1 to 9, and is denotes as (R,+,*). If multiplication is commutative (property 10), then the ring is commutative.</p><h4 id=eulers-totient-function>Euler&rsquo;s Totient Function</h4><p>Euler&rsquo;s totient function counts how many coprimes there are for a given in its set $\mathbb{Z}_N$.
-For equations $a*x=b\text{ mod }N$ finding the solution,</p><p>$$7*x=3\text{ mod } 143\text{ has one solution}$$</p><p>$$11*x=3\text{ mod } 143\text{ has no solution}$$</p><p>$$7*x=22\text{ mod } 143\text{ has 11 solution}$$</p><p>finding the number of solutions is done by computing the gcd of $a$ and $N$ and has the cases:</p><ol><li>if $\text{gcd}(a,N)=1$, there is exactly one solution</li><li>if $\text{gcd}(a,N)=g\ne1 \text{ and gcd}(a,N)\text{ divides }b, \text{ there are }g \text{ solutions}$</li><li>otherwise there is no solution</li></ol><p>The case where the $\text{gcd}(a,N)=1$ $a$ and $N$ are called relatively prime or coprime.</p><p>The number of integers in $\mathbb{Z}_N$ is given by Euler&rsquo;s Totient function</p><p>$$\phi(N)=\prod_{i=1}^np_i^{e_i-1}(p_i-1)$$</p><p>where</p><p>$$N=\prod_{i=1}^np_i^{e_i}$$</p><p>With this the totient function will tell us how many coprimes there are in the set of $\mathbb{Z}_N$ and we can then calculate all the coprimes in the set as</p><p>$$\mathbb{Z}_N^*=\{1\le a &lt; n | \text{ gcd}(a,n)=1\}$$</p><p>If $p$ is a prime, then $\phi(p)=p-1$.<br>If $p$ and $q$ are both prime, then $\phi(p*q)=(p-1)(q-1)$.</p><p>For example $\phi(15)$ is not prime but using</p><p>$$N=p*q$$</p><p>$$15=3*5$$</p><p>we can calculate</p><p>$$\phi(15)=(3-1)(5-1)=8$$.</p><h4 id=multiplicative-inverse-modulo>Multiplicative Inverse Modulo</h4><p>Finding a $c$ such that</p><p>$$a<em>c=c</em>a=1\text{ mod } N$$</p><p>such a $c$ is called the multiplicative inverse modulo $N$ of $a$: $a^{-1}$, and only exists when $a$ and the module $N$ are coprime, $gcd(a,N=1)$.</p><p>If $p$ is a prime, then all non-zero elements have a multiplicative inverse in $\mathbb{Z}_N$, thus $a*x=b \text{ mod } b$ has a unique solution. A ring with all non-zero elements having a multiplicative inverse is called a field.</p><p>A field is a set with two operations $(G,*,+)$ such that</p><ul><li>$(G,+)$ is an abelian group</li><li>$(G/0,x)$ is an abelian group</li><li>$(G,*,+)$ satisfies the distributive law</li></ul><p>The size of $\mathbb{Z}_N$ is given by $\phi(N)$ and if $N$ is a prime, $\mathbb{Z}_N^*=\{1,&mldr;,p-1\}$</p><p><strong>Lagrange&rsquo;s theorem</strong> states that if $(G,*)$ is a group of order (size) $n=\text{ sizeof }G$ (order is calculated with the totient function), then for all $a$ in $G$ we have $a^n=1$ (every single item in $\mathbb{Z}_N$ to the power of the order).</p><p><strong>Fermat&rsquo;s Little theorem</strong> states that if $p$ is a prime and $a$ is in $Z$, them $a^p=a\text{ mod } p$.</p><h4 id=basic-algorithms>Basic Algorithms</h4><p><strong>Euclidean Algorithm</strong> is for computing of $\text{gcd}(a,b)$ and $a=qb+r$.
-We can reduce with $\text{gcd}(a,b)=\text{gcd}(a\text{ mod } b,b)$ until we reach $gcd(0,x)$ where $x$ is the $\text{gcd}$</p><p><img src=/images/IN4191/Euclidean-example.png alt="Euclidean Algorithm Example"></p><p><strong>Extended Euclidean Algorithm</strong> states that any number $\text{gcd}(a,b)=r$ can be written in the form of $ax+by=r$, hence for a $\text{gcd}(a,N)=d$ where $d=1$ we can compute $ax+yN=1$, where $x$ is the multiplicative inverse of $a$ in modulo $N$.</p><p><strong>Chinese Remainder Theorem</strong> states that if we have two equations $x=a\text{ mod } N\text{ and }x=b\text{ mod }M$ then there is a unique solution modulo $M*N$ if and only if $\text{gcd}(N,M)=1$, and is given as</p><p>$$x\leftarrow \sum_{i=1}^ra_i*M_i*y_i\text{ mod } M$$</p><p>where</p><p>$$M_i\leftarrow M/m_i \text{ and } y_i\leftarrow M_i^{-1} \text{ mod }m_i$$</p><h4 id=legendre-symbol>Legendre Symbol</h4><p>Used to make it easier to detect squares modulo a prime $p$. The set of squares in $\mathbb{F}_P^*$ is called the <em>quadratic residue</em> and is of the size $(p-1)/2$, all elements not in the quadratic residue are called <em>non-quadratic residue</em>. Legendre symbols are defines as</p><p>$$(\frac{a}{p})=a^{(p-1)/2}\text{ mod }p$$</p><p>which is</p><ul><li>0 if $p$ divides $a$</li><li>1 if $a$ is a quadratic residue</li><li>-1 if $a$ is a non-quadratic residue</li></ul><p>Legendre symbols are computed as</p><p>$$(\frac{q}{p})=(\frac{p}{q})(-1)^{(p-1)(q-1)/4}$$</p><p>which means</p><p><img src=/images/IN4191/legendre_form.png alt="Legendre Formula"></p><p>and we have additional formulae</p><p><img src=/images/IN4191/legendre_formulae.png alt="Legendre Formulae"></p><h4 id=jacobi-symbol>Jacobi Symbol</h4><p>Legendre symbols are defined if the denominator is prime, but for composite denominators we use Jacobi symbols, which are given as</p><p>$$(\frac{a}{n})=(\frac{a}{p_1})^{e_1}(\frac{a}{p_2})^{e_2}&mldr;(\frac{a}{p_k})^{e_k}$$</p><p>where</p><p>$$n=p_1^{e_1}*p_2^{e_2}&mldr;p_k^{e_k}$$</p><p>If $a$ is a square, the jacobi symbol will be 1, however if the jacobi symbol is 1, $a$ might not be a square.</p><h4 id=fermats-test>Fermat&rsquo;s Test</h4><p>It states that using Euler&rsquo;s totient function</p><p>$$a^{\phi(n)}=1\text{ mod }n$$</p><p>If $n$ is a prime this equality holds, however if this equality holds not necessarily is $n$ a prime.</p><p><img src=/images/IN4191/Fermats-test.png alt="Fermat&rsquo;s Test"></p><h4 id=miller-rabin-test>Miller-Rabin Test</h4><p>Because of Carmichael numbers Fermat&rsquo;s test is not useful (they always return &ldquo;probably prime&rdquo;). The Miller-Rabin test is an improved version with a chance of $1/4$ for a base $a$.</p><p><img src=/images/IN4191/Miller-rabin.png alt="Miller-Rabin Test"></p><h3 id=elliptic-curves>Elliptic Curves</h3><p>Elliptic curves are used in modern cryptography as a way of improving efficiency and bandwidth, defined as</p><p>$$F: y^2=x^3+ax+b\text{ mod }p$$</p><p>with requirements:</p><ul><li>$p>3$, otherwise $x^3=x$ (Fermat)</li><li>$4a^3 +27b^2\ne 0\text{ mod }p$, otherwise $F$ is singular</li><li>If $P$ is on $F$, then also $P+P$, $P+P+P$ etc..</li></ul><p><img src=/images/IN4191/EC-Point-Addition.png alt="Point Addition"></p><p>The zero point is given for</p><p>$$F:y^2=x^3+ax+b\text{ mod }p$$</p><p>with the following properties</p><ul><li>$P+(-P)=0$</li><li>$Q+(-Q)=0$</li><li>$P+0=0+P=P$</li></ul><p>Total number of points on the curve will be $p$ (whatever modulo there is) and the zero point will be the last point $NP$ out of all points ($P,1P,2P,&mldr;,NP)$. It is also called the identity element, and after it elements will start repeating (e.g. in $\text{mod }11$ point $12P$ is the same $P$)</p><h4 id=addition-rules>Addition Rules</h4><p>We are adding two points $P=(x_1,y_1)$ and $Q=(x_2,y_2)$, then re result is $R=(x_3,y_3)$</p><ul><li><p>If $x_1=x_2$ and $y_1=-y_2$, then $(x_3,y_3)=0$ (special point at infinity)</p></li><li><p>else</p><p>$$x_3=\lambda^2-x_1-x_2\text{ mod }p$$</p><p>$$y_3=\lambda(x_1-x_3)-y_1\text{ mod }p$$</p><p>where</p><p>$$\lambda=(y_2-y_1)/(x_2-x_1)\text{ mod }p \text{ If }P\ne Q$$</p><p>$$\lambda=(3x_1^2+a)/(2y_1)\text{ mod }p\text{ If }P=Q$$</p></li></ul><h4 id=elliptic-curve-discrete-log-problem>Elliptic Curve Discrete Log Problem</h4><p>The problem states that for a positive integer $m$ and a point $P$, it is easy to compute $Q=mP$, but given $Q$ and $P$ it is difficult to compute $m$.</p><p>For elliptic curves the prime number $p$ can be smaller (e.g. 128 bits) to make it infeasible, as opposed to making the calculation infeasible for DLP based systems (e.g. primer number $\ge1024$ bits). Equivalently hard problems but much smaller values, hence brining much better performance.</p><script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,processEnvironments:true},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};window.addEventListener('load',(event)=>{document.querySelectorAll("mjx-container").forEach(function(x){x.parentElement.classList+='has-jax'})});</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script></div></article><hr><div class=post-info><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>1098 Words</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2021-01-12</p></div><div class=pagination><div class=pagination__title><span class=pagination__title-h>Read other posts</span><hr></div><div class=pagination__buttons><span class="button previous"><a href=https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-9/><span class=button__icon>←</span>
-<span class=button__text>Lecture 9: The RSA Algorithm</span></a></span>
-<span class="button next"><a href=https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-7/><span class=button__text>Lecture 7: Hash Functions, MAC, and Key Derivation Functions</span>
-<span class=button__icon>→</span></a></span></div></div></main></div><footer class=footer><link rel=stylesheet href=https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css><div><div>&nbsp; <a href=https://github.com/nicktehrany target=_blank rel=noopener title=Github><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77a5.44 5.44.0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a>&nbsp;&nbsp; <a href=https://www.linkedin.com/in/nicktehrany/ target=_blank rel=noopener title=Linkedin><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>&nbsp;
-<a href=/misc/cv.pdf target=_self><i class="ai ai-cv ai-2x"></i></a><a href=https://www.semanticscholar.org/author/Tehrany/2105151990 target=_self><i class="ai ai-semantic-scholar ai-2x"></i></a></div></div><div class=footer__inner><div class=footer__content><span>Powered by <a href=http://gohugo.io>Hugo</a></span>
-<span>Themed by <a href=https://github.com/rhazdon/hugo-theme-hello-friend-ng>Hello Friend NG</a></span></div></div></footer></div><script type=text/javascript src=/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj+AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script></body></html>
+<span class=logo__cursor>
+</span>
+</div>
+</a>
+<span class=header__right>
+<nav class=menu>
+<ul class=menu__inner><li><a href=/awards>Awards</a></li><li><a href=/publications>Publications</a></li><li><a href=/projects>Projects</a></li><li><a href=/posts>Blog</a></li><li><a href=/notes>Uni Notes</a></li>
+</ul>
+</nav>
+<span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</span>
+</span>
+</span>
+</header>
+<div class=content>
+<main class=posts>
+<div class=post-info>
+<p>
+</p>
+</div>
+<article>
+<h1 class=post-title>
+<a href=https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-8/>Lecture 8: Number Theory and Elliptic Curves</a>
+</h1>
+<div class=post-content>
+<h2 id=number-theory-and-elliptic-curves-chapter-1--4>Number Theory and Elliptic Curves (Chapter 1 & 4)</h2>
+<h3 id=modular-arithmetic>Modular Arithmetic</h3>
+<p>A positive integer $N$ called modulus is written as</p>
+<p>$$a=b\text{ mod }N$$</p>
+<p>if $N$ divides $b-a$, $a$ and $b$ are congruent modulo $N$.</p>
+<p>The set of values produced by postfix operation mod $N$ is $\mathbb{Z}_N=\{0,1,&mldr;,N-1\}$ (can also be written as $\mathbb{Z}/N\mathbb{Z}$).</p>
+<p>The properties of modulo arithmetic are</p>
+<p><img src=/images/IN4191/Mod-properties.png alt="Modulo Arithmetic properties"></p>
+<p>A group is a set which is closed, has an identity, is associative, and every element has an inverse. A group that is commutative is called <strong>abelian</strong>.</p>
+<p>Properties 1,2,3,4 are <strong>Groups</strong>.
+Properties 1,2,3,4,5 are <strong>Abelian Groups</strong>.</p>
+<p>Group types:</p>
+<ul>
+<li><strong>multiplicative group</strong> group operation is multiplication to create the group
+<ul>
+<li>$(G,x):f=g*h \text{ and } g^5=g*g*g*g*g$</li>
+</ul>
+</li>
+<li><strong>additive group</strong> group operation is addition
+<ul>
+<li>$f=g+h \text{ and } 5*g=g+g+g+g+g$</li>
+</ul>
+</li>
+<li><strong>cyclic abelian group</strong> if there is a special element (generator) from which every other element in the group can be obtained by applying the group operation.</li>
+</ul>
+<p>Rings:</p>
+<p>A ring has two operations (+,*) with properties 1 to 9, and is denotes as (R,+,*). If multiplication is commutative (property 10), then the ring is commutative.</p>
+<h4 id=eulers-totient-function>Euler&rsquo;s Totient Function</h4>
+<p>Euler&rsquo;s totient function counts how many coprimes there are for a given in its set $\mathbb{Z}_N$.
+For equations $a*x=b\text{ mod }N$ finding the solution,</p>
+<p>$$7*x=3\text{ mod } 143\text{ has one solution}$$</p>
+<p>$$11*x=3\text{ mod } 143\text{ has no solution}$$</p>
+<p>$$7*x=22\text{ mod } 143\text{ has 11 solution}$$</p>
+<p>finding the number of solutions is done by computing the gcd of $a$ and $N$ and has the cases:</p>
+<ol>
+<li>if $\text{gcd}(a,N)=1$, there is exactly one solution</li>
+<li>if $\text{gcd}(a,N)=g\ne1 \text{ and gcd}(a,N)\text{ divides }b, \text{ there are }g \text{ solutions}$</li>
+<li>otherwise there is no solution</li>
+</ol>
+<p>The case where the $\text{gcd}(a,N)=1$ $a$ and $N$ are called relatively prime or coprime.</p>
+<p>The number of integers in $\mathbb{Z}_N$ is given by Euler&rsquo;s Totient function</p>
+<p>$$\phi(N)=\prod_{i=1}^np_i^{e_i-1}(p_i-1)$$</p>
+<p>where</p>
+<p>$$N=\prod_{i=1}^np_i^{e_i}$$</p>
+<p>With this the totient function will tell us how many coprimes there are in the set of $\mathbb{Z}_N$ and we can then calculate all the coprimes in the set as</p>
+<p>$$\mathbb{Z}_N^*=\{1\le a &lt; n | \text{ gcd}(a,n)=1\}$$</p>
+<p>If $p$ is a prime, then $\phi(p)=p-1$.<br>
+If $p$ and $q$ are both prime, then $\phi(p*q)=(p-1)(q-1)$.</p>
+<p>For example $\phi(15)$ is not prime but using</p>
+<p>$$N=p*q$$</p>
+<p>$$15=3*5$$</p>
+<p>we can calculate</p>
+<p>$$\phi(15)=(3-1)(5-1)=8$$.</p>
+<h4 id=multiplicative-inverse-modulo>Multiplicative Inverse Modulo</h4>
+<p>Finding a $c$ such that</p>
+<p>$$a<em>c=c</em>a=1\text{ mod } N$$</p>
+<p>such a $c$ is called the multiplicative inverse modulo $N$ of $a$: $a^{-1}$, and only exists when $a$ and the module $N$ are coprime, $gcd(a,N=1)$.</p>
+<p>If $p$ is a prime, then all non-zero elements have a multiplicative inverse in $\mathbb{Z}_N$, thus $a*x=b \text{ mod } b$ has a unique solution. A ring with all non-zero elements having a multiplicative inverse is called a field.</p>
+<p>A field is a set with two operations $(G,*,+)$ such that</p>
+<ul>
+<li>$(G,+)$ is an abelian group</li>
+<li>$(G/0,x)$ is an abelian group</li>
+<li>$(G,*,+)$ satisfies the distributive law</li>
+</ul>
+<p>The size of $\mathbb{Z}_N$ is given by $\phi(N)$ and if $N$ is a prime, $\mathbb{Z}_N^*=\{1,&mldr;,p-1\}$</p>
+<p><strong>Lagrange&rsquo;s theorem</strong> states that if $(G,*)$ is a group of order (size) $n=\text{ sizeof }G$ (order is calculated with the totient function), then for all $a$ in $G$ we have $a^n=1$ (every single item in $\mathbb{Z}_N$ to the power of the order).</p>
+<p><strong>Fermat&rsquo;s Little theorem</strong> states that if $p$ is a prime and $a$ is in $Z$, them $a^p=a\text{ mod } p$.</p>
+<h4 id=basic-algorithms>Basic Algorithms</h4>
+<p><strong>Euclidean Algorithm</strong> is for computing of $\text{gcd}(a,b)$ and $a=qb+r$.
+We can reduce with $\text{gcd}(a,b)=\text{gcd}(a\text{ mod } b,b)$ until we reach $gcd(0,x)$ where $x$ is the $\text{gcd}$</p>
+<p><img src=/images/IN4191/Euclidean-example.png alt="Euclidean Algorithm Example"></p>
+<p><strong>Extended Euclidean Algorithm</strong> states that any number $\text{gcd}(a,b)=r$ can be written in the form of $ax+by=r$, hence for a $\text{gcd}(a,N)=d$ where $d=1$ we can compute $ax+yN=1$, where $x$ is the multiplicative inverse of $a$ in modulo $N$.</p>
+<p><strong>Chinese Remainder Theorem</strong> states that if we have two equations $x=a\text{ mod } N\text{ and }x=b\text{ mod }M$ then there is a unique solution modulo $M*N$ if and only if $\text{gcd}(N,M)=1$, and is given as</p>
+<p>$$x\leftarrow \sum_{i=1}^ra_i*M_i*y_i\text{ mod } M$$</p>
+<p>where</p>
+<p>$$M_i\leftarrow M/m_i \text{ and } y_i\leftarrow M_i^{-1} \text{ mod }m_i$$</p>
+<h4 id=legendre-symbol>Legendre Symbol</h4>
+<p>Used to make it easier to detect squares modulo a prime $p$. The set of squares in $\mathbb{F}_P^*$ is called the <em>quadratic residue</em> and is of the size $(p-1)/2$, all elements not in the quadratic residue are called <em>non-quadratic residue</em>. Legendre symbols are defines as</p>
+<p>$$(\frac{a}{p})=a^{(p-1)/2}\text{ mod }p$$</p>
+<p>which is</p>
+<ul>
+<li>0 if $p$ divides $a$</li>
+<li>1 if $a$ is a quadratic residue</li>
+<li>-1 if $a$ is a non-quadratic residue</li>
+</ul>
+<p>Legendre symbols are computed as</p>
+<p>$$(\frac{q}{p})=(\frac{p}{q})(-1)^{(p-1)(q-1)/4}$$</p>
+<p>which means</p>
+<p><img src=/images/IN4191/legendre_form.png alt="Legendre Formula"></p>
+<p>and we have additional formulae</p>
+<p><img src=/images/IN4191/legendre_formulae.png alt="Legendre Formulae"></p>
+<h4 id=jacobi-symbol>Jacobi Symbol</h4>
+<p>Legendre symbols are defined if the denominator is prime, but for composite denominators we use Jacobi symbols, which are given as</p>
+<p>$$(\frac{a}{n})=(\frac{a}{p_1})^{e_1}(\frac{a}{p_2})^{e_2}&mldr;(\frac{a}{p_k})^{e_k}$$</p>
+<p>where</p>
+<p>$$n=p_1^{e_1}*p_2^{e_2}&mldr;p_k^{e_k}$$</p>
+<p>If $a$ is a square, the jacobi symbol will be 1, however if the jacobi symbol is 1, $a$ might not be a square.</p>
+<h4 id=fermats-test>Fermat&rsquo;s Test</h4>
+<p>It states that using Euler&rsquo;s totient function</p>
+<p>$$a^{\phi(n)}=1\text{ mod }n$$</p>
+<p>If $n$ is a prime this equality holds, however if this equality holds not necessarily is $n$ a prime.</p>
+<p><img src=/images/IN4191/Fermats-test.png alt="Fermat&rsquo;s Test"></p>
+<h4 id=miller-rabin-test>Miller-Rabin Test</h4>
+<p>Because of Carmichael numbers Fermat&rsquo;s test is not useful (they always return &ldquo;probably prime&rdquo;). The Miller-Rabin test is an improved version with a chance of $1/4$ for a base $a$.</p>
+<p><img src=/images/IN4191/Miller-rabin.png alt="Miller-Rabin Test"></p>
+<h3 id=elliptic-curves>Elliptic Curves</h3>
+<p>Elliptic curves are used in modern cryptography as a way of improving efficiency and bandwidth, defined as</p>
+<p>$$F: y^2=x^3+ax+b\text{ mod }p$$</p>
+<p>with requirements:</p>
+<ul>
+<li>$p>3$, otherwise $x^3=x$ (Fermat)</li>
+<li>$4a^3 +27b^2\ne 0\text{ mod }p$, otherwise $F$ is singular</li>
+<li>If $P$ is on $F$, then also $P+P$, $P+P+P$ etc..</li>
+</ul>
+<p><img src=/images/IN4191/EC-Point-Addition.png alt="Point Addition"></p>
+<p>The zero point is given for</p>
+<p>$$F:y^2=x^3+ax+b\text{ mod }p$$</p>
+<p>with the following properties</p>
+<ul>
+<li>$P+(-P)=0$</li>
+<li>$Q+(-Q)=0$</li>
+<li>$P+0=0+P=P$</li>
+</ul>
+<p>Total number of points on the curve will be $p$ (whatever modulo there is) and the zero point will be the last point $NP$ out of all points ($P,1P,2P,&mldr;,NP)$. It is also called the identity element, and after it elements will start repeating (e.g. in $\text{mod }11$ point $12P$ is the same $P$)</p>
+<h4 id=addition-rules>Addition Rules</h4>
+<p>We are adding two points $P=(x_1,y_1)$ and $Q=(x_2,y_2)$, then re result is $R=(x_3,y_3)$</p>
+<ul>
+<li>
+<p>If $x_1=x_2$ and $y_1=-y_2$, then $(x_3,y_3)=0$ (special point at infinity)</p>
+</li>
+<li>
+<p>else</p>
+<p>$$x_3=\lambda^2-x_1-x_2\text{ mod }p$$</p>
+<p>$$y_3=\lambda(x_1-x_3)-y_1\text{ mod }p$$</p>
+<p>where</p>
+<p>$$\lambda=(y_2-y_1)/(x_2-x_1)\text{ mod }p \text{ If }P\ne Q$$</p>
+<p>$$\lambda=(3x_1^2+a)/(2y_1)\text{ mod }p\text{ If }P=Q$$</p>
+</li>
+</ul>
+<h4 id=elliptic-curve-discrete-log-problem>Elliptic Curve Discrete Log Problem</h4>
+<p>The problem states that for a positive integer $m$ and a point $P$, it is easy to compute $Q=mP$, but given $Q$ and $P$ it is difficult to compute $m$.</p>
+<p>For elliptic curves the prime number $p$ can be smaller (e.g. 128 bits) to make it infeasible, as opposed to making the calculation infeasible for DLP based systems (e.g. primer number $\ge1024$ bits). Equivalently hard problems but much smaller values, hence brining much better performance.</p>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}},window.addEventListener('load',a=>{document.querySelectorAll("mjx-container").forEach(function(a){a.parentElement.classList+='has-jax'})})</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
+</div>
+</article>
+<hr>
+<div class=post-info>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+1098 Words
+</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+2021-01-12
+</p>
+</div>
+<div class=pagination>
+<div class=pagination__title>
+<span class=pagination__title-h>Read other posts</span>
+<hr>
+</div>
+<div class=pagination__buttons>
+<span class="button previous">
+<a href=https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-9/>
+<span class=button__icon>←</span>
+<span class=button__text>Lecture 9: The RSA Algorithm</span>
+</a>
+</span>
+<span class="button next">
+<a href=https://nicktehrany.github.io/notes/in4191-security-and-cryptography-notes/lecture-7/>
+<span class=button__text>Lecture 7: Hash Functions, MAC, and Key Derivation Functions</span>
+<span class=button__icon>→</span>
+</a>
+</span>
+</div>
+</div>
+</main>
+</div>
+<footer class=footer>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css>
+<div>
+<div>
+&nbsp; <a href=https://github.com/nicktehrany target=_blank rel=noopener title=Github><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a> &nbsp;&nbsp; <a href=https://www.linkedin.com/in/nicktehrany/ target=_blank rel=noopener title=Linkedin><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a> &nbsp;
+<a href=/misc/cv.pdf target=_self><i class="ai ai-cv ai-2x"></i></a>
+<a href=https://www.semanticscholar.org/author/Tehrany/2105151990 target=_self><i class="ai ai-semantic-scholar ai-2x"></i></a>
+</div>
+</div>
+<div class=footer__inner>
+<div class=footer__content>
+<span>Powered by <a href=http://gohugo.io>Hugo</a></span>
+<span>Themed by <a href=https://github.com/rhazdon/hugo-theme-hello-friend-ng>Hello Friend NG</a></span>
+</div>
+</div>
+</footer>
+</div>
+<script type=text/javascript src=/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js integrity="sha512-LOZOpupEpysT3YEvwutcyj7+h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
+</body>
+</html>
