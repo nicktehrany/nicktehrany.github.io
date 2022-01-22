@@ -4,32 +4,40 @@
 <meta http-equiv=x-ua-compatible content="ie=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name=author content>
-<meta name=description content="The goal of multigrid methods is that with the prior methods such as Jacobi, SOR, information has to move across the grid, whereas with multigrid methods, we approximate on a coarser grid, solve the problem on there and then use that solution to start on finer grid problems. Coarser grids work recursively by using an even coarser grid. If the coarse grid solution is a good approximation for the fine grid, the final solution will be successful.">
+<meta name=description content="Metrics We have the following
+ $T_S$ is the Serial execution time, or the part that is done sequentially and how long that takes $T_P$ the parallel execution time, $T_O$ The overhead, given as %T_O = p * T_P - T_S$ with $p$ parallel processes. $T_O$ is equal to 0 in the optimal case. Speedup is given as $S=\frac{T_{serial_best}}{T_P}$  Then we have efficiency given as multiple equivalent options
+$$E=\frac{S}{p}=\frac{T_S}{p * T_P}=\frac{1}{1+\frac{T_O}{T_S}}$$">
 <meta name=keywords content>
 <meta name=robots content="noodp">
 <meta name=theme-color content>
-<link rel=canonical href=https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/multigrid-methods/>
+<link rel=canonical href=https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/performance-analysis/>
 <title>
-Multigrid Methods
+Performance Analysis
 </title>
 <link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css>
 <link rel=stylesheet href=/main.89fa80e2143f71bd5c96a7c94e531dec3276a367e22f87e74a76026ab64680bf.css>
-<meta itemprop=name content="Multigrid Methods">
-<meta itemprop=description content="The goal of multigrid methods is that with the prior methods such as Jacobi, SOR, information has to move across the grid, whereas with multigrid methods, we approximate on a coarser grid, solve the problem on there and then use that solution to start on finer grid problems. Coarser grids work recursively by using an even coarser grid. If the coarse grid solution is a good approximation for the fine grid, the final solution will be successful."><meta itemprop=datePublished content="2022-01-22T17:54:50+01:00">
-<meta itemprop=dateModified content="2022-01-22T17:54:50+01:00">
-<meta itemprop=wordCount content="188"><meta itemprop=image content="https://nicktehrany.github.io">
+<meta itemprop=name content="Performance Analysis">
+<meta itemprop=description content="Metrics We have the following
+ $T_S$ is the Serial execution time, or the part that is done sequentially and how long that takes $T_P$ the parallel execution time, $T_O$ The overhead, given as %T_O = p * T_P - T_S$ with $p$ parallel processes. $T_O$ is equal to 0 in the optimal case. Speedup is given as $S=\frac{T_{serial_best}}{T_P}$  Then we have efficiency given as multiple equivalent options
+$$E=\frac{S}{p}=\frac{T_S}{p * T_P}=\frac{1}{1+\frac{T_O}{T_S}}$$"><meta itemprop=datePublished content="2022-01-22T18:15:51+01:00">
+<meta itemprop=dateModified content="2022-01-22T18:15:51+01:00">
+<meta itemprop=wordCount content="176"><meta itemprop=image content="https://nicktehrany.github.io">
 <meta itemprop=keywords content>
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://nicktehrany.github.io">
-<meta name=twitter:title content="Multigrid Methods">
-<meta name=twitter:description content="The goal of multigrid methods is that with the prior methods such as Jacobi, SOR, information has to move across the grid, whereas with multigrid methods, we approximate on a coarser grid, solve the problem on there and then use that solution to start on finer grid problems. Coarser grids work recursively by using an even coarser grid. If the coarse grid solution is a good approximation for the fine grid, the final solution will be successful.">
-<meta property="og:title" content="Multigrid Methods">
-<meta property="og:description" content="The goal of multigrid methods is that with the prior methods such as Jacobi, SOR, information has to move across the grid, whereas with multigrid methods, we approximate on a coarser grid, solve the problem on there and then use that solution to start on finer grid problems. Coarser grids work recursively by using an even coarser grid. If the coarse grid solution is a good approximation for the fine grid, the final solution will be successful.">
+<meta name=twitter:title content="Performance Analysis">
+<meta name=twitter:description content="Metrics We have the following
+ $T_S$ is the Serial execution time, or the part that is done sequentially and how long that takes $T_P$ the parallel execution time, $T_O$ The overhead, given as %T_O = p * T_P - T_S$ with $p$ parallel processes. $T_O$ is equal to 0 in the optimal case. Speedup is given as $S=\frac{T_{serial_best}}{T_P}$  Then we have efficiency given as multiple equivalent options
+$$E=\frac{S}{p}=\frac{T_S}{p * T_P}=\frac{1}{1+\frac{T_O}{T_S}}$$">
+<meta property="og:title" content="Performance Analysis">
+<meta property="og:description" content="Metrics We have the following
+ $T_S$ is the Serial execution time, or the part that is done sequentially and how long that takes $T_P$ the parallel execution time, $T_O$ The overhead, given as %T_O = p * T_P - T_S$ with $p$ parallel processes. $T_O$ is equal to 0 in the optimal case. Speedup is given as $S=\frac{T_{serial_best}}{T_P}$  Then we have efficiency given as multiple equivalent options
+$$E=\frac{S}{p}=\frac{T_S}{p * T_P}=\frac{1}{1+\frac{T_O}{T_S}}$$">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/multigrid-methods/"><meta property="og:image" content="https://nicktehrany.github.io"><meta property="article:section" content="notes">
-<meta property="article:published_time" content="2022-01-22T17:54:50+01:00">
-<meta property="article:modified_time" content="2022-01-22T17:54:50+01:00"><meta property="og:site_name" content="Nick Tehrany">
-<meta property="article:published_time" content="2022-01-22 17:54:50 +0100 +0100">
+<meta property="og:url" content="https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/performance-analysis/"><meta property="og:image" content="https://nicktehrany.github.io"><meta property="article:section" content="notes">
+<meta property="article:published_time" content="2022-01-22T18:15:51+01:00">
+<meta property="article:modified_time" content="2022-01-22T18:15:51+01:00"><meta property="og:site_name" content="Nick Tehrany">
+<meta property="article:published_time" content="2022-01-22 18:15:51 +0100 +0100">
 </head>
 <body class=dark-theme>
 <div class=container>
@@ -63,13 +71,28 @@ Multigrid Methods
 </div>
 <article>
 <h1 class=post-title>
-<a href=https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/multigrid-methods/>Multigrid Methods</a>
+<a href=https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/performance-analysis/>Performance Analysis</a>
 </h1>
 <div class=post-content>
-<p>The goal of multigrid methods is that with the prior methods such as Jacobi, SOR, information has to move across the grid, whereas with multigrid methods, we approximate on a coarser grid, solve the problem on there and then use that solution to start on finer grid problems. Coarser grids work recursively by using an even coarser grid. If the coarse grid solution is a good approximation for the fine grid, the final solution will be successful.</p>
-<h2 id=multigrid-v-cycle>Multigrid V-Cycle</h2>
-<p>Solves its initial equation $t_i x_i = b_i$ with a $b_i$ given and a guess for $x_i$. If it was a good guess return, else improve the solution with finer grid.</p>
-<p>You therefore start with a fine grid, iterate on it, include this into a coarser grid and then iterate on the coarser grid. Then we go back to finer grid (which is where the V shape for its name comes from). The including into a finer grid is done by using the residual which depicts how the current matrix (result) is not satisfying the solution (since we don&rsquo;t have the error but the results for the current matrix).</p>
+<h3 id=metrics>Metrics</h3>
+<p>We have the following</p>
+<ul>
+<li>$T_S$ is the Serial execution time, or the part that is done sequentially and how long that takes</li>
+<li>$T_P$ the parallel execution time,</li>
+<li>$T_O$ The overhead, given as %T_O = p * T_P - T_S$ with $p$ parallel processes. $T_O$ is equal to 0 in the optimal case.</li>
+<li>Speedup is given as $S=\frac{T_{serial_best}}{T_P}$</li>
+</ul>
+<p>Then we have efficiency given as multiple equivalent options</p>
+<p>$$E=\frac{S}{p}=\frac{T_S}{p * T_P}=\frac{1}{1+\frac{T_O}{T_S}}$$</p>
+<p>Efficiency is simply just the achieved unit divided by the optimal unit (this gives the percentage of what you can maximally achieve).</p>
+<p>We also have for simple performance measuring</p>
+<ul>
+<li>$T_S = number_ops * t_{op}$</li>
+<li>$T_P = (number_ops / p) * t_{op}+T_{comm}$</li>
+<li>$T_{comm} = number_comm * t{comm}$ + an additional overhead for setting up communication each time</li>
+</ul>
+<p>The <strong>arithmetic intensity</strong> is given as the number of arithmetic floating point operations that are executed per byte of memory accessed. <strong>Operational intensity</strong> similarly gives the number of operations per byte of memory accessed.</p>
+<p>The <strong>attainable performance</strong> is given as <em>min(Peak floating point performance, peak memory BW * operation intensity)</em>.</p>
 <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}},window.addEventListener('load',a=>{document.querySelectorAll("mjx-container").forEach(function(a){a.parentElement.classList+='has-jax'})})</script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
@@ -78,7 +101,7 @@ Multigrid Methods
 <hr>
 <div class=post-info>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-188 Words
+176 Words
 </p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 2022-01-22
@@ -91,14 +114,14 @@ Multigrid Methods
 </div>
 <div class=pagination__buttons>
 <span class="button previous">
-<a href=https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/performance-analysis/>
+<a href=https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/graph-partitioning/>
 <span class=button__icon>←</span>
-<span class=button__text>Performance Analysis</span>
+<span class=button__text>Graph Partitioning</span>
 </a>
 </span>
 <span class="button next">
-<a href=https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/parallel-programming-on-gpus/>
-<span class=button__text>Parallel Programming on GPUs</span>
+<a href=https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/multigrid-methods/>
+<span class=button__text>Multigrid Methods</span>
 <span class=button__icon>→</span>
 </a>
 </span>
