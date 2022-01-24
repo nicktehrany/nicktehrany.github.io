@@ -40,13 +40,13 @@ The bottleneck within this if particles depend on all other particles. If they j
 <h2 id="multilevel-partitioning">Multilevel Partitioning</h2>
 <p>Similar to the previous methods for multigrids, here also replace the graph by a coarse approximation and partition that approximated graph. That partition we can then iteratively improve. Coarsening a graph can be done with maximal matching, which is a greedy approach that checks each node and matches them such that there are no two edges that share an endpoint.</p>
 ]]></content></item><item><title>Performance Analysis</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/performance-analysis/</link><pubDate>Sat, 22 Jan 2022 18:15:51 +0100</pubDate><guid>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/performance-analysis/</guid><description>Metrics We have the following
-$T_S$ is the Serial execution time, or the part that is done sequentially and how long that takes $T_P$ the parallel execution time, $T_O$ The overhead, given as %T_O = p * T_P - T_S$ with $p$ parallel processes. $T_O$ is equal to 0 in the optimal case. Speedup is given as $S=\frac{T_{serial_best}}{T_P}$ Then we have efficiency given as multiple equivalent options
+$T_S$ is the Serial execution time, or the part that is done sequentially and how long that takes $T_P$ the parallel execution time, $T_O$ The overhead, given as $T_O = p * T_P - T_S$ with $p$ parallel processes. $T_O$ is equal to 0 in the optimal case. Speedup is given as $S=\frac{T_{serial_best}}{T_P}$ Then we have efficiency given as multiple equivalent options
 $$E=\frac{S}{p}=\frac{T_S}{p * T_P}=\frac{1}{1+\frac{T_O}{T_S}}$$</description><content type="html"><![CDATA[<h3 id="metrics">Metrics</h3>
 <p>We have the following</p>
 <ul>
 <li>$T_S$ is the Serial execution time, or the part that is done sequentially and how long that takes</li>
 <li>$T_P$ the parallel execution time,</li>
-<li>$T_O$ The overhead, given as %T_O = p * T_P - T_S$ with $p$ parallel processes. $T_O$ is equal to 0 in the optimal case.</li>
+<li>$T_O$ The overhead, given as $T_O = p * T_P - T_S$ with $p$ parallel processes. $T_O$ is equal to 0 in the optimal case.</li>
 <li>Speedup is given as $S=\frac{T_{serial_best}}{T_P}$</li>
 </ul>
 <p>Then we have efficiency given as multiple equivalent options</p>
