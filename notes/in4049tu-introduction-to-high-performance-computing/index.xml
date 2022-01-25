@@ -23,7 +23,7 @@ The bottleneck within this if particles depend on all other particles. If they j
 <p>From this one can then construct a <strong>Quad Tree</strong> where each non-leaf node has 4 children (in a complete quad tree, otherwise it can have less), each node (depicting the box has more boxes in it). Similar to this you can have <em>oct trees</em> with up to 8 children per node.</p>
 <p>Since such complete tree would waste space, as there are not the same number of particles in each box, and therefore a lot of the children nodes will be empty, there are <strong>adaptive quad trees</strong> where empty nodes are excluded in the tree.</p>
 <h2 id="barnes-hut-algorithm">Barnes-Hut Algorithm</h2>
-<p>It uses the quad tree and then for each node calculates the CM of all its particles (so it&rsquo;s children) then uses this to compute forces of sub-squares. Complexity is $O(N \textmd{log} N)$ just like the prior tree methods.</p>
+<p>It uses the quad tree and then for each node calculates the CM of all its particles (so it&rsquo;s children) then uses this to compute forces of sub-squares. Complexity is $O(N \text{log} N)$ just like the prior tree methods.</p>
 <h2 id="fast-multipole-method-fmm">Fast Multipole Method (FMM)</h2>
 <p>Instead of BH it includes more info than the center mass and total mass at each box, which makes it more accurate but more expensive. However, to compensate for this it only accesses a fixed set of boxes at each level in the tree. The subset of the quad tree that a local processor needs (in the parallel running of it) is called the <strong>Locally Essential Tree (LET)</strong>. For each LET the force calculations can then be done in parallel.</p>
 ]]></content></item><item><title>Graph Partitioning</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/graph-partitioning/</link><pubDate>Sat, 22 Jan 2022 19:10:04 +0100</pubDate><guid>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/graph-partitioning/</guid><description>The goal with graph partitioning is that the entire graph is partitioned into even parts (about the same size/weight associated to the nodes/edged). However, choosing an optimal partitioning is NP-complete (can be proved that this is just as difficult as other hard problems in Nondeterministic Polynomial time). Therefore the only algorithms for partitioning have exponential cost on the number of nodes in the graph. This is why a heuristical approach is needed.</description><content type="html"><![CDATA[<p>The goal with graph partitioning is that the entire graph is partitioned into even parts (about the same size/weight associated to the nodes/edged). However, choosing an optimal partitioning is NP-complete (can be proved that this is just as difficult as other hard problems in Nondeterministic Polynomial time). Therefore the only algorithms for partitioning have exponential cost on the number of nodes in the graph. This is why a heuristical approach is needed.</p>
@@ -40,23 +40,23 @@ The bottleneck within this if particles depend on all other particles. If they j
 <h2 id="multilevel-partitioning">Multilevel Partitioning</h2>
 <p>Similar to the previous methods for multigrids, here also replace the graph by a coarse approximation and partition that approximated graph. That partition we can then iteratively improve. Coarsening a graph can be done with maximal matching, which is a greedy approach that checks each node and matches them such that there are no two edges that share an endpoint.</p>
 ]]></content></item><item><title>Performance Analysis</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/performance-analysis/</link><pubDate>Sat, 22 Jan 2022 18:15:51 +0100</pubDate><guid>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/performance-analysis/</guid><description>Metrics We have the following
-$T_S$ is the Serial execution time, or the part that is done sequentially and how long that takes $T_P$ the parallel execution time, $T_O$ The overhead, given as $T_O = p * T_P - T_S$ with $p$ parallel processes. $T_O$ is equal to 0 in the optimal case. Speedup is given as $S=\frac{T_{serial\_best}}{T_P}$ Then we have efficiency given as multiple equivalent options
+$T_S$ is the Serial execution time, or the part that is done sequentially and how long that takes $T_P$ the parallel execution time, $T_O$ The overhead, given as $T_O = p * T_P - T_S$ with $p$ parallel processes. $T_O$ is equal to 0 in the optimal case. Speedup is given as $S=\frac{T_{serialBest}}{T_P}$ Then we have efficiency given as multiple equivalent options
 $$E=\frac{S}{p}=\frac{T_S}{p * T_P}=\frac{1}{1+\frac{T_O}{T_S}}$$</description><content type="html"><![CDATA[<h3 id="metrics">Metrics</h3>
 <p>We have the following</p>
 <ul>
 <li>$T_S$ is the Serial execution time, or the part that is done sequentially and how long that takes</li>
 <li>$T_P$ the parallel execution time,</li>
 <li>$T_O$ The overhead, given as $T_O = p * T_P - T_S$ with $p$ parallel processes. $T_O$ is equal to 0 in the optimal case.</li>
-<li>Speedup is given as $S=\frac{T_{serial\_best}}{T_P}$</li>
+<li>Speedup is given as $S=\frac{T_{serialBest}}{T_P}$</li>
 </ul>
 <p>Then we have efficiency given as multiple equivalent options</p>
 <p>$$E=\frac{S}{p}=\frac{T_S}{p * T_P}=\frac{1}{1+\frac{T_O}{T_S}}$$</p>
 <p>Efficiency is simply just the achieved unit divided by the optimal unit (this gives the percentage of what you can maximally achieve).</p>
 <p>We also have for simple performance measuring</p>
 <ul>
-<li>$T_S = number\<em>ops * t</em>{op}$</li>
-<li>$T_P = (number\<em>ops / p) * t</em>{op}+T_{comm}$</li>
-<li>$T_{comm} = number\_comm * t{comm}$ + an additional overhead for setting up communication each time</li>
+<li>$T_S = numberOps * t_{op}$</li>
+<li>$T_P = (numberOps / p) * t_{op}+T_{comm}$</li>
+<li>$T_{comm} = number\_comm * T_{comm}$ + an additional overhead for setting up communication each time</li>
 </ul>
 <p>The <strong>arithmetic intensity</strong> is given as the number of arithmetic floating point operations that are executed per byte of memory accessed. <strong>Operational intensity</strong> similarly gives the number of operations per byte of memory accessed.</p>
 <p>The <strong>attainable performance</strong> is given as <em>min(Peak floating point performance, peak memory BW * operation intensity)</em>.</p>
@@ -104,7 +104,7 @@ It has four variants:</p>
 ]]></content></item><item><title>Parallel Programming</title><link>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/parallel-programming/</link><pubDate>Tue, 14 Sep 2021 15:50:41 +0200</pubDate><guid>https://nicktehrany.github.io/notes/in4049tu-introduction-to-high-performance-computing/content/parallel-programming/</guid><description>For distributed memory MPI is used as programming model, with shared memory OpenMP is used, and for GPUs CUDA is used.
 MPI Program With MPI programs, the processes that execute the program all have their own local data. Typically one process will be on one core, each process can then access its own data locally and use message passing to get other data from other cores. In MPI programming the environment needs to be initialized before it can be used, and finalized when it&amp;rsquo;s done.</description><content type="html"><![CDATA[<p>For distributed memory MPI is used as programming model, with shared memory OpenMP is used, and for GPUs CUDA is used.</p>
 <h3 id="mpi-program">MPI Program</h3>
-<p>With MPI programs, the processes that execute the program all have their own local data. Typically one process will be on one core, each process can then access its own data locally and use message passing to get other data from other cores. In MPI programming the environment needs to be initialized before it can be used, and finalized when it&rsquo;s done. <code>numberOfProcs</code> is set to the total number of processes (e.g. with 4 processes this is 4), and <code>rank</code> is the rank of the process, this starts at 0 (!!), so the first process will have rank 0, second will have rank 2, and so forth.</p>
+<p>With MPI programs, the processes that execute the program all have their own local data. Typically one process will be on one core, each process can then access its own data locally and use message passing to get other data from other cores. In MPI programming the environment needs to be initialized before it can be used, and finalized when it&rsquo;s done. <code>numberOfProcs</code> is set to the total number of processes (e.g. with 4 processes this is 4), and <code>rank</code> is the rank of the process, this starts at 0 (!!), so the first process will have rank 0, second will have rank 1, and so forth.</p>
 <h3 id="point-to-point-communication">Point-to-Point Communication</h3>
 <p>For enabling communication for processes that don&rsquo;t share memory.</p>
 <p><code>MPI_Send</code> and <code>MPI_Recv</code> are both blocking calls, therefore deadlocks can occur and should be avoided.</p>
