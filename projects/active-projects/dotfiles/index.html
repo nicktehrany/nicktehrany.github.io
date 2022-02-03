@@ -4,27 +4,27 @@
 <meta http-equiv=x-ua-compatible content="ie=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name=author content>
-<meta name=description content="Dotfiles">
+<meta name=description content="dotfiles">
 <meta name=keywords content>
 <meta name=robots content="noodp">
 <meta name=theme-color content>
 <link rel=canonical href=https://nicktehrany.github.io/projects/active-projects/dotfiles/>
 <title>
-Dotfiles
+dotfiles
 </title>
 <link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css>
 <link rel=stylesheet href=/main.89fa80e2143f71bd5c96a7c94e531dec3276a367e22f87e74a76026ab64680bf.css>
-<meta itemprop=name content="Dotfiles">
-<meta itemprop=description content="Dotfiles"><meta itemprop=datePublished content="2020-01-11T00:00:00+00:00">
+<meta itemprop=name content="dotfiles">
+<meta itemprop=description content="dotfiles"><meta itemprop=datePublished content="2020-01-11T00:00:00+00:00">
 <meta itemprop=dateModified content="2020-01-11T00:00:00+00:00">
-<meta itemprop=wordCount content="465"><meta itemprop=image content="https://nicktehrany.github.io">
+<meta itemprop=wordCount content="733"><meta itemprop=image content="https://nicktehrany.github.io">
 <meta itemprop=keywords content>
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://nicktehrany.github.io">
-<meta name=twitter:title content="Dotfiles">
-<meta name=twitter:description content="Dotfiles">
-<meta property="og:title" content="Dotfiles">
-<meta property="og:description" content="Dotfiles">
+<meta name=twitter:title content="dotfiles">
+<meta name=twitter:description content="dotfiles">
+<meta property="og:title" content="dotfiles">
+<meta property="og:description" content="dotfiles">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://nicktehrany.github.io/projects/active-projects/dotfiles/"><meta property="og:image" content="https://nicktehrany.github.io"><meta property="article:section" content="projects">
 <meta property="article:published_time" content="2020-01-11T00:00:00+00:00">
@@ -45,7 +45,7 @@ Dotfiles
 </a>
 <span class=header__right>
 <nav class=menu>
-<ul class=menu__inner><li><a href=/awards>Awards</a></li><li><a href=/publications>Publications</a></li><li><a href=/projects>Projects</a></li><li><a href=/posts>Blog</a></li><li><a href=/notes>Uni Notes</a></li>
+<ul class=menu__inner><li><a href=/awards>Awards</a></li><li><a href=/publications>Publications</a></li><li><a href=/projects>Projects</a></li><li><a href=/notes>Uni Notes</a></li>
 </ul>
 </nav>
 <span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
@@ -61,42 +61,121 @@ Dotfiles
 </p>
 </div>
 <article>
-<h2 class=post-title><a href=https://nicktehrany.github.io/projects/active-projects/dotfiles/>Dotfiles</a></h2>
+<h2 class=post-title><a href=https://nicktehrany.github.io/projects/active-projects/dotfiles/>dotfiles</a></h2>
 <div class=post-content>
-<h2 id=visuals>Visuals</h2>
+<h1 id=dotfiles>dotfiles</h1>
+<p>I hardly use all of these configs at the same time, e.g. love using qutebrowser but the lack of plugins I need prevents me from using it primarily (therefore have tridactyl config for firefox!).</p>
 <p>The current overall look for my shell and other setup (shell theme and so forth can also all be seen in the neofetch output).</p>
 <p><img src=/images/dotfiles/visual.png alt=Visuals></p>
-<h2 id=installation>Installation</h2>
-<p>I use <a href=https://github.com/anishathalye/dotbot>dotbot</a> for installing and linking all files.</p>
+<p>I use <a href=https://github.com/baskerville/bspwm>bspwm</a> as a window manager running on PopOS!. I have the following config files:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>.
+├── alacritty
+│   └── alacritty.yml
+├── bash
+├── bin
+│   ├── cht-sh
+│   ├── mdtemp
+│   ├── set-brightness
+│   ├── set-monitors
+│   ├── set-screen-mirror
+│   ├── set-volume
+│   ├── textemp
+│   └── tmux-reattacher
+├── bspwn
+│   ├── bspwmrc
+│   └── sxhkdrc
+├── dunst
+│   └── dunstrc
+├── env
+│   ├── custom-shortcuts.conf
+│   ├── refind
+│   └── userChrome.css
+├── fonts
+│   ├── Hack Nerd Font.ttf
+│   └── Hack Regular Nerd Font Complete.ttf
+├── git
+├── gnupg
+│   └── gpg-agent.conf
+├── install-config
+├── install-profile
+├── lf
+│   └── lfrc
+├── LICENSE
+├── meta
+│   ├── base.yaml
+│   ├── configs
+│   ├── dotbot
+│   ├── images
+│   └── profiles
+├── nvim
+│   ├── base.vim
+│   ├── commands.vim
+│   ├── functions.vim
+│   ├── init.vim
+│   ├── keymappings.vim
+│   ├── lsp-langs.lua
+│   ├── lsp.vim
+│   ├── plugged
+│   ├── plugins
+│   ├── plugins.vim
+│   └── spell
+├── polybar
+│   ├── config
+│   └── launch.sh
+├── qutebrowser
+│   ├── config.py
+│   └── gruvbox.py
+├── README.md
+├── tags
+├── tmux
+├── tridactyl
+│   └── tridactylrc
+├── vifm
+│   ├── colors
+│   └── vifmrc
+├── vim
+├── wallpapers
+│   ├── forest_stairs.jpg
+│   └── something.jpg
+├── zathura
+│   └── zathurarc
+└── zsh
+    ├── ohmyzsh
+    ├── themes
+    └── zsh-syntax-highlighting
+</code></pre></div><h2 id=installation>Installation</h2>
+<p>I use <a href=https://github.com/anishathalye/dotbot>dotbot</a> for installing and linking of config files. It mainly just links files, since handling install for all kinds of different distros is just too much work. Therefore, check the respective git repo of the projects for install instructions (most of these can typically be installed with a package manager). The configurations are all in the <code>meta/configs</code> directory.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>git clone https://github.com/nicktehrany/dotfiles
 cd dotfiles
 
-<span style=color:#75715e># For installing the workstation profile (check meta/profiles/)</span>
-sudo ./install-profile workstation
+<span style=color:#75715e># For installing the tmux config (check meta/profiles/)</span>
+./install-config tmux
 </code></pre></div><p><strong>Note</strong> all previously linked files will be overwritten, check the <code>meta/configs/</code> for symlinks that will be created.</p>
-<p>Check the configs from the <a href=meta/profiles/workstation>workstation profile</a> to see which configs will be installed, which can then
-be found in the <code>meta/configs/</code> directory.</p>
-<p>Lastly, to have the status bar of tmux work correctly run inside tmux <code>prefix</code> + <code>I</code> to install required plugins via tpm, followed by
-reloading tmux with <code>prefix</code> + <code>R</code>.</p>
-<h3 id=installing-configs-manually>Installing configs manually</h3>
-<p>To install the configs manually run</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>./install-config &lt;config&gt;
-</code></pre></div><p>Check <code>meta/configs/</code> for available configs, and configs with <code>-sudo</code> in the profile have to be run as sudo (typically package installs that require root). For the vscode config, as I currently don&rsquo;t use it it&rsquo;s not in the workstation profile and therefore won&rsquo;t be installed. Also, when installing vscode, only config files will be linked, installing of vscode and extensions still needs to be done (as this takes quite some time I left it out). But this can easily be run with the vscode installer script</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>./vscode/install.sh
-</code></pre></div><h3 id=running-polybar>Running polybar</h3>
-<p>Note, my polybar setup is not done yet, therefore it&rsquo;s not yet in the workstation profile, once it&rsquo;s complete it will be added.
-I&rsquo;m using gnome therefore I use the <a href=https://extensions.gnome.org/extension/545/hide-top-bar/>Hide Top Bar</a> extension for hiding the top bar so that polybar can run on top of it. Then to enable the polybar run</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>polybar/launch.sh
-</code></pre></div><p>I&rsquo;m still working on finishing the polybar and adding something for automatically starting polybar</p>
-<h2 id=commands>Commands</h2>
-<p>In order to update submodules if their remote repository changes.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>git submodule update --remote --merge
-</code></pre></div><h2 id=import-custom-keyboard-shortcuts>Import custom keyboard shortcuts</h2>
-<p>The keyboard shortcuts I use are exported in <code>bin/custom-shortcuts.conf</code> using</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>dconf dump / | sed -n <span style=color:#e6db74>&#39;/\[org.gnome.settings-daemon.plugins.media-keys/,/^$/p&#39;</span> &gt; bin/custom-shortcuts.conf
+<h3 id=additional-installations>Additional Installations</h3>
+<h4 id=tmux>tmux</h4>
+<p>To have the status bar of tmux work correctly run inside tmux <code>prefix</code> + <code>I</code> to install required plugins via tpm, followed by reloading tmux with <code>prefix</code> + <code>R</code>.</p>
+<h4 id=nvim>nvim</h4>
+<p>The neovim install requires a couple more commands</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sh -c <span style=color:#e6db74>&#39;curl -fLo &#34;${XDG_DATA_HOME:-$HOME/.local/share}&#34;/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&#39;</span>
+sudo add-apt-repository ppa:neovim-ppa/unstable <span style=color:#f92672>&amp;&amp;</span> apt update <span style=color:#f92672>&amp;&amp;</span> apt install -y neovim ripgrep cargo
+npm i -g clangd bash-language-server cmake dockerfile-language-server-nodejs vscode-langservers-extracted pyright vim-language-server yaml-language-server
+nvim --headless +PlugInstall +COQdeps +COQnow +qa
+nvim --headless +TSInstall cpp c bash python lua json latex regex yaml cmake bibtex dockerfile jsonc +q
+cargo install --git https://github.com/latex-lsp/texlab.git --locked
+</code></pre></div><h4 id=lf>lf</h4>
+<p>I don&rsquo;t use stock lf but rather <a href=https://github.com/cirala/lfimg>lfimg</a> to also have image support. Requirements and install instructions are in their repo.</p>
+<h4 id=fonts>fonts</h4>
+<p>I use the <a href=https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf>Hack Nerd Font</a> but there are many other fonts available <a href=https://github.com/ryanoasis/nerd-fonts>here</a>. Nvim and others often require a nerd font for rendering icons!</p>
+<h4 id=bswpm>bswpm</h4>
+<p>Automating the install unnecessary, but install instructions are <a href=https://github.com/baskerville/bspwm>here</a> and it will require the <code>bspwmrc</code> and <code>sxhkdrc</code> to be linked in <code>~/.config/{bspwm,sxhkd}</code>.</p>
+<h4 id=wallpapers>Wallpapers</h4>
+<p>I also use wallpapers which I came across somewhere, so if anyone knows who they actually belong to let me know I will credit them.</p>
+<h4 id=import-custom-keyboard-shortcuts>Import custom keyboard shortcuts</h4>
+<p>Prior to using bspwm I was using gnome and had custom keyboard shortcuts which were exported in <code>env/custom-shortcuts.conf</code> using</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>dconf dump / | sed -n <span style=color:#e6db74>&#39;/\[org.gnome.settings-daemon.plugins.media-keys/,/^$/p&#39;</span> &gt; env/custom-shortcuts.conf
 </code></pre></div><p>and can be imported again with</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>dconf load / &lt; bin/custom-shortcuts.conf
-</code></pre></div><h2 id=installing-refind-boot-manager>Installing refind boot manager</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>dconf load / &lt; env/custom-shortcuts.conf
+</code></pre></div><h4 id=installing-refind-boot-manager>Installing refind boot manager</h4>
 <p>I use the <a href=https://www.rodsbooks.com/refind/>refind boot manager</a>, with a <a href=https://github.com/EvanPurkhiser/rEFInd-minimal>theme</a> which I modified, hence it is included in these dotfiles.
 Installing it can be done as follows, note this also requires privileges as it is modifying <code>/boot/EFI</code></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># install refind</span>
@@ -106,7 +185,7 @@ sudo apt install refind
 mkdir themes
 
 <span style=color:#75715e># copy the theme in there</span>
-cp $HOME/dotfiles/bin/refind/refind-minimal /boot/EFI/refind/themes
+cp $HOME/dotfiles/env/refind/refind-minimal /boot/EFI/refind/themes
 
 <span style=color:#75715e># Add theme to the refind config at the end of file(in /boot/EFI/refind/refind.conf)</span>
 include themes/refind-minimal/theme.conf
