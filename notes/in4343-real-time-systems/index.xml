@@ -1,0 +1,40 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IN4343 Real Time Systems on Nick Tehrany</title><link>https://nicktehrany.github.io/notes/in4343-real-time-systems/</link><description>Recent content in IN4343 Real Time Systems on Nick Tehrany</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 08 Feb 2022 10:21:30 +0100</lastBuildDate><atom:link href="https://nicktehrany.github.io/notes/in4343-real-time-systems/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction</title><link>https://nicktehrany.github.io/notes/in4343-real-time-systems/content/introduction/</link><pubDate>Tue, 08 Feb 2022 10:22:07 +0100</pubDate><guid>https://nicktehrany.github.io/notes/in4343-real-time-systems/content/introduction/</guid><description>What is a Real-Time system? Real-Time systems are the systems that depend on their output (e.g. decisions from computations) and on the time in which these were produced. For example, airplanes will have many smaller systems that produce some result that is required to happen within some time frame (e.g. getting the airplane speed every couple of seconds). Therefore, the computations in Real-Time systems must be performed within a certain timing constraint.</description><content type="html"><![CDATA[<h2 id="what-is-a-real-time-system">What is a Real-Time system?</h2>
+<p>Real-Time systems are the systems that depend on their output (e.g. decisions from computations) and on the time in which these were produced. For example, airplanes will have many smaller systems that produce some result that is required to happen within some time frame (e.g. getting the airplane speed every couple of seconds). Therefore, the computations in Real-Time systems must be performed within a certain <strong>timing constraint</strong>. Additionally, the system has to provide <em>bounded response times</em> for the computation under all possible scenarios, such that response times can be predicted for any possible input.</p>
+<p>For real-time systems, often the computations are related to its environment (like the airplane example), and operations are adapted to this environment.</p>
+<h2 id="classes-of-real-time-tasks">Classes of Real-Time Tasks</h2>
+<ul>
+<li><strong>Hard</strong> Real Time: the system has to generate a response before the deadline (e.g. safety critical systems).</li>
+<li><strong>Soft</strong> Real Time: the system does not have to meet the deadline all the time, some misses are fine (e.g. keyboard I/O can sometimes lag).</li>
+<li><strong>Firm</strong> Real Time: similar to Soft real time but now there is no benefit for completing computations after the deadline, results are useless after that point.</li>
+</ul>
+<h2 id="properties--requirements-of-real-time-systems">Properties &amp; Requirements of Real-Time Systems</h2>
+<ul>
+<li>Often resources are limited, therefore high efficiency in resource management is required.</li>
+<li>If resources are shared, there has to be some temporal isolation to avoid tasks interfering.</li>
+<li>As these systems often interact with the environment, they have to have predictable results and required time to produce these.</li>
+<li>Tasks can also be very different, therefore the system has to be able to adapt and handle these, as well as being able to handle overloads at times.</li>
+</ul>
+<h2 id="classes-of-control-systems">Classes of Control Systems</h2>
+<p>With real-time systems, as stated before, there is most commonly an object being controller. This object is then called the controlled object (the system), where the real-time system is the controller (doing the computations for changes), and the operator is the environment.</p>
+<h3 id="open-loop-control-system">Open-Loop Control System</h3>
+<p>In these systems the feedback from the actions are loosely dependent on the environment and there is no feedback from the controlled object to the environment.</p>
+<h3 id="closed-loop-control-system">Closed-Loop Control System</h3>
+<p>In these, there exists frequent interaction between the system and the environment. Therefore, feedback is going from the environment to the system and from the system to the controller. This often happens at a sampling rate, depending on the use case.</p>
+<h3 id="multi-level-feedback-system">Multi-Level Feedback System</h3>
+<p>Here feedback is generated for different systems, of the larger system, at different rates. For example in the airplane, the airspeed may be collected every couple of seconds, and the altitude as well, but the autopilot checks all these and others every half a second.</p>
+<h2 id="taxonomy-of-real-time-systems">Taxonomy of Real-Time Systems</h2>
+<p><strong>Static</strong> analysis can be done at compile time, this implies that duration of tasks is know, and therefore we can tell what the Worst Case Execution Time (WCET) is. However, this is only possible for static systems, and very simple dynamic systems.</p>
+<p>We can then also have systems that have a know task duration (either single or multiple durations but all known) which implies that it is a <strong>periodic</strong> system. On the contrary, if we do not know this, it is called an <strong>aperiodic</strong> or sporadic system. These create dynamic situations (e.g. autonomous cars).</p>
+]]></content></item><item><title>Info</title><link>https://nicktehrany.github.io/notes/in4343-real-time-systems/content/info/</link><pubDate>Tue, 08 Feb 2022 10:21:30 +0100</pubDate><guid>https://nicktehrany.github.io/notes/in4343-real-time-systems/content/info/</guid><description>IN4343 Real Time Systems: Studyguide: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=57386&amp;amp;_NotifyTextSearch_
+Book: Hard Real-Time COmputing Systems: Predictable Scheduling Algorithms and Applications Third Edition
+All content and images are based on and retrieved from the lecture slides and/or the previously mentioned book and/or any other content that is provided in the course.
+Authors Nick Tehrany</description><content type="html"><![CDATA[<h2 id="in4343-real-time-systems">IN4343 Real Time Systems:</h2>
+<p>Studyguide: <a href="https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=57386&amp;_NotifyTextSearch_">https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=57386&amp;_NotifyTextSearch_</a></p>
+<p>Book: Hard Real-Time COmputing Systems: Predictable Scheduling Algorithms and Applications Third Edition</p>
+<p>All content and images are based on and retrieved from the lecture slides and/or the previously mentioned book and/or any
+other content that is provided in the course.</p>
+<h3 id="authors">Authors</h3>
+<ul>
+<li><a href="https://github.com/nicktehrany">Nick Tehrany</a></li>
+</ul>
+]]></content></item></channel></rss>
