@@ -1,0 +1,166 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=author content>
+<meta name=description content="The goal of modeling is to
+ abstract away the system components (hardware and software) establish assumptions, parameters for model description, variables to use, and understand the constraints on the system define the metrics upon which to optimize the system (performance/cost)  Tasks A task is defined as a sequence of instructions (e.g. the code to execute) which is run by the processor until it&amp;rsquo;s finished. We then have the activation time that depicts the time the task is created, the start time for the time the task starts running, the computation time, and the finishing time.">
+<meta name=keywords content>
+<meta name=robots content="noodp">
+<meta name=theme-color content>
+<link rel=canonical href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/modeling/>
+<title>
+Modeling
+</title>
+<link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css>
+<link rel=stylesheet href=/main.89fa80e2143f71bd5c96a7c94e531dec3276a367e22f87e74a76026ab64680bf.css>
+<meta itemprop=name content="Modeling">
+<meta itemprop=description content="The goal of modeling is to
+ abstract away the system components (hardware and software) establish assumptions, parameters for model description, variables to use, and understand the constraints on the system define the metrics upon which to optimize the system (performance/cost)  Tasks A task is defined as a sequence of instructions (e.g. the code to execute) which is run by the processor until it&rsquo;s finished. We then have the activation time that depicts the time the task is created, the start time for the time the task starts running, the computation time, and the finishing time."><meta itemprop=datePublished content="2022-02-11T14:01:01+01:00">
+<meta itemprop=dateModified content="2022-02-11T14:01:01+01:00">
+<meta itemprop=wordCount content="875"><meta itemprop=image content="https://nicktehrany.github.io">
+<meta itemprop=keywords content>
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://nicktehrany.github.io">
+<meta name=twitter:title content="Modeling">
+<meta name=twitter:description content="The goal of modeling is to
+ abstract away the system components (hardware and software) establish assumptions, parameters for model description, variables to use, and understand the constraints on the system define the metrics upon which to optimize the system (performance/cost)  Tasks A task is defined as a sequence of instructions (e.g. the code to execute) which is run by the processor until it&rsquo;s finished. We then have the activation time that depicts the time the task is created, the start time for the time the task starts running, the computation time, and the finishing time.">
+<meta property="og:title" content="Modeling">
+<meta property="og:description" content="The goal of modeling is to
+ abstract away the system components (hardware and software) establish assumptions, parameters for model description, variables to use, and understand the constraints on the system define the metrics upon which to optimize the system (performance/cost)  Tasks A task is defined as a sequence of instructions (e.g. the code to execute) which is run by the processor until it&rsquo;s finished. We then have the activation time that depicts the time the task is created, the start time for the time the task starts running, the computation time, and the finishing time.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nicktehrany.github.io/notes/in4343-real-time-systems/content/modeling/"><meta property="og:image" content="https://nicktehrany.github.io"><meta property="article:section" content="notes">
+<meta property="article:published_time" content="2022-02-11T14:01:01+01:00">
+<meta property="article:modified_time" content="2022-02-11T14:01:01+01:00"><meta property="og:site_name" content="Nick Tehrany">
+<meta property="article:published_time" content="2022-02-11 14:01:01 +0100 +0100">
+</head>
+<body class=dark-theme>
+<div class=container>
+<header class=header>
+<span class=header__inner>
+<a href=/ style=text-decoration:none>
+<div class=logo>
+<span class=logo__mark>$</span>
+<span class=logo__text>cd nicktehrany</span>
+<span class=logo__cursor>
+</span>
+</div>
+</a>
+<span class=header__right>
+<nav class=menu>
+<ul class=menu__inner><li><a href=/awards>Awards</a></li><li><a href=/publications>Publications</a></li><li><a href=/projects>Projects</a></li><li><a href=/notes>Uni Notes</a></li>
+</ul>
+</nav>
+<span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</span>
+<span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg>
+</span>
+</span>
+</span>
+</header>
+<div class=content>
+<main class=posts>
+<div class=post-info>
+<p>
+</p>
+</div>
+<article>
+<h1 class=post-title>
+<a href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/modeling/>Modeling</a>
+</h1>
+<div class=post-content>
+<p>The goal of modeling is to</p>
+<ul>
+<li>abstract away the system components (hardware and software)</li>
+<li>establish assumptions, parameters for model description, variables to use, and understand the constraints on the system</li>
+<li>define the metrics upon which to optimize the system (performance/cost)</li>
+</ul>
+<h2 id=tasks>Tasks</h2>
+<p>A task is defined as a sequence of instructions (e.g. the code to execute) which is run by the processor until it&rsquo;s finished. We then have the <strong>activation time</strong> that depicts the time the task is created, the <strong>start time</strong> for the time the task starts running, the <strong>computation time</strong>, and the <strong>finishing time</strong>.</p>
+<p>Additionally, the <strong>execution time</strong> is given as $f_i - s_i$ with finishing time $f_i$ and start time $s_i$ for the specific task. <strong>response time</strong> is given as $f_i-a_i$ with $a_i$ arrival time for the task.</p>
+<h2 id=ready-queue>Ready Queue</h2>
+<p>In concurrent systems there can be several tasks that are in the active state, but only one is actually being executed at any point in time. Therefore, such active tasks that are not currently running are in the <strong>ready</strong> state. We then also have a <strong>ready queue</strong> in which the tasks in a ready state are being queued. The scheduling policy then decides how to dispatch the tasks from the ready queue (e.g. FIFO, priority based, LIFO, etc.).</p>
+<p>If the system supports <strong>preemption</strong> tasks can be interrupted when another tasks with higher priority needs to be run (e.g. store task states, run higher priority one, restore prior task states once high priority one is done). However, this means that the task is placed again into the ready queue.</p>
+<h2 id=task-states>Task States</h2>
+<p>Tasks can be in the <strong>idle state</strong> or a <strong>blocked state</strong> as well, where in the idle state they do not do any work and rather are waiting for the next period, and in the blocked state they are waiting for a signal (e.g. with shared memory wait to receive signal that it&rsquo;s safe to access the memory).</p>
+<h2 id=definitions>Definitions</h2>
+<p><img src=/images/IN4343/deadline.png alt=Definition></p>
+<p>A RT task is then called <strong>feasible</strong> when it completes before the absolute deadline $$f_i \leq d_i$ or $R-I \leq D_i$. <strong>Schedulable</strong> then means that there exists an algorithm that can produce a feasible schedule.</p>
+<p>We have additional timing constraints <img src=/images/IN4343/timing_constraints.png alt="Timing Constraints">. Also worth mentioning is that jobs are task instances. A task specifies something to do and a job is then an instance of doing that task, meaning multiple jobs of a task can exist.</p>
+<h3 id=types-of-tasks>Types of Tasks</h3>
+<ul>
+<li><strong>Periodic Tasks</strong> These tasks are instantiated automatically every given time frame (their period). We can further classify <strong>single rate</strong> when tasks in the system all have the exact same period, and <strong>multi-rate</strong> where tasks have different periods.</li>
+<li><strong>Aperiodic Tasks</strong> These tasks are the opposite and happen at no given time interval but rather depending on things such as external events or interrupts. Aperiodic tasks can be further classified into <strong>unbounded arrival time</strong> or <strong>event based</strong> triggering of tasks and <strong>sporadic tasks</strong> for which there is a minimum gap between arrivals (we don&rsquo;t know the exact arrival rate but at at least 8seconds elapse before any new task can arrive).</li>
+</ul>
+<h3 id=periodic-tasks>Periodic Tasks</h3>
+<p>For periodic tasks we can then calculate the utilization as, with $C_i$ computation time and $T_i$ the task period</p>
+<p>$$U_i=\frac{C_i}{T_i}$$</p>
+<p>$\phi$ depicts the phase of the instance (its release time).</p>
+<p><img src=/images/IN4343/phase.png alt=phase></p>
+<h3 id=computation-time>Computation Time</h3>
+<p>We can estimate the computation time using experiments of prior runs and taking their runtimes, however this fails to account for all real world scenarios, therefore we have several different execution time estimations,</p>
+<p><img src=/images/IN4343/computation_time.png alt="Computation Time"></p>
+<p>Setting the safety margin factors in on the predictability (are we guaranteed to fall into the margin if it is large enough) and efficiency (if the margin is too large we are wasting resources).</p>
+<h3 id=jitter>Jitter</h3>
+<p>The jitter measures the variation in time for a periodic event, given as</p>
+<p><img src=/images/IN4343/jitter.png alt=Jitter></p>
+<h3 id=timing-constraints>Timing Constraints</h3>
+<p>The timing constraints give bounds on the timings within the systems (e.g. minimum completion time, maximum allowed jitter, etc.). Often implicit timing constraints need to be met in order for the system to function correctly, whereas explicit timing constraints are specified for the system.</p>
+<h4 id=minimum-sampling-period>Minimum Sampling Period</h4>
+<p>Guarantees that the system is not overloaded using, where $U_{other}$ depicts the sum over all other tasks $\sum_{i \ne s}^{i} \frac{C_i}{T_i}$</p>
+<p><img src=/images/IN4343/msp.png alt="Minimum Sampling Period"></p>
+<h3 id=maximum-sampling-period>Maximum Sampling Period</h3>
+<p>Applies the same logic but rather uses the worst-case timings.</p>
+<h3 id=precedence-constraints>Precedence Constraints</h3>
+<p>Often tasks need to run only after some other task has completed (they require that this other task has run prior to them running), giving us some precedence constraints on the tasks, which is represented using a directed acyclic graph. The graph represents immediate predecessors (need to run just before the task, e.g. task 3 can only run after task 2) and predecessors (need to run before but not directly before, e.g. task 1 needs to run before task 2 and task 2 needs to run before task 3, hence task 1 is predecessor to task 3).</p>
+<p>Such graphs can then also represent <strong>fork nodes</strong> points at which multiple tasks can start once a single task has completed and <strong>join nodes</strong> which are tasks that require multiple tasks having completed. We also have <strong>switch nodes</strong> that based on a decision have multiple tasks run (but not all their child nodes) and similarly <strong>if-then nodes</strong> that have the same but just two child nodes of which one runs.</p>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}},window.addEventListener('load',a=>{document.querySelectorAll("mjx-container").forEach(function(a){a.parentElement.classList+='has-jax'})})</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
+</div>
+</article>
+<hr>
+<div class=post-info>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+875 Words
+</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+2022-02-11
+</p>
+</div>
+<div class=pagination>
+<div class=pagination__title>
+<span class=pagination__title-h>Read other posts</span>
+<hr>
+</div>
+<div class=pagination__buttons>
+<span class="button next">
+<a href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/introduction/>
+<span class=button__text>Introduction</span>
+<span class=button__icon>→</span>
+</a>
+</span>
+</div>
+</div>
+</main>
+</div>
+<footer class=footer>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css>
+<div>
+<div>
+&nbsp; <a href=https://github.com/nicktehrany target=_blank rel=noopener title=Github><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a> &nbsp;&nbsp; <a href=https://www.linkedin.com/in/nicktehrany/ target=_blank rel=noopener title=Linkedin><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a> &nbsp;
+<a href=https://www.semanticscholar.org/author/Tehrany/2105151990 target=_self><i class="ai ai-semantic-scholar ai-2x"></i></a>
+</div>
+</div>
+<div class=footer__inner>
+<div class=footer__content>
+<span>Powered by <a href=http://gohugo.io>Hugo</a></span>
+<span>Themed by <a href=https://github.com/rhazdon/hugo-theme-hello-friend-ng>Hello Friend NG</a></span>
+</div>
+</div>
+</footer>
+</div>
+<script type=text/javascript src=/bundle.min.e9f93b80e78a22e6f04cbb5f73e0f9c4ba60ff73a2a0ef85965c688f93dd1f2722a282e30e485603e4c65b1b346720e35f213435ec5556e196a97a68d097c80f.js integrity="sha512-6fk7gOeKIubwTLtfc+D5xLpg/3OioO+Fllxoj5PdHyciooLjDkhWA+TGWxs0ZyDjXyE0NexVVuGWqXpo0JfIDw=="></script>
+</body>
+</html>
