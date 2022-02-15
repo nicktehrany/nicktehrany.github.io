@@ -1,0 +1,149 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=author content>
+<meta name=description content="Scheduling Problem Given a set of tasks, a set of processors, a set of resources, and a performance objective, the goal is to find assignments for the processors and resources to the tasks such that it results in a maximum-value schedule under the constraints.
+Common definitions used are $\sigma$ for the schedule and $\Gamma$ for the tasks, and $A$ for the algorithm that generates the schedule.
+The scheduling problem is shown to be NP-Hard (non-deterministic polynomial), meaning that finding a feasible schedule grows exponentially with the number of tasks for the schedule.">
+<meta name=keywords content>
+<meta name=robots content="noodp">
+<meta name=theme-color content>
+<link rel=canonical href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/modeling-part-2/>
+<title>
+Modeling Part 2
+</title>
+<link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css>
+<link rel=stylesheet href=/main.89fa80e2143f71bd5c96a7c94e531dec3276a367e22f87e74a76026ab64680bf.css>
+<meta itemprop=name content="Modeling Part 2">
+<meta itemprop=description content="Scheduling Problem Given a set of tasks, a set of processors, a set of resources, and a performance objective, the goal is to find assignments for the processors and resources to the tasks such that it results in a maximum-value schedule under the constraints.
+Common definitions used are $\sigma$ for the schedule and $\Gamma$ for the tasks, and $A$ for the algorithm that generates the schedule.
+The scheduling problem is shown to be NP-Hard (non-deterministic polynomial), meaning that finding a feasible schedule grows exponentially with the number of tasks for the schedule."><meta itemprop=datePublished content="2022-02-15T16:29:20+01:00">
+<meta itemprop=dateModified content="2022-02-15T16:29:20+01:00">
+<meta itemprop=wordCount content="425"><meta itemprop=image content="https://nicktehrany.github.io">
+<meta itemprop=keywords content>
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://nicktehrany.github.io">
+<meta name=twitter:title content="Modeling Part 2">
+<meta name=twitter:description content="Scheduling Problem Given a set of tasks, a set of processors, a set of resources, and a performance objective, the goal is to find assignments for the processors and resources to the tasks such that it results in a maximum-value schedule under the constraints.
+Common definitions used are $\sigma$ for the schedule and $\Gamma$ for the tasks, and $A$ for the algorithm that generates the schedule.
+The scheduling problem is shown to be NP-Hard (non-deterministic polynomial), meaning that finding a feasible schedule grows exponentially with the number of tasks for the schedule.">
+<meta property="og:title" content="Modeling Part 2">
+<meta property="og:description" content="Scheduling Problem Given a set of tasks, a set of processors, a set of resources, and a performance objective, the goal is to find assignments for the processors and resources to the tasks such that it results in a maximum-value schedule under the constraints.
+Common definitions used are $\sigma$ for the schedule and $\Gamma$ for the tasks, and $A$ for the algorithm that generates the schedule.
+The scheduling problem is shown to be NP-Hard (non-deterministic polynomial), meaning that finding a feasible schedule grows exponentially with the number of tasks for the schedule.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nicktehrany.github.io/notes/in4343-real-time-systems/content/modeling-part-2/"><meta property="og:image" content="https://nicktehrany.github.io"><meta property="article:section" content="notes">
+<meta property="article:published_time" content="2022-02-15T16:29:20+01:00">
+<meta property="article:modified_time" content="2022-02-15T16:29:20+01:00"><meta property="og:site_name" content="Nick Tehrany">
+<meta property="article:published_time" content="2022-02-15 16:29:20 +0100 +0100">
+</head>
+<body class=dark-theme>
+<div class=container>
+<header class=header>
+<span class=header__inner>
+<a href=/ style=text-decoration:none>
+<div class=logo>
+<span class=logo__mark>$</span>
+<span class=logo__text>cd nicktehrany</span>
+<span class=logo__cursor>
+</span>
+</div>
+</a>
+<span class=header__right>
+<nav class=menu>
+<ul class=menu__inner><li><a href=/awards>Awards</a></li><li><a href=/publications>Publications</a></li><li><a href=/projects>Projects</a></li><li><a href=/notes>Uni Notes</a></li>
+</ul>
+</nav>
+<span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</span>
+<span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg>
+</span>
+</span>
+</span>
+</header>
+<div class=content>
+<main class=posts>
+<div class=post-info>
+<p>
+</p>
+</div>
+<article>
+<h1 class=post-title>
+<a href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/modeling-part-2/>Modeling Part 2</a>
+</h1>
+<div class=post-content>
+<h2 id=scheduling-problem>Scheduling Problem</h2>
+<p>Given a set of tasks, a set of processors, a set of resources, and a performance objective, the goal is to find assignments for the processors and resources to the tasks such that it results in a <strong>maximum-value</strong> schedule under the constraints.</p>
+<p>Common definitions used are $\sigma$ for the schedule and $\Gamma$ for the tasks, and $A$ for the algorithm that generates the schedule.</p>
+<p>The scheduling problem is shown to be NP-Hard (non-deterministic polynomial), meaning that finding a feasible schedule grows exponentially with the number of tasks for the schedule.</p>
+<h2 id=computational-complexity>Computational Complexity</h2>
+<p>We are mainly interested in the execution time that the algorithm needs to finish, including doing the computations. Therefore, we take the worst case execution time of a larger problem (since these show worst case much better than small problems) and compare using the Big-O notation. Then an algorithm is in <strong>polynomial time</strong> if it has a time complexity of the number of tasks to some exponent, specifically $T(n)=O(n^a), a>1$.</p>
+<h2 id=taxonomy-of-algorithms>Taxonomy of Algorithms</h2>
+<h3 id=preemptive-vs-non-preemptive>Preemptive vs. Non-Preemptive</h3>
+<p>These are based on if the tasks can be interrupted (and restored or restarted afterwards).</p>
+<h3 id=static-vs-dynamic>Static vs. Dynamic</h3>
+<p>Static scheduling is based on fixed parameters that are assigned to the tasks prior to the creation of a task. Dynamic on the other hand is where these parameters might change at runtime.</p>
+<h3 id=online-vs-offline>Online vs. Offline</h3>
+<p>With online scheduling the schedule is created in the beginning or at the arrival of a new task. Offline scheduling uses a pre-determined table driven schedule, which we can only run if we know what tasks will arrive in the future.</p>
+<h3 id=optimal-vs-heuristic>Optimal vs. Heuristic</h3>
+<p>Optimal maximizes the value of the performance criteria. Heuristic uses a heuristical approach to maximize, however this will not be optimal.</p>
+<h3 id=admission-control>Admission Control</h3>
+<p>This tells a task whether it is accepted or rejected. This is necessary to avoid the domino effect of failed jobs. For instance, we have a job that is running, it gets interrupted by a higher priority one, this happens again a couple of times until we have one job that finishes before its deadline. Then continuing the interrupted jobs (in order of highest priority to lowest) will often mean that each of them will finish after their deadline.</p>
+<p><img src=/images/IN4343/admission_control.png alt="Admission Control"></p>
+<h2 id=optimal-criteria>Optimal Criteria</h2>
+<p>Upon what criteria do we optimize? We need to ensure the schedule is feasible (if there is one), minimize the maximum lateness or deadline misses, maximize the cumulative value of the tasks run, and include the cost for consuming resources.</p>
+<p><img src=/images/IN4343/optimal_criteria.png alt="Optimal Criteria"></p>
+<h2 id=grahams-notation>Graham&rsquo;s Notation</h2>
+<p>This notation is used to systematically describe the problem and algorithm.</p>
+<p><img src=/images/IN4343/graham_notion.png alt="Graham&rsquo;s Notion"></p>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}},window.addEventListener('load',a=>{document.querySelectorAll("mjx-container").forEach(function(a){a.parentElement.classList+='has-jax'})})</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
+</div>
+</article>
+<hr>
+<div class=post-info>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+425 Words
+</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+2022-02-15
+</p>
+</div>
+<div class=pagination>
+<div class=pagination__title>
+<span class=pagination__title-h>Read other posts</span>
+<hr>
+</div>
+<div class=pagination__buttons>
+<span class="button next">
+<a href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/modeling-part-1/>
+<span class=button__text>Modeling Part 1</span>
+<span class=button__icon>→</span>
+</a>
+</span>
+</div>
+</div>
+</main>
+</div>
+<footer class=footer>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css>
+<div>
+<div>
+&nbsp; <a href=https://github.com/nicktehrany target=_blank rel=noopener title=Github><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a> &nbsp;&nbsp; <a href=https://www.linkedin.com/in/nicktehrany/ target=_blank rel=noopener title=Linkedin><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a> &nbsp;
+<a href=https://www.semanticscholar.org/author/Tehrany/2105151990 target=_self><i class="ai ai-semantic-scholar ai-2x"></i></a>
+</div>
+</div>
+<div class=footer__inner>
+<div class=footer__content>
+<span>Powered by <a href=http://gohugo.io>Hugo</a></span>
+<span>Themed by <a href=https://github.com/rhazdon/hugo-theme-hello-friend-ng>Hello Friend NG</a></span>
+</div>
+</div>
+</footer>
+</div>
+<script type=text/javascript src=/bundle.min.e9f93b80e78a22e6f04cbb5f73e0f9c4ba60ff73a2a0ef85965c688f93dd1f2722a282e30e485603e4c65b1b346720e35f213435ec5556e196a97a68d097c80f.js integrity="sha512-6fk7gOeKIubwTLtfc+D5xLpg/3OioO+Fllxoj5PdHyciooLjDkhWA+TGWxs0ZyDjXyE0NexVVuGWqXpo0JfIDw=="></script>
+</body>
+</html>
