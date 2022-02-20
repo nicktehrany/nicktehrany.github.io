@@ -86,7 +86,7 @@ Modeling Part 1
 <p>Tasks can be in the <strong>idle state</strong> or a <strong>blocked state</strong> as well, where in the idle state they do not do any work and rather are waiting for the next period, and in the blocked state they are waiting for a signal (e.g. with shared memory wait to receive signal that it&rsquo;s safe to access the memory).</p>
 <h2 id=definitions>Definitions</h2>
 <p><img src=/images/IN4343/deadline.png alt=Definition></p>
-<p>A RT task is then called <strong>feasible</strong> when it completes before the absolute deadline $$f_i \leq d_i$ or $R-I \leq D_i$. <strong>Schedulable</strong> then means that there exists an algorithm that can produce a feasible schedule.</p>
+<p>A RT task is then called <strong>feasible</strong> when it completes before the absolute deadline $f_i \leq d_i$ or $R-I \leq D_i$. <strong>Schedulable</strong> then means that there exists an algorithm that can produce a feasible schedule.</p>
 <p>We have additional timing constraints <img src=/images/IN4343/timing_constraints.png alt="Timing Constraints">. Also worth mentioning is that jobs are task instances. A task specifies something to do and a job is then an instance of doing that task, meaning multiple jobs of a task can exist.</p>
 <h3 id=types-of-tasks>Types of Tasks</h3>
 <ul>
