@@ -23,7 +23,7 @@ Optimality ]
 ]
 Based on this, if we continue swapping, we end up with the plan that minimizes that maximum lateness. Overall, EDD takes $O(n\text{log}n)$ for queue ordering."><meta itemprop=datePublished content="2022-02-19T14:33:05+01:00">
 <meta itemprop=dateModified content="2022-02-19T14:33:05+01:00">
-<meta itemprop=wordCount content="366"><meta itemprop=image content="https://nicktehrany.github.io">
+<meta itemprop=wordCount content="596"><meta itemprop=image content="https://nicktehrany.github.io">
 <meta itemprop=keywords content>
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://nicktehrany.github.io">
@@ -96,6 +96,16 @@ Based on this, if we continue swapping, we end up with the plan that minimizes t
 <p>Therefore, we can use a heuristical approach. This selects the step to take at any level by minimizing an optimization function (custom function that can put different weight on variables, e.g. constraints, and minimizes the resulting value). If the leaf contains a infeasible schedule, we go back one level and go to the second best option.</p>
 <p><img src=/images/IN4343/np-schedule-optimization.png alt="Non-Preemptive Scheduling Optimization"></p>
 <p>precedence constraints are then handled by assigning the appropriate weights to the heuristical function.</p>
+<h2 id=latest-deadline-first-ldf>Latest Deadline First (LDF)</h2>
+<p>This algorithm makes use of the precedence graph (DAG) based off which it constructs the schedule. It solves it in polynomial time on the number of tasks and minimizes the maximum lateness. It works by taking the DAG, constructing from the tail of it, and for tasks with no successor (or already selected ones) it takes the task with the latest deadline to execute last. Then, at runtime it takes the head of the queue to execute first.
+Start with the leaf nodes that have no children (no task dependency beyond themselves) and place the ones with largest absolute deadline at the head of the queue. This constructs a heap where the tasks with dependencies and later deadlines are further in the heap. <strong>Important here that first means first on heap, such that it is at the bottom and hence last to be executed</strong></p>
+<p><img src=/images/IN4343/ldf.png alt=LDF></p>
+<h2 id=scheduling-with-precedence-constraints-edf>Scheduling with Precedence Constraints (EDF*)</h2>
+<p>With this algorithm, it is required to know the arrival times in advance, and then construct a task set that is equivalent but has no precedence constraints, on which we then apply EDF. This transformation requires to postpone the arrival time of successors and advance the deadlines of predecessors (not their real deadlines but the one the system uses to transform).</p>
+<p>Transformations are as follows, where $k$ depicts the predecessors of a task.</p>
+<p><img src=/images/IN4343/edf_star.png alt="EDF Star"></p>
+<h2 id=aperiodic-scheduling-algorithms-summary>Aperiodic Scheduling Algorithms Summary</h2>
+<p><img src=/images/IN4343/aperiodic_scheduling_overview.png alt="Aperiodic Scheduling Algorithms Overview"></p>
 <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}},window.addEventListener('load',a=>{document.querySelectorAll("mjx-container").forEach(function(a){a.parentElement.classList+='has-jax'})})</script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
@@ -104,7 +114,7 @@ Based on this, if we continue swapping, we end up with the plan that minimizes t
 <hr>
 <div class=post-info>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-366 Words
+596 Words
 </p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 2022-02-19
@@ -116,6 +126,12 @@ Based on this, if we continue swapping, we end up with the plan that minimizes t
 <hr>
 </div>
 <div class=pagination__buttons>
+<span class="button previous">
+<a href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/scheduling-periodic-tasks/>
+<span class=button__icon>←</span>
+<span class=button__text>Scheduling Periodic Tasks</span>
+</a>
+</span>
 <span class="button next">
 <a href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/modeling-part-2/>
 <span class=button__text>Modeling Part 2</span>
