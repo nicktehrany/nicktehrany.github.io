@@ -21,7 +21,7 @@ Scheduling Periodic Tasks
 Hyperperiod This depicts the minimum time period after which the schedule repeats. Therefore, it is the least common multiple of the periods of all the tasks.
 Schedulability Feasibility is defined similar to aperiodic tasks, however each task is required to be able to be executed for its defined $C_i$ time in every interval $[a_{ik},d_{ik}],k=1,2,&mldr;$."><meta itemprop=datePublished content="2022-02-22T13:49:26+01:00">
 <meta itemprop=dateModified content="2022-02-22T13:49:26+01:00">
-<meta itemprop=wordCount content="354"><meta itemprop=image content="https://nicktehrany.github.io">
+<meta itemprop=wordCount content="818"><meta itemprop=image content="https://nicktehrany.github.io">
 <meta itemprop=keywords content>
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://nicktehrany.github.io">
@@ -95,6 +95,29 @@ Schedulability Feasibility is defined similar to aperiodic tasks, however each t
 <p>A drawback of this algorithm is that if $\Delta$ is small, there is a lot of context switching, hence possibly a lot of overheads introduced.</p>
 <h2 id=work-and-sleep-algorithm>Work-and-Sleep Algorithm</h2>
 <p>Here a task is running for $C_i$ units and suspends for $T_i - C_i$ units if another task with higher priority needs to be executed. This is very easy to implement, however, its drawback is that it can starve low priority tasks.</p>
+<h2 id=timeline-cyclic-scheduling>Timeline (Cyclic) Scheduling</h2>
+<p>The total time is divided into equal length slots, where we define a small cycle $\delta$ equal to he GCD, and a large cycle $T$ equal to the LCM (largest common multiple). Tasks are then placed into this smaller and larger periods, since we define the smallest period $\delta$ in which the most frequent task always needs to appear once, and apply the same for larger cycles. The schedule is then feasible if the sum of the computation times of the necessary tasks is less than or equal to $\delta$ (we only car about the required conditions, e.g. if task $A$ and $C$ never happen in a minor cycle together, we don&rsquo;t care if their sum is less than $\delta$).</p>
+<p>Advantages are that it is easy to implement and schedules can be hard coded in the main loop, meaning tasks will have consistently low jitter. However, it cannot handle overloading and is sensitive to application changes.</p>
+<h2 id=priority-scheduling>Priority Scheduling</h2>
+<p>We assign priorities to the tasks based on their timing constraints (their deadline). There are different ways of assigning priority to a task given as,</p>
+<ul>
+<li><strong>Rate Monotonic (RM)</strong>: $P_i \frac{1}{T_i}$ for task $i$ and $T_i$ the period of the task. Hence, it is inversely proportional to the period, the larger the period, the lower its priority is.</li>
+<li><strong>Deadline Monotonic (DM):</strong> $P_i \frac{1}{D_i}$ for task $i$ and $D_i$ the relative deadline of the task.</li>
+<li><strong>Earliest Deadline First (EDF):</strong> $P_i \frac{1}{d_{ik}$ for task $i$ and $d_{ik}$ the absolute deadline of the task.</li>
+</ul>
+<h3 id=critical-instant>Critical Instant</h3>
+<p>The critical instant of a task is the arrival time that induces the largest response time. It is essentially the worst case scenario when the task arrives concurrently with all higher priority tasks. If all tasks are schedulable in their critical instant, then the schedule is feasible.</p>
+<h2 id=least-upper-bound-lub>Least Upper Bound (LUB)</h2>
+<p>Given all possible task sets if we modify the computation times of the task, we find the upper bound of a task set (utilization that cannot get any higher, and which can be lower than 1 but never above 1), then one of these utilizations will give us a lower bound (lowers possible utilization). Then given a task set that has a utilization below this LUB we know that it is schedulable.</p>
+<h3 id=rm-algorithm>RM Algorithm</h3>
+<p>Since we don&rsquo;t want to do the calculation for finding the LUB for all scheduling algorithms and all possible task combinations, we have an algorithm to analytically quantify the LUB. Given any task set, for scheduling the LUB with RM</p>
+<p>$$U_{lub}^{RM}=n(2^{\frac{1}{n}}-1), n\rightarrow \infty \implies \text{ln}2=0.69$$</p>
+<h3 id=rm-test-with-hypberbolic-bound-hb>RM Test with Hypberbolic Bound (HB)</h3>
+<p>It says that given a task set $\Gamma$ of $n$ periodic tasks, and each task has processor utilization $\tau_i$ it is schedulable with RM if</p>
+<p>$$\prod_{i=1}^{n}(U_i+1)\leq 2$$</p>
+<h3 id=comparison>Comparison</h3>
+<p>HB gives a tighter bound than LL.</p>
+<p><img src=/images/IN4343/RM.png alt="LL compared to HB"></p>
 <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}},window.addEventListener('load',a=>{document.querySelectorAll("mjx-container").forEach(function(a){a.parentElement.classList+='has-jax'})})</script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
@@ -103,7 +126,7 @@ Schedulability Feasibility is defined similar to aperiodic tasks, however each t
 <hr>
 <div class=post-info>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-354 Words
+818 Words
 </p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 2022-02-22
