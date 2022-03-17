@@ -5,9 +5,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name=author content>
 <meta name=description content="Earliest Due Date (EDD) With this algorithm, we select the task with the earliest relative deadline to run first. However, the system assumes that all tasks arrive simultaneously, hence it knows all deadlines, and preemption is not used. The resulting performance is to minimize the maximum lateness.
-Optimality ]
-]
-Based on this, if we continue swapping, we end up with the plan that minimizes that maximum lateness. Overall, EDD takes $O(n\text{log}n)$ for queue ordering.">
+Optimality Based on this, if we continue swapping, we end up with the plan that minimizes that maximum lateness. Overall, EDD takes $O(n\text{log}n)$ for queue ordering.">
 <meta name=keywords content>
 <meta name=robots content="noodp">
 <meta name=theme-color content>
@@ -19,24 +17,18 @@ Scheduling Aperiodic Tasks
 <link rel=stylesheet href=/main.89fa80e2143f71bd5c96a7c94e531dec3276a367e22f87e74a76026ab64680bf.css>
 <meta itemprop=name content="Scheduling Aperiodic Tasks">
 <meta itemprop=description content="Earliest Due Date (EDD) With this algorithm, we select the task with the earliest relative deadline to run first. However, the system assumes that all tasks arrive simultaneously, hence it knows all deadlines, and preemption is not used. The resulting performance is to minimize the maximum lateness.
-Optimality ]
-]
-Based on this, if we continue swapping, we end up with the plan that minimizes that maximum lateness. Overall, EDD takes $O(n\text{log}n)$ for queue ordering."><meta itemprop=datePublished content="2022-02-19T14:33:05+01:00">
+Optimality Based on this, if we continue swapping, we end up with the plan that minimizes that maximum lateness. Overall, EDD takes $O(n\text{log}n)$ for queue ordering."><meta itemprop=datePublished content="2022-02-19T14:33:05+01:00">
 <meta itemprop=dateModified content="2022-02-19T14:33:05+01:00">
-<meta itemprop=wordCount content="596"><meta itemprop=image content="https://nicktehrany.github.io">
+<meta itemprop=wordCount content="594"><meta itemprop=image content="https://nicktehrany.github.io">
 <meta itemprop=keywords content>
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://nicktehrany.github.io">
 <meta name=twitter:title content="Scheduling Aperiodic Tasks">
 <meta name=twitter:description content="Earliest Due Date (EDD) With this algorithm, we select the task with the earliest relative deadline to run first. However, the system assumes that all tasks arrive simultaneously, hence it knows all deadlines, and preemption is not used. The resulting performance is to minimize the maximum lateness.
-Optimality ]
-]
-Based on this, if we continue swapping, we end up with the plan that minimizes that maximum lateness. Overall, EDD takes $O(n\text{log}n)$ for queue ordering.">
+Optimality Based on this, if we continue swapping, we end up with the plan that minimizes that maximum lateness. Overall, EDD takes $O(n\text{log}n)$ for queue ordering.">
 <meta property="og:title" content="Scheduling Aperiodic Tasks">
 <meta property="og:description" content="Earliest Due Date (EDD) With this algorithm, we select the task with the earliest relative deadline to run first. However, the system assumes that all tasks arrive simultaneously, hence it knows all deadlines, and preemption is not used. The resulting performance is to minimize the maximum lateness.
-Optimality ]
-]
-Based on this, if we continue swapping, we end up with the plan that minimizes that maximum lateness. Overall, EDD takes $O(n\text{log}n)$ for queue ordering.">
+Optimality Based on this, if we continue swapping, we end up with the plan that minimizes that maximum lateness. Overall, EDD takes $O(n\text{log}n)$ for queue ordering.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://nicktehrany.github.io/notes/in4343-real-time-systems/content/scheduling-aperiodic-tasks/"><meta property="og:image" content="https://nicktehrany.github.io"><meta property="article:section" content="notes">
 <meta property="article:published_time" content="2022-02-19T14:33:05+01:00">
@@ -81,8 +73,7 @@ Based on this, if we continue swapping, we end up with the plan that minimizes t
 <h2 id=earliest-due-date-edd>Earliest Due Date (EDD)</h2>
 <p>With this algorithm, we select the task with the earliest <strong>relative</strong> deadline to run first. However, the system assumes that all tasks arrive simultaneously, hence it knows all deadlines, and preemption is not used. The resulting performance is to minimize the maximum lateness.</p>
 <h3 id=optimality>Optimality</h3>
-<p><img src=/images/IN4343/edd-optimality-1.png alt="EDD Optimality 1">]</p>
-<p><img src=/images/IN4343/edd-optimality-2.png alt="EDD Optimality 2">]</p>
+<p><img src=/images/IN4343/edd-optimality-1.png alt="EDD Optimality 1"></p>
 <p>Based on this, if we continue swapping, we end up with the plan that minimizes that maximum lateness. Overall, EDD takes $O(n\text{log}n)$ for queue ordering.</p>
 <h2 id=earliest-deadline-first-edf>Earliest Deadline First (EDF)</h2>
 <p>With this algorithm we use the earliest absolute deadline. Now the tasks can arrive at any time, and we use preemption (assuming no overheads for switching). It again minimizes the maximum lateness. So the schedule checks each time a new task arrives, if it should be scheduled.</p>
@@ -114,7 +105,7 @@ Start with the leaf nodes that have no children (no task dependency beyond thems
 <hr>
 <div class=post-info>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-596 Words
+594 Words
 </p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 2022-02-19

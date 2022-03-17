@@ -44,14 +44,24 @@ Schedulability Feasibility is defined similar to aperiodic tasks, however each t
 <h3 id="comparison">Comparison</h3>
 <p>HB gives a tighter bound than LL.</p>
 <p><img src="/images/IN4343/RM.png" alt="LL compared to HB"></p>
+<h2 id="deadline-monotonic-dm">Deadline Monotonic (DM)</h2>
+<p>Unlike the Rate Monotonic, where the relative deadline is the same as the period, now the relative deadline is before the end of the period. Similarly, with RM we execute the task with the shortest relative deadline first. Hence, it is also a preemptive algorithm.</p>
+<h3 id="response-time-analysis">Response Time Analysis</h3>
+<p>Since the approach for measuring utilization (with the formula from RM that sums the utilization of tasks) is too pessimistic to show if a task set is schedulable under DM, we need to use the response time analysis that focuses on the critical instances of tasks (as this shows the worst case scenario). We assume that the task indexes are ordered in increasing relative deadline order, then we can compute th longest response time with $T_i=C_i + I_i$ with $C_i$ computation time and $I_i$ being the interference from higher priority tasks. We then show that it is schedulable by $R_i \leq D_i$.</p>
+<h4 id="computing-interference">Computing Interference</h4>
+<p>We compute the worst case response time (WCRT) with interference of task $T_k$ on $T_i$ in the interval from $[0,R_i]$ as</p>
+<p>$$I_{ik}=\lceil \frac{R_i}{T_k}\rceil C_k$$</p>
+<p>Similarly, we do this for all higher priority tasks as</p>
+<p>$$I_i=\sum_{k=1}^{i-1}\lceil \frac{R_i}{T_k}\rceil C_k$$</p>
+<p>However, this requires the response time ($R_i$) which was to goal to be calculated (we need the interference to calculate the response time but also the response time to calculate the interference). To solve this we make assumptions on the value of the response (since it&rsquo;s on both sides of the equation), calculate the interference based on it, and change the assumption until we reached a fixed point (reach convergence).</p>
+<p><img src="/images/IN4343/WCRT_Example.png" alt="WCRT Example"></p>
+<h2 id="dynamic-scheduling-policies">Dynamic Scheduling Policies</h2>
+<p>Instead a constant priority assignment for each task, we now assign priorities to each job on its release using EDF.</p>
 ]]></content></item><item><title>Scheduling Aperiodic Tasks</title><link>https://nicktehrany.github.io/notes/in4343-real-time-systems/content/scheduling-aperiodic-tasks/</link><pubDate>Sat, 19 Feb 2022 14:33:05 +0100</pubDate><guid>https://nicktehrany.github.io/notes/in4343-real-time-systems/content/scheduling-aperiodic-tasks/</guid><description>Earliest Due Date (EDD) With this algorithm, we select the task with the earliest relative deadline to run first. However, the system assumes that all tasks arrive simultaneously, hence it knows all deadlines, and preemption is not used. The resulting performance is to minimize the maximum lateness.
-Optimality ]
-]
-Based on this, if we continue swapping, we end up with the plan that minimizes that maximum lateness. Overall, EDD takes $O(n\text{log}n)$ for queue ordering.</description><content type="html"><![CDATA[<h2 id="earliest-due-date-edd">Earliest Due Date (EDD)</h2>
+Optimality Based on this, if we continue swapping, we end up with the plan that minimizes that maximum lateness. Overall, EDD takes $O(n\text{log}n)$ for queue ordering.</description><content type="html"><![CDATA[<h2 id="earliest-due-date-edd">Earliest Due Date (EDD)</h2>
 <p>With this algorithm, we select the task with the earliest <strong>relative</strong> deadline to run first. However, the system assumes that all tasks arrive simultaneously, hence it knows all deadlines, and preemption is not used. The resulting performance is to minimize the maximum lateness.</p>
 <h3 id="optimality">Optimality</h3>
-<p><img src="/images/IN4343/edd-optimality-1.png" alt="EDD Optimality 1">]</p>
-<p><img src="/images/IN4343/edd-optimality-2.png" alt="EDD Optimality 2">]</p>
+<p><img src="/images/IN4343/edd-optimality-1.png" alt="EDD Optimality 1"></p>
 <p>Based on this, if we continue swapping, we end up with the plan that minimizes that maximum lateness. Overall, EDD takes $O(n\text{log}n)$ for queue ordering.</p>
 <h2 id="earliest-deadline-first-edf">Earliest Deadline First (EDF)</h2>
 <p>With this algorithm we use the earliest absolute deadline. Now the tasks can arrive at any time, and we use preemption (assuming no overheads for switching). It again minimizes the maximum lateness. So the schedule checks each time a new task arrives, if it should be scheduled.</p>

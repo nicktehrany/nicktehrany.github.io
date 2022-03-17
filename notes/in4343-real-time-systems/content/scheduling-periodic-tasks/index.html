@@ -21,7 +21,7 @@ Scheduling Periodic Tasks
 Hyperperiod This depicts the minimum time period after which the schedule repeats. Therefore, it is the least common multiple of the periods of all the tasks.
 Schedulability Feasibility is defined similar to aperiodic tasks, however each task is required to be able to be executed for its defined $C_i$ time in every interval $[a_{ik},d_{ik}],k=1,2,&mldr;$."><meta itemprop=datePublished content="2022-02-22T13:49:26+01:00">
 <meta itemprop=dateModified content="2022-02-22T13:49:26+01:00">
-<meta itemprop=wordCount content="818"><meta itemprop=image content="https://nicktehrany.github.io">
+<meta itemprop=wordCount content="1103"><meta itemprop=image content="https://nicktehrany.github.io">
 <meta itemprop=keywords content>
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://nicktehrany.github.io">
@@ -118,6 +118,19 @@ Schedulability Feasibility is defined similar to aperiodic tasks, however each t
 <h3 id=comparison>Comparison</h3>
 <p>HB gives a tighter bound than LL.</p>
 <p><img src=/images/IN4343/RM.png alt="LL compared to HB"></p>
+<h2 id=deadline-monotonic-dm>Deadline Monotonic (DM)</h2>
+<p>Unlike the Rate Monotonic, where the relative deadline is the same as the period, now the relative deadline is before the end of the period. Similarly, with RM we execute the task with the shortest relative deadline first. Hence, it is also a preemptive algorithm.</p>
+<h3 id=response-time-analysis>Response Time Analysis</h3>
+<p>Since the approach for measuring utilization (with the formula from RM that sums the utilization of tasks) is too pessimistic to show if a task set is schedulable under DM, we need to use the response time analysis that focuses on the critical instances of tasks (as this shows the worst case scenario). We assume that the task indexes are ordered in increasing relative deadline order, then we can compute th longest response time with $T_i=C_i + I_i$ with $C_i$ computation time and $I_i$ being the interference from higher priority tasks. We then show that it is schedulable by $R_i \leq D_i$.</p>
+<h4 id=computing-interference>Computing Interference</h4>
+<p>We compute the worst case response time (WCRT) with interference of task $T_k$ on $T_i$ in the interval from $[0,R_i]$ as</p>
+<p>$$I_{ik}=\lceil \frac{R_i}{T_k}\rceil C_k$$</p>
+<p>Similarly, we do this for all higher priority tasks as</p>
+<p>$$I_i=\sum_{k=1}^{i-1}\lceil \frac{R_i}{T_k}\rceil C_k$$</p>
+<p>However, this requires the response time ($R_i$) which was to goal to be calculated (we need the interference to calculate the response time but also the response time to calculate the interference). To solve this we make assumptions on the value of the response (since it&rsquo;s on both sides of the equation), calculate the interference based on it, and change the assumption until we reached a fixed point (reach convergence).</p>
+<p><img src=/images/IN4343/WCRT_Example.png alt="WCRT Example"></p>
+<h2 id=dynamic-scheduling-policies>Dynamic Scheduling Policies</h2>
+<p>Instead a constant priority assignment for each task, we now assign priorities to each job on its release using EDF.</p>
 <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}},window.addEventListener('load',a=>{document.querySelectorAll("mjx-container").forEach(function(a){a.parentElement.classList+='has-jax'})})</script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
@@ -126,7 +139,7 @@ Schedulability Feasibility is defined similar to aperiodic tasks, however each t
 <hr>
 <div class=post-info>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-818 Words
+1103 Words
 </p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 2022-02-22
