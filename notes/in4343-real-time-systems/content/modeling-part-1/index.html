@@ -19,7 +19,7 @@ Modeling Part 1
 <meta itemprop=description content="The goal of modeling is to
  abstract away the system components (hardware and software) establish assumptions, parameters for model description, variables to use, and understand the constraints on the system define the metrics upon which to optimize the system (performance/cost)  Tasks A task is defined as a sequence of instructions (e.g. the code to execute) which is run by the processor until it&rsquo;s finished. We then have the activation time that depicts the time the task is created, the start time for the time the task starts running, the computation time, and the finishing time."><meta itemprop=datePublished content="2022-02-11T14:01:01+01:00">
 <meta itemprop=dateModified content="2022-02-11T14:01:01+01:00">
-<meta itemprop=wordCount content="875"><meta itemprop=image content="https://nicktehrany.github.io">
+<meta itemprop=wordCount content="887"><meta itemprop=image content="https://nicktehrany.github.io">
 <meta itemprop=keywords content>
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://nicktehrany.github.io">
@@ -87,6 +87,7 @@ Modeling Part 1
 <h2 id=definitions>Definitions</h2>
 <p><img src=/images/IN4343/deadline.png alt=Definition></p>
 <p>A RT task is then called <strong>feasible</strong> when it completes before the absolute deadline $f_i \leq d_i$ or $R-I \leq D_i$. <strong>Schedulable</strong> then means that there exists an algorithm that can produce a feasible schedule.</p>
+<p>Absolute deadline is given as $d_I$ and the relative deadline as $D_i$.</p>
 <p>We have additional timing constraints <img src=/images/IN4343/timing_constraints.png alt="Timing Constraints">. Also worth mentioning is that jobs are task instances. A task specifies something to do and a job is then an instance of doing that task, meaning multiple jobs of a task can exist.</p>
 <h3 id=types-of-tasks>Types of Tasks</h3>
 <ul>
@@ -123,7 +124,7 @@ Modeling Part 1
 <hr>
 <div class=post-info>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-875 Words
+887 Words
 </p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 2022-02-11
