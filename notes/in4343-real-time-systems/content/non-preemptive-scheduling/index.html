@@ -4,32 +4,32 @@
 <meta http-equiv=x-ua-compatible content="ie=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name=author content>
-<meta name=description content="Jitter Analysis This is typically done for multi-processor systems but can also be used for single processor ones. Defines the Finalization Jitter ($FJ$) as the variation in finalization times, and the Activation Jitter ($AJ$) as the variation in activation times. The goal of jitter analysis is then to determine the schedulability in the context of jitter and with it be able to determine response times. We then look at the worst case response time and the best case response time, which depict the response time that tasks should fall in between, and not outside of.">
+<meta name=description content="While preemption allows to scheduler urgent tasks quicker, since we do not have to wait for other tasks to finish but rather directly scheduler the urgent task, it also has the disadvantage of added overhead for context switching. This added overhead can also cause more preemption, since we increase the execution time with the additional time required for context switching, and this can cause more preemptions to happen during that prolonged time.">
 <meta name=keywords content>
 <meta name=robots content="noodp">
 <meta name=theme-color content>
-<link rel=canonical href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/jitter/>
+<link rel=canonical href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/non-preemptive-scheduling/>
 <title>
-Jitter
+Non-Preemptive Scheduling
 </title>
 <link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css>
 <link rel=stylesheet href=/main.89fa80e2143f71bd5c96a7c94e531dec3276a367e22f87e74a76026ab64680bf.css>
-<meta itemprop=name content="Jitter">
-<meta itemprop=description content="Jitter Analysis This is typically done for multi-processor systems but can also be used for single processor ones. Defines the Finalization Jitter ($FJ$) as the variation in finalization times, and the Activation Jitter ($AJ$) as the variation in activation times. The goal of jitter analysis is then to determine the schedulability in the context of jitter and with it be able to determine response times. We then look at the worst case response time and the best case response time, which depict the response time that tasks should fall in between, and not outside of."><meta itemprop=datePublished content="2022-04-04T16:33:40+02:00">
-<meta itemprop=dateModified content="2022-04-04T16:33:40+02:00">
-<meta itemprop=wordCount content="125"><meta itemprop=image content="https://nicktehrany.github.io">
+<meta itemprop=name content="Non-Preemptive Scheduling">
+<meta itemprop=description content="While preemption allows to scheduler urgent tasks quicker, since we do not have to wait for other tasks to finish but rather directly scheduler the urgent task, it also has the disadvantage of added overhead for context switching. This added overhead can also cause more preemption, since we increase the execution time with the additional time required for context switching, and this can cause more preemptions to happen during that prolonged time."><meta itemprop=datePublished content="2022-04-05T19:43:19+02:00">
+<meta itemprop=dateModified content="2022-04-05T19:43:19+02:00">
+<meta itemprop=wordCount content="210"><meta itemprop=image content="https://nicktehrany.github.io">
 <meta itemprop=keywords content>
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://nicktehrany.github.io">
-<meta name=twitter:title content="Jitter">
-<meta name=twitter:description content="Jitter Analysis This is typically done for multi-processor systems but can also be used for single processor ones. Defines the Finalization Jitter ($FJ$) as the variation in finalization times, and the Activation Jitter ($AJ$) as the variation in activation times. The goal of jitter analysis is then to determine the schedulability in the context of jitter and with it be able to determine response times. We then look at the worst case response time and the best case response time, which depict the response time that tasks should fall in between, and not outside of.">
-<meta property="og:title" content="Jitter">
-<meta property="og:description" content="Jitter Analysis This is typically done for multi-processor systems but can also be used for single processor ones. Defines the Finalization Jitter ($FJ$) as the variation in finalization times, and the Activation Jitter ($AJ$) as the variation in activation times. The goal of jitter analysis is then to determine the schedulability in the context of jitter and with it be able to determine response times. We then look at the worst case response time and the best case response time, which depict the response time that tasks should fall in between, and not outside of.">
+<meta name=twitter:title content="Non-Preemptive Scheduling">
+<meta name=twitter:description content="While preemption allows to scheduler urgent tasks quicker, since we do not have to wait for other tasks to finish but rather directly scheduler the urgent task, it also has the disadvantage of added overhead for context switching. This added overhead can also cause more preemption, since we increase the execution time with the additional time required for context switching, and this can cause more preemptions to happen during that prolonged time.">
+<meta property="og:title" content="Non-Preemptive Scheduling">
+<meta property="og:description" content="While preemption allows to scheduler urgent tasks quicker, since we do not have to wait for other tasks to finish but rather directly scheduler the urgent task, it also has the disadvantage of added overhead for context switching. This added overhead can also cause more preemption, since we increase the execution time with the additional time required for context switching, and this can cause more preemptions to happen during that prolonged time.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://nicktehrany.github.io/notes/in4343-real-time-systems/content/jitter/"><meta property="og:image" content="https://nicktehrany.github.io"><meta property="article:section" content="notes">
-<meta property="article:published_time" content="2022-04-04T16:33:40+02:00">
-<meta property="article:modified_time" content="2022-04-04T16:33:40+02:00"><meta property="og:site_name" content="Nick Tehrany">
-<meta property="article:published_time" content="2022-04-04 16:33:40 +0200 +0200">
+<meta property="og:url" content="https://nicktehrany.github.io/notes/in4343-real-time-systems/content/non-preemptive-scheduling/"><meta property="og:image" content="https://nicktehrany.github.io"><meta property="article:section" content="notes">
+<meta property="article:published_time" content="2022-04-05T19:43:19+02:00">
+<meta property="article:modified_time" content="2022-04-05T19:43:19+02:00"><meta property="og:site_name" content="Nick Tehrany">
+<meta property="article:published_time" content="2022-04-05 19:43:19 +0200 +0200">
 </head>
 <body class=dark-theme>
 <div class=container>
@@ -63,12 +63,18 @@ Jitter
 </div>
 <article>
 <h1 class=post-title>
-<a href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/jitter/>Jitter</a>
+<a href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/non-preemptive-scheduling/>Non-Preemptive Scheduling</a>
 </h1>
 <div class=post-content>
-<h2 id=jitter-analysis>Jitter Analysis</h2>
-<p>This is typically done for multi-processor systems but can also be used for single processor ones. Defines the <strong>Finalization Jitter ($FJ$)</strong> as the variation in finalization times, and the <strong>Activation Jitter ($AJ$)</strong> as the variation in activation times. The goal of jitter analysis is then to determine the schedulability in the context of jitter and with it be able to determine response times. We then look at the worst case response time and the best case response time, which depict the response time that tasks should fall in between, and not outside of.</p>
-<p>An (a task can have multiple) <strong>Optimal Instant</strong> of a task assumes its best case response time and appears when the lowest amount of preemption by higher priority tasks appears.</p>
+<p>While preemption allows to scheduler urgent tasks quicker, since we do not have to wait for other tasks to finish but rather directly scheduler the urgent task, it also has the disadvantage of added overhead for context switching. This added overhead can also cause more preemption, since we increase the execution time with the additional time required for context switching, and this can cause more preemptions to happen during that prolonged time. We also use cache locality, since it&rsquo;s replaced with the new task and again when the task is preempted, these are called cache-related preemption delays (CRPD). Therefore, with preemption we have less predictable WCET (worst case execution time) due to all the overheads.</p>
+<p>Without preemption we could also have the disadvantage that it could reduce the schedulability due to blocking.</p>
+<h2 id=hybrid-np-schemes>Hybrid NP Schemes</h2>
+<h3 id=preemption-threshold>Preemption Threshold</h3>
+<p>With this only tasks with a very high priority can preempt tasks with a low priority, by defining a minimum priority threshold for every task stating the tasks it can preempt.</p>
+<h3 id=deferred-preemption>Deferred Preemption</h3>
+<p>We define for each task the longest time period during its execution that it cannot preempted.</p>
+<h3 id=task-splitting-or-fixed-preemption-points>Task Splitting (or Fixed Preemption Points)</h3>
+<p>We split the tasks into non-preemptable code chunks, which preemption can then only happen in specific code sections.</p>
 <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}},window.addEventListener('load',a=>{document.querySelectorAll("mjx-container").forEach(function(a){a.parentElement.classList+='has-jax'})})</script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
@@ -77,10 +83,10 @@ Jitter
 <hr>
 <div class=post-info>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-125 Words
+210 Words
 </p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-2022-04-04
+2022-04-05
 </p>
 </div>
 <div class=pagination>
@@ -89,15 +95,9 @@ Jitter
 <hr>
 </div>
 <div class=pagination__buttons>
-<span class="button previous">
-<a href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/non-preemptive-scheduling/>
-<span class=button__icon>←</span>
-<span class=button__text>Non-Preemptive Scheduling</span>
-</a>
-</span>
 <span class="button next">
-<a href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/dynamic-servers/>
-<span class=button__text>Dynamic Servers</span>
+<a href=https://nicktehrany.github.io/notes/in4343-real-time-systems/content/jitter/>
+<span class=button__text>Jitter</span>
 <span class=button__icon>→</span>
 </a>
 </span>
